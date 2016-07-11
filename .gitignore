@@ -27,3 +27,5 @@
 *.exe
 *.dll
 *.lib
+*.db
+*.opendb

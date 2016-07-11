@@ -26,6 +26,8 @@ BEGIN_MESSAGE_MAP(CEye_computingView, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+	ON_WM_KEYDOWN()
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 // CEye_computingView 생성/소멸
@@ -102,3 +104,21 @@ CEye_computingDoc* CEye_computingView::GetDocument() const // 디버그되지 않은 버
 
 
 // CEye_computingView 메시지 처리기
+
+
+void CEye_computingView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+
+	CView::OnKeyDown(nChar, nRepCnt, nFlags);
+}
+
+
+int CEye_computingView::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CView::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	m_wndChild.Create(TEXT("STATIC"), TEXT("DEMO"), WS_CHILD | WS_VISIBLE , CRect(30, 30, 50, 50), this, 1234);
+
+	return 0;
+}

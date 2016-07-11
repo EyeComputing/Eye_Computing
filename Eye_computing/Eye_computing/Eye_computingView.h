@@ -17,6 +17,7 @@ public:
 
 // 작업입니다.
 public:
+	CWnd m_wndChild;
 
 // 재정의입니다.
 public:
@@ -40,6 +41,9 @@ protected:
 // 생성된 메시지 맵 함수
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 };
 
 #ifndef _DEBUG  // Eye_computingView.cpp의 디버그 버전
