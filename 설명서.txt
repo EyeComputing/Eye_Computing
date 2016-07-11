@@ -3,5 +3,3 @@ visual studio version 안맞으면 프로젝트 속성 - 일반 - 플랫폼 수정
 
 
 sdfasdfasdfasdfasdfasa
-
-g........
