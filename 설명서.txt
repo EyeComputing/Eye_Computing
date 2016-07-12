@@ -7,8 +7,15 @@ visual studio version 안맞으면 프로젝트 속성 - 일반 - 플랫폼 수정
 github 쓰기
 
 	> branch 만들어서 기능 추가
-	> conflict 최소화 하게 merge 해주면서 하기!
+
+
+	> conflict 최소화 하게  master -> branch 로 merge 해주면서 하기!
 	> conflict 최소화 하게 push 해주며서 하기!
+
+	> 	
+
+	> push 할 때 자기 branch 는 github에 push 해서 굳이 안올려도됨!	(master만 하면 됨)
+
 	> pull - work - commit - pull - push
 
 
