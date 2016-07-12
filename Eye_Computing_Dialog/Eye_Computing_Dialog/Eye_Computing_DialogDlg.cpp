@@ -11,6 +11,10 @@
 #define new DEBUG_NEW
 #endif
 
+//시작할 때 한글로 바꿔줄 려고 사용
+bool isStart = true;
+
+
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
@@ -74,6 +78,9 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_WM_MOUSEMOVE()
 	ON_BN_CLICKED(IDC_NiEun, &CEye_Computing_DialogDlg::OnBnClickedNieun)
 	ON_BN_CLICKED(IDC_Ah, &CEye_Computing_DialogDlg::OnBnClickedAh)
+	ON_BN_CLICKED(IDC_Yee, &CEye_Computing_DialogDlg::OnBnClickedYee)
+	ON_BN_CLICKED(IDC_Zzum, &CEye_Computing_DialogDlg::OnBnClickedZzum)
+	ON_BN_CLICKED(IDC_Eu, &CEye_Computing_DialogDlg::OnBnClickedEu)
 END_MESSAGE_MAP()
 
 
@@ -217,16 +224,18 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 		::SetForegroundWindow(m_hForegroundWnd);
 		ModifyStyleEx(0, WS_EX_NOACTIVATE);
 
-		//포커스 키보드로 오면 한/영 눌러서 한글로 시작하기!
-		INPUT HanToEng;
-		::ZeroMemory(&HanToEng, sizeof(INPUT));
-		HanToEng.type = INPUT_KEYBOARD;
-		HanToEng.ki.wVk = VK_HANGEUL;
-		::SendInput(1, &HanToEng, sizeof(INPUT));
-		HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &HanToEng, sizeof(INPUT));
-
-
+		if (isStart)
+		{
+			//포커스 키보드로 오면 한/영 눌러서 한글로 시작하기!
+			INPUT HanToEng;
+			::ZeroMemory(&HanToEng, sizeof(INPUT));
+			HanToEng.type = INPUT_KEYBOARD;
+			HanToEng.ki.wVk = VK_HANGEUL;
+			::SendInput(1, &HanToEng, sizeof(INPUT));
+			HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &HanToEng, sizeof(INPUT));
+			isStart = FALSE;
+		}
 		m_hForegroundWnd = NULL;
 	}
 
@@ -265,5 +274,48 @@ void CEye_Computing_DialogDlg::OnBnClickedAh()
 	//누른거 풀어주기
 	InputAh.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputAh, sizeof(INPUT));
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CEye_Computing_DialogDlg::OnBnClickedYee()
+{
+	INPUT InputYee;
+	//initialize
+	::ZeroMemory(&InputYee, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputYee.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputYee.ki.wVk = 0x4C;
+	//한번눌러주기
+	::SendInput(1, &InputYee, sizeof(INPUT));
+	//누른거 풀어주기
+	InputYee.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputYee, sizeof(INPUT));
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CEye_Computing_DialogDlg::OnBnClickedZzum()
+{
+
+}
+
+
+void CEye_Computing_DialogDlg::OnBnClickedEu()
+{
+
+	INPUT InputEu;
+	//initialize
+	::ZeroMemory(&InputEu, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputEu.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputEu.ki.wVk = 0x4D;
+	//한번눌러주기
+	::SendInput(1, &InputEu, sizeof(INPUT));
+	//누른거 풀어주기
+	InputEu.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputEu, sizeof(INPUT));
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }

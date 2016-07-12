@@ -38,4 +38,7 @@ public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnBnClickedNieun();
 	afx_msg void OnBnClickedAh();
+	afx_msg void OnBnClickedYee();
+	afx_msg void OnBnClickedZzum();
+	afx_msg void OnBnClickedEu();
 };
