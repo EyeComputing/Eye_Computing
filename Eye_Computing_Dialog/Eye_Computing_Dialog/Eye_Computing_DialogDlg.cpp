@@ -62,6 +62,9 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDOK, &CEye_Computing_DialogDlg::OnBnClickedOk)
+	ON_BN_CLICKED(IDCANCEL, &CEye_Computing_DialogDlg::OnBnClickedCancel)
+	ON_BN_CLICKED(IDC_GiYeok, &CEye_Computing_DialogDlg::OnBnClickedGiyeok)
 END_MESSAGE_MAP()
 
 
@@ -150,3 +153,35 @@ HCURSOR CEye_Computing_DialogDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CEye_Computing_DialogDlg::OnBnClickedOk()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CDialogEx::OnOK();
+}
+
+
+void CEye_Computing_DialogDlg::OnBnClickedCancel()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CDialogEx::OnCancel();
+}
+
+
+void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
+{
+	/*https://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx*/
+	INPUT InputGiYeok;
+	//initialize
+	::ZeroMemory(&InputGiYeok, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputGiYeok.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputGiYeok.ki.wVk = 88;
+	//한번눌러주기
+	::SendInput(1, &InputGiYeok, sizeof(INPUT));
+	//누른거 풀어주기
+	InputGiYeok.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputGiYeok, sizeof(INPUT));
+}
