@@ -61,18 +61,6 @@ BOOL CEye_Computing_DialogApp::InitInstance()
 	// MFC 컨트롤의 테마를 사용하기 위해 "Windows 원형" 비주얼 관리자 활성화
 	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));
 
-
-
-	//프로그램 시작할 때 한/영 눌러주기?
-	INPUT HanToEng;
-	::ZeroMemory(&HanToEng, sizeof(INPUT));
-	HanToEng.type = INPUT_KEYBOARD;
-	HanToEng.ki.wVk = VK_HANGEUL;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-	HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-
-
 	// 표준 초기화
 	// 이들 기능을 사용하지 않고 최종 실행 파일의 크기를 줄이려면
 	// 아래에서 필요 없는 특정 초기화
