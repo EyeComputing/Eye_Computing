@@ -72,6 +72,8 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_GiYeok, &CEye_Computing_DialogDlg::OnBnClickedGiyeok)
 	ON_WM_NCLBUTTONDOWN()
 	ON_WM_MOUSEMOVE()
+	ON_BN_CLICKED(IDC_NiEun, &CEye_Computing_DialogDlg::OnBnClickedNieun)
+	ON_BN_CLICKED(IDC_Ah, &CEye_Computing_DialogDlg::OnBnClickedAh)
 END_MESSAGE_MAP()
 
 
@@ -185,7 +187,7 @@ void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
 	//keyboard로 입력하겠다.
 	InputGiYeok.type = INPUT_KEYBOARD;
 	//어떤버튼누를건지
-	InputGiYeok.ki.wVk = 0x41;
+	InputGiYeok.ki.wVk = 0x52;
 	//한번눌러주기
 	::SendInput(1, &InputGiYeok, sizeof(INPUT));
 	//누른거 풀어주기
@@ -217,4 +219,39 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 	}
 
 	CDialog::OnMouseMove(nFlags, point);
+}
+
+
+void CEye_Computing_DialogDlg::OnBnClickedNieun()
+{
+	INPUT InputNieun;
+	//initialize
+	::ZeroMemory(&InputNieun, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputNieun.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputNieun.ki.wVk = VK_HANGEUL;
+	//한번눌러주기
+	::SendInput(1, &InputNieun, sizeof(INPUT));
+	//누른거 풀어주기
+	InputNieun.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputNieun, sizeof(INPUT));
+}
+
+
+void CEye_Computing_DialogDlg::OnBnClickedAh()
+{
+	INPUT InputAh;
+	//initialize
+	::ZeroMemory(&InputAh, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputAh.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputAh.ki.wVk = 0x4B;
+	//한번눌러주기
+	::SendInput(1, &InputAh, sizeof(INPUT));
+	//누른거 풀어주기
+	InputAh.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputAh, sizeof(INPUT));
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }

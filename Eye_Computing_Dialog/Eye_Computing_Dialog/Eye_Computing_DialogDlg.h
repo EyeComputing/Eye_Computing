@@ -36,4 +36,6 @@ public:
 	afx_msg void OnBnClickedGiyeok();
 	afx_msg void OnNcLButtonDown(UINT nHitTest, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnBnClickedNieun();
+	afx_msg void OnBnClickedAh();
 };
