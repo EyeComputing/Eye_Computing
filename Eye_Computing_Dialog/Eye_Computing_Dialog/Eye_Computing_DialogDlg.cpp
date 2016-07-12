@@ -27,7 +27,10 @@ public:
 
 // 구현입니다.
 protected:
+	HWND m_hForegroundWnd;
 	DECLARE_MESSAGE_MAP()
+public:
+//	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
@@ -40,6 +43,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+//	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -51,6 +55,7 @@ CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CEye_Computing_DialogDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	m_hForegroundWnd = NULL;
 }
 
 void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
@@ -65,6 +70,8 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDOK, &CEye_Computing_DialogDlg::OnBnClickedOk)
 	ON_BN_CLICKED(IDCANCEL, &CEye_Computing_DialogDlg::OnBnClickedCancel)
 	ON_BN_CLICKED(IDC_GiYeok, &CEye_Computing_DialogDlg::OnBnClickedGiyeok)
+	ON_WM_NCLBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -171,7 +178,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCancel()
 
 void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
 {
-	/*https://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx*/
+	/*https://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx */
 	INPUT InputGiYeok;
 	//initialize
 	::ZeroMemory(&InputGiYeok, sizeof(INPUT));
@@ -184,4 +191,30 @@ void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
 	//누른거 풀어주기
 	InputGiYeok.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputGiYeok, sizeof(INPUT));
+}
+
+
+void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
+{
+	if (!m_hForegroundWnd)
+	{
+		m_hForegroundWnd = ::GetForegroundWindow();
+		ModifyStyleEx(WS_EX_NOACTIVATE, 0);
+		SetForegroundWindow();
+	}
+
+	CDialog::OnNcLButtonDown(nHitTest, point);
+}
+
+
+void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	if (m_hForegroundWnd)
+	{
+		::SetForegroundWindow(m_hForegroundWnd);
+		ModifyStyleEx(0, WS_EX_NOACTIVATE);
+		m_hForegroundWnd = NULL;
+	}
+
+	CDialog::OnMouseMove(nFlags, point);
 }

@@ -22,6 +22,7 @@ public:
 // 구현입니다.
 protected:
 	HICON m_hIcon;
+	HWND m_hForegroundWnd;
 
 	// 생성된 메시지 맵 함수
 	virtual BOOL OnInitDialog();
@@ -33,4 +34,6 @@ public:
 	afx_msg void OnBnClickedOk();
 	afx_msg void OnBnClickedCancel();
 	afx_msg void OnBnClickedGiyeok();
+	afx_msg void OnNcLButtonDown(UINT nHitTest, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
