@@ -185,7 +185,7 @@ void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
 	//keyboard로 입력하겠다.
 	InputGiYeok.type = INPUT_KEYBOARD;
 	//어떤버튼누를건지
-	InputGiYeok.ki.wVk = 41;
+	InputGiYeok.ki.wVk = 0x41;
 	//한번눌러주기
 	::SendInput(1, &InputGiYeok, sizeof(INPUT));
 	//누른거 풀어주기
