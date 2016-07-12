@@ -17,7 +17,6 @@ public:
 
 // 작업입니다.
 public:
-	CWnd m_wndChild;
 
 // 재정의입니다.
 public:

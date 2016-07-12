@@ -118,7 +118,5 @@ int CEye_computingView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CView::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	m_wndChild.Create(TEXT("STATIC"), TEXT("DEMO"), WS_CHILD | WS_VISIBLE , CRect(30, 30, 50, 50), this, 1234);
-
 	return 0;
 }
