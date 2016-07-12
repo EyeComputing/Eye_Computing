@@ -111,15 +111,6 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	//항상 최상위 window가 되도록 설정
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 
-	//프로그램 시작할 때 한/영 눌러주기?
-	INPUT HanToEng;
-	::ZeroMemory(&HanToEng, sizeof(INPUT));
-	HanToEng.type = INPUT_KEYBOARD;
-	HanToEng.ki.wVk = VK_HANGEUL;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-	HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -225,6 +216,17 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 	{
 		::SetForegroundWindow(m_hForegroundWnd);
 		ModifyStyleEx(0, WS_EX_NOACTIVATE);
+
+		//포커스 키보드로 오면 한/영 눌러서 한글로 시작하기!
+		INPUT HanToEng;
+		::ZeroMemory(&HanToEng, sizeof(INPUT));
+		HanToEng.type = INPUT_KEYBOARD;
+		HanToEng.ki.wVk = VK_HANGEUL;
+		::SendInput(1, &HanToEng, sizeof(INPUT));
+		HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &HanToEng, sizeof(INPUT));
+
+
 		m_hForegroundWnd = NULL;
 	}
 
