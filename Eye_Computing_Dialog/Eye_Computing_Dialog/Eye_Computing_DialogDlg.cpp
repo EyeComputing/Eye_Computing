@@ -161,6 +161,9 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
+	// 윈도우 사이즈 지정 및 고정(다시 그리지 않는다)
+	SetWindowPos(NULL, 0, 0, 625, 640, SWP_NOREDRAW);
+
 	// 버튼 이미지 삽입
 	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
 	m_btn_Back.SetSkin(IDB_Enter, IDB_Enter, IDB_Enter, IDB_Enter, 0, IDB_Enter, 0, 0, 0);
@@ -231,6 +234,9 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	//  프레임워크가 이 작업을 자동으로 수행합니다.
 	SetIcon(m_hIcon, TRUE);			// 큰 아이콘을 설정합니다.
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
+
+	//
+	SetWindowText(_T("EYE MAKE IT"));
 
 	//항상 최상위 window가 되도록 설정
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
