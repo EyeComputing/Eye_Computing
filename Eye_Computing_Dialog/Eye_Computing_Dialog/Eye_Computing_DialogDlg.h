@@ -19,7 +19,9 @@ public:
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 지원입니다.
-
+	
+	void CEye_Computing_DialogDlg::OnOK();
+	
 
 // 구현입니다.
 protected:

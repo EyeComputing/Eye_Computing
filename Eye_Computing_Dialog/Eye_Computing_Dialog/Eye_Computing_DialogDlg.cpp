@@ -274,6 +274,13 @@ HCURSOR CEye_Computing_DialogDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+// Enter 눌러도 창이 닫기지 않도록  합니다.
+void CEye_Computing_DialogDlg::OnOK()
+{
+	return;
+}
+
+
 // 마우스 왼쪽 클릭?
 void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
 {
