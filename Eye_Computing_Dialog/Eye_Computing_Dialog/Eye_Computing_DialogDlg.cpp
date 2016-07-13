@@ -181,28 +181,29 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	m_btn_PiEup.SetSkin(IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, 0, IDB_PIEUP, 0, 0, 0);
 	m_btn_HiEut.SetSkin(IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, 0, IDB_HIEUT, 0, 0, 0);
 
+	// 버튼 좌표 노가다
 	GetDlgItem(IDC_BACKGROUND)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_BKSPACE)->SetWindowPos(NULL, 187, 10, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Enter)->SetWindowPos(NULL, 107, 44, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_GiYeok)->SetWindowPos(NULL, 44, 103, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_NiEun)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_DiGeut)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Confirm)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_RIEUL)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_MIEUM)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_BIEUP)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Zzum)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Iii)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SHIOT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Eu)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SPACE)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_IEUNG)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_KIEUK)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CHIEUT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_JIEUT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_TIEUT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_PIEUP)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_HIEUT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_BKSPACE)->SetWindowPos(NULL, 186, 12, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Enter)->SetWindowPos(NULL, 106, 46, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_GiYeok)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_NiEun)->SetWindowPos(NULL, 14, 185, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_DiGeut)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Confirm)->SetWindowPos(NULL, 185, 92, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_RIEUL)->SetWindowPos(NULL, 117, 136, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_MIEUM)->SetWindowPos(NULL, 88, 217, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_BIEUP)->SetWindowPos(NULL, 103, 307, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Zzum)->SetWindowPos(NULL, 227, 175, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Iii)->SetWindowPos(NULL, 168, 235, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SHIOT)->SetWindowPos(NULL, 159, 363, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Eu)->SetWindowPos(NULL, 281, 232, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SPACE)->SetWindowPos(NULL, 228, 287, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_IEUNG)->SetWindowPos(NULL, 244, 376, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_KIEUK)->SetWindowPos(NULL, 369, 188, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CHIEUT)->SetWindowPos(NULL, 368, 280, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_JIEUT)->SetWindowPos(NULL, 326, 346, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_TIEUT)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_PIEUP)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_HIEUT)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
 			 
 
 	// IDM_ABOUTBOX는 시스템 명령 범위에 있어야 합니다.
