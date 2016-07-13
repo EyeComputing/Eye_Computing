@@ -34,6 +34,7 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="EyeXGaze.h">
+    <ClInclude Include="xSkinButton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -48,6 +49,7 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="EyeXGaze.cpp">
+    <ClCompile Include="xSkinButton.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -63,6 +65,105 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Eye_Computing_Dialog.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\bieup_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\bk_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\bksp_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\chieut_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\confirm_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\digeut_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\eiung_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\eu_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\giyeok_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\hieut_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\kieuk_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\lieul_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\mieum_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\minus_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\nieun_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\off_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\pieup_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\plus_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\shift_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\siot_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\space_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\tieut_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\yi_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\zieut_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\zzum_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\back_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\bkspace_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ieung_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\jieut_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\rieul_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\shiot_normal.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\background.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\background.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

@@ -3,6 +3,8 @@
 //
 
 #pragma once
+#include "afxwin.h"
+#include "xSkinButton.h"
 
 
 // CEye_Computing_DialogDlg 대화 상자
@@ -45,4 +47,26 @@ public:
 	afx_msg void OnBnClickedYee();
 	afx_msg void OnBnClickedZzum();
 	afx_msg void OnBnClickedEu();
+	CxSkinButton m_btn_BkSpace;
+	CxSkinButton m_btn_Back;
+	CxSkinButton m_btn_GiYeok;
+	CxSkinButton m_btn_NiEun;
+	CxSkinButton m_btn_DiGeut;
+	CxSkinButton m_btn_Confirm;
+	CxSkinButton m_btn_RiEul;
+	CxSkinButton m_btn_MiEum;
+	CxSkinButton m_btn_BiEup;
+	CxSkinButton m_btn_Zzum;
+	CxSkinButton m_btn_Yi;
+	CxSkinButton m_btn_ShiOt;
+	CxSkinButton m_btn_Eu;
+	CxSkinButton m_btn_Space;
+	CxSkinButton m_btn_IEung;
+	CxSkinButton m_btn_KiEuk;
+	CxSkinButton m_btn_ChiEut;
+	CxSkinButton m_btn_JiEut;
+	CxSkinButton m_btn_TiEut;
+	CxSkinButton m_btn_PiEup;
+	CxSkinButton m_btn_HiEut;
+	CStatic m_BkGround;
 };

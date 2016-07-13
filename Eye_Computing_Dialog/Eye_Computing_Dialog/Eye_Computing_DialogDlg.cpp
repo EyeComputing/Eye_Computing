@@ -7,6 +7,8 @@
 #include "Eye_Computing_DialogDlg.h"
 #include "afxdialogex.h"
 #include "EyeXGaze.h"
+#include "xSkinButton.h"
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -86,6 +88,28 @@ CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_BKSPACE, m_btn_BkSpace);
+	DDX_Control(pDX, IDC_BACK, m_btn_Back);
+	DDX_Control(pDX, IDC_GiYeok, m_btn_GiYeok);
+	DDX_Control(pDX, IDC_NiEun, m_btn_NiEun);
+	DDX_Control(pDX, IDC_DiGeut, m_btn_DiGeut);
+	DDX_Control(pDX, IDC_Confirm, m_btn_Confirm);
+	DDX_Control(pDX, IDC_RIEUL, m_btn_RiEul);
+	DDX_Control(pDX, IDC_MIEUM, m_btn_MiEum);
+	DDX_Control(pDX, IDC_BIEUP, m_btn_BiEup);
+	DDX_Control(pDX, IDC_Zzum, m_btn_Zzum);
+	DDX_Control(pDX, IDC_YI, m_btn_Yi);
+	DDX_Control(pDX, IDC_SHIOT, m_btn_ShiOt);
+	DDX_Control(pDX, IDC_Eu, m_btn_Eu);
+	DDX_Control(pDX, IDC_SPACE, m_btn_Space);
+	DDX_Control(pDX, IDC_IEUNG, m_btn_IEung);
+	DDX_Control(pDX, IDC_KIEUK, m_btn_KiEuk);
+	DDX_Control(pDX, IDC_CHIEUT, m_btn_ChiEut);
+	DDX_Control(pDX, IDC_JIEUT, m_btn_JiEut);
+	DDX_Control(pDX, IDC_TIEUT, m_btn_TiEut);
+	DDX_Control(pDX, IDC_PIEUP, m_btn_PiEup);
+	DDX_Control(pDX, IDC_HIEUT, m_btn_HiEut);
+	DDX_Control(pDX, IDC_BACKGROUND, m_BkGround);
 }
 
 BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
@@ -113,6 +137,27 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
+	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
+	m_btn_Back.SetSkin(IDB_BACK, IDB_BACK, IDB_BACK, IDB_BACK, 0, IDB_BACK, 0, 0, 0);
+	m_btn_GiYeok.SetSkin(IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, 0, IDB_GIYEOK, 0, 0, 0);
+	m_btn_NiEun.SetSkin(IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, 0, IDB_NIEUN, 0, 0, 0);
+	m_btn_DiGeut.SetSkin(IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, 0, IDB_DIGEUT, 0, 0, 0);
+	m_btn_Confirm.SetSkin(IDB_CONFIRM, IDB_CONFIRM, IDB_CONFIRM, IDB_CONFIRM, 0, IDB_CONFIRM, 0, 0, 0);
+	m_btn_RiEul.SetSkin(IDB_RIEUL, IDB_RIEUL, IDB_RIEUL, IDB_RIEUL, 0, IDB_RIEUL, 0, 0, 0);
+	m_btn_MiEum.SetSkin(IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, 0, IDB_MIEUM, 0, 0, 0);
+	m_btn_BiEup.SetSkin(IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, 0, IDB_BIEUP, 0, 0, 0);
+	m_btn_Zzum.SetSkin(IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, 0, IDB_ZZUM, 0, 0, 0);
+	m_btn_Yi.SetSkin(IDB_YI, IDB_YI, IDB_YI, IDB_YI, 0, IDB_YI, 0, 0, 0);
+	m_btn_ShiOt.SetSkin(IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, 0, IDB_SHIOT, 0, 0, 0);
+	m_btn_Eu.SetSkin(IDB_EU, IDB_EU, IDB_EU, IDB_EU, 0, IDB_EU, 0, 0, 0);
+	m_btn_Space.SetSkin(IDB_SPACE, IDB_SPACE, IDB_SPACE, IDB_SPACE, 0, IDB_SPACE, 0, 0, 0);
+	m_btn_IEung.SetSkin(IDB_IEUNG, IDB_IEUNG, IDB_IEUNG, IDB_IEUNG, 0, IDB_IEUNG, 0, 0, 0);
+	m_btn_KiEuk.SetSkin(IDB_KIEUK, IDB_KIEUK, IDB_KIEUK, IDB_KIEUK, 0, IDB_KIEUK, 0, 0, 0);
+	m_btn_ChiEut.SetSkin(IDB_CHIEUT, IDB_CHIEUT, IDB_CHIEUT, IDB_CHIEUT, 0, IDB_CHIEUT, 0, 0, 0);
+	m_btn_JiEut.SetSkin(IDB_JIEUT, IDB_JIEUT, IDB_JIEUT, IDB_JIEUT, 0, IDB_JIEUT, 0, 0, 0);
+	m_btn_TiEut.SetSkin(IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, 0, IDB_TIEUT, 0, 0, 0);
+	m_btn_PiEup.SetSkin(IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, 0, IDB_PIEUP, 0, 0, 0);
+	m_btn_HiEut.SetSkin(IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, 0, IDB_HIEUT, 0, 0, 0);
 
 	// IDM_ABOUTBOX는 시스템 명령 범위에 있어야 합니다.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
@@ -146,9 +191,12 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
 
+<<<<<<< HEAD
 	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
 
+=======
+>>>>>>> 6be1abbbfc3255fb1f8a5306490995a6e9f84e50
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -191,6 +239,12 @@ void CEye_Computing_DialogDlg::OnPaint()
 	else
 	{
 		CDialogEx::OnPaint();
+
+
+		HBITMAP hbit;
+		hbit = ::LoadBitmap(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDB_BACKGROUND));
+		m_BkGround.SetBitmap(hbit);
+		
 	}
 }
 
