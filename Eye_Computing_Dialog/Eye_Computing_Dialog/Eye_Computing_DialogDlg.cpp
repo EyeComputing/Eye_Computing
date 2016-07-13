@@ -191,12 +191,9 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
 
-<<<<<<< HEAD
 	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
 
-=======
->>>>>>> 6be1abbbfc3255fb1f8a5306490995a6e9f84e50
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
