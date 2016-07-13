@@ -52,3 +52,7 @@
 #endif
 
 
+//토비 상태 3가지 초기화
+#define UM_EYEX_HOST_STATUS_CHANGED		WM_USER + 0
+#define UM_REGION_GOT_ACTIVATION_FOCUS	WM_USER + 1
+#define UM_REGION_ACTIVATED				WM_USER + 2

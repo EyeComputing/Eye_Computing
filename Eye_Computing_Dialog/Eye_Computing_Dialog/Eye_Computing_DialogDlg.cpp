@@ -102,6 +102,7 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_Yee, &CEye_Computing_DialogDlg::OnBnClickedYee)
 	ON_BN_CLICKED(IDC_Zzum, &CEye_Computing_DialogDlg::OnBnClickedZzum)
 	ON_BN_CLICKED(IDC_Eu, &CEye_Computing_DialogDlg::OnBnClickedEu)
+	ON_MESSAGE(UM_REGION_ACTIVATED, &CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED)
 END_MESSAGE_MAP()
 
 
@@ -142,11 +143,11 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	// window창 반투명하게 설정
 	LONG ExtendedStyle = GetWindowLong(GetSafeHwnd(), GWL_EXSTYLE);
 	SetWindowLong(GetSafeHwnd(), GWL_EXSTYLE, ExtendedStyle | WS_EX_LAYERED);
-	
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
-	
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
 
+	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
+	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -200,8 +201,6 @@ HCURSOR CEye_Computing_DialogDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-
-
 void CEye_Computing_DialogDlg::OnBnClickedOk()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -214,7 +213,6 @@ void CEye_Computing_DialogDlg::OnBnClickedCancel()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	CDialogEx::OnCancel();
 }
-
 
 //기역클릭
 void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
@@ -387,6 +385,54 @@ void CEye_Computing_DialogDlg::OnBnClickedYee()
 		::SendInput(1, &InputYae, sizeof(INPUT));
 		clickedYa = false;
 	}
+	else if (clickedEo)
+	{
+		INPUT InputEee;
+		::ZeroMemory(&InputEee, sizeof(INPUT));
+		InputEee.type = INPUT_KEYBOARD;
+
+		//한번 지움
+		InputEee.ki.wVk = 0x08;
+		::SendInput(1, &InputEee, sizeof(INPUT));
+		InputEee.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputEee, sizeof(INPUT));
+
+		//ㅔ 씀
+		InputEee.ki.wVk = 0x50;
+		InputEee.ki.dwFlags = 0;
+		::SendInput(1, &InputEee, sizeof(INPUT));
+		InputEee.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputEee, sizeof(INPUT));
+		clickedEo = false;
+	}
+	else if (clickedYeo)
+	{
+		INPUT InputYe;
+		::ZeroMemory(&InputYe, sizeof(INPUT));
+		InputYe.type = INPUT_KEYBOARD;
+
+		//한번 지움
+		InputYe.ki.wVk = 0x08;
+		::SendInput(1, &InputYe, sizeof(INPUT));
+		InputYe.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputYe, sizeof(INPUT));
+
+		//ㅖ 씀
+		//시프트 누르고있고
+		InputYe.ki.wVk = 0x10;
+		InputYe.ki.dwFlags = 0;
+		::SendInput(1, &InputYe, sizeof(INPUT));
+		//ㅔ 침
+		InputYe.ki.wVk = 0x50;
+		::SendInput(1, &InputYe, sizeof(INPUT));
+		InputYe.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputYe, sizeof(INPUT));
+		// 시프트 땜
+		InputYe.ki.wVk = 0x10;
+		InputYe.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputYe, sizeof(INPUT));
+		clickedYeo = false;
+	}
 	else if (clickedWa)
 	{
 		INPUT InputWae;
@@ -406,6 +452,55 @@ void CEye_Computing_DialogDlg::OnBnClickedYee()
 		InputWae.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputWae, sizeof(INPUT));
 		clickedWa = false;
+	}
+	else if (clickedUuuAndZzum)
+	{
+		INPUT InputWo;
+		::ZeroMemory(&InputWo, sizeof(INPUT));
+		InputWo.type = INPUT_KEYBOARD;
+
+		//한번 지움
+		InputWo.ki.wVk = 0x08;
+		::SendInput(1, &InputWo, sizeof(INPUT));
+		InputWo.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputWo, sizeof(INPUT));
+
+		//ㅝ 씀
+		//ㅜ
+		InputWo.ki.wVk = 0x4E;
+		InputWo.ki.dwFlags = 0;
+		::SendInput(1, &InputWo, sizeof(INPUT));
+		InputWo.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputWo, sizeof(INPUT));
+		//ㅓ
+		InputWo.ki.wVk = 0x4A;
+		InputWo.ki.dwFlags = 0;
+		::SendInput(1, &InputWo, sizeof(INPUT));
+		InputWo.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputWo, sizeof(INPUT));
+		clickedWo = true;
+		clickedUuuAndZzum = false;
+	}
+	else if (clickedWo)
+	{
+
+		INPUT InputWe;
+		::ZeroMemory(&InputWe, sizeof(INPUT));
+		InputWe.type = INPUT_KEYBOARD;
+
+		//한번 지움
+		InputWe.ki.wVk = 0x08;
+		::SendInput(1, &InputWe, sizeof(INPUT));
+		InputWe.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputWe, sizeof(INPUT));
+
+		//ㅞ 씀
+		InputWe.ki.wVk = 0x50;
+		InputWe.ki.dwFlags = 0;
+		::SendInput(1, &InputWe, sizeof(INPUT));
+		InputWe.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputWe, sizeof(INPUT));
+		clickedWo = false;
 	}
 	else if(clickedOoo)
 	{
@@ -530,6 +625,7 @@ void CEye_Computing_DialogDlg::OnBnClickedZzum()
 		InputYu.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYu, sizeof(INPUT));
 		clickedUuu = false;
+		clickedUuuAndZzum = true;
 	}
 	else if (clickedWe)
 	{
@@ -609,5 +705,25 @@ void CEye_Computing_DialogDlg::OnBnClickedEu()
 		clickedEu = true;
 	}
 }
+
+
+LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam)
+{
+	POINT gazePoint;
+	gazePoint.x = (LONG)g_EyeXGaze.getFixEye_X();
+	gazePoint.y = (LONG)g_EyeXGaze.getFixEye_Y();
+
+	SetCursorPos(gazePoint.x, gazePoint.y);
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
 
 

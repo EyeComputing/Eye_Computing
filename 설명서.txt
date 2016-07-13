@@ -1,6 +1,8 @@
 visual studio version 안맞으면 프로젝트 속성 - 일반 - 플랫폼 수정
 
 
+소스코드 있는데 .dll , .lib파일 2개 추가하기!
+
 
 
 
