@@ -158,7 +158,7 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
+	// 버튼 이미지 삽입
 	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
 	m_btn_Back.SetSkin(IDB_Enter, IDB_Enter, IDB_Enter, IDB_Enter, 0, IDB_Enter, 0, 0, 0);
 	m_btn_GiYeok.SetSkin(IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, 0, IDB_GIYEOK, 0, 0, 0);
@@ -180,6 +180,30 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	m_btn_TiEut.SetSkin(IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, 0, IDB_TIEUT, 0, 0, 0);
 	m_btn_PiEup.SetSkin(IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, 0, IDB_PIEUP, 0, 0, 0);
 	m_btn_HiEut.SetSkin(IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, 0, IDB_HIEUT, 0, 0, 0);
+
+	GetDlgItem(IDC_BACKGROUND)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_BKSPACE)->SetWindowPos(NULL, 187, 10, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Enter)->SetWindowPos(NULL, 107, 44, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_GiYeok)->SetWindowPos(NULL, 44, 103, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_NiEun)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_DiGeut)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Confirm)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_RIEUL)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_MIEUM)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_BIEUP)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Zzum)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Iii)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SHIOT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Eu)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SPACE)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_IEUNG)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_KIEUK)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CHIEUT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_JIEUT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_TIEUT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_PIEUP)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_HIEUT)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+			 
 
 	// IDM_ABOUTBOX는 시스템 명령 범위에 있어야 합니다.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
@@ -259,7 +283,7 @@ void CEye_Computing_DialogDlg::OnPaint()
 	{
 		CDialogEx::OnPaint();
 
-
+		// 키보드 배경 이미지 출력
 		HBITMAP hbit;
 		hbit = ::LoadBitmap(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDB_BACKGROUND));
 		m_BkGround.SetBitmap(hbit);
