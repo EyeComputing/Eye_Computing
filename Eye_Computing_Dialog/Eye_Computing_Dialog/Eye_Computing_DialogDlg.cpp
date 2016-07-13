@@ -6,6 +6,7 @@
 #include "Eye_Computing_Dialog.h"
 #include "Eye_Computing_DialogDlg.h"
 #include "afxdialogex.h"
+#include "EyeXGaze.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
