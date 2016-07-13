@@ -64,4 +64,5 @@ public:
 	CxSkinButton m_btn_TiEut;
 	CxSkinButton m_btn_PiEup;
 	CxSkinButton m_btn_HiEut;
+	CStatic m_BkGround;
 };

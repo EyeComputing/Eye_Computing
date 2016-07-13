@@ -124,6 +124,7 @@
     <None Include="res\Eye_Computing_Dialog.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\background.bmp" />
     <Image Include="res\background.png" />
     <Image Include="res\back_normal.bmp" />
     <Image Include="res\bieup_normal.bmp" />

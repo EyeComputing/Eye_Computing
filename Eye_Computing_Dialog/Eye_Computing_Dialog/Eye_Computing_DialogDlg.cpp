@@ -87,6 +87,7 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_TIEUT, m_btn_TiEut);
 	DDX_Control(pDX, IDC_PIEUP, m_btn_PiEup);
 	DDX_Control(pDX, IDC_HIEUT, m_btn_HiEut);
+	DDX_Control(pDX, IDC_BACKGROUND, m_BkGround);
 }
 
 BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
@@ -111,7 +112,6 @@ END_MESSAGE_MAP()
 BOOL CEye_Computing_DialogDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
-
 
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
 	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
@@ -170,7 +170,6 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
 
-
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -213,6 +212,12 @@ void CEye_Computing_DialogDlg::OnPaint()
 	else
 	{
 		CDialogEx::OnPaint();
+
+
+		HBITMAP hbit;
+		hbit = ::LoadBitmap(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDB_BACKGROUND));
+		m_BkGround.SetBitmap(hbit);
+		
 	}
 }
 
