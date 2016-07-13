@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,14 +19,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
@@ -106,6 +106,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="xSkinButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Eye_Computing_Dialog.cpp" />
@@ -114,6 +115,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="xSkinButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Eye_Computing_Dialog.rc" />
@@ -122,7 +124,39 @@
     <None Include="res\Eye_Computing_Dialog.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\background.png" />
+    <Image Include="res\back_normal.bmp" />
+    <Image Include="res\bieup_normal.bmp" />
+    <Image Include="res\bkspace_normal.bmp" />
+    <Image Include="res\bksp_normal.bmp" />
+    <Image Include="res\bk_normal.bmp" />
+    <Image Include="res\chieut_normal.bmp" />
+    <Image Include="res\confirm_normal.bmp" />
+    <Image Include="res\digeut_normal.bmp" />
+    <Image Include="res\eiung_normal.bmp" />
+    <Image Include="res\eu_normal.bmp" />
     <Image Include="res\Eye_Computing_Dialog.ico" />
+    <Image Include="res\giyeok_normal.bmp" />
+    <Image Include="res\hieut_normal.bmp" />
+    <Image Include="res\ieung_normal.bmp" />
+    <Image Include="res\jieut_normal.bmp" />
+    <Image Include="res\kieuk_normal.bmp" />
+    <Image Include="res\lieul_normal.bmp" />
+    <Image Include="res\mieum_normal.bmp" />
+    <Image Include="res\minus_normal.bmp" />
+    <Image Include="res\nieun_normal.bmp" />
+    <Image Include="res\off_normal.bmp" />
+    <Image Include="res\pieup_normal.bmp" />
+    <Image Include="res\plus_normal.bmp" />
+    <Image Include="res\rieul_normal.bmp" />
+    <Image Include="res\shift_normal.bmp" />
+    <Image Include="res\shiot_normal.bmp" />
+    <Image Include="res\siot_normal.bmp" />
+    <Image Include="res\space_normal.bmp" />
+    <Image Include="res\tieut_normal.bmp" />
+    <Image Include="res\yi_normal.bmp" />
+    <Image Include="res\zieut_normal.bmp" />
+    <Image Include="res\zzum_normal.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
