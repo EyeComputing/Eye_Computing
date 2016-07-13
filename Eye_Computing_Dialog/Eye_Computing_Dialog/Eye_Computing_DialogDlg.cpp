@@ -6,10 +6,14 @@
 #include "Eye_Computing_Dialog.h"
 #include "Eye_Computing_DialogDlg.h"
 #include "afxdialogex.h"
+#include "EyeXGaze.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
+
+//토비!
+EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
 
 //시작할 때 한글로 바꿔줄 려고 사용
 bool isStart = true;
@@ -44,11 +48,13 @@ public:
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
+
 // 구현입니다.
 protected:
 	HWND m_hForegroundWnd;
 	DECLARE_MESSAGE_MAP()
 public:
+
 //	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
 
@@ -236,7 +242,9 @@ void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
 		ModifyStyleEx(WS_EX_NOACTIVATE, 0);
 		SetForegroundWindow();
 	}
-
+	//키보드가 항상 최상위에 위치하도록  
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+	
 	CDialog::OnNcLButtonDown(nHitTest, point);
 }
 // 마우스 움직임
