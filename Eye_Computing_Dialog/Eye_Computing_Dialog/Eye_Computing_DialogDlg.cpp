@@ -143,11 +143,14 @@ END_MESSAGE_MAP()
 // 응시점으로 마우스 옮기는 함수..?
 LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam)
 {
+	
 	POINT gazePoint;
 	gazePoint.x = (LONG)g_EyeXGaze.getFixEye_X();
 	gazePoint.y = (LONG)g_EyeXGaze.getFixEye_Y();
 
-	SetCursorPos(gazePoint.x, gazePoint.y);
+	//SetCursorPos(gazePoint.x, gazePoint.y);
+
+	SetCursorPos(200, 200);
 
 	return 0;
 }
@@ -337,6 +340,92 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 
 	CDialog::OnMouseMove(nFlags, point);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // 모음 - ㅣ
