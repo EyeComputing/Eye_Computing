@@ -1,4 +1,3 @@
-
 // Eye_Computing_DialogDlg.cpp : 구현 파일
 //
 
@@ -76,8 +75,6 @@ END_MESSAGE_MAP()
 
 // CEye_Computing_DialogDlg 대화 상자
 
-
-
 CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CEye_Computing_DialogDlg::IDD, pParent)
 {
@@ -89,7 +86,7 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_BKSPACE, m_btn_BkSpace);
-	DDX_Control(pDX, IDC_BACK, m_btn_Back);
+	DDX_Control(pDX, IDC_Enter, m_btn_Back);
 	DDX_Control(pDX, IDC_GiYeok, m_btn_GiYeok);
 	DDX_Control(pDX, IDC_NiEun, m_btn_NiEun);
 	DDX_Control(pDX, IDC_DiGeut, m_btn_DiGeut);
@@ -98,7 +95,7 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_MIEUM, m_btn_MiEum);
 	DDX_Control(pDX, IDC_BIEUP, m_btn_BiEup);
 	DDX_Control(pDX, IDC_Zzum, m_btn_Zzum);
-	DDX_Control(pDX, IDC_YI, m_btn_Yi);
+	DDX_Control(pDX, IDC_Iii, m_btn_Yi);
 	DDX_Control(pDX, IDC_SHIOT, m_btn_ShiOt);
 	DDX_Control(pDX, IDC_Eu, m_btn_Eu);
 	DDX_Control(pDX, IDC_SPACE, m_btn_Space);
@@ -116,19 +113,44 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDOK, &CEye_Computing_DialogDlg::OnBnClickedOk)
-	ON_BN_CLICKED(IDCANCEL, &CEye_Computing_DialogDlg::OnBnClickedCancel)
 	ON_BN_CLICKED(IDC_GiYeok, &CEye_Computing_DialogDlg::OnBnClickedGiyeok)
 	ON_WM_NCLBUTTONDOWN()
 	ON_WM_MOUSEMOVE()
 	ON_BN_CLICKED(IDC_NiEun, &CEye_Computing_DialogDlg::OnBnClickedNieun)
-	ON_BN_CLICKED(IDC_Ah, &CEye_Computing_DialogDlg::OnBnClickedAh)
-	ON_BN_CLICKED(IDC_Yee, &CEye_Computing_DialogDlg::OnBnClickedYee)
 	ON_BN_CLICKED(IDC_Zzum, &CEye_Computing_DialogDlg::OnBnClickedZzum)
 	ON_BN_CLICKED(IDC_Eu, &CEye_Computing_DialogDlg::OnBnClickedEu)
 	ON_MESSAGE(UM_REGION_ACTIVATED, &CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED)
+	ON_BN_CLICKED(IDC_Iii, &CEye_Computing_DialogDlg::OnBnClickedIii)
+	ON_BN_CLICKED(IDC_DiGeut, &CEye_Computing_DialogDlg::OnBnClickedDigeut)
+	ON_BN_CLICKED(IDC_RIEUL, &CEye_Computing_DialogDlg::OnBnClickedRieul)
+	ON_BN_CLICKED(IDC_MIEUM, &CEye_Computing_DialogDlg::OnBnClickedMieum)
+	ON_BN_CLICKED(IDC_BIEUP, &CEye_Computing_DialogDlg::OnBnClickedBieup)
+	ON_BN_CLICKED(IDC_SHIOT, &CEye_Computing_DialogDlg::OnBnClickedShiot)
+	ON_BN_CLICKED(IDC_IEUNG, &CEye_Computing_DialogDlg::OnBnClickedIeung)
+	ON_BN_CLICKED(IDC_JIEUT, &CEye_Computing_DialogDlg::OnBnClickedJieut)
+	ON_BN_CLICKED(IDC_CHIEUT, &CEye_Computing_DialogDlg::OnBnClickedChieut)
+	ON_BN_CLICKED(IDC_KIEUK, &CEye_Computing_DialogDlg::OnBnClickedKieuk)
+	ON_BN_CLICKED(IDC_TIEUT, &CEye_Computing_DialogDlg::OnBnClickedTieut)
+	ON_BN_CLICKED(IDC_PIEUP, &CEye_Computing_DialogDlg::OnBnClickedPieup)
+	ON_BN_CLICKED(IDC_HIEUT, &CEye_Computing_DialogDlg::OnBnClickedHieut)
+	ON_BN_CLICKED(IDC_SPACE, &CEye_Computing_DialogDlg::OnBnClickedSpace)
+	ON_BN_CLICKED(IDC_BKSPACE, &CEye_Computing_DialogDlg::OnBnClickedBkspace)
+	ON_BN_CLICKED(IDC_Confirm, &CEye_Computing_DialogDlg::OnBnClickedConfirm)
+	ON_BN_CLICKED(IDC_Enter, &CEye_Computing_DialogDlg::OnBnClickedEnter)
 END_MESSAGE_MAP()
 
+
+// 응시점으로 마우스 옮기는 함수..?
+LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam)
+{
+	POINT gazePoint;
+	gazePoint.x = (LONG)g_EyeXGaze.getFixEye_X();
+	gazePoint.y = (LONG)g_EyeXGaze.getFixEye_Y();
+
+	SetCursorPos(gazePoint.x, gazePoint.y);
+
+	return 0;
+}
 
 // CEye_Computing_DialogDlg 메시지 처리기
 
@@ -138,7 +160,7 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
 	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
-	m_btn_Back.SetSkin(IDB_BACK, IDB_BACK, IDB_BACK, IDB_BACK, 0, IDB_BACK, 0, 0, 0);
+	m_btn_Back.SetSkin(IDB_Enter, IDB_Enter, IDB_Enter, IDB_Enter, 0, IDB_Enter, 0, 0, 0);
 	m_btn_GiYeok.SetSkin(IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, 0, IDB_GIYEOK, 0, 0, 0);
 	m_btn_NiEun.SetSkin(IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, 0, IDB_NIEUN, 0, 0, 0);
 	m_btn_DiGeut.SetSkin(IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, 0, IDB_DIGEUT, 0, 0, 0);
@@ -147,7 +169,7 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	m_btn_MiEum.SetSkin(IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, 0, IDB_MIEUM, 0, 0, 0);
 	m_btn_BiEup.SetSkin(IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, 0, IDB_BIEUP, 0, 0, 0);
 	m_btn_Zzum.SetSkin(IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, 0, IDB_ZZUM, 0, 0, 0);
-	m_btn_Yi.SetSkin(IDB_YI, IDB_YI, IDB_YI, IDB_YI, 0, IDB_YI, 0, 0, 0);
+	m_btn_Yi.SetSkin(IDB_Iii, IDB_Iii, IDB_Iii, IDB_Iii, 0, IDB_Iii, 0, 0, 0);
 	m_btn_ShiOt.SetSkin(IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, 0, IDB_SHIOT, 0, 0, 0);
 	m_btn_Eu.SetSkin(IDB_EU, IDB_EU, IDB_EU, IDB_EU, 0, IDB_EU, 0, 0, 0);
 	m_btn_Space.SetSkin(IDB_SPACE, IDB_SPACE, IDB_SPACE, IDB_SPACE, 0, IDB_SPACE, 0, 0, 0);
@@ -252,36 +274,6 @@ HCURSOR CEye_Computing_DialogDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-void CEye_Computing_DialogDlg::OnBnClickedOk()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CDialogEx::OnOK();
-}
-
-
-void CEye_Computing_DialogDlg::OnBnClickedCancel()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CDialogEx::OnCancel();
-}
-
-//기역클릭
-void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
-{
-	/*https://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx */
-	INPUT InputGiYeok;
-	//initialize
-	::ZeroMemory(&InputGiYeok, sizeof(INPUT));
-	//keyboard로 입력하겠다.
-	InputGiYeok.type = INPUT_KEYBOARD;
-	//어떤버튼누를건지
-	InputGiYeok.ki.wVk = 0x52;
-	//한번눌러주기
-	::SendInput(1, &InputGiYeok, sizeof(INPUT));
-	//누른거 풀어주기
-	InputGiYeok.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &InputGiYeok, sizeof(INPUT));
-}
 // 마우스 왼쪽 클릭?
 void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
 {
@@ -321,44 +313,10 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 
 	CDialog::OnMouseMove(nFlags, point);
 }
-//니은클릭
-void CEye_Computing_DialogDlg::OnBnClickedNieun()
-{
-	INPUT InputNieun;
-	//initialize
-	::ZeroMemory(&InputNieun, sizeof(INPUT));
-	//keyboard로 입력하겠다.
-	InputNieun.type = INPUT_KEYBOARD;
-	//어떤버튼누를건지
-	InputNieun.ki.wVk = 0x53;
-	//한번눌러주기
-	::SendInput(1, &InputNieun, sizeof(INPUT));
-	//누른거 풀어주기
-	InputNieun.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &InputNieun, sizeof(INPUT));
-}
-//ㅏ클릭
-void CEye_Computing_DialogDlg::OnBnClickedAh()
-{
-	INPUT InputAh;
-	//initialize
-	::ZeroMemory(&InputAh, sizeof(INPUT));
-	//keyboard로 입력하겠다.
-	InputAh.type = INPUT_KEYBOARD;
-	//어떤버튼누를건지
-	InputAh.ki.wVk = 0x4B;
-	//한번눌러주기
-	::SendInput(1, &InputAh, sizeof(INPUT));
-	//누른거 풀어주기
-	InputAh.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &InputAh, sizeof(INPUT));
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
 
 
-
-// ㅣ 변수 합칠 때 수정하기
-void CEye_Computing_DialogDlg::OnBnClickedYee()
+// 모음 - ㅣ
+void CEye_Computing_DialogDlg::OnBnClickedIii()
 {
 	if (clickedZzum)
 	{
@@ -553,7 +511,7 @@ void CEye_Computing_DialogDlg::OnBnClickedYee()
 		::SendInput(1, &InputWe, sizeof(INPUT));
 		clickedWo = false;
 	}
-	else if(clickedOoo)
+	else if (clickedOoo)
 	{
 		//ㅚ 입력
 		INPUT InputWe;
@@ -591,7 +549,7 @@ void CEye_Computing_DialogDlg::OnBnClickedYee()
 	}
 }
 
-// 점 변수 합칠 때 수정하기
+// 모음 - 점
 void CEye_Computing_DialogDlg::OnBnClickedZzum()
 {
 	if (clickedIii)
@@ -599,13 +557,13 @@ void CEye_Computing_DialogDlg::OnBnClickedZzum()
 		INPUT InputAh;
 		::ZeroMemory(&InputAh, sizeof(INPUT));
 		InputAh.type = INPUT_KEYBOARD;
-		
+
 		//한번 지움
 		InputAh.ki.wVk = 0x08;
 		::SendInput(1, &InputAh, sizeof(INPUT));
 		InputAh.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputAh, sizeof(INPUT));
-		
+
 		//ㅏ 씀
 		InputAh.ki.wVk = 0x4B;
 		InputAh.ki.dwFlags = 0;
@@ -708,7 +666,7 @@ void CEye_Computing_DialogDlg::OnBnClickedZzum()
 		clickedZzum = true;
 }
 
-//ㅡ 변수 합칠 때 수젛기 Eu
+// 모음 - ㅡ
 void CEye_Computing_DialogDlg::OnBnClickedEu()
 {
 	if (clickedZzum)
@@ -757,24 +715,319 @@ void CEye_Computing_DialogDlg::OnBnClickedEu()
 	}
 }
 
-
-LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam)
+// 모음 상태 초기화
+void CEye_Computing_DialogDlg::initHanguel()
 {
-	POINT gazePoint;
-	gazePoint.x = (LONG)g_EyeXGaze.getFixEye_X();
-	gazePoint.y = (LONG)g_EyeXGaze.getFixEye_Y();
-
-	SetCursorPos(gazePoint.x, gazePoint.y);
-	
-	return 0;
+	clickedIii = false;
+	clickedZzum = false;
+	clickedEu = false;
+	clickedAaa = false;
+	clickedZzum2 = false;
+	clickedUuu = false;
+	clickedYa = false;
+	clickedEo = false;
+	clickedYeo = false;
+	clickedWe = false;
+	clickedEoh = false;
+	clickedWa = false;
+	clickedUuuAndZzum = false;
+	clickedWo = false;
+	clickedOoo = false;
 }
 
+// 자음 - ㄱ
+void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
+{
+	initHanguel();
+	/*https://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx */
+	INPUT InputGiYeok;
+	//initialize
+	::ZeroMemory(&InputGiYeok, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputGiYeok.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputGiYeok.ki.wVk = 0x52;
+	//한번눌러주기
+	::SendInput(1, &InputGiYeok, sizeof(INPUT));
+	//누른거 풀어주기
+	InputGiYeok.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputGiYeok, sizeof(INPUT));
+}
+// 자음 - ㄴ
+void CEye_Computing_DialogDlg::OnBnClickedNieun()
+{
+	initHanguel();
+	INPUT InputNieun;
+	//initialize
+	::ZeroMemory(&InputNieun, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputNieun.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputNieun.ki.wVk = 0x53;
+	//한번눌러주기
+	::SendInput(1, &InputNieun, sizeof(INPUT));
+	//누른거 풀어주기
+	InputNieun.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputNieun, sizeof(INPUT));
+}
+// 자음 - ㄷ
+void CEye_Computing_DialogDlg::OnBnClickedDigeut()
+{
+	initHanguel();
+	INPUT InputDigeut;
+	//initialize
+	::ZeroMemory(&InputDigeut, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputDigeut.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputDigeut.ki.wVk = 0x45;
+	//한번눌러주기
+	::SendInput(1, &InputDigeut, sizeof(INPUT));
+	//누른거 풀어주기
+	InputDigeut.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputDigeut, sizeof(INPUT));
+}
+//자음 - ㄹ
+void CEye_Computing_DialogDlg::OnBnClickedRieul()
+{
+	initHanguel();
+	INPUT InputRieul;
+	//initialize
+	::ZeroMemory(&InputRieul, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputRieul.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputRieul.ki.wVk = 0x46;
+	//한번눌러주기
+	::SendInput(1, &InputRieul, sizeof(INPUT));
+	//누른거 풀어주기
+	InputRieul.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputRieul, sizeof(INPUT));
+}
+//자음 - ㅁ
+void CEye_Computing_DialogDlg::OnBnClickedMieum()
+{
+	initHanguel();
+	INPUT InputMiEum;
+	//initialize
+	::ZeroMemory(&InputMiEum, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputMiEum.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputMiEum.ki.wVk = 0x41;
+	//한번눌러주기
+	::SendInput(1, &InputMiEum, sizeof(INPUT));
+	//누른거 풀어주기
+	InputMiEum.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputMiEum, sizeof(INPUT));
+}
+// 자음 - ㅂ
+void CEye_Computing_DialogDlg::OnBnClickedBieup()
+{
+	initHanguel();
+	INPUT InputBiEup;
+	//initialize
+	::ZeroMemory(&InputBiEup, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputBiEup.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputBiEup.ki.wVk = 0x51;
+	//한번눌러주기
+	::SendInput(1, &InputBiEup, sizeof(INPUT));
+	//누른거 풀어주기
+	InputBiEup.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputBiEup, sizeof(INPUT));
+}
+// 자음 - ㅅ
+void CEye_Computing_DialogDlg::OnBnClickedShiot()
+{
+	initHanguel();
+	INPUT InputShiOt;
+	//initialize
+	::ZeroMemory(&InputShiOt, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputShiOt.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputShiOt.ki.wVk = 0x54;
+	//한번눌러주기
+	::SendInput(1, &InputShiOt, sizeof(INPUT));
+	//누른거 풀어주기
+	InputShiOt.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputShiOt, sizeof(INPUT));
+}
+// 자음 - ㅇ
+void CEye_Computing_DialogDlg::OnBnClickedIeung()
+{
+	initHanguel();
+	INPUT InputIeung;
+	//initialize
+	::ZeroMemory(&InputIeung, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputIeung.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputIeung.ki.wVk = 0x44;
+	//한번눌러주기
+	::SendInput(1, &InputIeung, sizeof(INPUT));
+	//누른거 풀어주기
+	InputIeung.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputIeung, sizeof(INPUT));
+}
+// 자음 - ㅈ
+void CEye_Computing_DialogDlg::OnBnClickedJieut()
+{
+	initHanguel();
+	INPUT InputJiEut;
+	//initialize
+	::ZeroMemory(&InputJiEut, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputJiEut.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputJiEut.ki.wVk = 0x57;
+	//한번눌러주기
+	::SendInput(1, &InputJiEut, sizeof(INPUT));
+	//누른거 풀어주기
+	InputJiEut.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputJiEut, sizeof(INPUT));
+}
+//자음 - ㅊ
+void CEye_Computing_DialogDlg::OnBnClickedChieut()
+{
+	initHanguel();
+	INPUT InputChiEut;
+	//initialize
+	::ZeroMemory(&InputChiEut, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputChiEut.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputChiEut.ki.wVk = 0x43;
+	//한번눌러주기
+	::SendInput(1, &InputChiEut, sizeof(INPUT));
+	//누른거 풀어주기
+	InputChiEut.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputChiEut, sizeof(INPUT));
+}
+// 자음 - ㅋ
+void CEye_Computing_DialogDlg::OnBnClickedKieuk()
+{
+	initHanguel();
+	INPUT InputKieuk;
+	//initialize
+	::ZeroMemory(&InputKieuk, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputKieuk.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputKieuk.ki.wVk = 0x5A;
+	//한번눌러주기
+	::SendInput(1, &InputKieuk, sizeof(INPUT));
+	//누른거 풀어주기
+	InputKieuk.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputKieuk, sizeof(INPUT));
+}
+// 자음 - ㅌ
+void CEye_Computing_DialogDlg::OnBnClickedTieut()
+{
+	initHanguel();
+	INPUT InputTieut;
+	//initialize
+	::ZeroMemory(&InputTieut, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputTieut.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputTieut.ki.wVk = 0x59;
+	//한번눌러주기
+	::SendInput(1, &InputTieut, sizeof(INPUT));
+	//누른거 풀어주기
+	InputTieut.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputTieut, sizeof(INPUT));
+}
+// 자음 - ㅍ
+void CEye_Computing_DialogDlg::OnBnClickedPieup()
+{
+	initHanguel();
+	INPUT InputPieup;
+	//initialize
+	::ZeroMemory(&InputPieup, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputPieup.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputPieup.ki.wVk = 0x56;
+	//한번눌러주기
+	::SendInput(1, &InputPieup, sizeof(INPUT));
+	//누른거 풀어주기
+	InputPieup.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputPieup, sizeof(INPUT));
+}
+// 자음 - ㅎ
+void CEye_Computing_DialogDlg::OnBnClickedHieut()
+{
+	initHanguel();
+	INPUT InputHieut;
+	//initialize
+	::ZeroMemory(&InputHieut, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputHieut.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputHieut.ki.wVk = 0x47;
+	//한번눌러주기
+	::SendInput(1, &InputHieut, sizeof(INPUT));
+	//누른거 풀어주기
+	InputHieut.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputHieut, sizeof(INPUT));
+}
+// 스페이스바
+void CEye_Computing_DialogDlg::OnBnClickedSpace()
+{
+	initHanguel();
+	INPUT InputSpace;
+	//initialize
+	::ZeroMemory(&InputSpace, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputSpace.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputSpace.ki.wVk = 0x20;
+	//한번눌러주기
+	::SendInput(1, &InputSpace, sizeof(INPUT));
+	//누른거 풀어주기
+	InputSpace.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputSpace, sizeof(INPUT));
+}
+// backspace
+void CEye_Computing_DialogDlg::OnBnClickedBkspace()
+{
+	initHanguel();
+	INPUT InputBackSpace;
+	//initialize
+	::ZeroMemory(&InputBackSpace, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputBackSpace.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputBackSpace.ki.wVk = 0x08;
+	//한번눌러주기
+	::SendInput(1, &InputBackSpace, sizeof(INPUT));
+	//누른거 풀어주기
+	InputBackSpace.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputBackSpace, sizeof(INPUT));
+}
+// confirm?
+void CEye_Computing_DialogDlg::OnBnClickedConfirm()
+{
+	CDialogEx::OnOK();
+}
+// enter
+void CEye_Computing_DialogDlg::OnBnClickedEnter()
+{
+	initHanguel();
+	INPUT InputEnter;
+	//initialize
+	::ZeroMemory(&InputEnter, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputEnter.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputEnter.ki.wVk = 0x0D;
+	//한번눌러주기
+	::SendInput(1, &InputEnter, sizeof(INPUT));
+	//누른거 풀어주기
+	InputEnter.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputEnter, sizeof(INPUT));
 
-
-
-
-
-
-
-
-
+}

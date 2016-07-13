@@ -32,6 +32,9 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 
+	//모음 상태 초기화 함수
+	afx_msg void CEye_Computing_DialogDlg::initHanguel();
+
 	//afx_msg LRESULT OnUM_EYEX_HOST_STATUS_CHANGED(WPARAM wParam, LPARAM IParam);
 	afx_msg LRESULT OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam);
 
@@ -69,4 +72,21 @@ public:
 	CxSkinButton m_btn_PiEup;
 	CxSkinButton m_btn_HiEut;
 	CStatic m_BkGround;
+	afx_msg void OnBnClickedIii();
+	afx_msg void OnBnClickedDigeut();
+	afx_msg void OnBnClickedRieul();
+	afx_msg void OnBnClickedMieum();
+	afx_msg void OnBnClickedBieup();
+	afx_msg void OnBnClickedShiot();
+	afx_msg void OnBnClickedIeung();
+	afx_msg void OnBnClickedJieut();
+	afx_msg void OnBnClickedChieut();
+	afx_msg void OnBnClickedKieuk();
+	afx_msg void OnBnClickedTieut();
+	afx_msg void OnBnClickedPieup();
+	afx_msg void OnBnClickedHieut();
+	afx_msg void OnBnClickedSpace();
+	afx_msg void OnBnClickedBkspace();
+	afx_msg void OnBnClickedConfirm();
+	afx_msg void OnBnClickedEnter();
 };
