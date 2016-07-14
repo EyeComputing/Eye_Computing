@@ -107,6 +107,32 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_PIEUP, m_btn_PiEup);
 	DDX_Control(pDX, IDC_HIEUT, m_btn_HiEut);
 	DDX_Control(pDX, IDC_BACKGROUND, m_BkGround);
+	DDX_Control(pDX, IDC_CPT_A, m_btn_cptA);
+	DDX_Control(pDX, IDC_CPT_C, m_btn_cptC);
+	DDX_Control(pDX, IDC_CPT_B, m_btn_cptB);
+	DDX_Control(pDX, IDC_CPT_D, m_btn_cptD);
+	DDX_Control(pDX, IDC_CPT_E, m_btn_cptE);
+	DDX_Control(pDX, IDC_CPT_F, m_btn_cptF);
+	DDX_Control(pDX, IDC_CPT_G, m_btn_cptG);
+	DDX_Control(pDX, IDC_CPT_H, m_btn_cptH);
+	DDX_Control(pDX, IDC_CPT_I, m_btn_cptI);
+	DDX_Control(pDX, IDC_CPT_J, m_btn_cptJ);
+	DDX_Control(pDX, IDC_CPT_K, m_btn_cptK);
+	DDX_Control(pDX, IDC_CPT_M, m_btn_cptM);
+	DDX_Control(pDX, IDC_CPT_L, m_btn_cptL);
+	DDX_Control(pDX, IDC_CPT_N, m_btn_cptN);
+	DDX_Control(pDX, IDC_CPT_P, m_btn_cptP);
+	DDX_Control(pDX, IDC_CPT_O, m_btn_cptO);
+	DDX_Control(pDX, IDC_CPT_R, m_btn_cptR);
+	DDX_Control(pDX, IDC_CPT_Q, m_btn_cptQ);
+	DDX_Control(pDX, IDC_CPT_S, m_btn_cptS);
+	DDX_Control(pDX, IDC_CPT_T, m_btn_cptT);
+	DDX_Control(pDX, IDC_CPT_U, m_btn_cptU);
+	DDX_Control(pDX, IDC_CPT_V, m_btn_cptV);
+	DDX_Control(pDX, IDC_CPT_W, m_btn_cptW);
+	DDX_Control(pDX, IDC_CPT_X, m_btn_cptX);
+	DDX_Control(pDX, IDC_CPT_Y, m_btn_cptY);
+	DDX_Control(pDX, IDC_CPT_Z, m_btn_cptZ);
 }
 
 BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
@@ -188,7 +214,9 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 
 	// 윈도우 사이즈 지정 및 고정(다시 그리지 않는다)
 	SetWindowPos(NULL, 0, 0, 625, 650, SWP_NOREDRAW);
+	GetDlgItem(IDC_BACKGROUND)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
 
+	/* 한글 버튼 숨겨놓기
 	// 버튼 이미지 삽입
 	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
 	m_btn_Back.SetSkin(IDB_Enter, IDB_Enter, IDB_Enter, IDB_Enter, 0, IDB_Enter, 0, 0, 0);
@@ -213,7 +241,7 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	m_btn_HiEut.SetSkin(IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, 0, IDB_HIEUT, 0, 0, 0);
 
 	// 버튼 좌표 노가다
-	GetDlgItem(IDC_BACKGROUND)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+
 	GetDlgItem(IDC_BKSPACE)->SetWindowPos(NULL, 186, 12, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_Enter)->SetWindowPos(NULL, 106, 46, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_GiYeok)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
@@ -235,7 +263,7 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	GetDlgItem(IDC_TIEUT)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_PIEUP)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_HIEUT)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
-			 
+	*/		 
 
 	// IDM_ABOUTBOX는 시스템 명령 범위에 있어야 합니다.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
