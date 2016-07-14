@@ -37,10 +37,6 @@ protected:
 	//모음 상태 초기화 함수
 	afx_msg void CEye_Computing_DialogDlg::initHanguel();
 
-	//afx_msg LRESULT OnUM_EYEX_HOST_STATUS_CHANGED(WPARAM wParam, LPARAM IParam);
-	afx_msg LRESULT OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam);
-	afx_msg LRESULT OnUM_EYEX_HOST_STATUS_CHANGED(WPARAM wParam, LPARAM IParam);
-
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedOk();
@@ -92,5 +88,4 @@ public:
 	afx_msg void OnBnClickedBkspace();
 	afx_msg void OnBnClickedConfirm();
 	afx_msg void OnBnClickedEnter();
-	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 };

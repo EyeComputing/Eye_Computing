@@ -80,6 +80,7 @@ CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	m_hForegroundWnd = NULL;
+
 	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
 }
@@ -121,8 +122,6 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_NiEun, &CEye_Computing_DialogDlg::OnBnClickedNieun)
 	ON_BN_CLICKED(IDC_Zzum, &CEye_Computing_DialogDlg::OnBnClickedZzum)
 	ON_BN_CLICKED(IDC_Eu, &CEye_Computing_DialogDlg::OnBnClickedEu)
-	ON_MESSAGE(UM_REGION_ACTIVATED, &CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED)
-	ON_MESSAGE(UM_REGION_ACTIVATED, &CEye_Computing_DialogDlg::OnUM_EYEX_HOST_STATUS_CHANGED)
 	ON_BN_CLICKED(IDC_Iii, &CEye_Computing_DialogDlg::OnBnClickedIii)
 	ON_BN_CLICKED(IDC_DiGeut, &CEye_Computing_DialogDlg::OnBnClickedDigeut)
 	ON_BN_CLICKED(IDC_RIEUL, &CEye_Computing_DialogDlg::OnBnClickedRieul)
@@ -140,52 +139,7 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BKSPACE, &CEye_Computing_DialogDlg::OnBnClickedBkspace)
 	ON_BN_CLICKED(IDC_Confirm, &CEye_Computing_DialogDlg::OnBnClickedConfirm)
 	ON_BN_CLICKED(IDC_Enter, &CEye_Computing_DialogDlg::OnBnClickedEnter)
-	ON_WM_KEYDOWN()
 END_MESSAGE_MAP()
-
-
-
-
-
-
-
-// 응시점으로 마우스 옮기는 함수..?
-LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam)
-{
-	
-	POINT gazePoint;
-	gazePoint.x = (LONG)g_EyeXGaze.getFixEye_X();
-	gazePoint.y = (LONG)g_EyeXGaze.getFixEye_Y();
-
-	//SetCursorPos(gazePoint.x, gazePoint.y);
-
-	SetCursorPos(200, 200);
-
-	return 0;
-}
-
-LRESULT CEye_Computing_DialogDlg::OnUM_EYEX_HOST_STATUS_CHANGED(WPARAM wParam, LPARAM IParam)
-{
-	POINT gazePoint;
-	gazePoint.x = (LONG)g_EyeXGaze.getFixEye_X();
-	gazePoint.y = (LONG)g_EyeXGaze.getFixEye_Y();
-
-	//SetCursorPos(gazePoint.x, gazePoint.y);
-
-	SetCursorPos(200, 200);
-
-	return 0;
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -281,8 +235,6 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
 
-	
-
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -354,6 +306,16 @@ HCURSOR CEye_Computing_DialogDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
+
+
+
+
+
+
+
+
+
+
 
 
 // Enter 눌러도 창이 닫기지 않도록  합니다.
@@ -1205,15 +1167,4 @@ void CEye_Computing_DialogDlg::OnBnClickedEnter()
 	InputEnter.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputEnter, sizeof(INPUT));
 
-}
-
-
-void CEye_Computing_DialogDlg::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
-{
-	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
-	if (VK_SPACE == nChar)
-	{
-		PostMessage(WM_NCLBUTTONDOWN, false, 0);
-	}
-	CDialogEx::OnKeyDown(nChar, nRepCnt, nFlags);
 }

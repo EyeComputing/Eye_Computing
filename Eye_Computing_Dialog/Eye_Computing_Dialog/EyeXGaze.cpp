@@ -115,7 +115,7 @@ BOOL EyeXGaze::InitializeGlobalInteractorSnapshot(TX_CONTEXTHANDLE hContext)
 {
 	TX_HANDLE hInteractor = TX_EMPTY_HANDLE;
 	// Gaze데이터 출력을 위한 변수 LIGHTLY FILTERED 모드
-	TX_GAZEPOINTDATAPARAMS params = { TX_GAZEPOINTDATAMODE_LIGHTLYFILTERED };
+//	TX_GAZEPOINTDATAPARAMS params = { TX_GAZEPOINTDATAMODE_LIGHTLYFILTERED };
 
 	// Fix데이터 출력을 위한 변수 SENSITIVE 모드
 	TX_FIXATIONDATAPARAMS fparams = { TX_FIXATIONDATAMODE_SENSITIVE };	// SLOW 도 있음
@@ -192,12 +192,7 @@ void EyeXGaze::OnGazeDataEvent(TX_HANDLE hGazeDataBehavior)
 		//출력
 		GazeEye_X = eventParams.X;
 		GazeEye_Y = eventParams.Y;
-		//InvalidateRect(_hWnd, nullptr, false);
-		
-	    SetCursorPos(GazeEye_X, GazeEye_Y );
-
-		
-
+		InvalidateRect(_hWnd, nullptr, false);
 	}
 	else
 	{
@@ -218,13 +213,14 @@ void EyeXGaze::OnFixationDataEvent(TX_HANDLE hFixationDataBehavior)
 			: ((eventType == TX_FIXATIONDATAEVENTTYPE_END) ? "End"
 				: "Begin");
 		
-		if (fps == 3)
+		if (fps == 5)
 		{
 			FixEye_X = eventParams.X;
 			FixEye_Y = eventParams.Y;
 			fps = 0;
-			//InvalidateRect(_hWnd, nullptr, false);
+		
 			SetCursorPos(FixEye_X, FixEye_Y);
+			
 		}
 		else
 			fps++;
