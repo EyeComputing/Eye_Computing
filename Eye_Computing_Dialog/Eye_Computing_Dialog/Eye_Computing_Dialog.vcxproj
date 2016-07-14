@@ -126,6 +126,7 @@
     <ResourceCompile Include="Eye_Computing_Dialog.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\dd.cur" />
     <None Include="res\Eye_Computing_Dialog.rc2" />
   </ItemGroup>
   <ItemGroup>

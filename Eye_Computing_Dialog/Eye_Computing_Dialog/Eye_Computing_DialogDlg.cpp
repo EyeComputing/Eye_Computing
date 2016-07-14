@@ -36,6 +36,10 @@ bool clickedUuuAndZzum = false;
 bool clickedWo = false;
 bool clickedOoo = false;
 
+//cursor 변수
+
+HCURSOR m_hCursor, m_hOldCursor;
+
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
 class CAboutDlg : public CDialogEx
@@ -234,6 +238,22 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	SetWindowLong(GetSafeHwnd(), GWL_EXSTYLE, ExtendedStyle | WS_EX_LAYERED);
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
+
+	//cursor variable initialize
+	m_hCursor = NULL;
+	//m_hOldCursor = NULL;
+
+	//m_hOldCursor = LoadCursor(NULL, IDC_ARROW);
+	//m_hOldCursor = CopyCursor(m_hOldCursor);
+
+	//m_hCursor = (HCURSOR)LoadImage(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDC_CURSOR1), IMAGE_CURSOR, 64, 64, LR_DEFAULTCOLOR);
+	//m_hCursor = CopyCursor(m_hCursor);
+
+	//m_hCursor = LoadCursorFromFile("C:\Workspace\Eye_computing/dd.jpg");
+
+	//SetCursor(m_hCursor);
+	//::SetSystemCursor(m_hCursor, 32512);
+
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
