@@ -162,7 +162,7 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	// 윈도우 사이즈 지정 및 고정(다시 그리지 않는다)
-	SetWindowPos(NULL, 0, 0, 625, 640, SWP_NOREDRAW);
+	SetWindowPos(NULL, 0, 0, 625, 650, SWP_NOREDRAW);
 
 	// 버튼 이미지 삽입
 	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
