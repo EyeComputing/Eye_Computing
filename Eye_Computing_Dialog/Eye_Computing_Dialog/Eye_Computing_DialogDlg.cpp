@@ -140,6 +140,17 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
+
+
+
+
+
+
+
+
+
+
+
 // 응시점으로 마우스 옮기는 함수..?
 LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam)
 {
@@ -154,6 +165,20 @@ LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IP
 
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // CEye_Computing_DialogDlg 메시지 처리기
 
@@ -253,6 +278,20 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void CEye_Computing_DialogDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
@@ -307,6 +346,17 @@ HCURSOR CEye_Computing_DialogDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // Enter 눌러도 창이 닫기지 않도록  합니다.
 void CEye_Computing_DialogDlg::OnOK()
