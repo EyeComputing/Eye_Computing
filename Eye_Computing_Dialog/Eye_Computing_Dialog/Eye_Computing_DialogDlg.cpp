@@ -80,6 +80,8 @@ CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	m_hForegroundWnd = NULL;
+	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
+	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
 }
 
 void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
@@ -120,6 +122,7 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_Zzum, &CEye_Computing_DialogDlg::OnBnClickedZzum)
 	ON_BN_CLICKED(IDC_Eu, &CEye_Computing_DialogDlg::OnBnClickedEu)
 	ON_MESSAGE(UM_REGION_ACTIVATED, &CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED)
+	ON_MESSAGE(UM_REGION_ACTIVATED, &CEye_Computing_DialogDlg::OnUM_EYEX_HOST_STATUS_CHANGED)
 	ON_BN_CLICKED(IDC_Iii, &CEye_Computing_DialogDlg::OnBnClickedIii)
 	ON_BN_CLICKED(IDC_DiGeut, &CEye_Computing_DialogDlg::OnBnClickedDigeut)
 	ON_BN_CLICKED(IDC_RIEUL, &CEye_Computing_DialogDlg::OnBnClickedRieul)
@@ -145,12 +148,6 @@ END_MESSAGE_MAP()
 
 
 
-
-
-
-
-
-
 // 응시점으로 마우스 옮기는 함수..?
 LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam)
 {
@@ -166,7 +163,18 @@ LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IP
 	return 0;
 }
 
+LRESULT CEye_Computing_DialogDlg::OnUM_EYEX_HOST_STATUS_CHANGED(WPARAM wParam, LPARAM IParam)
+{
+	POINT gazePoint;
+	gazePoint.x = (LONG)g_EyeXGaze.getFixEye_X();
+	gazePoint.y = (LONG)g_EyeXGaze.getFixEye_Y();
 
+	//SetCursorPos(gazePoint.x, gazePoint.y);
+
+	SetCursorPos(200, 200);
+
+	return 0;
+}
 
 
 
@@ -272,8 +280,7 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
 
-	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
-	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
+	
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -346,16 +353,6 @@ HCURSOR CEye_Computing_DialogDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 // Enter 눌러도 창이 닫기지 않도록  합니다.
