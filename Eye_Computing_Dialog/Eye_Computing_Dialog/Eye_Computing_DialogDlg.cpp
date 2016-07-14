@@ -140,6 +140,7 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BKSPACE, &CEye_Computing_DialogDlg::OnBnClickedBkspace)
 	ON_BN_CLICKED(IDC_Confirm, &CEye_Computing_DialogDlg::OnBnClickedConfirm)
 	ON_BN_CLICKED(IDC_Enter, &CEye_Computing_DialogDlg::OnBnClickedEnter)
+	ON_WM_KEYDOWN()
 END_MESSAGE_MAP()
 
 
@@ -1204,4 +1205,15 @@ void CEye_Computing_DialogDlg::OnBnClickedEnter()
 	InputEnter.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputEnter, sizeof(INPUT));
 
+}
+
+
+void CEye_Computing_DialogDlg::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	if (VK_SPACE == nChar)
+	{
+		PostMessage(WM_NCLBUTTONDOWN, false, 0);
+	}
+	CDialogEx::OnKeyDown(nChar, nRepCnt, nFlags);
 }

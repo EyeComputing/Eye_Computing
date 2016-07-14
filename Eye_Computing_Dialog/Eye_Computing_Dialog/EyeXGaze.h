@@ -38,13 +38,13 @@ public:
 	// 이 메서드를 사용하여 클릭을 구현할 수 있으므로, 수정하려면 이 부분 수정이 필요함.
 	void TriggerActivation();
 
-    TX_REAL getGazeEye_X();
-    TX_REAL getGazeEye_Y();
+//    TX_REAL getGazeEye_X();
+  //  TX_REAL getGazeEye_Y();
 	TX_REAL getFixEye_X();
 	TX_REAL getFixEye_Y();
 private:
-	static TX_REAL GazeEye_X;
-	static TX_REAL GazeEye_Y;
+	//static TX_REAL GazeEye_X;
+	//static TX_REAL GazeEye_Y;
 	static TX_REAL FixEye_X;
 	static TX_REAL FixEye_Y;
 	INT fps;
@@ -64,10 +64,10 @@ private:
 	BOOL InitializeGlobalInteractorSnapshot(TX_CONTEXTHANDLE hContext);
 	static void TX_CALLCONVENTION OnSnapshotCommitted(TX_CONSTHANDLE hAsyncData, TX_USERPARAM param);
 	void OnEngineConnectionStateChanged(TX_CONNECTIONSTATE connectionState);
-	void OnGazeDataEvent(TX_HANDLE hGazeDataBehavior);
+	//void OnGazeDataEvent(TX_HANDLE hGazeDataBehavior);
 	void OnFixationDataEvent(TX_HANDLE hFixationDataBehavior);
 	void TX_CALLCONVENTION FixHandleEvent(TX_CONSTHANDLE hAsyncData);
-	void TX_CALLCONVENTION GazeHandleEvent(TX_CONSTHANDLE hAsyncData);
+	//void TX_CALLCONVENTION GazeHandleEvent(TX_CONSTHANDLE hAsyncData);
 
 	//버튼 예제의 메서드들, 중복된 메서드들은 제거 
 

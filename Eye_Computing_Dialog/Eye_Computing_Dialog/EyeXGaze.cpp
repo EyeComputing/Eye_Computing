@@ -17,8 +17,8 @@
 #endif
 
 // Data Stream을 받는 변수 초기화
-TX_REAL EyeXGaze::GazeEye_X = 0;
-TX_REAL EyeXGaze::GazeEye_Y = 0;
+//TX_REAL EyeXGaze::GazeEye_X = 0;
+//TX_REAL EyeXGaze::GazeEye_Y = 0;
 TX_REAL EyeXGaze::FixEye_X = 0;
 TX_REAL EyeXGaze::FixEye_Y = 0;
 
@@ -90,7 +90,7 @@ void EyeXGaze::TriggerActivation()
 	txReleaseObject(&command);
 }
 
-
+/*
 TX_REAL EyeXGaze::getGazeEye_X()
 {
 	return GazeEye_X;
@@ -100,7 +100,7 @@ TX_REAL EyeXGaze::getGazeEye_Y()
 {
 	return GazeEye_Y;
 }
-
+*/
 TX_REAL EyeXGaze::getFixEye_X()
 {
 	return FixEye_X;
@@ -129,7 +129,7 @@ BOOL EyeXGaze::InitializeGlobalInteractorSnapshot(TX_CONTEXTHANDLE hContext)
 		&hInteractor) == TX_RESULT_OK; 
 
 	// behavior를 gaze point data로 설정
-	success &= txCreateGazePointDataBehavior(hInteractor, &params) == TX_RESULT_OK; 
+	//success &= txCreateGazePointDataBehavior(hInteractor, &params) == TX_RESULT_OK; 
 
 	// behavior를 fixation data로 설정
 	success &= txCreateFixationDataBehavior(hInteractor, &fparams) == TX_RESULT_OK;
@@ -172,7 +172,7 @@ void EyeXGaze::OnEngineConnectionStateChanged(TX_CONNECTIONSTATE connectionState
 		break;
 	}
 };
-
+/*
 void EyeXGaze::OnGazeDataEvent(TX_HANDLE hGazeDataBehavior)
 {
 	// gaze point data를 저장하기위한 구조체
@@ -204,7 +204,7 @@ void EyeXGaze::OnGazeDataEvent(TX_HANDLE hGazeDataBehavior)
 		// 에러출력
 	}
 }
-
+*/
 void EyeXGaze::OnFixationDataEvent(TX_HANDLE hFixationDataBehavior)
 {
 	TX_FIXATIONDATAEVENTPARAMS eventParams;
@@ -218,7 +218,7 @@ void EyeXGaze::OnFixationDataEvent(TX_HANDLE hFixationDataBehavior)
 			: ((eventType == TX_FIXATIONDATAEVENTTYPE_END) ? "End"
 				: "Begin");
 		
-		if (fps == 4)
+		if (fps == 3)
 		{
 			FixEye_X = eventParams.X;
 			FixEye_Y = eventParams.Y;
@@ -251,7 +251,7 @@ void TX_CALLCONVENTION EyeXGaze::FixHandleEvent(TX_CONSTHANDLE hAsyncData)
 	}
 	txReleaseObject(&hEvent);
 }
-
+/*
 void TX_CALLCONVENTION EyeXGaze::GazeHandleEvent(TX_CONSTHANDLE hAsyncData)
 {
 	TX_HANDLE hEvent = TX_EMPTY_HANDLE;
@@ -267,7 +267,7 @@ void TX_CALLCONVENTION EyeXGaze::GazeHandleEvent(TX_CONSTHANDLE hAsyncData)
 	}
 	txReleaseObject(&hEvent);
 }
-
+*/
 bool EyeXGaze::RegisterConnectionStateChangedHandler()
 {
 	auto connectionStateChangedTrampoline = [](TX_CONNECTIONSTATE connectionState, TX_USERPARAM userParam)
