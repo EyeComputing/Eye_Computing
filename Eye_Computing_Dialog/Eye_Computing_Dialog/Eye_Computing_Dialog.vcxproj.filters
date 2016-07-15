@@ -54,6 +54,32 @@
     <Image Include="res\yi_normal.bmp" />
     <Image Include="res\zieut_normal.bmp" />
     <Image Include="res\zzum_normal.bmp" />
+    <Image Include="res\B_normal.bmp" />
+    <Image Include="res\I_normal.bmp" />
+    <Image Include="res\E_normal.bmp" />
+    <Image Include="res\O_normal.bmp" />
+    <Image Include="res\A_normal.bmp" />
+    <Image Include="res\U_normal.bmp" />
+    <Image Include="res\S_normal.bmp" />
+    <Image Include="res\H_normal.bmp" />
+    <Image Include="res\T_normal.bmp" />
+    <Image Include="res\D_normal.bmp" />
+    <Image Include="res\C_normal.bmp" />
+    <Image Include="res\R_normal.bmp" />
+    <Image Include="res\L_normal.bmp" />
+    <Image Include="res\F_normal.bmp" />
+    <Image Include="res\W_normal.bmp" />
+    <Image Include="res\X_normal.bmp" />
+    <Image Include="res\M_normal.bmp" />
+    <Image Include="res\N_normal.bmp" />
+    <Image Include="res\K_normal.bmp" />
+    <Image Include="res\V_normal.bmp" />
+    <Image Include="res\P_normal.bmp" />
+    <Image Include="res\G_normal.bmp" />
+    <Image Include="res\Y_normal.bmp" />
+    <Image Include="res\Z_normal.bmp" />
+    <Image Include="res\J_normal.bmp" />
+    <Image Include="res\Q_normal.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Eye_Computing_Dialog.rc2" />
