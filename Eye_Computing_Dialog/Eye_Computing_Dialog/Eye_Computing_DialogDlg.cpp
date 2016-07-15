@@ -7,7 +7,7 @@
 #include "afxdialogex.h"
 #include "EyeXGaze.h"
 #include "xSkinButton.h"
-
+#include <imm.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -430,9 +430,31 @@ void CEye_Computing_DialogDlg::OnOK()
 }
 
 
+
 // 마우스 왼쪽 클릭?
 void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
 {
+	DWORD conVersion, senTence;
+	HIMC hIMC = ImmGetContext(m_hWnd);
+	ImmGetConversionStatus(hIMC, &conVersion, &senTence);
+	if (conVersion == 0)
+	{
+		if (clickedKorean)
+		{
+			conVersion = 1;
+			ImmSetConversionStatus(hIMC, conVersion, senTence);
+		}
+	}
+	else
+	{
+		if (clickedEnglish)
+		{
+			conVersion = 0;
+			ImmSetConversionStatus(hIMC, conVersion, senTence);
+		}
+	}
+
+
 	if (!m_hForegroundWnd)
 	{
 		m_hForegroundWnd = ::GetForegroundWindow();
@@ -502,6 +524,26 @@ void CEye_Computing_DialogDlg::initHanguel()
 	clickedOoo = false;
 }
 
+
+
+void CEye_Computing_DialogDlg::CheckKorEng()
+{
+	if ((clickedKorean == true && isKorean == false) || (clickedEnglish == true && isEnglish == false))
+	{
+		INPUT HanToEng;
+		::ZeroMemory(&HanToEng, sizeof(INPUT));
+		HanToEng.type = INPUT_KEYBOARD;
+		HanToEng.ki.wVk = VK_HANGEUL;
+		::SendInput(1, &HanToEng, sizeof(INPUT));
+		HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &HanToEng, sizeof(INPUT));
+
+		if (clickedKorean)
+			isKorean = TRUE;
+		else
+			isEnglish = TRUE;
+	}
+}
 
 
 /*
@@ -1442,7 +1484,7 @@ void CEye_Computing_DialogDlg::OnBnClickedTieut()
 	//keyboard로 입력하겠다.
 	InputTieut.type = INPUT_KEYBOARD;
 	//어떤버튼누를건지
-	InputTieut.ki.wVk = 0x59;
+	InputTieut.ki.wVk = 0x58;
 	//한번눌러주기
 	::SendInput(1, &InputTieut, sizeof(INPUT));
 	//누른거 풀어주기
@@ -1563,7 +1605,6 @@ void CEye_Computing_DialogDlg::OnBnClickedKorean()
 	Invalidate(TRUE);
 
 }
-
 
 void CEye_Computing_DialogDlg::OnBnClickedEnglish()
 {

@@ -48,6 +48,7 @@ protected:
 	afx_msg void CEye_Computing_DialogDlg::showEngBtn();
 	afx_msg void CEye_Computing_DialogDlg::hideEngBtn();
 
+	afx_msg void CEye_Computing_DialogDlg::CheckKorEng();
 
 	//afx_msg void CEye_Computing_DialogDlg::Input_Key();
 
