@@ -49,6 +49,7 @@ public:
 	afx_msg void OnBnClickedYee();
 	afx_msg void OnBnClickedZzum();
 	afx_msg void OnBnClickedEu();
+	// 영문 버튼 변수
 	CxSkinButton m_btn_BkSpace;
 	CxSkinButton m_btn_Back;
 	CxSkinButton m_btn_GiYeok;
@@ -88,4 +89,35 @@ public:
 	afx_msg void OnBnClickedBkspace();
 	afx_msg void OnBnClickedConfirm();
 	afx_msg void OnBnClickedEnter();
+
+	// 한글 버튼 변수
+	CxSkinButton m_btn_cptA;
+	CxSkinButton m_btn_cptC;
+	CxSkinButton m_btn_cptB;
+	CxSkinButton m_btn_cptD;
+	CxSkinButton m_btn_cptE;
+	CxSkinButton m_btn_cptF;
+	CxSkinButton m_btn_cptG;
+	CxSkinButton m_btn_cptH;
+	CxSkinButton m_btn_cptI;
+	CxSkinButton m_btn_cptJ;
+	CxSkinButton m_btn_cptK;
+	CxSkinButton m_btn_cptM;
+	CxSkinButton m_btn_cptL;
+	CxSkinButton m_btn_cptN;
+	CxSkinButton m_btn_cptP;
+	CxSkinButton m_btn_cptO;
+	CxSkinButton m_btn_cptR;
+	CxSkinButton m_btn_cptQ;
+	CxSkinButton m_btn_cptS;
+	CxSkinButton m_btn_cptT;
+	CxSkinButton m_btn_cptU;
+	CxSkinButton m_btn_cptV;
+	CxSkinButton m_btn_cptW;
+	CxSkinButton m_btn_cptX;
+	CxSkinButton m_btn_cptY;
+	CxSkinButton m_btn_cptZ;
+
+	afx_msg void OnDestroy();
+
 };
