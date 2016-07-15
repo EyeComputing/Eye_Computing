@@ -20,7 +20,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
@@ -145,6 +145,7 @@
     <Image Include="res\digeut_normal.bmp" />
     <Image Include="res\D_normal.bmp" />
     <Image Include="res\eiung_normal.bmp" />
+    <Image Include="res\enlgish_normal.bmp" />
     <Image Include="res\eu_normal.bmp" />
     <Image Include="res\Eye_Computing_Dialog.ico" />
     <Image Include="res\E_normal.bmp" />
@@ -158,6 +159,7 @@
     <Image Include="res\jieut_normal.bmp" />
     <Image Include="res\J_normal.bmp" />
     <Image Include="res\kieuk_normal.bmp" />
+    <Image Include="res\korean_normal.bmp" />
     <Image Include="res\K_normal.bmp" />
     <Image Include="res\lieul_normal.bmp" />
     <Image Include="res\L_normal.bmp" />
@@ -165,6 +167,7 @@
     <Image Include="res\minus_normal.bmp" />
     <Image Include="res\M_normal.bmp" />
     <Image Include="res\nieun_normal.bmp" />
+    <Image Include="res\number_normal.bmp" />
     <Image Include="res\N_normal.bmp" />
     <Image Include="res\off_normal.bmp" />
     <Image Include="res\O_normal.bmp" />

@@ -42,6 +42,7 @@ bool clickedUuuAndZzum = false;
 bool clickedWo = false;
 bool clickedOoo = false;
 
+
 //cursor 변수
 
 HCURSOR m_hCursor, m_hOldCursor;
@@ -185,6 +186,9 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_CPT_X, m_btn_cptX);
 	DDX_Control(pDX, IDC_CPT_Y, m_btn_cptY);
 	DDX_Control(pDX, IDC_CPT_Z, m_btn_cptZ);
+	DDX_Control(pDX, IDC_KOREAN, m_btn_Korean);
+	DDX_Control(pDX, IDC_ENGLISH, m_btn_English);
+	DDX_Control(pDX, IDC_NUMBER, m_btn_Number);
 }
 
 BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
@@ -241,7 +245,8 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_CPT_X, &CEye_Computing_DialogDlg::OnBnClickedCptX)
 	ON_BN_CLICKED(IDC_CPT_Y, &CEye_Computing_DialogDlg::OnBnClickedCptY)
 	ON_BN_CLICKED(IDC_CPT_Z, &CEye_Computing_DialogDlg::OnBnClickedCptZ)
-END_MESSAGE_MAP()
+	ON_BN_CLICKED(IDC_KOREAN, &CEye_Computing_DialogDlg::OnBnClickedKorean)
+	ON_BN_CLICKED(IDC_ENGLISH, &CEye_Computing_DialogDlg::OnBnClickedEnglish)
 
 
 
@@ -260,116 +265,22 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	SetWindowPos(NULL, 0, 0, 625, 650, SWP_NOREDRAW);
 	GetDlgItem(IDC_BACKGROUND)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
 
+	// 윈도우 사이즈 지정 및 고정
+	initWindowSize();
 	// 시스템 버튼 이미지 삽입
-	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
-	m_btn_Back.SetSkin(IDB_Enter, IDB_Enter, IDB_Enter, IDB_Enter, 0, IDB_Enter, 0, 0, 0);
-	m_btn_Space.SetSkin(IDB_SPACE, IDB_SPACE, IDB_SPACE, IDB_SPACE, 0, IDB_SPACE, 0, 0, 0);
-	m_btn_Confirm.SetSkin(IDB_CONFIRM, IDB_CONFIRM, IDB_CONFIRM, IDB_CONFIRM, 0, IDB_CONFIRM, 0, 0, 0);
-
+	setImgSysBtn();
 	// 시스템 버튼 좌표 지정
-	GetDlgItem(IDC_BKSPACE)->SetWindowPos(NULL, 186, 12, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Enter)->SetWindowPos(NULL, 106, 46, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SPACE)->SetWindowPos(NULL, 228, 287, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Confirm)->SetWindowPos(NULL, 185, 92, 150, 150, SWP_NOSIZE);
-
-	/* 한글 버튼 숨겨놓기
+	setPosSysBtn();
 	// 한글 버튼 이미지 삽입
-	m_btn_GiYeok.SetSkin(IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, 0, IDB_GIYEOK, 0, 0, 0);
-	m_btn_NiEun.SetSkin(IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, 0, IDB_NIEUN, 0, 0, 0);
-	m_btn_DiGeut.SetSkin(IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, 0, IDB_DIGEUT, 0, 0, 0);
-	m_btn_RiEul.SetSkin(IDB_RIEUL, IDB_RIEUL, IDB_RIEUL, IDB_RIEUL, 0, IDB_RIEUL, 0, 0, 0);
-	m_btn_MiEum.SetSkin(IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, 0, IDB_MIEUM, 0, 0, 0);
-	m_btn_BiEup.SetSkin(IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, 0, IDB_BIEUP, 0, 0, 0);
-	m_btn_Zzum.SetSkin(IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, 0, IDB_ZZUM, 0, 0, 0);
-	m_btn_Yi.SetSkin(IDB_Iii, IDB_Iii, IDB_Iii, IDB_Iii, 0, IDB_Iii, 0, 0, 0);
-	m_btn_ShiOt.SetSkin(IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, 0, IDB_SHIOT, 0, 0, 0);
-	m_btn_Eu.SetSkin(IDB_EU, IDB_EU, IDB_EU, IDB_EU, 0, IDB_EU, 0, 0, 0);
-	m_btn_IEung.SetSkin(IDB_IEUNG, IDB_IEUNG, IDB_IEUNG, IDB_IEUNG, 0, IDB_IEUNG, 0, 0, 0);
-	m_btn_KiEuk.SetSkin(IDB_KIEUK, IDB_KIEUK, IDB_KIEUK, IDB_KIEUK, 0, IDB_KIEUK, 0, 0, 0);
-	m_btn_ChiEut.SetSkin(IDB_CHIEUT, IDB_CHIEUT, IDB_CHIEUT, IDB_CHIEUT, 0, IDB_CHIEUT, 0, 0, 0);
-	m_btn_JiEut.SetSkin(IDB_JIEUT, IDB_JIEUT, IDB_JIEUT, IDB_JIEUT, 0, IDB_JIEUT, 0, 0, 0);
-	m_btn_TiEut.SetSkin(IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, 0, IDB_TIEUT, 0, 0, 0);
-	m_btn_PiEup.SetSkin(IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, 0, IDB_PIEUP, 0, 0, 0);
-	m_btn_HiEut.SetSkin(IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, 0, IDB_HIEUT, 0, 0, 0);
-
+	setImgKorBtn();
 	// 한글 버튼 좌표 지정
-	GetDlgItem(IDC_GiYeok)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_NiEun)->SetWindowPos(NULL, 14, 185, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_DiGeut)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_RIEUL)->SetWindowPos(NULL, 117, 136, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_MIEUM)->SetWindowPos(NULL, 88, 217, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_BIEUP)->SetWindowPos(NULL, 103, 307, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Zzum)->SetWindowPos(NULL, 227, 175, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Iii)->SetWindowPos(NULL, 168, 235, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SHIOT)->SetWindowPos(NULL, 159, 363, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Eu)->SetWindowPos(NULL, 281, 232, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_IEUNG)->SetWindowPos(NULL, 244, 376, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_KIEUK)->SetWindowPos(NULL, 369, 188, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CHIEUT)->SetWindowPos(NULL, 368, 280, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_JIEUT)->SetWindowPos(NULL, 326, 346, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_TIEUT)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_PIEUP)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_HIEUT)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
-	*/		 
-
-	// 영문 버튼 이미지 삽입
-	m_btn_cptA.SetSkin(IDB_CPT_A, IDB_CPT_A, IDB_CPT_A, IDB_CPT_A, 0, IDB_CPT_A, 0, 0, 0);
-	m_btn_cptC.SetSkin(IDB_CPT_C, IDB_CPT_C, IDB_CPT_C, IDB_CPT_C, 0, IDB_CPT_C, 0, 0, 0);
-	m_btn_cptB.SetSkin(IDB_CPT_B, IDB_CPT_B, IDB_CPT_B, IDB_CPT_B, 0, IDB_CPT_B, 0, 0, 0);
-	m_btn_cptD.SetSkin(IDB_CPT_D, IDB_CPT_D, IDB_CPT_D, IDB_CPT_D, 0, IDB_CPT_D, 0, 0, 0);
-	m_btn_cptE.SetSkin(IDB_CPT_E, IDB_CPT_E, IDB_CPT_E, IDB_CPT_E, 0, IDB_CPT_E, 0, 0, 0);
-	m_btn_cptF.SetSkin(IDB_CPT_F, IDB_CPT_F, IDB_CPT_F, IDB_CPT_F, 0, IDB_CPT_F, 0, 0, 0);
-	m_btn_cptG.SetSkin(IDB_CPT_G, IDB_CPT_G, IDB_CPT_G, IDB_CPT_G, 0, IDB_CPT_G, 0, 0, 0);
-	m_btn_cptH.SetSkin(IDB_CPT_H, IDB_CPT_H, IDB_CPT_H, IDB_CPT_H, 0, IDB_CPT_H, 0, 0, 0);
-	m_btn_cptI.SetSkin(IDB_CPT_I, IDB_CPT_I, IDB_CPT_I, IDB_CPT_I, 0, IDB_CPT_I, 0, 0, 0);
-	m_btn_cptJ.SetSkin(IDB_CPT_J, IDB_CPT_J, IDB_CPT_J, IDB_CPT_J, 0, IDB_CPT_J, 0, 0, 0);
-	m_btn_cptK.SetSkin(IDB_CPT_K, IDB_CPT_K, IDB_CPT_K, IDB_CPT_K, 0, IDB_CPT_K, 0, 0, 0);
-	m_btn_cptM.SetSkin(IDB_CPT_M, IDB_CPT_M, IDB_CPT_M, IDB_CPT_M, 0, IDB_CPT_M, 0, 0, 0);
-	m_btn_cptL.SetSkin(IDB_CPT_L, IDB_CPT_L, IDB_CPT_L, IDB_CPT_L, 0, IDB_CPT_L, 0, 0, 0);
-	m_btn_cptN.SetSkin(IDB_CPT_N, IDB_CPT_N, IDB_CPT_N, IDB_CPT_N, 0, IDB_CPT_N, 0, 0, 0);
-	m_btn_cptP.SetSkin(IDB_CPT_P, IDB_CPT_P, IDB_CPT_P, IDB_CPT_P, 0, IDB_CPT_P, 0, 0, 0);
-	m_btn_cptO.SetSkin(IDB_CPT_O, IDB_CPT_O, IDB_CPT_O, IDB_CPT_O, 0, IDB_CPT_O, 0, 0, 0);
-	m_btn_cptR.SetSkin(IDB_CPT_R, IDB_CPT_R, IDB_CPT_R, IDB_CPT_R, 0, IDB_CPT_R, 0, 0, 0);
-	m_btn_cptQ.SetSkin(IDB_CPT_Q, IDB_CPT_Q, IDB_CPT_Q, IDB_CPT_Q, 0, IDB_CPT_Q, 0, 0, 0);
-	m_btn_cptS.SetSkin(IDB_CPT_S, IDB_CPT_S, IDB_CPT_S, IDB_CPT_S, 0, IDB_CPT_S, 0, 0, 0);
-	m_btn_cptT.SetSkin(IDB_CPT_T, IDB_CPT_T, IDB_CPT_T, IDB_CPT_T, 0, IDB_CPT_T, 0, 0, 0);
-	m_btn_cptU.SetSkin(IDB_CPT_U, IDB_CPT_U, IDB_CPT_U, IDB_CPT_U, 0, IDB_CPT_U, 0, 0, 0);
-	m_btn_cptV.SetSkin(IDB_CPT_V, IDB_CPT_V, IDB_CPT_V, IDB_CPT_V, 0, IDB_CPT_V, 0, 0, 0);
-	m_btn_cptW.SetSkin(IDB_CPT_W, IDB_CPT_W, IDB_CPT_W, IDB_CPT_W, 0, IDB_CPT_W, 0, 0, 0);
-	m_btn_cptX.SetSkin(IDB_CPT_X, IDB_CPT_X, IDB_CPT_X, IDB_CPT_X, 0, IDB_CPT_X, 0, 0, 0);
-	m_btn_cptY.SetSkin(IDB_CPT_Y, IDB_CPT_Y, IDB_CPT_Y, IDB_CPT_Y, 0, IDB_CPT_Y, 0, 0, 0);
-	m_btn_cptZ.SetSkin(IDB_CPT_Z, IDB_CPT_Z, IDB_CPT_Z, IDB_CPT_Z, 0, IDB_CPT_Z, 0, 0, 0);
-			
-	// 영문 버튼 좌표 지정
-	GetDlgItem(IDC_CPT_A)->SetWindowPos(NULL, 173, 255, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_C)->SetWindowPos(NULL, 171, 367, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_B)->SetWindowPos(NULL, 310, 357, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_D)->SetWindowPos(NULL, 241, 378, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_E)->SetWindowPos(NULL, 178, 196, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_F)->SetWindowPos(NULL, 89, 196, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_G)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_H)->SetWindowPos(NULL, 373, 242, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_I)->SetWindowPos(NULL, 228, 172, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_J)->SetWindowPos(NULL, 14, 185, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_K)->SetWindowPos(NULL, 105, 416, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_L)->SetWindowPos(NULL, 87, 264, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_M)->SetWindowPos(NULL, 272, 449, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_N)->SetWindowPos(NULL, 185, 448, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_P)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_O)->SetWindowPos(NULL, 281, 196, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_R)->SetWindowPos(NULL, 116, 326, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_Q)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_S)->SetWindowPos(NULL, 361, 172, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_T)->SetWindowPos(NULL, 354, 310, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_U)->SetWindowPos(NULL, 289, 255, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_V)->SetWindowPos(NULL, 47, 356, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_W)->SetWindowPos(NULL, 121, 134, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_X)->SetWindowPos(NULL, 352, 417, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_Y)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_Z)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
-	
-
-
+	setPosKorBtn();
+	// 영어 버튼 이미지 삽입
+	setImgEngBtn();
+	// 영어 버튼 좌표 지정
+	setPosEngBtn();
+	// 영어 버튼 숨기기
+	hideEngBtn();
 
 	// IDM_ABOUTBOX는 시스템 명령 범위에 있어야 합니다.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
@@ -438,14 +349,6 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
-
-
-
-
-
-
-
-
 
 
 void CEye_Computing_DialogDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -1844,3 +1747,261 @@ void CEye_Computing_DialogDlg::OnBnClickedCptZ()
 
 
 
+
+// 윈도우 사이즈 지정 및 고정(다시 그리지 않는다)
+void CEye_Computing_DialogDlg::initWindowSize()
+{
+	SetWindowPos(NULL, 0, 0, 625, 650, SWP_NOREDRAW);
+	GetDlgItem(IDC_BACKGROUND)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
+}
+
+// 시스템 버튼 이미지 삽입
+void CEye_Computing_DialogDlg::setImgSysBtn()
+{
+	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
+	m_btn_Back.SetSkin(IDB_Enter, IDB_Enter, IDB_Enter, IDB_Enter, 0, IDB_Enter, 0, 0, 0);
+	m_btn_Space.SetSkin(IDB_SPACE, IDB_SPACE, IDB_SPACE, IDB_SPACE, 0, IDB_SPACE, 0, 0, 0);
+	m_btn_Confirm.SetSkin(IDB_CONFIRM, IDB_CONFIRM, IDB_CONFIRM, IDB_CONFIRM, 0, IDB_CONFIRM, 0, 0, 0);
+	m_btn_Korean.SetSkin(IDB_KOREAN, IDB_KOREAN, IDB_KOREAN, IDB_KOREAN, 0, IDB_KOREAN, 0, 0, 0);
+	m_btn_English.SetSkin(IDB_ENGLISH, IDB_ENGLISH, IDB_ENGLISH, IDB_ENGLISH, 0, IDB_ENGLISH, 0, 0, 0);
+	m_btn_Number.SetSkin(IDB_NUMBER, IDB_NUMBER, IDB_NUMBER, IDB_NUMBER, 0, IDB_NUMBER, 0, 0, 0);
+}
+
+// 시스템 버튼 좌표 지정
+void CEye_Computing_DialogDlg::setPosSysBtn()
+{
+	GetDlgItem(IDC_BKSPACE)->SetWindowPos(NULL, 186, 12, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Enter)->SetWindowPos(NULL, 106, 46, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SPACE)->SetWindowPos(NULL, 228, 287, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Confirm)->SetWindowPos(NULL, 185, 92, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_KOREAN)->SetWindowPos(NULL, 394, 495, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_ENGLISH)->SetWindowPos(NULL, 447, 453, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_NUMBER)->SetWindowPos(NULL, 490, 399, 150, 150, SWP_NOSIZE);
+}
+
+// 한글 버튼 이미지 삽입
+void CEye_Computing_DialogDlg::setImgKorBtn()
+{
+	m_btn_GiYeok.SetSkin(IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, 0, IDB_GIYEOK, 0, 0, 0);
+	m_btn_NiEun.SetSkin(IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, 0, IDB_NIEUN, 0, 0, 0);
+	m_btn_DiGeut.SetSkin(IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, 0, IDB_DIGEUT, 0, 0, 0);
+	m_btn_RiEul.SetSkin(IDB_RIEUL, IDB_RIEUL, IDB_RIEUL, IDB_RIEUL, 0, IDB_RIEUL, 0, 0, 0);
+	m_btn_MiEum.SetSkin(IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, 0, IDB_MIEUM, 0, 0, 0);
+	m_btn_BiEup.SetSkin(IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, 0, IDB_BIEUP, 0, 0, 0);
+	m_btn_Zzum.SetSkin(IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, 0, IDB_ZZUM, 0, 0, 0);
+	m_btn_Yi.SetSkin(IDB_Iii, IDB_Iii, IDB_Iii, IDB_Iii, 0, IDB_Iii, 0, 0, 0);
+	m_btn_ShiOt.SetSkin(IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, 0, IDB_SHIOT, 0, 0, 0);
+	m_btn_Eu.SetSkin(IDB_EU, IDB_EU, IDB_EU, IDB_EU, 0, IDB_EU, 0, 0, 0);
+	m_btn_IEung.SetSkin(IDB_IEUNG, IDB_IEUNG, IDB_IEUNG, IDB_IEUNG, 0, IDB_IEUNG, 0, 0, 0);
+	m_btn_KiEuk.SetSkin(IDB_KIEUK, IDB_KIEUK, IDB_KIEUK, IDB_KIEUK, 0, IDB_KIEUK, 0, 0, 0);
+	m_btn_ChiEut.SetSkin(IDB_CHIEUT, IDB_CHIEUT, IDB_CHIEUT, IDB_CHIEUT, 0, IDB_CHIEUT, 0, 0, 0);
+	m_btn_JiEut.SetSkin(IDB_JIEUT, IDB_JIEUT, IDB_JIEUT, IDB_JIEUT, 0, IDB_JIEUT, 0, 0, 0);
+	m_btn_TiEut.SetSkin(IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, 0, IDB_TIEUT, 0, 0, 0);
+	m_btn_PiEup.SetSkin(IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, 0, IDB_PIEUP, 0, 0, 0);
+	m_btn_HiEut.SetSkin(IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, 0, IDB_HIEUT, 0, 0, 0);
+}
+
+// 한글 버튼 좌표 지정
+void CEye_Computing_DialogDlg::setPosKorBtn()
+{
+	GetDlgItem(IDC_GiYeok)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_NiEun)->SetWindowPos(NULL, 14, 185, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_DiGeut)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_RIEUL)->SetWindowPos(NULL, 117, 136, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_MIEUM)->SetWindowPos(NULL, 88, 217, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_BIEUP)->SetWindowPos(NULL, 103, 307, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Zzum)->SetWindowPos(NULL, 227, 175, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Iii)->SetWindowPos(NULL, 168, 235, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SHIOT)->SetWindowPos(NULL, 159, 363, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Eu)->SetWindowPos(NULL, 281, 232, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_IEUNG)->SetWindowPos(NULL, 244, 376, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_KIEUK)->SetWindowPos(NULL, 369, 188, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CHIEUT)->SetWindowPos(NULL, 368, 280, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_JIEUT)->SetWindowPos(NULL, 326, 346, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_TIEUT)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_PIEUP)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_HIEUT)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
+}
+
+// 영문 버튼 이미지 삽입
+void CEye_Computing_DialogDlg::setImgEngBtn()
+{
+	m_btn_cptA.SetSkin(IDB_CPT_A, IDB_CPT_A, IDB_CPT_A, IDB_CPT_A, 0, IDB_CPT_A, 0, 0, 0);
+	m_btn_cptC.SetSkin(IDB_CPT_C, IDB_CPT_C, IDB_CPT_C, IDB_CPT_C, 0, IDB_CPT_C, 0, 0, 0);
+	m_btn_cptB.SetSkin(IDB_CPT_B, IDB_CPT_B, IDB_CPT_B, IDB_CPT_B, 0, IDB_CPT_B, 0, 0, 0);
+	m_btn_cptD.SetSkin(IDB_CPT_D, IDB_CPT_D, IDB_CPT_D, IDB_CPT_D, 0, IDB_CPT_D, 0, 0, 0);
+	m_btn_cptE.SetSkin(IDB_CPT_E, IDB_CPT_E, IDB_CPT_E, IDB_CPT_E, 0, IDB_CPT_E, 0, 0, 0);
+	m_btn_cptF.SetSkin(IDB_CPT_F, IDB_CPT_F, IDB_CPT_F, IDB_CPT_F, 0, IDB_CPT_F, 0, 0, 0);
+	m_btn_cptG.SetSkin(IDB_CPT_G, IDB_CPT_G, IDB_CPT_G, IDB_CPT_G, 0, IDB_CPT_G, 0, 0, 0);
+	m_btn_cptH.SetSkin(IDB_CPT_H, IDB_CPT_H, IDB_CPT_H, IDB_CPT_H, 0, IDB_CPT_H, 0, 0, 0);
+	m_btn_cptI.SetSkin(IDB_CPT_I, IDB_CPT_I, IDB_CPT_I, IDB_CPT_I, 0, IDB_CPT_I, 0, 0, 0);
+	m_btn_cptJ.SetSkin(IDB_CPT_J, IDB_CPT_J, IDB_CPT_J, IDB_CPT_J, 0, IDB_CPT_J, 0, 0, 0);
+	m_btn_cptK.SetSkin(IDB_CPT_K, IDB_CPT_K, IDB_CPT_K, IDB_CPT_K, 0, IDB_CPT_K, 0, 0, 0);
+	m_btn_cptM.SetSkin(IDB_CPT_M, IDB_CPT_M, IDB_CPT_M, IDB_CPT_M, 0, IDB_CPT_M, 0, 0, 0);
+	m_btn_cptL.SetSkin(IDB_CPT_L, IDB_CPT_L, IDB_CPT_L, IDB_CPT_L, 0, IDB_CPT_L, 0, 0, 0);
+	m_btn_cptN.SetSkin(IDB_CPT_N, IDB_CPT_N, IDB_CPT_N, IDB_CPT_N, 0, IDB_CPT_N, 0, 0, 0);
+	m_btn_cptP.SetSkin(IDB_CPT_P, IDB_CPT_P, IDB_CPT_P, IDB_CPT_P, 0, IDB_CPT_P, 0, 0, 0);
+	m_btn_cptO.SetSkin(IDB_CPT_O, IDB_CPT_O, IDB_CPT_O, IDB_CPT_O, 0, IDB_CPT_O, 0, 0, 0);
+	m_btn_cptR.SetSkin(IDB_CPT_R, IDB_CPT_R, IDB_CPT_R, IDB_CPT_R, 0, IDB_CPT_R, 0, 0, 0);
+	m_btn_cptQ.SetSkin(IDB_CPT_Q, IDB_CPT_Q, IDB_CPT_Q, IDB_CPT_Q, 0, IDB_CPT_Q, 0, 0, 0);
+	m_btn_cptS.SetSkin(IDB_CPT_S, IDB_CPT_S, IDB_CPT_S, IDB_CPT_S, 0, IDB_CPT_S, 0, 0, 0);
+	m_btn_cptT.SetSkin(IDB_CPT_T, IDB_CPT_T, IDB_CPT_T, IDB_CPT_T, 0, IDB_CPT_T, 0, 0, 0);
+	m_btn_cptU.SetSkin(IDB_CPT_U, IDB_CPT_U, IDB_CPT_U, IDB_CPT_U, 0, IDB_CPT_U, 0, 0, 0);
+	m_btn_cptV.SetSkin(IDB_CPT_V, IDB_CPT_V, IDB_CPT_V, IDB_CPT_V, 0, IDB_CPT_V, 0, 0, 0);
+	m_btn_cptW.SetSkin(IDB_CPT_W, IDB_CPT_W, IDB_CPT_W, IDB_CPT_W, 0, IDB_CPT_W, 0, 0, 0);
+	m_btn_cptX.SetSkin(IDB_CPT_X, IDB_CPT_X, IDB_CPT_X, IDB_CPT_X, 0, IDB_CPT_X, 0, 0, 0);
+	m_btn_cptY.SetSkin(IDB_CPT_Y, IDB_CPT_Y, IDB_CPT_Y, IDB_CPT_Y, 0, IDB_CPT_Y, 0, 0, 0);
+	m_btn_cptZ.SetSkin(IDB_CPT_Z, IDB_CPT_Z, IDB_CPT_Z, IDB_CPT_Z, 0, IDB_CPT_Z, 0, 0, 0);
+}
+
+// 영문 버튼 좌표 지정
+void CEye_Computing_DialogDlg::setPosEngBtn()
+{
+	GetDlgItem(IDC_CPT_A)->SetWindowPos(NULL, 173, 255, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_C)->SetWindowPos(NULL, 171, 367, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_B)->SetWindowPos(NULL, 310, 357, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_D)->SetWindowPos(NULL, 241, 378, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_E)->SetWindowPos(NULL, 178, 196, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_F)->SetWindowPos(NULL, 89, 196, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_G)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_H)->SetWindowPos(NULL, 373, 242, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_I)->SetWindowPos(NULL, 228, 172, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_J)->SetWindowPos(NULL, 14, 185, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_K)->SetWindowPos(NULL, 105, 416, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_L)->SetWindowPos(NULL, 87, 264, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_M)->SetWindowPos(NULL, 272, 449, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_N)->SetWindowPos(NULL, 185, 448, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_P)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_O)->SetWindowPos(NULL, 281, 196, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_R)->SetWindowPos(NULL, 116, 326, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_Q)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_S)->SetWindowPos(NULL, 361, 172, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_T)->SetWindowPos(NULL, 354, 310, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_U)->SetWindowPos(NULL, 289, 255, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_V)->SetWindowPos(NULL, 47, 356, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_W)->SetWindowPos(NULL, 121, 134, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_X)->SetWindowPos(NULL, 352, 417, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_Y)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_Z)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
+}
+
+// 한글 버튼 보이기
+void CEye_Computing_DialogDlg::showKorBtn()
+{
+	GetDlgItem(IDC_GiYeok)->ShowWindow(TRUE);
+	GetDlgItem(IDC_NiEun)->ShowWindow(TRUE);
+	GetDlgItem(IDC_DiGeut)->ShowWindow(TRUE);
+	GetDlgItem(IDC_RIEUL)->ShowWindow(TRUE);
+	GetDlgItem(IDC_MIEUM)->ShowWindow(TRUE);
+	GetDlgItem(IDC_BIEUP)->ShowWindow(TRUE);
+	GetDlgItem(IDC_Zzum)->ShowWindow(TRUE);
+	GetDlgItem(IDC_Iii)->ShowWindow(TRUE);
+	GetDlgItem(IDC_SHIOT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_Eu)->ShowWindow(TRUE);
+	GetDlgItem(IDC_IEUNG)->ShowWindow(TRUE);
+	GetDlgItem(IDC_KIEUK)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CHIEUT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_JIEUT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_TIEUT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_PIEUP)->ShowWindow(TRUE);
+	GetDlgItem(IDC_HIEUT)->ShowWindow(TRUE);
+}
+
+// 한글 버튼 숨기기
+void CEye_Computing_DialogDlg::hideKorBtn()
+{
+	GetDlgItem(IDC_GiYeok)->ShowWindow(FALSE);
+	GetDlgItem(IDC_NiEun)->ShowWindow(FALSE);
+	GetDlgItem(IDC_DiGeut)->ShowWindow(FALSE);
+	GetDlgItem(IDC_RIEUL)->ShowWindow(FALSE);
+	GetDlgItem(IDC_MIEUM)->ShowWindow(FALSE);
+	GetDlgItem(IDC_BIEUP)->ShowWindow(FALSE);
+	GetDlgItem(IDC_Zzum)->ShowWindow(FALSE);
+	GetDlgItem(IDC_Iii)->ShowWindow(FALSE);
+	GetDlgItem(IDC_SHIOT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_Eu)->ShowWindow(FALSE);
+	GetDlgItem(IDC_IEUNG)->ShowWindow(FALSE);
+	GetDlgItem(IDC_KIEUK)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CHIEUT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_JIEUT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_TIEUT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_PIEUP)->ShowWindow(FALSE);
+	GetDlgItem(IDC_HIEUT)->ShowWindow(FALSE);
+}
+
+// 영어 버튼 보이기
+void CEye_Computing_DialogDlg::showEngBtn()
+{
+	GetDlgItem(IDC_CPT_A)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_C)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_B)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_D)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_E)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_F)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_G)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_H)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_I)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_J)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_K)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_L)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_M)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_N)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_P)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_O)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_R)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_Q)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_S)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_T)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_U)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_V)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_W)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_X)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_Y)->ShowWindow(TRUE);
+	GetDlgItem(IDC_CPT_Z)->ShowWindow(TRUE);
+}
+
+// 영어 버튼 숨기기
+void CEye_Computing_DialogDlg::hideEngBtn()
+{
+	GetDlgItem(IDC_CPT_A)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_C)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_B)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_D)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_E)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_F)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_G)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_H)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_I)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_J)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_K)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_L)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_M)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_N)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_P)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_O)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_R)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_Q)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_S)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_T)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_U)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_V)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_W)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_X)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_Y)->ShowWindow(FALSE);
+	GetDlgItem(IDC_CPT_Z)->ShowWindow(FALSE);
+}
+
+void CEye_Computing_DialogDlg::OnBnClickedKorean()
+{
+	hideEngBtn();
+	showKorBtn();
+	Invalidate(TRUE);
+}
+
+
+void CEye_Computing_DialogDlg::OnBnClickedEnglish()
+{
+	hideKorBtn();
+	showEngBtn();
+	Invalidate(TRUE);
+}
