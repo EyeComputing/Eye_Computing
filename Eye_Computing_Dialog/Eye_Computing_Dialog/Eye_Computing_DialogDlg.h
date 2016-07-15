@@ -164,9 +164,5 @@ public:
 	afx_msg void OnBnClickedCptX();
 	afx_msg void OnBnClickedCptY();
 	afx_msg void OnBnClickedCptZ();
-	CxSkinButton m_btn_Korean;
-	CxSkinButton m_btn_English;
-	CxSkinButton m_btn_Number;
-	afx_msg void OnBnClickedKorean();
-	afx_msg void OnBnClickedEnglish();
+
 };

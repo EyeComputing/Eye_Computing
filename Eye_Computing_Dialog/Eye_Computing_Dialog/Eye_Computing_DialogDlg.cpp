@@ -1285,22 +1285,6 @@ void CEye_Computing_DialogDlg::OnBnClickedEnter()
 
 
 
-void CEye_Computing_DialogDlg::OnBnClickedCptA()
-{
-	initHanguel();
-	INPUT InputButton;
-	//initialize
-	::ZeroMemory(&InputButton, sizeof(INPUT));
-	//keyboard로 입력하겠다.
-	InputButton.type = INPUT_KEYBOARD;
-	//어떤버튼누를건지
-	InputButton.ki.wVk = 0x41;
-	//한번눌러주기
-	::SendInput(1, &InputButton, sizeof(INPUT));
-	//누른거 풀어주기
-	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &InputButton, sizeof(INPUT));
-}
 
 // 윈도우 사이즈 지정 및 고정(다시 그리지 않는다)
 void CEye_Computing_DialogDlg::initWindowSize()
@@ -2026,11 +2010,3 @@ void CEye_Computing_DialogDlg::OnBnClickedCptZ()
 	::SendInput(1, &InputButton, sizeof(INPUT));
 }
 
-
-
-void CEye_Computing_DialogDlg::OnBnClickedEnglish()
-{
-	hideKorBtn();
-	showEngBtn();
-	Invalidate(TRUE);
-}
