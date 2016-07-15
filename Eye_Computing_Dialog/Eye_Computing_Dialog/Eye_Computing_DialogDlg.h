@@ -120,4 +120,30 @@ public:
 
 	afx_msg void OnDestroy();
 
+	afx_msg void OnBnClickedCptA();
+	afx_msg void OnBnClickedCptC();
+	afx_msg void OnBnClickedCptB();
+	afx_msg void OnBnClickedCptD();
+	afx_msg void OnBnClickedCptE();
+	afx_msg void OnBnClickedCptF();
+	afx_msg void OnBnClickedCptG();
+	afx_msg void OnBnClickedCptH();
+	afx_msg void OnBnClickedCptI();
+	afx_msg void OnBnClickedCptJ();
+	afx_msg void OnBnClickedCptK();
+	afx_msg void OnBnClickedCptL();
+	afx_msg void OnBnClickedCptM();
+	afx_msg void OnBnClickedCptN();
+	afx_msg void OnBnClickedCptO();
+	afx_msg void OnBnClickedCptP();
+	afx_msg void OnBnClickedCptQ();
+	afx_msg void OnBnClickedCptR();
+	afx_msg void OnBnClickedCptS();
+	afx_msg void OnBnClickedCptT();
+	afx_msg void OnBnClickedCptU();
+	afx_msg void OnBnClickedCptV();
+	afx_msg void OnBnClickedCptW();
+	afx_msg void OnBnClickedCptX();
+	afx_msg void OnBnClickedCptY();
+	afx_msg void OnBnClickedCptZ();
 };
