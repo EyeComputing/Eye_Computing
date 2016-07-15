@@ -341,7 +341,7 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	m_hOldCursor = LoadCursor(NULL, IDC_ARROW);
 	m_hOldCursor = CopyCursor(m_hOldCursor);
 
-	m_hCursor = (HCURSOR)LoadImage(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDC_CURSOR1), IMAGE_CURSOR, 1000, 1000, LR_DEFAULTCOLOR);
+	m_hCursor = (HCURSOR)LoadImage(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDC_CURSOR1), IMAGE_CURSOR, 256, 256, LR_DEFAULTCOLOR);
 	m_hCursor = CopyCursor(m_hCursor);
 
 
