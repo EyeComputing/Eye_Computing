@@ -108,14 +108,15 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 				OutputDebugString((LPWSTR)ClassName);
 
 			//마우스 좌표에 존재하는 window를 활성화 시키기
-			EnableWindow(hWnd, true);
+			//EnableWindow(hWnd, true);
 		
-			SendMessage(hWnd, WM_LBUTTONDOWN, false, 0);
-			SendMessage(hWnd, WM_LBUTTONUP, false, 0);
+		//	SendMessage(hWnd, WM_LBUTTONDOWN, false, 0);
+			//SendMessage(hWnd, WM_LBUTTONUP, false, 0);
 
-			return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
+ 			return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
 					 //return 을 하지 않으면 queue로 전달하여 message 처리됨.
 		}
+		return 0;
 	}
 }
 
