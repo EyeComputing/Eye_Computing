@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Eye_Computing_Dialog.rc2" />
+    <None Include="POINTER_COPY.cur" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

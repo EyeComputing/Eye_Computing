@@ -213,12 +213,14 @@ void EyeXGaze::OnFixationDataEvent(TX_HANDLE hFixationDataBehavior)
 			: ((eventType == TX_FIXATIONDATAEVENTTYPE_END) ? "End"
 				: "Begin");
 		
-		if (fps == 4)
+		if (fps == 5)
 		{
 			FixEye_X = eventParams.X;
 			FixEye_Y = eventParams.Y;
 			fps = 0;
-			InvalidateRect(_hWnd, nullptr, false);
+		
+			SetCursorPos(FixEye_X, FixEye_Y);
+			
 		}
 		else
 			fps++;

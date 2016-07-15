@@ -36,6 +36,10 @@ bool clickedUuuAndZzum = false;
 bool clickedWo = false;
 bool clickedOoo = false;
 
+//cursor 변수
+
+HCURSOR m_hCursor, m_hOldCursor;
+
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
 class CAboutDlg : public CDialogEx
@@ -80,6 +84,9 @@ CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	m_hForegroundWnd = NULL;
+
+	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
+	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
 }
 
 void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
@@ -145,7 +152,6 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_NiEun, &CEye_Computing_DialogDlg::OnBnClickedNieun)
 	ON_BN_CLICKED(IDC_Zzum, &CEye_Computing_DialogDlg::OnBnClickedZzum)
 	ON_BN_CLICKED(IDC_Eu, &CEye_Computing_DialogDlg::OnBnClickedEu)
-	ON_MESSAGE(UM_REGION_ACTIVATED, &CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED)
 	ON_BN_CLICKED(IDC_Iii, &CEye_Computing_DialogDlg::OnBnClickedIii)
 	ON_BN_CLICKED(IDC_DiGeut, &CEye_Computing_DialogDlg::OnBnClickedDigeut)
 	ON_BN_CLICKED(IDC_RIEUL, &CEye_Computing_DialogDlg::OnBnClickedRieul)
@@ -163,46 +169,8 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BKSPACE, &CEye_Computing_DialogDlg::OnBnClickedBkspace)
 	ON_BN_CLICKED(IDC_Confirm, &CEye_Computing_DialogDlg::OnBnClickedConfirm)
 	ON_BN_CLICKED(IDC_Enter, &CEye_Computing_DialogDlg::OnBnClickedEnter)
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 응시점으로 마우스 옮기는 함수..?
-LRESULT CEye_Computing_DialogDlg::OnUM_REGION_ACTIVATED(WPARAM wParam, LPARAM IParam)
-{
-	
-	POINT gazePoint;
-	gazePoint.x = (LONG)g_EyeXGaze.getFixEye_X();
-	gazePoint.y = (LONG)g_EyeXGaze.getFixEye_Y();
-
-	//SetCursorPos(gazePoint.x, gazePoint.y);
-
-	SetCursorPos(200, 200);
-
-	return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -361,17 +329,39 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	SetWindowLong(GetSafeHwnd(), GWL_EXSTYLE, ExtendedStyle | WS_EX_LAYERED);
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
+	
+	
+	
+	
+	
+	//cursor variable initialize
+	m_hCursor = NULL;
+	m_hOldCursor = NULL;
 
-	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
-	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
+	m_hOldCursor = LoadCursor(NULL, IDC_ARROW);
+	m_hOldCursor = CopyCursor(m_hOldCursor);
+
+	m_hCursor = (HCURSOR)LoadImage(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDC_CURSOR1), IMAGE_CURSOR, 1000, 1000, LR_DEFAULTCOLOR);
+	m_hCursor = CopyCursor(m_hCursor);
+
+
+	::SetSystemCursor(m_hCursor, 32512);
+	//::SetSystemCursor(m_hCursor, 32513);
+	//::SetSystemCursor(m_hCursor, 32514);
+	//::SetSystemCursor(m_hCursor, 32515);
+	//::SetSystemCursor(m_hCursor, 32516);
+	//::SetSystemCursor(m_hCursor, 32642);
+	//::SetSystemCursor(m_hCursor, 32643);
+	//::SetSystemCursor(m_hCursor, 32644);
+	//::SetSystemCursor(m_hCursor, 32645);
+	//::SetSystemCursor(m_hCursor, 32646);
+	//::SetSystemCursor(m_hCursor, 32648);
+	//::SetSystemCursor(m_hCursor, 32649);
+	//::SetSystemCursor(m_hCursor, 32650);
+	//::SetSystemCursor(m_hCursor, 32651);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
-
-
-
-
-
 
 
 
@@ -496,6 +486,12 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 }
 
 
+void CEye_Computing_DialogDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	::SetSystemCursor(m_hOldCursor, 32512);
+}
 
 
 
@@ -1298,3 +1294,4 @@ void CEye_Computing_DialogDlg::OnBnClickedEnter()
 	::SendInput(1, &InputEnter, sizeof(INPUT));
 
 }
+
