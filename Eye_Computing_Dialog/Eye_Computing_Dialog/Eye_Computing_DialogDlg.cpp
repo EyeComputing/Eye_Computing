@@ -113,6 +113,7 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 		if (pKey->vkCode == VK_SPACE)
 		{
 			GetCursorPos(&point); //point 변수에 마우스 좌표 점 저장
+			
 			HWND hWnd = WindowFromPoint(point);  //해당 좌표에 존재하는 window handle 가져오기
 
 			GetClassName(hWnd, (LPWSTR)ClassName, 128);
@@ -123,8 +124,12 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 			//마우스 좌표에 존재하는 window를 활성화 시키기
 			//EnableWindow(hWnd, true);
 		
-		//	SendMessage(hWnd, WM_LBUTTONDOWN, false, 0);
+			//	SendMessage(hWnd, WM_LBUTTONDOWN, false, 0);
 			//SendMessage(hWnd, WM_LBUTTONUP, false, 0);
+
+			// 마우스 왼쪽 클릭 명령(추가)
+			::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+			::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 
  			return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
 					 //return 을 하지 않으면 queue로 전달하여 message 처리됨.
@@ -2027,4 +2032,3 @@ void CEye_Computing_DialogDlg::OnBnClickedCptZ()
 	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputButton, sizeof(INPUT));
 }
-
