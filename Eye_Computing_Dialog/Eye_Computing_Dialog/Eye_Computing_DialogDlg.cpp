@@ -13,6 +13,12 @@
 #define new DEBUG_NEW
 #endif
 
+//spacebar click message hooking을 위한 함수 & 변수
+//키보드 hooking이 발생했을 경우 호출되는 함수
+LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam);
+HHOOK m_hook = NULL;
+
+
 //토비!
 EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
 
@@ -75,6 +81,44 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 //	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
+
+//keyboard hooking 시 호출되는 function 
+LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
+{
+	static int c = 0;
+	KBDLLHOOKSTRUCT *pKey = (KBDLLHOOKSTRUCT *)lParam;
+	POINT point;//마우스 좌표값 저장하는 변수
+
+	char ClassName[128];
+
+
+	if (nCode < 0)
+		return CallNextHookEx(m_hook, nCode, wParam, lParam);
+
+	if (wParam == WM_KEYDOWN)
+	{
+		if (pKey->vkCode == VK_SPACE)
+		{
+			GetCursorPos(&point); //point 변수에 마우스 좌표 점 저장
+			HWND hWnd = WindowFromPoint(point);  //해당 좌표에 존재하는 window handle 가져오기
+
+			GetClassName(hWnd, (LPWSTR)ClassName, 128);
+
+			if (*ClassName)
+				OutputDebugString((LPWSTR)ClassName);
+
+			//마우스 좌표에 존재하는 window를 활성화 시키기
+			EnableWindow(hWnd, true);
+		
+			SendMessage(hWnd, WM_LBUTTONDOWN, false, 0);
+			SendMessage(hWnd, WM_LBUTTONUP, false, 0);
+
+			return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
+					 //return 을 하지 않으면 queue로 전달하여 message 처리됨.
+		}
+	}
+}
+
 
 
 // CEye_Computing_DialogDlg 대화 상자
@@ -179,6 +223,11 @@ END_MESSAGE_MAP()
 BOOL CEye_Computing_DialogDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+
+	m_hook = SetWindowsHookEx(WH_KEYBOARD_LL, GetMsgProc, NULL, 0);
+
+	if (!m_hook)
+		TRACE("HOOKING ERROR");
 
 	// 윈도우 사이즈 지정 및 고정(다시 그리지 않는다)
 	SetWindowPos(NULL, 0, 0, 625, 650, SWP_NOREDRAW);
