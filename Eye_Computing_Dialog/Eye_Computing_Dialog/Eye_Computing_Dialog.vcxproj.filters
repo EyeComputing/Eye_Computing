@@ -80,6 +80,9 @@
     <Image Include="res\Z_normal.bmp" />
     <Image Include="res\J_normal.bmp" />
     <Image Include="res\Q_normal.bmp" />
+    <Image Include="res\number_normal.bmp" />
+    <Image Include="res\enlgish_normal.bmp" />
+    <Image Include="res\korean_normal.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Eye_Computing_Dialog.rc2" />

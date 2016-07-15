@@ -36,6 +36,18 @@ protected:
 
 	//모음 상태 초기화 함수
 	afx_msg void CEye_Computing_DialogDlg::initHanguel();
+	afx_msg void CEye_Computing_DialogDlg::initWindowSize();
+	afx_msg void CEye_Computing_DialogDlg::setImgSysBtn();
+	afx_msg void CEye_Computing_DialogDlg::setPosSysBtn();
+	afx_msg void CEye_Computing_DialogDlg::setImgKorBtn();
+	afx_msg void CEye_Computing_DialogDlg::setPosKorBtn();
+	afx_msg void CEye_Computing_DialogDlg::setImgEngBtn();
+	afx_msg void CEye_Computing_DialogDlg::setPosEngBtn();
+	afx_msg void CEye_Computing_DialogDlg::showKorBtn();
+	afx_msg void CEye_Computing_DialogDlg::hideKorBtn();
+	afx_msg void CEye_Computing_DialogDlg::showEngBtn();
+	afx_msg void CEye_Computing_DialogDlg::hideEngBtn();
+	
 
 	DECLARE_MESSAGE_MAP()
 public:
@@ -120,4 +132,9 @@ public:
 
 	afx_msg void OnDestroy();
 
+	CxSkinButton m_btn_Korean;
+	CxSkinButton m_btn_English;
+	CxSkinButton m_btn_Number;
+	afx_msg void OnBnClickedKorean();
+	afx_msg void OnBnClickedEnglish();
 };
