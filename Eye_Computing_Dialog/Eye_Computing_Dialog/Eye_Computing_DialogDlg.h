@@ -88,4 +88,5 @@ public:
 	afx_msg void OnBnClickedBkspace();
 	afx_msg void OnBnClickedConfirm();
 	afx_msg void OnBnClickedEnter();
+	afx_msg void OnDestroy();
 };

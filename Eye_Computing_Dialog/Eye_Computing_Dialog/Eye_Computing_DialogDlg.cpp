@@ -143,6 +143,7 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BKSPACE, &CEye_Computing_DialogDlg::OnBnClickedBkspace)
 	ON_BN_CLICKED(IDC_Confirm, &CEye_Computing_DialogDlg::OnBnClickedConfirm)
 	ON_BN_CLICKED(IDC_Enter, &CEye_Computing_DialogDlg::OnBnClickedEnter)
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -238,30 +239,39 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	SetWindowLong(GetSafeHwnd(), GWL_EXSTYLE, ExtendedStyle | WS_EX_LAYERED);
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
-
+	
+	
+	
+	
+	
 	//cursor variable initialize
 	m_hCursor = NULL;
-	//m_hOldCursor = NULL;
+	m_hOldCursor = NULL;
 
-	//m_hOldCursor = LoadCursor(NULL, IDC_ARROW);
-	//m_hOldCursor = CopyCursor(m_hOldCursor);
+	m_hOldCursor = LoadCursor(NULL, IDC_ARROW);
+	m_hOldCursor = CopyCursor(m_hOldCursor);
 
-	//m_hCursor = (HCURSOR)LoadImage(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDC_CURSOR1), IMAGE_CURSOR, 64, 64, LR_DEFAULTCOLOR);
-	//m_hCursor = CopyCursor(m_hCursor);
+	m_hCursor = (HCURSOR)LoadImage(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDC_CURSOR1), IMAGE_CURSOR, 1000, 1000, LR_DEFAULTCOLOR);
+	m_hCursor = CopyCursor(m_hCursor);
 
-	//m_hCursor = LoadCursorFromFile("C:\Workspace\Eye_computing/dd.jpg");
 
-	//SetCursor(m_hCursor);
-	//::SetSystemCursor(m_hCursor, 32512);
-
+	::SetSystemCursor(m_hCursor, 32512);
+	//::SetSystemCursor(m_hCursor, 32513);
+	//::SetSystemCursor(m_hCursor, 32514);
+	//::SetSystemCursor(m_hCursor, 32515);
+	//::SetSystemCursor(m_hCursor, 32516);
+	//::SetSystemCursor(m_hCursor, 32642);
+	//::SetSystemCursor(m_hCursor, 32643);
+	//::SetSystemCursor(m_hCursor, 32644);
+	//::SetSystemCursor(m_hCursor, 32645);
+	//::SetSystemCursor(m_hCursor, 32646);
+	//::SetSystemCursor(m_hCursor, 32648);
+	//::SetSystemCursor(m_hCursor, 32649);
+	//::SetSystemCursor(m_hCursor, 32650);
+	//::SetSystemCursor(m_hCursor, 32651);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
-
-
-
-
-
 
 
 
@@ -386,6 +396,12 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 }
 
 
+void CEye_Computing_DialogDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	::SetSystemCursor(m_hOldCursor, 32512);
+}
 
 
 
@@ -1188,3 +1204,4 @@ void CEye_Computing_DialogDlg::OnBnClickedEnter()
 	::SendInput(1, &InputEnter, sizeof(INPUT));
 
 }
+
