@@ -569,13 +569,13 @@ void CEye_Computing_DialogDlg::initWindowSize()
 // 시스템 버튼 이미지 삽입
 void CEye_Computing_DialogDlg::setImgSysBtn()
 {
-	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
-	m_btn_Back.SetSkin(IDB_Enter, IDB_Enter, IDB_Enter, IDB_Enter, 0, IDB_Enter, 0, 0, 0);
-	m_btn_Space.SetSkin(IDB_SPACE, IDB_SPACE, IDB_SPACE, IDB_SPACE, 0, IDB_SPACE, 0, 0, 0);
-	m_btn_Confirm.SetSkin(IDB_CONFIRM, IDB_CONFIRM, IDB_CONFIRM, IDB_CONFIRM, 0, IDB_CONFIRM, 0, 0, 0);
-	m_btn_Korean.SetSkin(IDB_KOREAN, IDB_KOREAN, IDB_KOREAN, IDB_KOREAN, 0, IDB_KOREAN, 0, 0, 0);
-	m_btn_English.SetSkin(IDB_ENGLISH, IDB_ENGLISH, IDB_ENGLISH, IDB_ENGLISH, 0, IDB_ENGLISH, 0, 0, 0);
-	m_btn_Number.SetSkin(IDB_NUMBER, IDB_NUMBER, IDB_NUMBER, IDB_NUMBER, 0, IDB_NUMBER, 0, 0, 0);
+	m_btn_BkSpace.SetSkin(IDB_BKSPACE, IDB_BKSPACE, IDB_BKSPACE_OVER, IDB_BKSPACE, 0, IDB_BKSPACE, 0, 0, 0);
+	m_btn_Back.SetSkin(IDB_Enter, IDB_Enter, IDB_ENTER_OVER, IDB_Enter, 0, IDB_Enter, 0, 0, 0);
+	m_btn_Space.SetSkin(IDB_SPACE, IDB_SPACE, IDB_SPACE_OVER, IDB_SPACE, 0, IDB_SPACE, 0, 0, 0);
+	m_btn_Confirm.SetSkin(IDB_CONFIRM, IDB_CONFIRM, IDB_CONFIRM_OVER, IDB_CONFIRM, 0, IDB_CONFIRM, 0, 0, 0);
+	m_btn_Korean.SetSkin(IDB_KOREAN, IDB_KOREAN, IDB_KOREAN_OVER, IDB_KOREAN, 0, IDB_KOREAN, 0, 0, 0);
+	m_btn_English.SetSkin(IDB_ENGLISH, IDB_ENGLISH, IDB_ENGLISH_OVER, IDB_ENGLISH, 0, IDB_ENGLISH, 0, 0, 0);
+	m_btn_Number.SetSkin(IDB_NUMBER, IDB_NUMBER, IDB_NUMBER_OVER, IDB_NUMBER, 0, IDB_NUMBER, 0, 0, 0);
 }
 
 // 시스템 버튼 좌표 지정
@@ -593,23 +593,23 @@ void CEye_Computing_DialogDlg::setPosSysBtn()
 // 한글 버튼 이미지 삽입
 void CEye_Computing_DialogDlg::setImgKorBtn()
 {
-	m_btn_GiYeok.SetSkin(IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK, 0, IDB_GIYEOK, 0, 0, 0);
-	m_btn_NiEun.SetSkin(IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, IDB_NIEUN, 0, IDB_NIEUN, 0, 0, 0);
-	m_btn_DiGeut.SetSkin(IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT, 0, IDB_DIGEUT, 0, 0, 0);
-	m_btn_RiEul.SetSkin(IDB_RIEUL, IDB_RIEUL, IDB_RIEUL, IDB_RIEUL, 0, IDB_RIEUL, 0, 0, 0);
-	m_btn_MiEum.SetSkin(IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, IDB_MIEUM, 0, IDB_MIEUM, 0, 0, 0);
-	m_btn_BiEup.SetSkin(IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, IDB_BIEUP, 0, IDB_BIEUP, 0, 0, 0);
-	m_btn_Zzum.SetSkin(IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, IDB_ZZUM, 0, IDB_ZZUM, 0, 0, 0);
-	m_btn_Yi.SetSkin(IDB_Iii, IDB_Iii, IDB_Iii, IDB_Iii, 0, IDB_Iii, 0, 0, 0);
-	m_btn_ShiOt.SetSkin(IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, IDB_SHIOT, 0, IDB_SHIOT, 0, 0, 0);
-	m_btn_Eu.SetSkin(IDB_EU, IDB_EU, IDB_EU, IDB_EU, 0, IDB_EU, 0, 0, 0);
-	m_btn_IEung.SetSkin(IDB_IEUNG, IDB_IEUNG, IDB_IEUNG, IDB_IEUNG, 0, IDB_IEUNG, 0, 0, 0);
-	m_btn_KiEuk.SetSkin(IDB_KIEUK, IDB_KIEUK, IDB_KIEUK, IDB_KIEUK, 0, IDB_KIEUK, 0, 0, 0);
-	m_btn_ChiEut.SetSkin(IDB_CHIEUT, IDB_CHIEUT, IDB_CHIEUT, IDB_CHIEUT, 0, IDB_CHIEUT, 0, 0, 0);
-	m_btn_JiEut.SetSkin(IDB_JIEUT, IDB_JIEUT, IDB_JIEUT, IDB_JIEUT, 0, IDB_JIEUT, 0, 0, 0);
-	m_btn_TiEut.SetSkin(IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, IDB_TIEUT, 0, IDB_TIEUT, 0, 0, 0);
-	m_btn_PiEup.SetSkin(IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, IDB_PIEUP, 0, IDB_PIEUP, 0, 0, 0);
-	m_btn_HiEut.SetSkin(IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, IDB_HIEUT, 0, IDB_HIEUT, 0, 0, 0);
+	m_btn_GiYeok.SetSkin(IDB_GIYEOK, IDB_GIYEOK, IDB_GIYEOK_OVER, IDB_GIYEOK, 0, IDB_GIYEOK, 0, 0, 0);
+	m_btn_NiEun.SetSkin(IDB_NIEUN, IDB_NIEUN, IDB_NIEUN_OVER, IDB_NIEUN, 0, IDB_NIEUN, 0, 0, 0);
+	m_btn_DiGeut.SetSkin(IDB_DIGEUT, IDB_DIGEUT, IDB_DIGEUT_OVER, IDB_DIGEUT, 0, IDB_DIGEUT, 0, 0, 0);
+	m_btn_RiEul.SetSkin(IDB_RIEUL, IDB_RIEUL, IDB_RIEUL_OVER, IDB_RIEUL, 0, IDB_RIEUL, 0, 0, 0);
+	m_btn_MiEum.SetSkin(IDB_MIEUM, IDB_MIEUM, IDB_MIEUM_OVER, IDB_MIEUM, 0, IDB_MIEUM, 0, 0, 0);
+	m_btn_BiEup.SetSkin(IDB_BIEUP, IDB_BIEUP, IDB_BIEUP_OVER, IDB_BIEUP, 0, IDB_BIEUP, 0, 0, 0);
+	m_btn_Zzum.SetSkin(IDB_ZZUM, IDB_ZZUM, IDB_ZZUM_OVER, IDB_ZZUM, 0, IDB_ZZUM, 0, 0, 0);
+	m_btn_Yi.SetSkin(IDB_Iii, IDB_Iii, IDB_YI_OVER, IDB_Iii, 0, IDB_Iii, 0, 0, 0);
+	m_btn_ShiOt.SetSkin(IDB_SHIOT, IDB_SHIOT, IDB_SHIOT_OVER, IDB_SHIOT, 0, IDB_SHIOT, 0, 0, 0);
+	m_btn_Eu.SetSkin(IDB_EU, IDB_EU, IDB_EU_OVER, IDB_EU, 0, IDB_EU, 0, 0, 0);
+	m_btn_IEung.SetSkin(IDB_IEUNG, IDB_IEUNG, IDB_IEUNG_OVER, IDB_IEUNG, 0, IDB_IEUNG, 0, 0, 0);
+	m_btn_KiEuk.SetSkin(IDB_KIEUK, IDB_KIEUK, IDB_KIEUK_OVER, IDB_KIEUK, 0, IDB_KIEUK, 0, 0, 0);
+	m_btn_ChiEut.SetSkin(IDB_CHIEUT, IDB_CHIEUT, IDB_CHIEUT_OVER, IDB_CHIEUT, 0, IDB_CHIEUT, 0, 0, 0);
+	m_btn_JiEut.SetSkin(IDB_JIEUT, IDB_JIEUT, IDB_JIEUT_OVER, IDB_JIEUT, 0, IDB_JIEUT, 0, 0, 0);
+	m_btn_TiEut.SetSkin(IDB_TIEUT, IDB_TIEUT, IDB_TIEUT_OVER, IDB_TIEUT, 0, IDB_TIEUT, 0, 0, 0);
+	m_btn_PiEup.SetSkin(IDB_PIEUP, IDB_PIEUP, IDB_PIEUP_OVER, IDB_PIEUP, 0, IDB_PIEUP, 0, 0, 0);
+	m_btn_HiEut.SetSkin(IDB_HIEUT, IDB_HIEUT, IDB_HIEUT_OVER, IDB_HIEUT, 0, IDB_HIEUT, 0, 0, 0);
 }
 
 // 한글 버튼 좌표 지정
@@ -637,33 +637,33 @@ void CEye_Computing_DialogDlg::setPosKorBtn()
 // 영문 버튼 이미지 삽입
 void CEye_Computing_DialogDlg::setImgEngBtn()
 {
-	m_btn_cptA.SetSkin(IDB_CPT_A, IDB_CPT_A, IDB_CPT_A, IDB_CPT_A, 0, IDB_CPT_A, 0, 0, 0);
-	m_btn_cptC.SetSkin(IDB_CPT_C, IDB_CPT_C, IDB_CPT_C, IDB_CPT_C, 0, IDB_CPT_C, 0, 0, 0);
-	m_btn_cptB.SetSkin(IDB_CPT_B, IDB_CPT_B, IDB_CPT_B, IDB_CPT_B, 0, IDB_CPT_B, 0, 0, 0);
-	m_btn_cptD.SetSkin(IDB_CPT_D, IDB_CPT_D, IDB_CPT_D, IDB_CPT_D, 0, IDB_CPT_D, 0, 0, 0);
-	m_btn_cptE.SetSkin(IDB_CPT_E, IDB_CPT_E, IDB_CPT_E, IDB_CPT_E, 0, IDB_CPT_E, 0, 0, 0);
-	m_btn_cptF.SetSkin(IDB_CPT_F, IDB_CPT_F, IDB_CPT_F, IDB_CPT_F, 0, IDB_CPT_F, 0, 0, 0);
-	m_btn_cptG.SetSkin(IDB_CPT_G, IDB_CPT_G, IDB_CPT_G, IDB_CPT_G, 0, IDB_CPT_G, 0, 0, 0);
-	m_btn_cptH.SetSkin(IDB_CPT_H, IDB_CPT_H, IDB_CPT_H, IDB_CPT_H, 0, IDB_CPT_H, 0, 0, 0);
-	m_btn_cptI.SetSkin(IDB_CPT_I, IDB_CPT_I, IDB_CPT_I, IDB_CPT_I, 0, IDB_CPT_I, 0, 0, 0);
-	m_btn_cptJ.SetSkin(IDB_CPT_J, IDB_CPT_J, IDB_CPT_J, IDB_CPT_J, 0, IDB_CPT_J, 0, 0, 0);
-	m_btn_cptK.SetSkin(IDB_CPT_K, IDB_CPT_K, IDB_CPT_K, IDB_CPT_K, 0, IDB_CPT_K, 0, 0, 0);
-	m_btn_cptM.SetSkin(IDB_CPT_M, IDB_CPT_M, IDB_CPT_M, IDB_CPT_M, 0, IDB_CPT_M, 0, 0, 0);
-	m_btn_cptL.SetSkin(IDB_CPT_L, IDB_CPT_L, IDB_CPT_L, IDB_CPT_L, 0, IDB_CPT_L, 0, 0, 0);
-	m_btn_cptN.SetSkin(IDB_CPT_N, IDB_CPT_N, IDB_CPT_N, IDB_CPT_N, 0, IDB_CPT_N, 0, 0, 0);
-	m_btn_cptP.SetSkin(IDB_CPT_P, IDB_CPT_P, IDB_CPT_P, IDB_CPT_P, 0, IDB_CPT_P, 0, 0, 0);
-	m_btn_cptO.SetSkin(IDB_CPT_O, IDB_CPT_O, IDB_CPT_O, IDB_CPT_O, 0, IDB_CPT_O, 0, 0, 0);
-	m_btn_cptR.SetSkin(IDB_CPT_R, IDB_CPT_R, IDB_CPT_R, IDB_CPT_R, 0, IDB_CPT_R, 0, 0, 0);
-	m_btn_cptQ.SetSkin(IDB_CPT_Q, IDB_CPT_Q, IDB_CPT_Q, IDB_CPT_Q, 0, IDB_CPT_Q, 0, 0, 0);
-	m_btn_cptS.SetSkin(IDB_CPT_S, IDB_CPT_S, IDB_CPT_S, IDB_CPT_S, 0, IDB_CPT_S, 0, 0, 0);
-	m_btn_cptT.SetSkin(IDB_CPT_T, IDB_CPT_T, IDB_CPT_T, IDB_CPT_T, 0, IDB_CPT_T, 0, 0, 0);
-	m_btn_cptU.SetSkin(IDB_CPT_U, IDB_CPT_U, IDB_CPT_U, IDB_CPT_U, 0, IDB_CPT_U, 0, 0, 0);
-	m_btn_cptV.SetSkin(IDB_CPT_V, IDB_CPT_V, IDB_CPT_V, IDB_CPT_V, 0, IDB_CPT_V, 0, 0, 0);
-	m_btn_cptW.SetSkin(IDB_CPT_W, IDB_CPT_W, IDB_CPT_W, IDB_CPT_W, 0, IDB_CPT_W, 0, 0, 0);
-	m_btn_cptX.SetSkin(IDB_CPT_X, IDB_CPT_X, IDB_CPT_X, IDB_CPT_X, 0, IDB_CPT_X, 0, 0, 0);
-	m_btn_cptY.SetSkin(IDB_CPT_Y, IDB_CPT_Y, IDB_CPT_Y, IDB_CPT_Y, 0, IDB_CPT_Y, 0, 0, 0);
-	m_btn_cptZ.SetSkin(IDB_CPT_Z, IDB_CPT_Z, IDB_CPT_Z, IDB_CPT_Z, 0, IDB_CPT_Z, 0, 0, 0);
-}
+	m_btn_cptA.SetSkin(IDB_CPT_A, IDB_CPT_A, IDB_CPT_A_OVER, IDB_CPT_A, 0, IDB_CPT_A, 0, 0, 0);
+	m_btn_cptC.SetSkin(IDB_CPT_C, IDB_CPT_C, IDB_CPT_C_OVER, IDB_CPT_C, 0, IDB_CPT_C, 0, 0, 0);
+	m_btn_cptB.SetSkin(IDB_CPT_B, IDB_CPT_B, IDB_CPT_B_OVER, IDB_CPT_B, 0, IDB_CPT_B, 0, 0, 0);
+	m_btn_cptD.SetSkin(IDB_CPT_D, IDB_CPT_D, IDB_CPT_D_OVER, IDB_CPT_D, 0, IDB_CPT_D, 0, 0, 0);
+	m_btn_cptE.SetSkin(IDB_CPT_E, IDB_CPT_E, IDB_CPT_E_OVER, IDB_CPT_E, 0, IDB_CPT_E, 0, 0, 0);
+	m_btn_cptF.SetSkin(IDB_CPT_F, IDB_CPT_F, IDB_CPT_F_OVER, IDB_CPT_F, 0, IDB_CPT_F, 0, 0, 0);
+	m_btn_cptG.SetSkin(IDB_CPT_G, IDB_CPT_G, IDB_CPT_G_OVER, IDB_CPT_G, 0, IDB_CPT_G, 0, 0, 0);
+	m_btn_cptH.SetSkin(IDB_CPT_H, IDB_CPT_H, IDB_CPT_H_OVER, IDB_CPT_H, 0, IDB_CPT_H, 0, 0, 0);
+	m_btn_cptI.SetSkin(IDB_CPT_I, IDB_CPT_I, IDB_CPT_I_OVER, IDB_CPT_I, 0, IDB_CPT_I, 0, 0, 0);
+	m_btn_cptJ.SetSkin(IDB_CPT_J, IDB_CPT_J, IDB_CPT_J_OVER, IDB_CPT_J, 0, IDB_CPT_J, 0, 0, 0);
+	m_btn_cptK.SetSkin(IDB_CPT_K, IDB_CPT_K, IDB_CPT_K_OVER, IDB_CPT_K, 0, IDB_CPT_K, 0, 0, 0);
+	m_btn_cptM.SetSkin(IDB_CPT_M, IDB_CPT_M, IDB_CPT_M_OVER, IDB_CPT_M, 0, IDB_CPT_M, 0, 0, 0);
+	m_btn_cptL.SetSkin(IDB_CPT_L, IDB_CPT_L, IDB_CPT_L_OVER, IDB_CPT_L, 0, IDB_CPT_L, 0, 0, 0);
+	m_btn_cptN.SetSkin(IDB_CPT_N, IDB_CPT_N, IDB_CPT_N_OVER, IDB_CPT_N, 0, IDB_CPT_N, 0, 0, 0);
+	m_btn_cptP.SetSkin(IDB_CPT_P, IDB_CPT_P, IDB_CPT_P_OVER, IDB_CPT_P, 0, IDB_CPT_P, 0, 0, 0);
+	m_btn_cptO.SetSkin(IDB_CPT_O, IDB_CPT_O, IDB_CPT_O_OVER, IDB_CPT_O, 0, IDB_CPT_O, 0, 0, 0);
+	m_btn_cptR.SetSkin(IDB_CPT_R, IDB_CPT_R, IDB_CPT_R_OVER, IDB_CPT_R, 0, IDB_CPT_R, 0, 0, 0);
+	m_btn_cptQ.SetSkin(IDB_CPT_Q, IDB_CPT_Q, IDB_CPT_Q_OVER, IDB_CPT_Q, 0, IDB_CPT_Q, 0, 0, 0);
+	m_btn_cptS.SetSkin(IDB_CPT_S, IDB_CPT_S, IDB_CPT_S_OVER, IDB_CPT_S, 0, IDB_CPT_S, 0, 0, 0);
+	m_btn_cptT.SetSkin(IDB_CPT_T, IDB_CPT_T, IDB_CPT_T_OVER, IDB_CPT_T, 0, IDB_CPT_T, 0, 0, 0);
+	m_btn_cptU.SetSkin(IDB_CPT_U, IDB_CPT_U, IDB_CPT_U_OVER, IDB_CPT_U, 0, IDB_CPT_U, 0, 0, 0);
+	m_btn_cptV.SetSkin(IDB_CPT_V, IDB_CPT_V, IDB_CPT_V_OVER, IDB_CPT_V, 0, IDB_CPT_V, 0, 0, 0);
+	m_btn_cptW.SetSkin(IDB_CPT_W, IDB_CPT_W, IDB_CPT_W_OVER, IDB_CPT_W, 0, IDB_CPT_W, 0, 0, 0);
+	m_btn_cptX.SetSkin(IDB_CPT_X, IDB_CPT_X, IDB_CPT_X_OVER, IDB_CPT_X, 0, IDB_CPT_X, 0, 0, 0);
+	m_btn_cptY.SetSkin(IDB_CPT_Y, IDB_CPT_Y, IDB_CPT_Y_OVER, IDB_CPT_Y, 0, IDB_CPT_Y, 0, 0, 0);
+	m_btn_cptZ.SetSkin(IDB_CPT_Z, IDB_CPT_Z, IDB_CPT_Z_OVER, IDB_CPT_Z, 0, IDB_CPT_Z, 0, 0, 0);
+}													  
 
 // 영문 버튼 좌표 지정
 void CEye_Computing_DialogDlg::setPosEngBtn()
