@@ -7,7 +7,9 @@
 #include "afxdialogex.h"
 #include "EyeXGaze.h"
 #include "xSkinButton.h"
+#include <imm.h>
 
+#pragma comment( lib, "imm32.lib" )
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -15,18 +17,13 @@
 
 //spacebar click message hooking을 위한 함수 & 변수
 //키보드 hooking이 발생했을 경우 호출되는 함수
+
 LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam);
 HHOOK m_hook = NULL;
 
 
 //토비!
 EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
-
-//시작할 때 한글로 바꿔줄 려고 사용
-bool isKorean = false;
-bool isEnglish = false;
-bool clickedKorean = true;
-bool clickedEnglish = false;
 
 //천지인 할라고 사용
 bool clickedIii = false;
@@ -45,6 +42,12 @@ bool clickedUuuAndZzum = false;
 bool clickedWo = false;
 bool clickedOoo = false;
 
+
+// 한영 키보드 바꾸기
+bool clickedKorean = true;
+bool clickedEnglish = false;
+bool isKorean = false;
+bool isEnglish = false;
 
 //cursor 변수
 
@@ -150,9 +153,7 @@ CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 
 	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
-
-
-
+	
 }
 
 void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
@@ -465,6 +466,7 @@ void CEye_Computing_DialogDlg::OnOK()
 }
 
 
+
 // 마우스 왼쪽 클릭?
 void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
 {
@@ -486,24 +488,9 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 	{
 		::SetForegroundWindow(m_hForegroundWnd);
 		ModifyStyleEx(0, WS_EX_NOACTIVATE);
-		//
-		if ((clickedKorean == true && isKorean == false) || (clickedEnglish == true && isEnglish == false))
-		{
-			INPUT HanToEng;
-			::ZeroMemory(&HanToEng, sizeof(INPUT));
-			HanToEng.type = INPUT_KEYBOARD;
-			HanToEng.ki.wVk = VK_HANGEUL;
-			::SendInput(1, &HanToEng, sizeof(INPUT));
-			HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-			::SendInput(1, &HanToEng, sizeof(INPUT));
-
-			if (clickedKorean)
-				isKorean = TRUE;
-			else
-				isEnglish = TRUE;
-		}
 
 		m_hForegroundWnd = NULL;
+
 	}
 
 	CDialog::OnMouseMove(nFlags, point);
@@ -537,6 +524,61 @@ void CEye_Computing_DialogDlg::initHanguel()
 	clickedOoo = false;
 }
 
+
+//한영 버튼 누르기
+void CEye_Computing_DialogDlg::CheckKorEng()
+{
+	/*
+	INPUT InputHE;
+	::ZeroMemory(&InputHE, sizeof(INPUT));
+	InputHE.type = INPUT_KEYBOARD;
+
+	InputHE.ki.wVk = 0x15;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	*/
+
+	/*
+	DWORD conVersion, senTence;
+	//DWORD Temp;
+	//HIMC hIMC = ImmGetContext(::GetActiveWindow());
+	HIMC hIMC = ImmGetContext(GetSafeHwnd());
+
+	ImmNotifyIME(hIMC, NI_COMPOSITIONSTR, CPS_CANCEL, 0);
+	ImmGetConversionStatus(hIMC, &conVersion, &senTence);
+	//Temp = conVersion & ~IME_CMODE_LANGUAGE;
+
+	INPUT InputHE;
+	::ZeroMemory(&InputHE, sizeof(INPUT));
+	InputHE.type = INPUT_KEYBOARD;
+
+	if (conVersion == 0)
+	{
+		if (clickedKorean)
+		{
+			//conVersion = 1;
+			//::ImmSetConversionStatus(hIMC, conVersion, senTence);
+
+			InputHE.ki.wVk = 0x15;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+			InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+		}
+	}
+	else
+	{
+		if (clickedEnglish)
+		{
+			//conVersion = 0;
+			//::ImmSetConversionStatus(hIMC, conVersion, senTence);
+			InputHE.ki.wVk = 0x15;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+			InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+		}
+	}*/
+}
 
 
 /*
@@ -1054,8 +1096,9 @@ void CEye_Computing_DialogDlg::OnBnClickedIii()
 
 		//ㅒ 씀
 		//시프트 누르고있고
-		InputYae.ki.wVk = 0x10;
-		InputYae.ki.dwFlags = 0;
+		InputYae.ki.wVk = 0x14;
+		::SendInput(1, &InputYae, sizeof(INPUT));
+		InputYae.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYae, sizeof(INPUT));
 		//ㅐ 침
 		InputYae.ki.wVk = 0x4F;
@@ -1063,7 +1106,8 @@ void CEye_Computing_DialogDlg::OnBnClickedIii()
 		InputYae.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYae, sizeof(INPUT));
 		// 시프트 땜
-		InputYae.ki.wVk = 0x10;
+		InputYae.ki.wVk = 0x14;
+		::SendInput(1, &InputYae, sizeof(INPUT));
 		InputYae.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYae, sizeof(INPUT));
 		clickedYa = false;
@@ -1101,19 +1145,22 @@ void CEye_Computing_DialogDlg::OnBnClickedIii()
 		::SendInput(1, &InputYe, sizeof(INPUT));
 
 		//ㅖ 씀
-		//시프트 누르고있고
-		InputYe.ki.wVk = 0x10;
-		InputYe.ki.dwFlags = 0;
+		//캡슬락 누르고
+		InputYe.ki.wVk = 0x14;
+		::SendInput(1, &InputYe, sizeof(INPUT));
+		InputYe.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYe, sizeof(INPUT));
 		//ㅔ 침
 		InputYe.ki.wVk = 0x50;
 		::SendInput(1, &InputYe, sizeof(INPUT));
 		InputYe.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYe, sizeof(INPUT));
-		// 시프트 땜
-		InputYe.ki.wVk = 0x10;
+		// 캡슬락 한번더
+		InputYe.ki.wVk = 0x14;
+		::SendInput(1, &InputYe, sizeof(INPUT));
 		InputYe.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYe, sizeof(INPUT));
+
 		clickedYeo = false;
 	}
 	else if (clickedWa)
@@ -1226,7 +1273,6 @@ void CEye_Computing_DialogDlg::OnBnClickedIii()
 // 모음 - 점
 void CEye_Computing_DialogDlg::OnBnClickedZzum()
 {
-
 	if (clickedIii)
 	{
 		INPUT InputAh;
@@ -1344,7 +1390,6 @@ void CEye_Computing_DialogDlg::OnBnClickedZzum()
 // 모음 - ㅡ
 void CEye_Computing_DialogDlg::OnBnClickedEu()
 {
-
 	if (clickedZzum)
 	{
 		INPUT InputOoo;
@@ -1394,7 +1439,6 @@ void CEye_Computing_DialogDlg::OnBnClickedEu()
 // 자음 - ㄱ
 void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
 {
-
 	initHanguel();
 	/*https://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx */
 	INPUT InputGiYeok;
@@ -1595,7 +1639,7 @@ void CEye_Computing_DialogDlg::OnBnClickedTieut()
 	//keyboard로 입력하겠다.
 	InputTieut.type = INPUT_KEYBOARD;
 	//어떤버튼누를건지
-	InputTieut.ki.wVk = 0x59;
+	InputTieut.ki.wVk = 0x58;
 	//한번눌러주기
 	::SendInput(1, &InputTieut, sizeof(INPUT));
 	//누른거 풀어주기
@@ -1697,11 +1741,26 @@ void CEye_Computing_DialogDlg::OnBnClickedEnter()
 
 void CEye_Computing_DialogDlg::OnBnClickedKorean()
 {
+
 	
 	isKorean = true;
+
+	hideEngBtn();
+	showKorBtn();
+
+	INPUT InputHE;
+	::ZeroMemory(&InputHE, sizeof(INPUT));
+	InputHE.type = INPUT_KEYBOARD;
+
+	InputHE.ki.wVk = 0x15;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+
+
 	clickedKorean = true;
-	isEnglish = false;
 	clickedEnglish = false;
+
 
 	INPUT HanToEng;
 	::ZeroMemory(&HanToEng, sizeof(INPUT));
@@ -1719,26 +1778,28 @@ void CEye_Computing_DialogDlg::OnBnClickedKorean()
 
 }
 
-
 void CEye_Computing_DialogDlg::OnBnClickedEnglish()
 {
+	hideKorBtn();
+	showEngBtn();
 
-	isKorean = false;
-	clickedKorean = false;
-	isEnglish = true;
+	INPUT InputHE;
+	::ZeroMemory(&InputHE, sizeof(INPUT));
+	InputHE.type = INPUT_KEYBOARD;
+
+	InputHE.ki.wVk = 0x15;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+
 	clickedEnglish = true;
+	clickedKorean = false;
 
-	INPUT HanToEng;
-	::ZeroMemory(&HanToEng, sizeof(INPUT));
-	HanToEng.type = INPUT_KEYBOARD;
-	HanToEng.ki.wVk = VK_HANGEUL;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-	HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
 
 	hideKorBtn();
 	hideNumBtn();
 	showEngBtn();
+
 	Invalidate(TRUE);
 }
 

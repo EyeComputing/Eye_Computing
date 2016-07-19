@@ -52,6 +52,7 @@ protected:
 	afx_msg void CEye_Computing_DialogDlg::showNumBtn();
 	afx_msg void CEye_Computing_DialogDlg::hideNumBtn();
 
+	afx_msg void CEye_Computing_DialogDlg::CheckKorEng();
 
 	//afx_msg void CEye_Computing_DialogDlg::Input_Key();
 
