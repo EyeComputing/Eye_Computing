@@ -108,18 +108,18 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 	if (nCode < 0)
 		return CallNextHookEx(m_hook, nCode, wParam, lParam);
 
-	if (wParam == WM_KEYDOWN)
+	if (nCode == HC_ACTION)
 	{
-		if (pKey->vkCode == VK_SPACE)
+		if (GetKeyState(VK_CONTROL)& 0x80)
 		{
 			GetCursorPos(&point); //point 변수에 마우스 좌표 점 저장
 			
-			HWND hWnd = WindowFromPoint(point);  //해당 좌표에 존재하는 window handle 가져오기
+			//HWND hWnd = WindowFromPoint(point);  //해당 좌표에 존재하는 window handle 가져오기
 
-			GetClassName(hWnd, (LPWSTR)ClassName, 128);
+			//GetClassName(hWnd, (LPWSTR)ClassName, 128);
 
-			if (*ClassName)
-				OutputDebugString((LPWSTR)ClassName);
+			//if (*ClassName)
+				//OutputDebugString((LPWSTR)ClassName);
 
 			//마우스 좌표에 존재하는 window를 활성화 시키기
 			//EnableWindow(hWnd, true);
