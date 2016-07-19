@@ -43,10 +43,14 @@ protected:
 	afx_msg void CEye_Computing_DialogDlg::setPosKorBtn();
 	afx_msg void CEye_Computing_DialogDlg::setImgEngBtn();
 	afx_msg void CEye_Computing_DialogDlg::setPosEngBtn();
+	afx_msg void CEye_Computing_DialogDlg::setImgNumBtn();
+	afx_msg void CEye_Computing_DialogDlg::setPosNumBtn();
 	afx_msg void CEye_Computing_DialogDlg::showKorBtn();
 	afx_msg void CEye_Computing_DialogDlg::hideKorBtn();
 	afx_msg void CEye_Computing_DialogDlg::showEngBtn();
 	afx_msg void CEye_Computing_DialogDlg::hideEngBtn();
+	afx_msg void CEye_Computing_DialogDlg::showNumBtn();
+	afx_msg void CEye_Computing_DialogDlg::hideNumBtn();
 
 
 	//afx_msg void CEye_Computing_DialogDlg::Input_Key();
@@ -167,4 +171,29 @@ public:
 	afx_msg void OnBnClickedCptY();
 	afx_msg void OnBnClickedCptZ();
 
+	CxSkinButton m_btn_Accent;
+	CxSkinButton m_btn_One;
+	CxSkinButton m_btn_Two;
+	CxSkinButton m_btn_Three;
+	CxSkinButton m_btn_Four;
+	CxSkinButton m_btn_Five;
+	CxSkinButton m_btn_Six;
+	CxSkinButton m_btn_Seven;
+	CxSkinButton m_btn_Eight;
+	CxSkinButton m_btn_Nine;
+	CxSkinButton m_btn_Zero;
+	CxSkinButton m_btn_BkSlash;
+	CxSkinButton m_btn_Comma;
+	CxSkinButton m_btn_Dot;
+	CxSkinButton m_btn_Equal;
+	CxSkinButton m_btn_Exclaim;
+	CxSkinButton m_btn_Hyphen;
+	CxSkinButton m_btn_Question;
+	CxSkinButton m_btn_Semicolon;
+	CxSkinButton m_btn_SgQuot;
+	CxSkinButton m_btn_Shift;
+	CxSkinButton m_btn_Slash;
+	CxSkinButton m_btn_SqBracketClosed;
+	CxSkinButton m_btn_SqBracketOpened;
+	afx_msg void OnBnClickedNumber();
 };
