@@ -7,7 +7,9 @@
 #include "afxdialogex.h"
 #include "EyeXGaze.h"
 #include "xSkinButton.h"
+#include <imm.h>
 
+#pragma comment( lib, "imm32.lib" )
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -15,18 +17,13 @@
 
 //spacebar click message hooking을 위한 함수 & 변수
 //키보드 hooking이 발생했을 경우 호출되는 함수
+
 LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam);
 HHOOK m_hook = NULL;
 
 
 //토비!
 EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
-
-//시작할 때 한글로 바꿔줄 려고 사용
-bool isKorean = false;
-bool isEnglish = false;
-bool clickedKorean = true;
-bool clickedEnglish = false;
 
 //천지인 할라고 사용
 bool clickedIii = false;
@@ -45,6 +42,12 @@ bool clickedUuuAndZzum = false;
 bool clickedWo = false;
 bool clickedOoo = false;
 
+
+// 한영 키보드 바꾸기
+bool clickedKorean = true;
+bool clickedEnglish = false;
+bool isKorean = false;
+bool isEnglish = false;
 
 //cursor 변수
 
@@ -150,9 +153,7 @@ CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 
 	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
-
-
-
+	
 }
 
 void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
@@ -209,6 +210,30 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_KOREAN, m_btn_Korean);
 	DDX_Control(pDX, IDC_ENGLISH, m_btn_English);
 	DDX_Control(pDX, IDC_NUMBER, m_btn_Number);
+	DDX_Control(pDX, IDC_ACCENT, m_btn_Accent);
+	DDX_Control(pDX, IDC_ONE, m_btn_One);
+	DDX_Control(pDX, IDC_TWO, m_btn_Two);
+	DDX_Control(pDX, IDC_THREE, m_btn_Three);
+	DDX_Control(pDX, IDC_FOUR, m_btn_Four);
+	DDX_Control(pDX, IDC_FIVE, m_btn_Five);
+	DDX_Control(pDX, IDC_SIX, m_btn_Six);
+	DDX_Control(pDX, IDC_SEVEN, m_btn_Seven);
+	DDX_Control(pDX, IDC_EIGHT, m_btn_Eight);
+	DDX_Control(pDX, IDC_NINE, m_btn_Nine);
+	DDX_Control(pDX, IDC_ZERO, m_btn_Zero);
+	DDX_Control(pDX, IDC_BKSLASH, m_btn_BkSlash);
+	DDX_Control(pDX, IDC_COMMA, m_btn_Comma);
+	DDX_Control(pDX, IDC_DOT, m_btn_Dot);
+	DDX_Control(pDX, IDC_EQUAL, m_btn_Equal);
+	DDX_Control(pDX, IDC_EXCLAIM, m_btn_Exclaim);
+	DDX_Control(pDX, IDC_HYPHEN, m_btn_Hyphen);
+	DDX_Control(pDX, IDC_QUESTION, m_btn_Question);
+	DDX_Control(pDX, IDC_SEMICOLON, m_btn_Semicolon);
+	DDX_Control(pDX, IDC_SGQUOT, m_btn_SgQuot);
+	DDX_Control(pDX, IDC_SHIFT, m_btn_Shift);
+	DDX_Control(pDX, IDC_SLASH, m_btn_Slash);
+	DDX_Control(pDX, IDC_SQBRACKET_CLOSE, m_btn_SqBracketClosed);
+	DDX_Control(pDX, IDC_SQBRACKET_OPEN, m_btn_SqBracketOpened);
 }
 
 BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
@@ -270,6 +295,7 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 
 	ON_BN_CLICKED(IDC_KOREAN, &CEye_Computing_DialogDlg::OnBnClickedKorean)
 	ON_BN_CLICKED(IDC_ENGLISH, &CEye_Computing_DialogDlg::OnBnClickedEnglish)
+	ON_BN_CLICKED(IDC_NUMBER, &CEye_Computing_DialogDlg::OnBnClickedNumber)
 END_MESSAGE_MAP()
 
 
@@ -305,8 +331,13 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	setImgEngBtn();
 	// 영어 버튼 좌표 지정
 	setPosEngBtn();
-	// 영어 버튼 숨기기
+	// 숫자 버튼 이미지 삽입
+	setImgNumBtn();
+	// 숫자 버튼 좌표 지정
+	setPosNumBtn();
+	// 영어, 숫자 버튼 숨기기
 	hideEngBtn();
+	hideNumBtn();
 
 	// IDM_ABOUTBOX는 시스템 명령 범위에 있어야 합니다.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
@@ -435,6 +466,7 @@ void CEye_Computing_DialogDlg::OnOK()
 }
 
 
+
 // 마우스 왼쪽 클릭?
 void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
 {
@@ -456,24 +488,9 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 	{
 		::SetForegroundWindow(m_hForegroundWnd);
 		ModifyStyleEx(0, WS_EX_NOACTIVATE);
-		//
-		if ((clickedKorean == true && isKorean == false) || (clickedEnglish == true && isEnglish == false))
-		{
-			INPUT HanToEng;
-			::ZeroMemory(&HanToEng, sizeof(INPUT));
-			HanToEng.type = INPUT_KEYBOARD;
-			HanToEng.ki.wVk = VK_HANGEUL;
-			::SendInput(1, &HanToEng, sizeof(INPUT));
-			HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-			::SendInput(1, &HanToEng, sizeof(INPUT));
-
-			if (clickedKorean)
-				isKorean = TRUE;
-			else
-				isEnglish = TRUE;
-		}
 
 		m_hForegroundWnd = NULL;
+
 	}
 
 	CDialog::OnMouseMove(nFlags, point);
@@ -507,6 +524,61 @@ void CEye_Computing_DialogDlg::initHanguel()
 	clickedOoo = false;
 }
 
+
+//한영 버튼 누르기
+void CEye_Computing_DialogDlg::CheckKorEng()
+{
+	/*
+	INPUT InputHE;
+	::ZeroMemory(&InputHE, sizeof(INPUT));
+	InputHE.type = INPUT_KEYBOARD;
+
+	InputHE.ki.wVk = 0x15;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	*/
+
+	/*
+	DWORD conVersion, senTence;
+	//DWORD Temp;
+	//HIMC hIMC = ImmGetContext(::GetActiveWindow());
+	HIMC hIMC = ImmGetContext(GetSafeHwnd());
+
+	ImmNotifyIME(hIMC, NI_COMPOSITIONSTR, CPS_CANCEL, 0);
+	ImmGetConversionStatus(hIMC, &conVersion, &senTence);
+	//Temp = conVersion & ~IME_CMODE_LANGUAGE;
+
+	INPUT InputHE;
+	::ZeroMemory(&InputHE, sizeof(INPUT));
+	InputHE.type = INPUT_KEYBOARD;
+
+	if (conVersion == 0)
+	{
+		if (clickedKorean)
+		{
+			//conVersion = 1;
+			//::ImmSetConversionStatus(hIMC, conVersion, senTence);
+
+			InputHE.ki.wVk = 0x15;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+			InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+		}
+	}
+	else
+	{
+		if (clickedEnglish)
+		{
+			//conVersion = 0;
+			//::ImmSetConversionStatus(hIMC, conVersion, senTence);
+			InputHE.ki.wVk = 0x15;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+			InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+		}
+	}*/
+}
 
 
 /*
@@ -696,6 +768,66 @@ void CEye_Computing_DialogDlg::setPosEngBtn()
 	GetDlgItem(IDC_CPT_Z)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
 }
 
+// 숫자, 특수문자 버튼 이미지 삽입
+void CEye_Computing_DialogDlg::setImgNumBtn()
+{
+	m_btn_Accent.SetSkin(IDB_ACCENT, IDB_ACCENT, IDB_ACCENT_OVER, IDB_ACCENT, 0, IDB_ACCENT, 0, 0, 0);
+	m_btn_One.SetSkin(IDB_ONE, IDB_ONE, IDB_ONE_OVER, IDB_ONE, 0, IDB_ONE, 0, 0, 0);
+	m_btn_Two.SetSkin(IDB_TWO, IDB_TWO, IDB_TWO_OVER, IDB_TWO, 0, IDB_TWO, 0, 0, 0);
+	m_btn_Three.SetSkin(IDB_THREE, IDB_THREE, IDB_THREE_OVER, IDB_THREE, 0, IDB_THREE, 0, 0, 0);
+	m_btn_Four.SetSkin(IDB_FOUR, IDB_FOUR, IDB_FOUR_OVER, IDB_FOUR, 0, IDB_FOUR, 0, 0, 0);
+	m_btn_Five.SetSkin(IDB_FIVE, IDB_FIVE, IDB_FIVE_OVER, IDB_FIVE, 0, IDB_FIVE, 0, 0, 0);
+	m_btn_Six.SetSkin(IDB_SIX, IDB_SIX, IDB_SIX_OVER, IDB_SIX, 0, IDB_SIX, 0, 0, 0);
+	m_btn_Seven.SetSkin(IDB_SEVEN, IDB_SEVEN, IDB_SEVEN_OVER, IDB_SEVEN, 0, IDB_SEVEN, 0, 0, 0);
+	m_btn_Eight.SetSkin(IDB_EIGHT, IDB_EIGHT, IDB_EIGHT_OVER, IDB_EIGHT, 0, IDB_EIGHT, 0, 0, 0);
+	m_btn_Nine.SetSkin(IDB_NINE, IDB_NINE, IDB_NINE_OVER, IDB_NINE, 0, IDB_NINE, 0, 0, 0);
+	m_btn_Zero.SetSkin(IDB_ZERO, IDB_ZERO, IDB_ZERO_OVER, IDB_ZERO, 0, IDB_ZERO, 0, 0, 0);
+	m_btn_BkSlash.SetSkin(IDB_BKSLASH, IDB_BKSLASH, IDB_BKSLASH_OVER, IDB_BKSLASH, 0, IDB_BKSLASH, 0, 0, 0);
+	m_btn_Comma.SetSkin(IDB_COMMA, IDB_COMMA, IDB_COMMA_OVER, IDB_COMMA, 0, IDB_COMMA, 0, 0, 0);
+	m_btn_Dot.SetSkin(IDB_DOT, IDB_DOT, IDB_DOT_OVER, IDB_DOT, 0, IDB_DOT, 0, 0, 0);
+	m_btn_Equal.SetSkin(IDB_EQUAL, IDB_EQUAL, IDB_EQUAL_OVER, IDB_EQUAL, 0, IDB_EQUAL, 0, 0, 0);
+	m_btn_Exclaim.SetSkin(IDB_EXCLAIM, IDB_EXCLAIM, IDB_EXCLAIM_OVER, IDB_EXCLAIM, 0, IDB_EXCLAIM, 0, 0, 0);
+	m_btn_Hyphen.SetSkin(IDB_HYPHEN, IDB_HYPHEN, IDB_HYPHEN_OVER, IDB_HYPHEN, 0, IDB_HYPHEN, 0, 0, 0);
+	m_btn_Question.SetSkin(IDB_QUESTION, IDB_QUESTION, IDB_QUESTION_OVER, IDB_QUESTION, 0, IDB_QUESTION, 0, 0, 0);
+	m_btn_Semicolon.SetSkin(IDB_SEMICOLON, IDB_SEMICOLON, IDB_SEMICOLON_OVER, IDB_SEMICOLON, 0, IDB_SEMICOLON, 0, 0, 0);
+	m_btn_SgQuot.SetSkin(IDB_SGQUOT, IDB_SGQUOT, IDB_SGQUOT_OVER, IDB_SGQUOT, 0, IDB_SGQUOT, 0, 0, 0);
+	m_btn_Shift.SetSkin(IDB_N_SHIFT, IDB_N_SHIFT, IDB_N_SHIFT_OVER, IDB_N_SHIFT, 0, IDB_N_SHIFT, 0, 0, 0);
+	m_btn_Slash.SetSkin(IDB_SLASH, IDB_SLASH, IDB_SLASH_OVER, IDB_SLASH, 0, IDB_SLASH, 0, 0, 0);
+	m_btn_SqBracketClosed.SetSkin(IDB_SQBRACKET_CLOSE, IDB_SQBRACKET_CLOSE, IDB_SQBRACKET_CLOSE_OVER, IDB_SQBRACKET_CLOSE, 0, IDB_SQBRACKET_CLOSE, 0, 0, 0);
+	m_btn_SqBracketOpened.SetSkin(IDB_SQBRACKET_OPEN, IDB_SQBRACKET_OPEN, IDB_SQBRACKET_OPEN_OVER, IDB_SQBRACKET_OPEN, 0, IDB_SQBRACKET_OPEN, 0, 0, 0);
+}
+
+// 숫자, 특수문자 버튼 좌표 지정
+void CEye_Computing_DialogDlg::setPosNumBtn()
+{
+
+	GetDlgItem(IDC_ZERO)->SetWindowPos(NULL, 171, 367, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_EQUAL)->SetWindowPos(NULL, 310, 357, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_HYPHEN)->SetWindowPos(NULL, 241, 378, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SEVEN)->SetWindowPos(NULL, 89, 196, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SLASH)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SGQUOT)->SetWindowPos(NULL, 373, 242, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_ONE)->SetWindowPos(NULL, 14, 185, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_FOUR)->SetWindowPos(NULL, 105, 416, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_EIGHT)->SetWindowPos(NULL, 87, 264, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SQBRACKET_OPEN)->SetWindowPos(NULL, 272, 449, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_FIVE)->SetWindowPos(NULL, 185, 448, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_BKSLASH)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_NINE)->SetWindowPos(NULL, 116, 326, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_ACCENT)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_COMMA)->SetWindowPos(NULL, 361, 172, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SEMICOLON)->SetWindowPos(NULL, 354, 310, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_THREE)->SetWindowPos(NULL, 47, 356, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SIX)->SetWindowPos(NULL, 121, 134, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SQBRACKET_CLOSE)->SetWindowPos(NULL, 352, 417, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_DOT)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_TWO)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SHIFT)->SetWindowPos(NULL, 227, 175, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_EXCLAIM)->SetWindowPos(NULL, 168, 235, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_QUESTION)->SetWindowPos(NULL, 281, 232, 150, 150, SWP_NOSIZE);
+}
+
+
 // 한글 버튼 보이기
 void CEye_Computing_DialogDlg::showKorBtn()
 {
@@ -802,6 +934,64 @@ void CEye_Computing_DialogDlg::hideEngBtn()
 	GetDlgItem(IDC_CPT_Z)->ShowWindow(FALSE);
 }
 
+// 숫자 버튼 보이기
+void CEye_Computing_DialogDlg::showNumBtn()
+{
+	GetDlgItem(IDC_ACCENT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_ONE)->ShowWindow(TRUE);
+	GetDlgItem(IDC_TWO)->ShowWindow(TRUE);
+	GetDlgItem(IDC_THREE)->ShowWindow(TRUE);
+	GetDlgItem(IDC_FOUR)->ShowWindow(TRUE);
+	GetDlgItem(IDC_FIVE)->ShowWindow(TRUE);
+	GetDlgItem(IDC_SIX)->ShowWindow(TRUE);
+	GetDlgItem(IDC_SEVEN)->ShowWindow(TRUE);
+	GetDlgItem(IDC_EIGHT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_NINE)->ShowWindow(TRUE);
+	GetDlgItem(IDC_ZERO)->ShowWindow(TRUE);
+	GetDlgItem(IDC_BKSLASH)->ShowWindow(TRUE);
+	GetDlgItem(IDC_COMMA)->ShowWindow(TRUE);
+	GetDlgItem(IDC_DOT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_EQUAL)->ShowWindow(TRUE);
+	GetDlgItem(IDC_EXCLAIM)->ShowWindow(TRUE);
+	GetDlgItem(IDC_HYPHEN)->ShowWindow(TRUE);
+	GetDlgItem(IDC_QUESTION)->ShowWindow(TRUE);
+	GetDlgItem(IDC_SEMICOLON)->ShowWindow(TRUE);
+	GetDlgItem(IDC_SGQUOT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_SHIFT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_SLASH)->ShowWindow(TRUE);
+	GetDlgItem(IDC_SQBRACKET_CLOSE)->ShowWindow(TRUE);
+	GetDlgItem(IDC_SQBRACKET_OPEN)->ShowWindow(TRUE);
+}
+
+// 숫자 버튼 숨기기
+void CEye_Computing_DialogDlg::hideNumBtn()
+{
+	GetDlgItem(IDC_ACCENT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_ONE)->ShowWindow(FALSE);
+	GetDlgItem(IDC_TWO)->ShowWindow(FALSE);
+	GetDlgItem(IDC_THREE)->ShowWindow(FALSE);
+	GetDlgItem(IDC_FOUR)->ShowWindow(FALSE);
+	GetDlgItem(IDC_FIVE)->ShowWindow(FALSE);
+	GetDlgItem(IDC_SIX)->ShowWindow(FALSE);
+	GetDlgItem(IDC_SEVEN)->ShowWindow(FALSE);
+	GetDlgItem(IDC_EIGHT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_NINE)->ShowWindow(FALSE);
+	GetDlgItem(IDC_ZERO)->ShowWindow(FALSE);
+	GetDlgItem(IDC_BKSLASH)->ShowWindow(FALSE);
+	GetDlgItem(IDC_COMMA)->ShowWindow(FALSE);
+	GetDlgItem(IDC_DOT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_EQUAL)->ShowWindow(FALSE);
+	GetDlgItem(IDC_EXCLAIM)->ShowWindow(FALSE);
+	GetDlgItem(IDC_HYPHEN)->ShowWindow(FALSE);
+	GetDlgItem(IDC_QUESTION)->ShowWindow(FALSE);
+	GetDlgItem(IDC_SEMICOLON)->ShowWindow(FALSE);
+	GetDlgItem(IDC_SGQUOT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_SHIFT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_SLASH)->ShowWindow(FALSE);
+	GetDlgItem(IDC_SQBRACKET_CLOSE)->ShowWindow(FALSE);
+	GetDlgItem(IDC_SQBRACKET_OPEN)->ShowWindow(FALSE);
+}
+
 
 
 
@@ -906,8 +1096,9 @@ void CEye_Computing_DialogDlg::OnBnClickedIii()
 
 		//ㅒ 씀
 		//시프트 누르고있고
-		InputYae.ki.wVk = 0x10;
-		InputYae.ki.dwFlags = 0;
+		InputYae.ki.wVk = 0x14;
+		::SendInput(1, &InputYae, sizeof(INPUT));
+		InputYae.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYae, sizeof(INPUT));
 		//ㅐ 침
 		InputYae.ki.wVk = 0x4F;
@@ -915,7 +1106,8 @@ void CEye_Computing_DialogDlg::OnBnClickedIii()
 		InputYae.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYae, sizeof(INPUT));
 		// 시프트 땜
-		InputYae.ki.wVk = 0x10;
+		InputYae.ki.wVk = 0x14;
+		::SendInput(1, &InputYae, sizeof(INPUT));
 		InputYae.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYae, sizeof(INPUT));
 		clickedYa = false;
@@ -953,19 +1145,22 @@ void CEye_Computing_DialogDlg::OnBnClickedIii()
 		::SendInput(1, &InputYe, sizeof(INPUT));
 
 		//ㅖ 씀
-		//시프트 누르고있고
-		InputYe.ki.wVk = 0x10;
-		InputYe.ki.dwFlags = 0;
+		//캡슬락 누르고
+		InputYe.ki.wVk = 0x14;
+		::SendInput(1, &InputYe, sizeof(INPUT));
+		InputYe.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYe, sizeof(INPUT));
 		//ㅔ 침
 		InputYe.ki.wVk = 0x50;
 		::SendInput(1, &InputYe, sizeof(INPUT));
 		InputYe.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYe, sizeof(INPUT));
-		// 시프트 땜
-		InputYe.ki.wVk = 0x10;
+		// 캡슬락 한번더
+		InputYe.ki.wVk = 0x14;
+		::SendInput(1, &InputYe, sizeof(INPUT));
 		InputYe.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputYe, sizeof(INPUT));
+
 		clickedYeo = false;
 	}
 	else if (clickedWa)
@@ -1078,7 +1273,6 @@ void CEye_Computing_DialogDlg::OnBnClickedIii()
 // 모음 - 점
 void CEye_Computing_DialogDlg::OnBnClickedZzum()
 {
-
 	if (clickedIii)
 	{
 		INPUT InputAh;
@@ -1196,7 +1390,6 @@ void CEye_Computing_DialogDlg::OnBnClickedZzum()
 // 모음 - ㅡ
 void CEye_Computing_DialogDlg::OnBnClickedEu()
 {
-
 	if (clickedZzum)
 	{
 		INPUT InputOoo;
@@ -1246,7 +1439,6 @@ void CEye_Computing_DialogDlg::OnBnClickedEu()
 // 자음 - ㄱ
 void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
 {
-
 	initHanguel();
 	/*https://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx */
 	INPUT InputGiYeok;
@@ -1352,7 +1544,7 @@ void CEye_Computing_DialogDlg::OnBnClickedBieup()
 	InputBiEup.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputBiEup, sizeof(INPUT));
 }
-// 자음 - ㅅ
+// 자음 - 
 void CEye_Computing_DialogDlg::OnBnClickedShiot()
 {
 	initHanguel();
@@ -1447,7 +1639,7 @@ void CEye_Computing_DialogDlg::OnBnClickedTieut()
 	//keyboard로 입력하겠다.
 	InputTieut.type = INPUT_KEYBOARD;
 	//어떤버튼누를건지
-	InputTieut.ki.wVk = 0x59;
+	InputTieut.ki.wVk = 0x58;
 	//한번눌러주기
 	::SendInput(1, &InputTieut, sizeof(INPUT));
 	//누른거 풀어주기
@@ -1549,13 +1741,26 @@ void CEye_Computing_DialogDlg::OnBnClickedEnter()
 
 void CEye_Computing_DialogDlg::OnBnClickedKorean()
 {
-	hideEngBtn();
-	showKorBtn();
+
 	
 	isKorean = true;
+
+	hideEngBtn();
+	showKorBtn();
+
+	INPUT InputHE;
+	::ZeroMemory(&InputHE, sizeof(INPUT));
+	InputHE.type = INPUT_KEYBOARD;
+
+	InputHE.ki.wVk = 0x15;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+
+
 	clickedKorean = true;
-	isEnglish = false;
 	clickedEnglish = false;
+
 
 	INPUT HanToEng;
 	::ZeroMemory(&HanToEng, sizeof(INPUT));
@@ -1564,30 +1769,45 @@ void CEye_Computing_DialogDlg::OnBnClickedKorean()
 	::SendInput(1, &HanToEng, sizeof(INPUT));
 	HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &HanToEng, sizeof(INPUT));
+
+	showKorBtn();
+	hideNumBtn();
+	hideEngBtn();
 	
 	Invalidate(TRUE);
 
 }
 
-
 void CEye_Computing_DialogDlg::OnBnClickedEnglish()
 {
-
-	isKorean = false;
-	clickedKorean = false;
-	isEnglish = true;
-	clickedEnglish = true;
-
-	INPUT HanToEng;
-	::ZeroMemory(&HanToEng, sizeof(INPUT));
-	HanToEng.type = INPUT_KEYBOARD;
-	HanToEng.ki.wVk = VK_HANGEUL;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-	HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-
 	hideKorBtn();
 	showEngBtn();
+
+	INPUT InputHE;
+	::ZeroMemory(&InputHE, sizeof(INPUT));
+	InputHE.type = INPUT_KEYBOARD;
+
+	InputHE.ki.wVk = 0x15;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+
+	clickedEnglish = true;
+	clickedKorean = false;
+
+
+	hideKorBtn();
+	hideNumBtn();
+	showEngBtn();
+
+	Invalidate(TRUE);
+}
+
+void CEye_Computing_DialogDlg::OnBnClickedNumber()
+{
+	hideKorBtn();
+	hideEngBtn();
+	showNumBtn();
 	Invalidate(TRUE);
 }
 
@@ -2032,3 +2252,6 @@ void CEye_Computing_DialogDlg::OnBnClickedCptZ()
 	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputButton, sizeof(INPUT));
 }
+
+
+
