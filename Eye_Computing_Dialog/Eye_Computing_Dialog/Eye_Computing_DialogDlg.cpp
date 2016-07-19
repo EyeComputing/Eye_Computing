@@ -9,24 +9,21 @@
 #include "xSkinButton.h"
 #include <imm.h>
 
+#pragma comment( lib, "imm32.lib" )
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 //spacebar click message hooking을 위한 함수 & 변수
 //키보드 hooking이 발생했을 경우 호출되는 함수
+
 LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam);
 HHOOK m_hook = NULL;
 
 
 //토비!
 EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
-
-//시작할 때 한글로 바꿔줄 려고 사용
-bool isKorean = false;
-bool isEnglish = false;
-bool clickedKorean = true;
-bool clickedEnglish = false;
 
 //천지인 할라고 사용
 bool clickedIii = false;
@@ -150,9 +147,7 @@ CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 
 	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
-
-
-
+	
 }
 
 void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
@@ -439,33 +434,13 @@ void CEye_Computing_DialogDlg::OnOK()
 // 마우스 왼쪽 클릭?
 void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
 {
-	DWORD conVersion, senTence;
-	HIMC hIMC = ImmGetContext(m_hWnd);
-	ImmGetConversionStatus(hIMC, &conVersion, &senTence);
-	if (conVersion == 0)
-	{
-		if (clickedKorean)
-		{
-			conVersion = 1;
-			ImmSetConversionStatus(hIMC, conVersion, senTence);
-		}
-	}
-	else
-	{
-		if (clickedEnglish)
-		{
-			conVersion = 0;
-			ImmSetConversionStatus(hIMC, conVersion, senTence);
-		}
-	}
-
-
 	if (!m_hForegroundWnd)
 	{
 		m_hForegroundWnd = ::GetForegroundWindow();
 		ModifyStyleEx(WS_EX_NOACTIVATE, 0);
 		SetForegroundWindow();
 	}
+
 	//키보드가 항상 최상위에 위치하도록  
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 	
@@ -478,22 +453,6 @@ void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
 	{
 		::SetForegroundWindow(m_hForegroundWnd);
 		ModifyStyleEx(0, WS_EX_NOACTIVATE);
-		//
-		if ((clickedKorean == true && isKorean == false) || (clickedEnglish == true && isEnglish == false))
-		{
-			INPUT HanToEng;
-			::ZeroMemory(&HanToEng, sizeof(INPUT));
-			HanToEng.type = INPUT_KEYBOARD;
-			HanToEng.ki.wVk = VK_HANGEUL;
-			::SendInput(1, &HanToEng, sizeof(INPUT));
-			HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-			::SendInput(1, &HanToEng, sizeof(INPUT));
-
-			if (clickedKorean)
-				isKorean = TRUE;
-			else
-				isEnglish = TRUE;
-		}
 
 		m_hForegroundWnd = NULL;
 	}
@@ -532,22 +491,26 @@ void CEye_Computing_DialogDlg::initHanguel()
 
 
 void CEye_Computing_DialogDlg::CheckKorEng()
-{
-	if ((clickedKorean == true && isKorean == false) || (clickedEnglish == true && isEnglish == false))
+{/*
+	DWORD conVersion, senTence;
+	HIMC hIMC = ImmGetContext(m_hWnd);
+	BOOL ime_flag = ImmGetConversionStatus(hIMC, &conVersion, &senTence);
+	if (conVersion & IME_CMODE_NATIVE)
 	{
-		INPUT HanToEng;
-		::ZeroMemory(&HanToEng, sizeof(INPUT));
-		HanToEng.type = INPUT_KEYBOARD;
-		HanToEng.ki.wVk = VK_HANGEUL;
-		::SendInput(1, &HanToEng, sizeof(INPUT));
-		HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &HanToEng, sizeof(INPUT));
-
-		if (clickedKorean)
-			isKorean = TRUE;
-		else
-			isEnglish = TRUE;
+		if (clickedEnglish)
+		{
+			conVersion = IME_CMODE_NATIVE;
+			ImmSetConversionStatus(hIMC, conVersion, senTence);
+		}
 	}
+	else
+	{
+		if (clickedKorean)
+		{
+			conVersion = IME_CMODE_CHARCODE;
+			ImmSetConversionStatus(hIMC, conVersion, senTence);
+		}
+	}*/
 }
 
 
@@ -1594,41 +1557,15 @@ void CEye_Computing_DialogDlg::OnBnClickedKorean()
 	hideEngBtn();
 	showKorBtn();
 	
-	isKorean = true;
-	clickedKorean = true;
-	isEnglish = false;
-	clickedEnglish = false;
-
-	INPUT HanToEng;
-	::ZeroMemory(&HanToEng, sizeof(INPUT));
-	HanToEng.type = INPUT_KEYBOARD;
-	HanToEng.ki.wVk = VK_HANGEUL;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-	HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-	
 	Invalidate(TRUE);
 
 }
 
 void CEye_Computing_DialogDlg::OnBnClickedEnglish()
 {
-
-	isKorean = false;
-	clickedKorean = false;
-	isEnglish = true;
-	clickedEnglish = true;
-
-	INPUT HanToEng;
-	::ZeroMemory(&HanToEng, sizeof(INPUT));
-	HanToEng.type = INPUT_KEYBOARD;
-	HanToEng.ki.wVk = VK_HANGEUL;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-	HanToEng.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &HanToEng, sizeof(INPUT));
-
 	hideKorBtn();
 	showEngBtn();
+
 	Invalidate(TRUE);
 }
 
