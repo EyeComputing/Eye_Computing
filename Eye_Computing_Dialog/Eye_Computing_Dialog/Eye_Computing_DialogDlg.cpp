@@ -498,6 +498,43 @@ void CEye_Computing_DialogDlg::initHanguel()
 //한영 버튼 누르기
 void CEye_Computing_DialogDlg::CheckKorEng()
 {
+
+	if (clickedKorean)
+	{
+		if (isKorean == false)
+		{
+			INPUT InputHE;
+			::ZeroMemory(&InputHE, sizeof(INPUT));
+			InputHE.type = INPUT_KEYBOARD;
+
+			InputHE.ki.wVk = 0x15;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+			InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+
+			isKorean = true;
+			isEnglish = false;
+			clickedEnglish = false;
+		}
+	}
+	else if (clickedEnglish)
+	{
+		if (isEnglish == false)
+		{
+			INPUT InputHE;
+			::ZeroMemory(&InputHE, sizeof(INPUT));
+			InputHE.type = INPUT_KEYBOARD;
+
+			InputHE.ki.wVk = 0x15;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+			InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &InputHE, sizeof(INPUT));
+
+			isKorean = false;
+			isEnglish = true;
+			clickedKorean = false;
+		}
+	}
 	/*
 	INPUT InputHE;
 	::ZeroMemory(&InputHE, sizeof(INPUT));
@@ -885,7 +922,7 @@ void CEye_Computing_DialogDlg::hideEngBtn()
 // 모음 - ㅣ
 void CEye_Computing_DialogDlg::OnBnClickedIii()
 {
-
+	CheckKorEng();
 	if (clickedZzum)
 	{
 		INPUT InputEo;
@@ -1125,6 +1162,7 @@ void CEye_Computing_DialogDlg::OnBnClickedIii()
 // 모음 - 점
 void CEye_Computing_DialogDlg::OnBnClickedZzum()
 {
+	CheckKorEng();
 	if (clickedIii)
 	{
 		INPUT InputAh;
@@ -1242,6 +1280,7 @@ void CEye_Computing_DialogDlg::OnBnClickedZzum()
 // 모음 - ㅡ
 void CEye_Computing_DialogDlg::OnBnClickedEu()
 {
+	CheckKorEng();
 	if (clickedZzum)
 	{
 		INPUT InputOoo;
@@ -1291,6 +1330,7 @@ void CEye_Computing_DialogDlg::OnBnClickedEu()
 // 자음 - ㄱ
 void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
 {
+	CheckKorEng();
 	initHanguel();
 	/*https://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx */
 	INPUT InputGiYeok;
@@ -1309,7 +1349,7 @@ void CEye_Computing_DialogDlg::OnBnClickedGiyeok()
 // 자음 - ㄴ
 void CEye_Computing_DialogDlg::OnBnClickedNieun()
 {
-
+	CheckKorEng();
 	initHanguel();
 	INPUT InputNieun;
 	//initialize
@@ -1327,7 +1367,7 @@ void CEye_Computing_DialogDlg::OnBnClickedNieun()
 // 자음 - ㄷ
 void CEye_Computing_DialogDlg::OnBnClickedDigeut()
 {
-	
+	CheckKorEng();
 	initHanguel();
 	INPUT InputDigeut;
 	//initialize
@@ -1345,7 +1385,7 @@ void CEye_Computing_DialogDlg::OnBnClickedDigeut()
 //자음 - ㄹ
 void CEye_Computing_DialogDlg::OnBnClickedRieul()
 {
-
+	CheckKorEng();
 	initHanguel();
 	INPUT InputRieul;
 	//initialize
@@ -1363,7 +1403,7 @@ void CEye_Computing_DialogDlg::OnBnClickedRieul()
 //자음 - ㅁ
 void CEye_Computing_DialogDlg::OnBnClickedMieum()
 {
-
+	CheckKorEng();
 	initHanguel();
 	INPUT InputMiEum;
 	//initialize
@@ -1381,7 +1421,7 @@ void CEye_Computing_DialogDlg::OnBnClickedMieum()
 // 자음 - ㅂ
 void CEye_Computing_DialogDlg::OnBnClickedBieup()
 {
-
+	CheckKorEng();
 	initHanguel();
 	INPUT InputBiEup;
 	//initialize
@@ -1399,6 +1439,7 @@ void CEye_Computing_DialogDlg::OnBnClickedBieup()
 // 자음 - ㅅ
 void CEye_Computing_DialogDlg::OnBnClickedShiot()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputShiOt;
 	//initialize
@@ -1416,6 +1457,7 @@ void CEye_Computing_DialogDlg::OnBnClickedShiot()
 // 자음 - ㅇ
 void CEye_Computing_DialogDlg::OnBnClickedIeung()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputIeung;
 	//initialize
@@ -1433,6 +1475,7 @@ void CEye_Computing_DialogDlg::OnBnClickedIeung()
 // 자음 - ㅈ
 void CEye_Computing_DialogDlg::OnBnClickedJieut()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputJiEut;
 	//initialize
@@ -1450,6 +1493,7 @@ void CEye_Computing_DialogDlg::OnBnClickedJieut()
 //자음 - ㅊ
 void CEye_Computing_DialogDlg::OnBnClickedChieut()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputChiEut;
 	//initialize
@@ -1467,6 +1511,7 @@ void CEye_Computing_DialogDlg::OnBnClickedChieut()
 // 자음 - ㅋ
 void CEye_Computing_DialogDlg::OnBnClickedKieuk()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputKieuk;
 	//initialize
@@ -1484,6 +1529,7 @@ void CEye_Computing_DialogDlg::OnBnClickedKieuk()
 // 자음 - ㅌ
 void CEye_Computing_DialogDlg::OnBnClickedTieut()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputTieut;
 	//initialize
@@ -1501,6 +1547,7 @@ void CEye_Computing_DialogDlg::OnBnClickedTieut()
 // 자음 - ㅍ
 void CEye_Computing_DialogDlg::OnBnClickedPieup()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputPieup;
 	//initialize
@@ -1518,6 +1565,7 @@ void CEye_Computing_DialogDlg::OnBnClickedPieup()
 // 자음 - ㅎ
 void CEye_Computing_DialogDlg::OnBnClickedHieut()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputHieut;
 	//initialize
@@ -1634,6 +1682,7 @@ void CEye_Computing_DialogDlg::OnBnClickedEnglish()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptA()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1651,6 +1700,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptA()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptB()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1668,6 +1718,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptB()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptC()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1685,6 +1736,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptC()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptD()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1702,6 +1754,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptD()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptE()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1719,6 +1772,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptE()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptF()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1736,6 +1790,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptF()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptG()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1753,6 +1808,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptG()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptH()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1770,6 +1826,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptH()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptI()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1787,6 +1844,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptI()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptJ()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1804,6 +1862,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptJ()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptK()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1821,6 +1880,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptK()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptL()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1838,6 +1898,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptL()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptM()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1855,6 +1916,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptM()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptN()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1872,6 +1934,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptN()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptO()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1889,6 +1952,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptO()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptP()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1906,6 +1970,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptP()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptQ()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1923,6 +1988,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptQ()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptR()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1940,6 +2006,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptR()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptS()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1957,6 +2024,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptS()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptT()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1974,6 +2042,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptT()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptU()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -1991,6 +2060,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptU()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptV()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -2008,6 +2078,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptV()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptW()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -2025,6 +2096,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptW()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptX()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -2042,6 +2114,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptX()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptY()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
@@ -2059,6 +2132,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCptY()
 
 void CEye_Computing_DialogDlg::OnBnClickedCptZ()
 {
+	CheckKorEng();
 	initHanguel();
 	INPUT InputButton;
 	//initialize
