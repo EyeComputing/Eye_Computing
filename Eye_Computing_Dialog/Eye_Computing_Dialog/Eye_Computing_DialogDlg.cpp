@@ -1039,7 +1039,7 @@ void CEye_Computing_DialogDlg::hideNumBtn()
 	GetDlgItem(IDC_WAVE)->ShowWindow(FALSE);
 }
 
-// CAPSLOCK 클릭 시 숫자, 특수문자 버튼 이미지 변환
+// CAPSLOCK 클릭 시 쌍자음, 숫자, 특수문자 버튼 이미지 변환
 void CEye_Computing_DialogDlg::capsNumBtn()
 {
 	m_btn_One.SetSkin(IDB_ONE_CAPS, IDB_ONE_CAPS, IDB_ONE_CAPS_OVER, IDB_ONE_CAPS, 0, IDB_ONE_CAPS, 0, 0, 0);
@@ -1060,6 +1060,11 @@ void CEye_Computing_DialogDlg::capsNumBtn()
 	m_btn_Slash.SetSkin(IDB_SLASH_CAPS, IDB_SLASH_CAPS, IDB_SLASH_CAPS_OVER, IDB_SLASH_CAPS, 0, IDB_SLASH_CAPS, 0, 0, 0);
 	m_btn_SqBracketClosed.SetSkin(IDB_SQBRACKET_CLOSE_CAPS, IDB_SQBRACKET_CLOSE_CAPS, IDB_SQBRACKET_CLOSE_CAPS_OVER, IDB_SQBRACKET_CLOSE_CAPS, 0, IDB_SQBRACKET_CLOSE_CAPS, 0, 0, 0);
 	m_btn_SqBracketOpened.SetSkin(IDB_SQBRACKET_OPEN_CAPS, IDB_SQBRACKET_OPEN_CAPS, IDB_SQBRACKET_OPEN_CAPS_OVER, IDB_SQBRACKET_OPEN_CAPS, 0, IDB_SQBRACKET_OPEN_CAPS, 0, 0, 0);
+	m_btn_GiYeok.SetSkin(IDB_SS_GIYEOK, IDB_SS_GIYEOK, IDB_SS_GIYEOK_OVER, IDB_SS_GIYEOK, 0, IDB_SS_GIYEOK, 0, 0, 0);
+	m_btn_DiGeut.SetSkin(IDB_SS_DIGEUT, IDB_SS_DIGEUT, IDB_SS_DIGEUT_OVER, IDB_SS_DIGEUT, 0, IDB_SS_DIGEUT, 0, 0, 0);
+	m_btn_BiEup.SetSkin(IDB_SS_BIEUP, IDB_SS_BIEUP, IDB_SS_BIEUP_OVER, IDB_SS_BIEUP, 0, IDB_SS_BIEUP, 0, 0, 0);
+	m_btn_ShiOt.SetSkin(IDB_SS_SHIOT, IDB_SS_SHIOT, IDB_SS_SHIOT_OVER, IDB_SS_SHIOT, 0, IDB_SS_SHIOT, 0, 0, 0);
+	m_btn_JiEut.SetSkin(IDB_SS_JIEUT, IDB_SS_JIEUT, IDB_SS_JIEUT_OVER, IDB_SS_JIEUT, 0, IDB_SS_JIEUT, 0, 0, 0);
 }
 
 
@@ -2326,7 +2331,8 @@ void CEye_Computing_DialogDlg::OnBnClickedCapslock()
 
 	if (caps)
 	{
-		m_btn_Capslock.SetSkin(IDB_CAPSLOCK, IDB_CAPSLOCK, IDB_CAPSLOCK_OVER, IDB_CAPSLOCK, 0, IDB_CAPSLOCK, 0, 0, 0);
+		m_btn_Capslock.SetSkin(IDB_CAPSLOCK, IDB_CAPSLOCK, IDB_CAPSLOCK_OVER, IDB_CAPSLOCK, 0, IDB_CAPSLOCK, 0, 0, 0); // capslock 이미지 변환
+		setImgKorBtn();
 		setImgNumBtn();
 		//누른거 풀어주기
 		InputCapsButton.ki.dwFlags = KEYEVENTF_KEYUP;
@@ -2334,7 +2340,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCapslock()
 	}
 	else
 	{
-		m_btn_Capslock.SetSkin(IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON_OVER, IDB_CAPSLOCK_ON, 0, IDB_CAPSLOCK_ON, 0, 0, 0);
+		m_btn_Capslock.SetSkin(IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON_OVER, IDB_CAPSLOCK_ON, 0, IDB_CAPSLOCK_ON, 0, 0, 0); // capslock 이미지 변환
 		capsNumBtn();
 		//initialize
 		::ZeroMemory(&InputCapsButton, sizeof(INPUT));

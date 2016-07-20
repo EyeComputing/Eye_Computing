@@ -326,6 +326,16 @@
     <Image Include="res\siot_normal.bmp" />
     <Image Include="res\space_normal.bmp" />
     <Image Include="res\space_over.bmp" />
+    <Image Include="res\ss_bieup_normal.bmp" />
+    <Image Include="res\ss_bieup_over.bmp" />
+    <Image Include="res\ss_digeut_normal.bmp" />
+    <Image Include="res\ss_digeut_over.bmp" />
+    <Image Include="res\ss_giyeok_normal.bmp" />
+    <Image Include="res\ss_giyeok_over.bmp" />
+    <Image Include="res\ss_jieut_normal.bmp" />
+    <Image Include="res\ss_jieut_over.bmp" />
+    <Image Include="res\ss_shiot_normal.bmp" />
+    <Image Include="res\ss_shiot_over.bmp" />
     <Image Include="res\S_normal.bmp" />
     <Image Include="res\S_over.bmp" />
     <Image Include="res\tieut_normal.bmp" />
