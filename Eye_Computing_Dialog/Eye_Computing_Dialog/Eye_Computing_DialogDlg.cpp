@@ -15,6 +15,8 @@
 #define new DEBUG_NEW
 #endif
 
+#define IsALTPressed() ( 0x8000 ==(GetKeyState(VK_MENU) & 0x8000))
+
 //spacebar click message hooking을 위한 함수 & 변수
 //키보드 hooking이 발생했을 경우 호출되는 함수
 
@@ -103,27 +105,30 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
 	static int c = 0;
 	POINT point;//마우스 좌표값 저장하는 변수
-
-	char ClassName[128];
-
+	KBDLLHOOKSTRUCT kbdStruct;
+	kbdStruct = *((KBDLLHOOKSTRUCT*)lParam);
 
 	if (nCode < 0)
 		return CallNextHookEx(m_hook, nCode, wParam, lParam);
-
-	//alt key press 시에 마우스 클릭 message 발생
-	if(wParam == WM_SYSKEYDOWN )
+	if (wParam == WM_KEYDOWN)
 	{
+		//alt key press 시에 마우스 클릭 message 발생
+		if (kbdStruct.vkCode == VK_UP)
+		{
+
 			GetCursorPos(&point); //point 변수에 마우스 좌표 점 
-									 
+			TRACE("ALT KEY 누름");
 			// 마우스 왼쪽 클릭 명령(추가)
 			::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 			::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-
+			//TRACE("MOUSE 왼쪽 클릭 발생 끝");
 			return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
 					 //return 을 하지 않으면 queue로 전달하여 정상적으로 message 처리됨.
-		
+
+		}
+
+		return 0;
 	}
-	return 0;
 }
 
 
@@ -283,6 +288,11 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_ENGLISH, &CEye_Computing_DialogDlg::OnBnClickedEnglish)
 	ON_BN_CLICKED(IDC_NUMBER, &CEye_Computing_DialogDlg::OnBnClickedNumber)
 	ON_BN_CLICKED(IDC_CAPSLOCK, &CEye_Computing_DialogDlg::OnBnClickedCapslock)
+//	ON_WM_SYSKEYDOWN()
+//ON_WM_SYSKEYDOWN()
+//ON_WM_SYSKEYDOWN()
+//ON_WM_SYSCHAR()
+//ON_WM_KEYDOWN()
 END_MESSAGE_MAP()
 
 
@@ -515,7 +525,7 @@ void CEye_Computing_DialogDlg::initHanguel()
 //한영 버튼 누르기
 void CEye_Computing_DialogDlg::CheckKorEng()
 {
-	/*
+	
 	INPUT InputHE;
 	::ZeroMemory(&InputHE, sizeof(INPUT));
 	InputHE.type = INPUT_KEYBOARD;
@@ -524,9 +534,9 @@ void CEye_Computing_DialogDlg::CheckKorEng()
 	::SendInput(1, &InputHE, sizeof(INPUT));
 	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputHE, sizeof(INPUT));
-	*/
+	
 
-	/*
+	
 	DWORD conVersion, senTence;
 	//DWORD Temp;
 	//HIMC hIMC = ImmGetContext(::GetActiveWindow());
@@ -536,7 +546,7 @@ void CEye_Computing_DialogDlg::CheckKorEng()
 	ImmGetConversionStatus(hIMC, &conVersion, &senTence);
 	//Temp = conVersion & ~IME_CMODE_LANGUAGE;
 
-	INPUT InputHE;
+//	INPUT InputHE;
 	::ZeroMemory(&InputHE, sizeof(INPUT));
 	InputHE.type = INPUT_KEYBOARD;
 
@@ -564,7 +574,7 @@ void CEye_Computing_DialogDlg::CheckKorEng()
 			InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
 			::SendInput(1, &InputHE, sizeof(INPUT));
 		}
-	}*/
+	}
 }
 
 
@@ -1267,6 +1277,7 @@ void CEye_Computing_DialogDlg::OnBnClickedZzum()
 		INPUT InputAh;
 		::ZeroMemory(&InputAh, sizeof(INPUT));
 		InputAh.type = INPUT_KEYBOARD;
+
 
 		//한번 지움
 		InputAh.ki.wVk = 0x08;
@@ -2253,3 +2264,8 @@ void CEye_Computing_DialogDlg::OnBnClickedCapslock()
 	else     m_btn_Capslock.SetSkin(IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON_OVER, IDB_CAPSLOCK_ON, 0, IDB_CAPSLOCK_ON, 0, 0, 0);
 	Invalidate(TRUE);
 }
+
+
+
+
+
