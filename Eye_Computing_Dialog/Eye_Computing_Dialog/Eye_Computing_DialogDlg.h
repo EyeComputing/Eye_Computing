@@ -192,9 +192,11 @@ public:
 	CxSkinButton m_btn_Question;
 	CxSkinButton m_btn_Semicolon;
 	CxSkinButton m_btn_SgQuot;
-	CxSkinButton m_btn_Shift;
 	CxSkinButton m_btn_Slash;
 	CxSkinButton m_btn_SqBracketClosed;
 	CxSkinButton m_btn_SqBracketOpened;
 	afx_msg void OnBnClickedNumber();
+	CxSkinButton m_btn_Capslock;
+	CxSkinButton m_btn_AtMark;
+	afx_msg void OnBnClickedCapslock();
 };

@@ -130,6 +130,8 @@
     <None Include="res\Eye_Computing_Dialog.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\at_normal.bmp" />
+    <Image Include="res\at_over.bmp" />
     <Image Include="res\A_normal.bmp" />
     <Image Include="res\A_over.bmp" />
     <Image Include="res\background.bmp" />
@@ -144,6 +146,10 @@
     <Image Include="res\bk_normal.bmp" />
     <Image Include="res\B_normal.bmp" />
     <Image Include="res\B_over.bmp" />
+    <Image Include="res\capslock_normal.bmp" />
+    <Image Include="res\capslock_on.bmp" />
+    <Image Include="res\capslock_on_over.bmp" />
+    <Image Include="res\capslock_over.bmp" />
     <Image Include="res\chieut_normal.bmp" />
     <Image Include="res\chieut_over.bmp" />
     <Image Include="res\confirm_normal.bmp" />
