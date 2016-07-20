@@ -210,6 +210,8 @@
     <Image Include="res\n_accent_caps_over.bmp" />
     <Image Include="res\n_accent_normal.bmp" />
     <Image Include="res\n_accent_over.bmp" />
+    <Image Include="res\n_add_normal.bmp" />
+    <Image Include="res\n_add_over.bmp" />
     <Image Include="res\n_backslash_caps.bmp" />
     <Image Include="res\n_backslash_caps_over.bmp" />
     <Image Include="res\n_backslash_normal.bmp" />
@@ -294,6 +296,9 @@
     <Image Include="res\n_two_caps_over.bmp" />
     <Image Include="res\n_two_normal.bmp" />
     <Image Include="res\n_two_over.bmp" />
+    <Image Include="res\n_waves_over.bmp" />
+    <Image Include="res\n_wave_normal.bmp" />
+    <Image Include="res\n_wave_over.bmp" />
     <Image Include="res\n_zero_caps.bmp" />
     <Image Include="res\n_zero_caps_over.bmp" />
     <Image Include="res\n_zero_normal.bmp" />
