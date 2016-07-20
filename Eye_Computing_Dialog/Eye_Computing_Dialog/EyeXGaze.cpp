@@ -235,9 +235,13 @@ void EyeXGaze::OnFixationDataEvent(TX_HANDLE hFixationDataBehavior)
 					fps = 0;
 			}
 
+			//for (int i = 0; i < 5; i++)
+			//{
+				SetCursorPos(FixEye_X, FixEye_Y);
+
+			//}
 
 		
-			SetCursorPos(FixEye_X, FixEye_Y);
 			
 		}
 		else

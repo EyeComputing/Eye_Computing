@@ -1,5 +1,4 @@
 // Eye_Computing_DialogDlg.cpp : 구현 파일
-//
 
 #include "stdafx.h"
 #include "Eye_Computing_Dialog.h"
@@ -7,9 +6,10 @@
 #include "afxdialogex.h"
 #include "EyeXGaze.h"
 #include "xSkinButton.h"
-#include <imm.h>
 
-#pragma comment( lib, "imm32.lib" )
+// 실패...
+//#include <imm.h>
+//#pragma comment( lib, "imm32.lib" )
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -17,10 +17,8 @@
 
 //spacebar click message hooking을 위한 함수 & 변수
 //키보드 hooking이 발생했을 경우 호출되는 함수
-
 LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam);
 HHOOK m_hook = NULL;
-
 
 //토비!
 EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
@@ -54,10 +52,7 @@ BOOL caps = TRUE;
 INPUT InputCapsButton;
 
 //cursor 변수
-
 HCURSOR m_hCursor, m_hOldCursor;
-
-
 
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
@@ -99,6 +94,9 @@ END_MESSAGE_MAP()
 
 
 
+
+
+
 //keyboard hooking 시 호출되는 function 
 LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
@@ -112,10 +110,10 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 		return CallNextHookEx(m_hook, nCode, wParam, lParam);
 
 	//alt key press 시에 마우스 클릭 message 발생
-	if(wParam == WM_SYSKEYDOWN )
+	if(wParam == WM_SYSKEYDOWN)
 	{
 			GetCursorPos(&point); //point 변수에 마우스 좌표 점 
-									 
+			
 			// 마우스 왼쪽 클릭 명령(추가)
 			::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 			::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
@@ -126,6 +124,15 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 	}
 	return 0;
 }
+
+
+
+
+
+
+
+
+
 
 
 
