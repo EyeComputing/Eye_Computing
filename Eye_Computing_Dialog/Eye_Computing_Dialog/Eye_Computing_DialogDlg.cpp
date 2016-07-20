@@ -203,7 +203,6 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_KOREAN, m_btn_Korean);
 	DDX_Control(pDX, IDC_ENGLISH, m_btn_English);
 	DDX_Control(pDX, IDC_NUMBER, m_btn_Number);
-	DDX_Control(pDX, IDC_ACCENT, m_btn_Accent);
 	DDX_Control(pDX, IDC_ONE, m_btn_One);
 	DDX_Control(pDX, IDC_TWO, m_btn_Two);
 	DDX_Control(pDX, IDC_THREE, m_btn_Three);
@@ -214,10 +213,8 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EIGHT, m_btn_Eight);
 	DDX_Control(pDX, IDC_NINE, m_btn_Nine);
 	DDX_Control(pDX, IDC_ZERO, m_btn_Zero);
-	DDX_Control(pDX, IDC_BKSLASH, m_btn_BkSlash);
 	DDX_Control(pDX, IDC_COMMA, m_btn_Comma);
 	DDX_Control(pDX, IDC_DOT, m_btn_Dot);
-	DDX_Control(pDX, IDC_EQUAL, m_btn_Equal);
 	DDX_Control(pDX, IDC_EXCLAIM, m_btn_Exclaim);
 	DDX_Control(pDX, IDC_HYPHEN, m_btn_Hyphen);
 	DDX_Control(pDX, IDC_QUESTION, m_btn_Question);
@@ -228,6 +225,8 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_SQBRACKET_OPEN, m_btn_SqBracketOpened);
 	DDX_Control(pDX, IDC_CAPSLOCK, m_btn_Capslock);
 	DDX_Control(pDX, IDC_AtMark, m_btn_AtMark);
+	DDX_Control(pDX, IDC_ADD, m_btn_Add);
+	DDX_Control(pDX, IDC_WAVE, m_btn_Wave);
 }
 
 BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
@@ -298,12 +297,9 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_QUESTION, &CEye_Computing_DialogDlg::OnBnClickedQuestion)
 	ON_BN_CLICKED(IDC_SEMICOLON, &CEye_Computing_DialogDlg::OnBnClickedSemicolon)
 	ON_BN_CLICKED(IDC_SGQUOT, &CEye_Computing_DialogDlg::OnBnClickedSgquot)
-	ON_BN_CLICKED(IDC_ACCENT, &CEye_Computing_DialogDlg::OnBnClickedAccent)
 	ON_BN_CLICKED(IDC_EXCLAIM, &CEye_Computing_DialogDlg::OnBnClickedExclaim)
 	ON_BN_CLICKED(IDC_HYPHEN, &CEye_Computing_DialogDlg::OnBnClickedHyphen)
 	ON_BN_CLICKED(IDC_DOT, &CEye_Computing_DialogDlg::OnBnClickedDot)
-	ON_BN_CLICKED(IDC_EQUAL, &CEye_Computing_DialogDlg::OnBnClickedEqual)
-	ON_BN_CLICKED(IDC_BKSLASH, &CEye_Computing_DialogDlg::OnBnClickedBkslash)
 	ON_BN_CLICKED(IDC_COMMA, &CEye_Computing_DialogDlg::OnBnClickedComma)
 	ON_BN_CLICKED(IDC_NINE, &CEye_Computing_DialogDlg::OnBnClickedNine)
 	ON_BN_CLICKED(IDC_ZERO, &CEye_Computing_DialogDlg::OnBnClickedZero)
@@ -829,7 +825,6 @@ void CEye_Computing_DialogDlg::setPosEngBtn()
 // 숫자, 특수문자 버튼 이미지 삽입
 void CEye_Computing_DialogDlg::setImgNumBtn()
 {
-	m_btn_Accent.SetSkin(IDB_ACCENT, IDB_ACCENT, IDB_ACCENT_OVER, IDB_ACCENT, 0, IDB_ACCENT, 0, 0, 0);
 	m_btn_One.SetSkin(IDB_ONE, IDB_ONE, IDB_ONE_OVER, IDB_ONE, 0, IDB_ONE, 0, 0, 0);
 	m_btn_Two.SetSkin(IDB_TWO, IDB_TWO, IDB_TWO_OVER, IDB_TWO, 0, IDB_TWO, 0, 0, 0);
 	m_btn_Three.SetSkin(IDB_THREE, IDB_THREE, IDB_THREE_OVER, IDB_THREE, 0, IDB_THREE, 0, 0, 0);
@@ -840,10 +835,8 @@ void CEye_Computing_DialogDlg::setImgNumBtn()
 	m_btn_Eight.SetSkin(IDB_EIGHT, IDB_EIGHT, IDB_EIGHT_OVER, IDB_EIGHT, 0, IDB_EIGHT, 0, 0, 0);
 	m_btn_Nine.SetSkin(IDB_NINE, IDB_NINE, IDB_NINE_OVER, IDB_NINE, 0, IDB_NINE, 0, 0, 0);
 	m_btn_Zero.SetSkin(IDB_ZERO, IDB_ZERO, IDB_ZERO_OVER, IDB_ZERO, 0, IDB_ZERO, 0, 0, 0);
-	m_btn_BkSlash.SetSkin(IDB_BKSLASH, IDB_BKSLASH, IDB_BKSLASH_OVER, IDB_BKSLASH, 0, IDB_BKSLASH, 0, 0, 0);
 	m_btn_Comma.SetSkin(IDB_COMMA, IDB_COMMA, IDB_COMMA_OVER, IDB_COMMA, 0, IDB_COMMA, 0, 0, 0);
 	m_btn_Dot.SetSkin(IDB_DOT, IDB_DOT, IDB_DOT_OVER, IDB_DOT, 0, IDB_DOT, 0, 0, 0);
-	m_btn_Equal.SetSkin(IDB_EQUAL, IDB_EQUAL, IDB_EQUAL_OVER, IDB_EQUAL, 0, IDB_EQUAL, 0, 0, 0);
 	m_btn_Exclaim.SetSkin(IDB_EXCLAIM, IDB_EXCLAIM, IDB_EXCLAIM_OVER, IDB_EXCLAIM, 0, IDB_EXCLAIM, 0, 0, 0);
 	m_btn_Hyphen.SetSkin(IDB_HYPHEN, IDB_HYPHEN, IDB_HYPHEN_OVER, IDB_HYPHEN, 0, IDB_HYPHEN, 0, 0, 0);
 	m_btn_Question.SetSkin(IDB_QUESTION, IDB_QUESTION, IDB_QUESTION_OVER, IDB_QUESTION, 0, IDB_QUESTION, 0, 0, 0);
@@ -853,6 +846,8 @@ void CEye_Computing_DialogDlg::setImgNumBtn()
 	m_btn_SqBracketClosed.SetSkin(IDB_SQBRACKET_CLOSE, IDB_SQBRACKET_CLOSE, IDB_SQBRACKET_CLOSE_OVER, IDB_SQBRACKET_CLOSE, 0, IDB_SQBRACKET_CLOSE, 0, 0, 0);
 	m_btn_SqBracketOpened.SetSkin(IDB_SQBRACKET_OPEN, IDB_SQBRACKET_OPEN, IDB_SQBRACKET_OPEN_OVER, IDB_SQBRACKET_OPEN, 0, IDB_SQBRACKET_OPEN, 0, 0, 0);
 	m_btn_AtMark.SetSkin(IDB_ATMARK, IDB_ATMARK, IDB_ATMARK_OVER, IDB_ATMARK, 0, IDB_ATMARK, 0, 0, 0);
+	m_btn_Wave.SetSkin(IDB_WAVE, IDB_WAVE, IDB_WAVE_OVER, IDB_WAVE, 0, IDB_WAVE, 0, 0, 0);
+	m_btn_Add.SetSkin(IDB_ADD, IDB_ADD, IDB_ADD_OVER, IDB_ADD, 0, IDB_ADD, 0, 0, 0);
 }
 
 
@@ -862,7 +857,6 @@ void CEye_Computing_DialogDlg::setPosNumBtn()
 {
 
 	GetDlgItem(IDC_ZERO)->SetWindowPos(NULL, 171, 367, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_EQUAL)->SetWindowPos(NULL, 310, 357, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_HYPHEN)->SetWindowPos(NULL, 241, 378, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_SEVEN)->SetWindowPos(NULL, 89, 196, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_SLASH)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
@@ -872,9 +866,7 @@ void CEye_Computing_DialogDlg::setPosNumBtn()
 	GetDlgItem(IDC_EIGHT)->SetWindowPos(NULL, 87, 264, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_SQBRACKET_OPEN)->SetWindowPos(NULL, 272, 449, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_FIVE)->SetWindowPos(NULL, 185, 448, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_BKSLASH)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_NINE)->SetWindowPos(NULL, 116, 326, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_ACCENT)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_COMMA)->SetWindowPos(NULL, 361, 172, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_SEMICOLON)->SetWindowPos(NULL, 354, 310, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_THREE)->SetWindowPos(NULL, 47, 356, 150, 150, SWP_NOSIZE);
@@ -885,6 +877,10 @@ void CEye_Computing_DialogDlg::setPosNumBtn()
 	GetDlgItem(IDC_EXCLAIM)->SetWindowPos(NULL, 168, 235, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_QUESTION)->SetWindowPos(NULL, 281, 232, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_AtMark)->SetWindowPos(NULL, 227, 175, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_ADD)->SetWindowPos(NULL, 310, 357, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_WAVE)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
+
+
 }
 
 
@@ -997,7 +993,6 @@ void CEye_Computing_DialogDlg::hideEngBtn()
 // 숫자 버튼 보이기
 void CEye_Computing_DialogDlg::showNumBtn()
 {
-	GetDlgItem(IDC_ACCENT)->ShowWindow(TRUE);
 	GetDlgItem(IDC_ONE)->ShowWindow(TRUE);
 	GetDlgItem(IDC_TWO)->ShowWindow(TRUE);
 	GetDlgItem(IDC_THREE)->ShowWindow(TRUE);
@@ -1008,12 +1003,10 @@ void CEye_Computing_DialogDlg::showNumBtn()
 	GetDlgItem(IDC_EIGHT)->ShowWindow(TRUE);
 	GetDlgItem(IDC_NINE)->ShowWindow(TRUE);
 	GetDlgItem(IDC_ZERO)->ShowWindow(TRUE);
-	GetDlgItem(IDC_BKSLASH)->ShowWindow(TRUE);
 	GetDlgItem(IDC_COMMA)->ShowWindow(TRUE);
 	GetDlgItem(IDC_DOT)->ShowWindow(TRUE);
-	GetDlgItem(IDC_EQUAL)->ShowWindow(TRUE);
-	GetDlgItem(IDC_EXCLAIM)->ShowWindow(TRUE);
 	GetDlgItem(IDC_HYPHEN)->ShowWindow(TRUE);
+	GetDlgItem(IDC_EXCLAIM)->ShowWindow(TRUE);
 	GetDlgItem(IDC_QUESTION)->ShowWindow(TRUE);
 	GetDlgItem(IDC_SEMICOLON)->ShowWindow(TRUE);
 	GetDlgItem(IDC_SGQUOT)->ShowWindow(TRUE);
@@ -1021,12 +1014,13 @@ void CEye_Computing_DialogDlg::showNumBtn()
 	GetDlgItem(IDC_SQBRACKET_CLOSE)->ShowWindow(TRUE);
 	GetDlgItem(IDC_SQBRACKET_OPEN)->ShowWindow(TRUE);
 	GetDlgItem(IDC_AtMark)->ShowWindow(TRUE);
+	GetDlgItem(IDC_ADD)->ShowWindow(TRUE);
+	GetDlgItem(IDC_WAVE)->ShowWindow(TRUE);
 }
 
 // 숫자 버튼 숨기기
 void CEye_Computing_DialogDlg::hideNumBtn()
 {
-	GetDlgItem(IDC_ACCENT)->ShowWindow(FALSE);
 	GetDlgItem(IDC_ONE)->ShowWindow(FALSE);
 	GetDlgItem(IDC_TWO)->ShowWindow(FALSE);
 	GetDlgItem(IDC_THREE)->ShowWindow(FALSE);
@@ -1037,10 +1031,8 @@ void CEye_Computing_DialogDlg::hideNumBtn()
 	GetDlgItem(IDC_EIGHT)->ShowWindow(FALSE);
 	GetDlgItem(IDC_NINE)->ShowWindow(FALSE);
 	GetDlgItem(IDC_ZERO)->ShowWindow(FALSE);
-	GetDlgItem(IDC_BKSLASH)->ShowWindow(FALSE);
 	GetDlgItem(IDC_COMMA)->ShowWindow(FALSE);
 	GetDlgItem(IDC_DOT)->ShowWindow(FALSE);
-	GetDlgItem(IDC_EQUAL)->ShowWindow(FALSE);
 	GetDlgItem(IDC_EXCLAIM)->ShowWindow(FALSE);
 	GetDlgItem(IDC_HYPHEN)->ShowWindow(FALSE);
 	GetDlgItem(IDC_QUESTION)->ShowWindow(FALSE);
@@ -1050,12 +1042,13 @@ void CEye_Computing_DialogDlg::hideNumBtn()
 	GetDlgItem(IDC_SQBRACKET_CLOSE)->ShowWindow(FALSE);
 	GetDlgItem(IDC_SQBRACKET_OPEN)->ShowWindow(FALSE);
 	GetDlgItem(IDC_AtMark)->ShowWindow(FALSE);
+	GetDlgItem(IDC_ADD)->ShowWindow(FALSE);
+	GetDlgItem(IDC_WAVE)->ShowWindow(FALSE);
 }
 
-// CAPSLOCK 클릭 시 숫자, 특수문자 버튼 이미지 변환
+// CAPSLOCK 클릭 시 쌍자음, 숫자, 특수문자 버튼 이미지 변환
 void CEye_Computing_DialogDlg::capsNumBtn()
 {
-	m_btn_Accent.SetSkin(IDB_ACCENT_CAPS, IDB_ACCENT_CAPS, IDB_ACCENT_CAPS_OVER, IDB_ACCENT_CAPS, 0, IDB_ACCENT_CAPS, 0, 0, 0);
 	m_btn_One.SetSkin(IDB_ONE_CAPS, IDB_ONE_CAPS, IDB_ONE_CAPS_OVER, IDB_ONE_CAPS, 0, IDB_ONE_CAPS, 0, 0, 0);
 	m_btn_Two.SetSkin(IDB_TWO_CAPS, IDB_TWO_CAPS, IDB_TWO_CAPS_OVER, IDB_TWO_CAPS, 0, IDB_TWO_CAPS, 0, 0, 0);
 	m_btn_Three.SetSkin(IDB_THREE_CAPS, IDB_THREE_CAPS, IDB_THREE_CAPS_OVER, IDB_THREE_CAPS, 0, IDB_THREE_CAPS, 0, 0, 0);
@@ -1066,16 +1059,19 @@ void CEye_Computing_DialogDlg::capsNumBtn()
 	m_btn_Eight.SetSkin(IDB_EIGHT_CAPS, IDB_EIGHT_CAPS, IDB_EIGHT_CAPS_OVER, IDB_EIGHT_CAPS, 0, IDB_EIGHT_CAPS, 0, 0, 0);
 	m_btn_Nine.SetSkin(IDB_NINE_CAPS, IDB_NINE_CAPS, IDB_NINE_CAPS_OVER, IDB_NINE_CAPS, 0, IDB_NINE_CAPS, 0, 0, 0);
 	m_btn_Zero.SetSkin(IDB_ZERO_CAPS, IDB_ZERO_CAPS, IDB_ZERO_CAPS_OVER, IDB_ZERO_CAPS, 0, IDB_ZERO_CAPS, 0, 0, 0);
-	m_btn_BkSlash.SetSkin(IDB_BKSLASH_CAPS, IDB_BKSLASH_CAPS, IDB_BKSLASH_CAPS_OVER, IDB_BKSLASH_CAPS, 0, IDB_BKSLASH_CAPS, 0, 0, 0);
 	m_btn_Comma.SetSkin(IDB_COMMA_CAPS, IDB_COMMA_CAPS, IDB_COMMA_CAPS_OVER, IDB_COMMA_CAPS, 0, IDB_COMMA_CAPS, 0, 0, 0);
 	m_btn_Dot.SetSkin(IDB_DOT_CAPS, IDB_DOT_CAPS, IDB_DOT_CAPS_OVER, IDB_DOT_CAPS, 0, IDB_DOT_CAPS, 0, 0, 0);
-	m_btn_Equal.SetSkin(IDB_EQUAL_CAPS, IDB_EQUAL_CAPS, IDB_EQUAL_CAPS_OVER, IDB_EQUAL_CAPS, 0, IDB_EQUAL_CAPS, 0, 0, 0);
 	m_btn_Hyphen.SetSkin(IDB_HYPHEN_CAPS, IDB_HYPHEN_CAPS, IDB_HYPHEN_CAPS_OVER, IDB_HYPHEN_CAPS, 0, IDB_HYPHEN_CAPS, 0, 0, 0);
 	m_btn_Semicolon.SetSkin(IDB_SEMICOLON_CAPS, IDB_SEMICOLON_CAPS, IDB_SEMICOLON_CAPS_OVER, IDB_SEMICOLON_CAPS, 0, IDB_SEMICOLON_CAPS, 0, 0, 0);
 	m_btn_SgQuot.SetSkin(IDB_SGQUOT_CAPS, IDB_SGQUOT_CAPS, IDB_SGQUOT_CAPS_OVER, IDB_SGQUOT_CAPS, 0, IDB_SGQUOT_CAPS, 0, 0, 0);
 	m_btn_Slash.SetSkin(IDB_SLASH_CAPS, IDB_SLASH_CAPS, IDB_SLASH_CAPS_OVER, IDB_SLASH_CAPS, 0, IDB_SLASH_CAPS, 0, 0, 0);
 	m_btn_SqBracketClosed.SetSkin(IDB_SQBRACKET_CLOSE_CAPS, IDB_SQBRACKET_CLOSE_CAPS, IDB_SQBRACKET_CLOSE_CAPS_OVER, IDB_SQBRACKET_CLOSE_CAPS, 0, IDB_SQBRACKET_CLOSE_CAPS, 0, 0, 0);
 	m_btn_SqBracketOpened.SetSkin(IDB_SQBRACKET_OPEN_CAPS, IDB_SQBRACKET_OPEN_CAPS, IDB_SQBRACKET_OPEN_CAPS_OVER, IDB_SQBRACKET_OPEN_CAPS, 0, IDB_SQBRACKET_OPEN_CAPS, 0, 0, 0);
+	m_btn_GiYeok.SetSkin(IDB_SS_GIYEOK, IDB_SS_GIYEOK, IDB_SS_GIYEOK_OVER, IDB_SS_GIYEOK, 0, IDB_SS_GIYEOK, 0, 0, 0);
+	m_btn_DiGeut.SetSkin(IDB_SS_DIGEUT, IDB_SS_DIGEUT, IDB_SS_DIGEUT_OVER, IDB_SS_DIGEUT, 0, IDB_SS_DIGEUT, 0, 0, 0);
+	m_btn_BiEup.SetSkin(IDB_SS_BIEUP, IDB_SS_BIEUP, IDB_SS_BIEUP_OVER, IDB_SS_BIEUP, 0, IDB_SS_BIEUP, 0, 0, 0);
+	m_btn_ShiOt.SetSkin(IDB_SS_SHIOT, IDB_SS_SHIOT, IDB_SS_SHIOT_OVER, IDB_SS_SHIOT, 0, IDB_SS_SHIOT, 0, 0, 0);
+	m_btn_JiEut.SetSkin(IDB_SS_JIEUT, IDB_SS_JIEUT, IDB_SS_JIEUT_OVER, IDB_SS_JIEUT, 0, IDB_SS_JIEUT, 0, 0, 0);
 }
 
 
@@ -2342,7 +2338,8 @@ void CEye_Computing_DialogDlg::OnBnClickedCapslock()
 
 	if (caps)
 	{
-		m_btn_Capslock.SetSkin(IDB_CAPSLOCK, IDB_CAPSLOCK, IDB_CAPSLOCK_OVER, IDB_CAPSLOCK, 0, IDB_CAPSLOCK, 0, 0, 0);
+		m_btn_Capslock.SetSkin(IDB_CAPSLOCK, IDB_CAPSLOCK, IDB_CAPSLOCK_OVER, IDB_CAPSLOCK, 0, IDB_CAPSLOCK, 0, 0, 0); // capslock 이미지 변환
+		setImgKorBtn();
 		setImgNumBtn();
 		//누른거 풀어주기
 		InputCapsButton.ki.dwFlags = KEYEVENTF_KEYUP;
@@ -2350,7 +2347,7 @@ void CEye_Computing_DialogDlg::OnBnClickedCapslock()
 	}
 	else
 	{
-		m_btn_Capslock.SetSkin(IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON_OVER, IDB_CAPSLOCK_ON, 0, IDB_CAPSLOCK_ON, 0, 0, 0);
+		m_btn_Capslock.SetSkin(IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON_OVER, IDB_CAPSLOCK_ON, 0, IDB_CAPSLOCK_ON, 0, 0, 0); // capslock 이미지 변환
 		capsNumBtn();
 		//initialize
 		::ZeroMemory(&InputCapsButton, sizeof(INPUT));
@@ -2486,11 +2483,6 @@ void CEye_Computing_DialogDlg::OnBnClickedSgquot()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
 // '`'
-void CEye_Computing_DialogDlg::OnBnClickedAccent()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-// '!'
 void CEye_Computing_DialogDlg::OnBnClickedExclaim()
 {
 	INPUT InputButton;
@@ -2538,16 +2530,6 @@ void CEye_Computing_DialogDlg::OnBnClickedDot()
 	::SendInput(1, &InputButton, sizeof(INPUT));
 	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputButton, sizeof(INPUT));
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-// '='
-void CEye_Computing_DialogDlg::OnBnClickedEqual()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-// '\'
-void CEye_Computing_DialogDlg::OnBnClickedBkslash()
-{
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
 // ','

@@ -173,7 +173,6 @@ public:
 	afx_msg void OnBnClickedCptY();
 	afx_msg void OnBnClickedCptZ();
 
-	CxSkinButton m_btn_Accent;
 	CxSkinButton m_btn_One;
 	CxSkinButton m_btn_Two;
 	CxSkinButton m_btn_Three;
@@ -184,10 +183,8 @@ public:
 	CxSkinButton m_btn_Eight;
 	CxSkinButton m_btn_Nine;
 	CxSkinButton m_btn_Zero;
-	CxSkinButton m_btn_BkSlash;
 	CxSkinButton m_btn_Comma;
 	CxSkinButton m_btn_Dot;
-	CxSkinButton m_btn_Equal;
 	CxSkinButton m_btn_Exclaim;
 	CxSkinButton m_btn_Hyphen;
 	CxSkinButton m_btn_Question;
@@ -224,4 +221,6 @@ public:
 	afx_msg void OnBnClickedFour();
 	afx_msg void OnBnClickedOne();
 	afx_msg void OnBnClickedTwo();
+	CxSkinButton m_btn_Add;
+	CxSkinButton m_btn_Wave;
 };
