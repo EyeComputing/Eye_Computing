@@ -185,6 +185,10 @@
     <Image Include="res\n_three_over.bmp" />
     <Image Include="res\n_two_over.bmp" />
     <Image Include="res\n_zero_over.bmp" />
+    <Image Include="res\capslock_normal.bmp" />
+    <Image Include="res\capslock_over.bmp" />
+    <Image Include="res\at_over.bmp" />
+    <Image Include="res\at_normal.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Eye_Computing_Dialog.rc2" />

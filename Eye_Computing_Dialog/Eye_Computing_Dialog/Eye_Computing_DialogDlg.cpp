@@ -111,18 +111,18 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 	if (nCode < 0)
 		return CallNextHookEx(m_hook, nCode, wParam, lParam);
 
-	if (wParam == WM_KEYDOWN)
+	if (nCode == HC_ACTION)
 	{
-		if (pKey->vkCode == VK_SPACE)
+		if (GetKeyState(VK_CONTROL)& 0x80)
 		{
 			GetCursorPos(&point); //point 변수에 마우스 좌표 점 저장
 			
-			HWND hWnd = WindowFromPoint(point);  //해당 좌표에 존재하는 window handle 가져오기
+			//HWND hWnd = WindowFromPoint(point);  //해당 좌표에 존재하는 window handle 가져오기
 
-			GetClassName(hWnd, (LPWSTR)ClassName, 128);
+			//GetClassName(hWnd, (LPWSTR)ClassName, 128);
 
-			if (*ClassName)
-				OutputDebugString((LPWSTR)ClassName);
+			//if (*ClassName)
+				//OutputDebugString((LPWSTR)ClassName);
 
 			//마우스 좌표에 존재하는 window를 활성화 시키기
 			//EnableWindow(hWnd, true);
@@ -230,10 +230,11 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_QUESTION, m_btn_Question);
 	DDX_Control(pDX, IDC_SEMICOLON, m_btn_Semicolon);
 	DDX_Control(pDX, IDC_SGQUOT, m_btn_SgQuot);
-	DDX_Control(pDX, IDC_SHIFT, m_btn_Shift);
 	DDX_Control(pDX, IDC_SLASH, m_btn_Slash);
 	DDX_Control(pDX, IDC_SQBRACKET_CLOSE, m_btn_SqBracketClosed);
 	DDX_Control(pDX, IDC_SQBRACKET_OPEN, m_btn_SqBracketOpened);
+	DDX_Control(pDX, IDC_CAPSLOCK, m_btn_Capslock);
+	DDX_Control(pDX, IDC_AtMark, m_btn_AtMark);
 }
 
 BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
@@ -685,6 +686,7 @@ void CEye_Computing_DialogDlg::setImgSysBtn()
 	m_btn_Korean.SetSkin(IDB_KOREAN, IDB_KOREAN, IDB_KOREAN_OVER, IDB_KOREAN, 0, IDB_KOREAN, 0, 0, 0);
 	m_btn_English.SetSkin(IDB_ENGLISH, IDB_ENGLISH, IDB_ENGLISH_OVER, IDB_ENGLISH, 0, IDB_ENGLISH, 0, 0, 0);
 	m_btn_Number.SetSkin(IDB_NUMBER, IDB_NUMBER, IDB_NUMBER_OVER, IDB_NUMBER, 0, IDB_NUMBER, 0, 0, 0);
+	m_btn_Capslock.SetSkin(IDB_CAPSLOCK, IDB_CAPSLOCK, IDB_CAPSLOCK_OVER, IDB_CAPSLOCK, 0, IDB_CAPSLOCK, 0, 0, 0);
 }
 
 // 시스템 버튼 좌표 지정
@@ -697,6 +699,7 @@ void CEye_Computing_DialogDlg::setPosSysBtn()
 	GetDlgItem(IDC_KOREAN)->SetWindowPos(NULL, 394, 495, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_ENGLISH)->SetWindowPos(NULL, 447, 453, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_NUMBER)->SetWindowPos(NULL, 490, 399, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CAPSLOCK)->SetWindowPos(NULL, 303, 106, 150, 150, SWP_NOSIZE);
 }
 
 // 한글 버튼 이미지 삽입
@@ -828,10 +831,10 @@ void CEye_Computing_DialogDlg::setImgNumBtn()
 	m_btn_Question.SetSkin(IDB_QUESTION, IDB_QUESTION, IDB_QUESTION_OVER, IDB_QUESTION, 0, IDB_QUESTION, 0, 0, 0);
 	m_btn_Semicolon.SetSkin(IDB_SEMICOLON, IDB_SEMICOLON, IDB_SEMICOLON_OVER, IDB_SEMICOLON, 0, IDB_SEMICOLON, 0, 0, 0);
 	m_btn_SgQuot.SetSkin(IDB_SGQUOT, IDB_SGQUOT, IDB_SGQUOT_OVER, IDB_SGQUOT, 0, IDB_SGQUOT, 0, 0, 0);
-	m_btn_Shift.SetSkin(IDB_N_SHIFT, IDB_N_SHIFT, IDB_N_SHIFT_OVER, IDB_N_SHIFT, 0, IDB_N_SHIFT, 0, 0, 0);
 	m_btn_Slash.SetSkin(IDB_SLASH, IDB_SLASH, IDB_SLASH_OVER, IDB_SLASH, 0, IDB_SLASH, 0, 0, 0);
 	m_btn_SqBracketClosed.SetSkin(IDB_SQBRACKET_CLOSE, IDB_SQBRACKET_CLOSE, IDB_SQBRACKET_CLOSE_OVER, IDB_SQBRACKET_CLOSE, 0, IDB_SQBRACKET_CLOSE, 0, 0, 0);
 	m_btn_SqBracketOpened.SetSkin(IDB_SQBRACKET_OPEN, IDB_SQBRACKET_OPEN, IDB_SQBRACKET_OPEN_OVER, IDB_SQBRACKET_OPEN, 0, IDB_SQBRACKET_OPEN, 0, 0, 0);
+	m_btn_AtMark.SetSkin(IDB_ATMARK, IDB_ATMARK, IDB_ATMARK_OVER, IDB_ATMARK, 0, IDB_ATMARK, 0, 0, 0);
 }
 
 // 숫자, 특수문자 버튼 좌표 지정
@@ -859,9 +862,9 @@ void CEye_Computing_DialogDlg::setPosNumBtn()
 	GetDlgItem(IDC_SQBRACKET_CLOSE)->SetWindowPos(NULL, 352, 417, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_DOT)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_TWO)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SHIFT)->SetWindowPos(NULL, 227, 175, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_EXCLAIM)->SetWindowPos(NULL, 168, 235, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_QUESTION)->SetWindowPos(NULL, 281, 232, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_AtMark)->SetWindowPos(NULL, 227, 175, 150, 150, SWP_NOSIZE);
 }
 
 
@@ -994,10 +997,10 @@ void CEye_Computing_DialogDlg::showNumBtn()
 	GetDlgItem(IDC_QUESTION)->ShowWindow(TRUE);
 	GetDlgItem(IDC_SEMICOLON)->ShowWindow(TRUE);
 	GetDlgItem(IDC_SGQUOT)->ShowWindow(TRUE);
-	GetDlgItem(IDC_SHIFT)->ShowWindow(TRUE);
 	GetDlgItem(IDC_SLASH)->ShowWindow(TRUE);
 	GetDlgItem(IDC_SQBRACKET_CLOSE)->ShowWindow(TRUE);
 	GetDlgItem(IDC_SQBRACKET_OPEN)->ShowWindow(TRUE);
+	GetDlgItem(IDC_AtMark)->ShowWindow(TRUE);
 }
 
 // 숫자 버튼 숨기기
@@ -1023,10 +1026,10 @@ void CEye_Computing_DialogDlg::hideNumBtn()
 	GetDlgItem(IDC_QUESTION)->ShowWindow(FALSE);
 	GetDlgItem(IDC_SEMICOLON)->ShowWindow(FALSE);
 	GetDlgItem(IDC_SGQUOT)->ShowWindow(FALSE);
-	GetDlgItem(IDC_SHIFT)->ShowWindow(FALSE);
 	GetDlgItem(IDC_SLASH)->ShowWindow(FALSE);
 	GetDlgItem(IDC_SQBRACKET_CLOSE)->ShowWindow(FALSE);
 	GetDlgItem(IDC_SQBRACKET_OPEN)->ShowWindow(FALSE);
+	GetDlgItem(IDC_AtMark)->ShowWindow(FALSE);
 }
 
 
