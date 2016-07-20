@@ -49,6 +49,9 @@ bool clickedEnglish = false;
 bool isKorean = false;
 bool isEnglish = false;
 
+// capslock 버튼
+BOOL caps = TRUE;
+
 //cursor 변수
 
 HCURSOR m_hCursor, m_hOldCursor;
@@ -297,6 +300,7 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_KOREAN, &CEye_Computing_DialogDlg::OnBnClickedKorean)
 	ON_BN_CLICKED(IDC_ENGLISH, &CEye_Computing_DialogDlg::OnBnClickedEnglish)
 	ON_BN_CLICKED(IDC_NUMBER, &CEye_Computing_DialogDlg::OnBnClickedNumber)
+	ON_BN_CLICKED(IDC_CAPSLOCK, &CEye_Computing_DialogDlg::OnBnClickedCapslock)
 END_MESSAGE_MAP()
 
 
@@ -2258,3 +2262,12 @@ void CEye_Computing_DialogDlg::OnBnClickedCptZ()
 
 
 
+
+
+void CEye_Computing_DialogDlg::OnBnClickedCapslock()
+{
+	caps = !caps;
+	if(caps) m_btn_Capslock.SetSkin(IDB_CAPSLOCK, IDB_CAPSLOCK, IDB_CAPSLOCK_OVER, IDB_CAPSLOCK, 0, IDB_CAPSLOCK, 0, 0, 0);
+	else     m_btn_Capslock.SetSkin(IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON, IDB_CAPSLOCK_ON_OVER, IDB_CAPSLOCK_ON, 0, IDB_CAPSLOCK_ON, 0, 0, 0);
+	Invalidate(TRUE);
+}

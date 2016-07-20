@@ -198,4 +198,5 @@ public:
 	afx_msg void OnBnClickedNumber();
 	CxSkinButton m_btn_Capslock;
 	CxSkinButton m_btn_AtMark;
+	afx_msg void OnBnClickedCapslock();
 };

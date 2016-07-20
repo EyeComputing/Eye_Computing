@@ -147,6 +147,8 @@
     <Image Include="res\B_normal.bmp" />
     <Image Include="res\B_over.bmp" />
     <Image Include="res\capslock_normal.bmp" />
+    <Image Include="res\capslock_on.bmp" />
+    <Image Include="res\capslock_on_over.bmp" />
     <Image Include="res\capslock_over.bmp" />
     <Image Include="res\chieut_normal.bmp" />
     <Image Include="res\chieut_over.bmp" />
