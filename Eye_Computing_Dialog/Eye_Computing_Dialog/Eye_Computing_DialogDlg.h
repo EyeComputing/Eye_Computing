@@ -223,4 +223,6 @@ public:
 	afx_msg void OnBnClickedTwo();
 	CxSkinButton m_btn_Add;
 	CxSkinButton m_btn_Wave;
+	afx_msg void OnBnClickedWave();
+	afx_msg void OnBnClickedAdd();
 };
