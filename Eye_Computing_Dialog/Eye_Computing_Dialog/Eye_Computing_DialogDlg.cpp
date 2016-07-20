@@ -312,6 +312,9 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_FOUR, &CEye_Computing_DialogDlg::OnBnClickedFour)
 	ON_BN_CLICKED(IDC_ONE, &CEye_Computing_DialogDlg::OnBnClickedOne)
 	ON_BN_CLICKED(IDC_TWO, &CEye_Computing_DialogDlg::OnBnClickedTwo)
+	ON_BN_CLICKED(IDC_ACCENT, &CEye_Computing_DialogDlg::OnBnClickedAccent)
+	ON_BN_CLICKED(IDC_EQUAL, &CEye_Computing_DialogDlg::OnBnClickedEqual)
+	ON_BN_CLICKED(IDC_BKSLASH, &CEye_Computing_DialogDlg::OnBnClickedBkslash)
 END_MESSAGE_MAP()
 
 
@@ -2551,6 +2554,48 @@ void CEye_Computing_DialogDlg::OnBnClickedComma()
 	InputButton.type = INPUT_KEYBOARD;
 
 	InputButton.ki.wVk = 0xBC;
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+// '`'
+void CEye_Computing_DialogDlg::OnBnClickedAccent()
+{
+	INPUT InputButton;
+	//initialize
+	::ZeroMemory(&InputButton, sizeof(INPUT));
+	InputButton.type = INPUT_KEYBOARD;
+
+	InputButton.ki.wVk = 0xC0;
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+// '='
+void CEye_Computing_DialogDlg::OnBnClickedEqual()
+{
+	INPUT InputButton;
+	//initialize
+	::ZeroMemory(&InputButton, sizeof(INPUT));
+	InputButton.type = INPUT_KEYBOARD;
+
+	InputButton.ki.wVk = 0xBB;
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+// '\'
+void CEye_Computing_DialogDlg::OnBnClickedBkslash()
+{
+	INPUT InputButton;
+	//initialize
+	::ZeroMemory(&InputButton, sizeof(INPUT));
+	InputButton.type = INPUT_KEYBOARD;
+
+	InputButton.ki.wVk = 0xE2;
 	::SendInput(1, &InputButton, sizeof(INPUT));
 	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputButton, sizeof(INPUT));
