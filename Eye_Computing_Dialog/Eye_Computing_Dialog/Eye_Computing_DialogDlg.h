@@ -51,6 +51,7 @@ protected:
 	afx_msg void CEye_Computing_DialogDlg::hideEngBtn();
 	afx_msg void CEye_Computing_DialogDlg::showNumBtn();
 	afx_msg void CEye_Computing_DialogDlg::hideNumBtn();
+	afx_msg void CEye_Computing_DialogDlg::capsNumBtn();
 
 	afx_msg void CEye_Computing_DialogDlg::CheckKorEng();
 
@@ -172,7 +173,6 @@ public:
 	afx_msg void OnBnClickedCptY();
 	afx_msg void OnBnClickedCptZ();
 
-	CxSkinButton m_btn_Accent;
 	CxSkinButton m_btn_One;
 	CxSkinButton m_btn_Two;
 	CxSkinButton m_btn_Three;
@@ -183,10 +183,8 @@ public:
 	CxSkinButton m_btn_Eight;
 	CxSkinButton m_btn_Nine;
 	CxSkinButton m_btn_Zero;
-	CxSkinButton m_btn_BkSlash;
 	CxSkinButton m_btn_Comma;
 	CxSkinButton m_btn_Dot;
-	CxSkinButton m_btn_Equal;
 	CxSkinButton m_btn_Exclaim;
 	CxSkinButton m_btn_Hyphen;
 	CxSkinButton m_btn_Question;
@@ -199,9 +197,41 @@ public:
 	CxSkinButton m_btn_Capslock;
 	CxSkinButton m_btn_AtMark;
 	afx_msg void OnBnClickedCapslock();
+<<<<<<< HEAD
 //	afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 //	afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 //	afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 //	afx_msg void OnSysChar(UINT nChar, UINT nRepCnt, UINT nFlags);
 //	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+=======
+	afx_msg void OnBnClickedAtmark();
+	afx_msg void OnBnClickedSqbracketOpen();
+	afx_msg void OnBnClickedSqbracketClose();
+	afx_msg void OnBnClickedSlash();
+	afx_msg void OnBnClickedQuestion();
+	afx_msg void OnBnClickedSemicolon();
+	afx_msg void OnBnClickedSgquot();
+	afx_msg void OnBnClickedAccent();
+	afx_msg void OnBnClickedExclaim();
+	afx_msg void OnBnClickedHyphen();
+	afx_msg void OnBnClickedDot();
+	afx_msg void OnBnClickedEqual();
+	afx_msg void OnBnClickedBkslash();
+	afx_msg void OnBnClickedComma();
+	afx_msg void OnBnClickedNine();
+	afx_msg void OnBnClickedZero();
+	afx_msg void OnBnClickedSeven();
+	afx_msg void OnBnClickedEight();
+	afx_msg void OnBnClickedSix();
+	afx_msg void OnBnClickedFive();
+	afx_msg void OnBnClickedThree();
+	afx_msg void OnBnClickedFour();
+	afx_msg void OnBnClickedOne();
+	afx_msg void OnBnClickedTwo();
+	afx_msg void OnBnClickedWave();
+	afx_msg void OnBnClickedAdd();
+	CxSkinButton m_btn_Accent;
+	CxSkinButton m_btn_Equal;
+	CxSkinButton m_btn_BkSlash;
+>>>>>>> 70c48a42e0c4bb4ec4bfa8936c9c6bc44a4d2c45
 };
