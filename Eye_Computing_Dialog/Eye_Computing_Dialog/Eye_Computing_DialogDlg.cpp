@@ -95,14 +95,10 @@ END_MESSAGE_MAP()
 
 
 
-
-
-
 //keyboard hooking 시 호출되는 function 
 LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
 	static int c = 0;
-	KBDLLHOOKSTRUCT *pKey = (KBDLLHOOKSTRUCT *)lParam;
 	POINT point;//마우스 좌표값 저장하는 변수
 
 	char ClassName[128];
@@ -111,34 +107,20 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 	if (nCode < 0)
 		return CallNextHookEx(m_hook, nCode, wParam, lParam);
 
-	if (nCode == HC_ACTION)
+	//alt key press 시에 마우스 클릭 message 발생
+	if(wParam == WM_SYSKEYDOWN )
 	{
-		if (GetKeyState(VK_CONTROL)& 0x80)
-		{
-			GetCursorPos(&point); //point 변수에 마우스 좌표 점 저장
-			
-			//HWND hWnd = WindowFromPoint(point);  //해당 좌표에 존재하는 window handle 가져오기
-
-			//GetClassName(hWnd, (LPWSTR)ClassName, 128);
-
-			//if (*ClassName)
-				//OutputDebugString((LPWSTR)ClassName);
-
-			//마우스 좌표에 존재하는 window를 활성화 시키기
-			//EnableWindow(hWnd, true);
-		
-			//	SendMessage(hWnd, WM_LBUTTONDOWN, false, 0);
-			//SendMessage(hWnd, WM_LBUTTONUP, false, 0);
-
+			GetCursorPos(&point); //point 변수에 마우스 좌표 점 
+									 
 			// 마우스 왼쪽 클릭 명령(추가)
 			::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 			::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 
- 			return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
-					 //return 을 하지 않으면 queue로 전달하여 message 처리됨.
-		}
-		return 0;
+			return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
+					 //return 을 하지 않으면 queue로 전달하여 정상적으로 message 처리됨.
+		
 	}
+	return 0;
 }
 
 
