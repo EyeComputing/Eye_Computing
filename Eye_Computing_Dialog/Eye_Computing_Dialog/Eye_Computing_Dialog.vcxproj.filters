@@ -41,692 +41,692 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\A_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\A_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\at_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\at_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\B_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\B_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\back_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\back_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\background.bmp">
-      <Filter>resources</Filter>
-    </Image>
     <Image Include="res\background.png">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\bieup_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\bieup_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\bitmap1.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\bk_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\bksp_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\bkspace_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\bkspace_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\C_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\C_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\capslock_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\capslock_on.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\capslock_on_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\capslock_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\chieut_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\chieut_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\confirm_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\confirm_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\D_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\D_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\digeut_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\digeut_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\E_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\E_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\eiung_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\enlgish_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\enlgish_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\eu_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\eu_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\F_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\F_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\G_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\G_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\giyeok_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\giyeok_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\H_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\H_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\hieut_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\hieut_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\I_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\I_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ieung_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ieung_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\J_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\J_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\jieut_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\jieut_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\K_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\K_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\kieuk_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\kieuk_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\korean_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\korean_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\L_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\L_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\lieul_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\M_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\M_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\mieum_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\mieum_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\minus_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\minus_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_accent_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_accent_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_accent_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_accent_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_add_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_add_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_backslash_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_backslash_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_backslash_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_backslash_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_comma_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_comma_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_comma_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_comma_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_dot_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_dot_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_dot_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_dot_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_eight_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_eight_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_eight_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_eight_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_equal_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_equal_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_equal_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_equal_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_exclaim_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_exclaim_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_five_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_five_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_five_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_five_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_four_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_four_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_four_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_four_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_hyphen_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_hyphen_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_hyphen_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_hyphen_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_nine_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_nine_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_nine_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_nine_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\N_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_one_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_one_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_one_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_one_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\N_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_question_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_question_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_semicolon_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_semicolon_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_semicolon_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_semicolon_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_seven_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_seven_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_seven_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_seven_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sgquot_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sgquot_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sgquot_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sgquot_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_shift_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_shift_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_six_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_six_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_six_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_six_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_slash_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_slash_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_slash_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_slash_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sqbracket_close_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sqbracket_close_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sqbracket_close_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sqbracket_close_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sqbracket_open_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sqbracket_open_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sqbracket_open_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_sqbracket_open_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_three_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_three_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_three_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_three_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_two_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_two_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_two_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_two_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_wave_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_wave_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_waves_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_zero_caps.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_zero_caps_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_zero_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\n_zero_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\nieun_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\nieun_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\number_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\number_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\O_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\O_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\off_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\off_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\P_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\P_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\pieup_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\pieup_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\plus_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\plus_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\Q_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\Q_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\R_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\R_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\rieul_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\rieul_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\S_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\S_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\shift_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\shift_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\shiot_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\shiot_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\siot_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\space_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\space_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_bieup_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_bieup_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_digeut_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_digeut_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_giyeok_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_giyeok_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_jieut_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_jieut_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_shiot_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\ss_shiot_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\T_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\T_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\tieut_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\tieut_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\U_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\U_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\V_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\V_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\W_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\W_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\X_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\X_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\Y_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\Y_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\yi_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\yi_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\Z_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\Z_over.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\zieut_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\zzum_normal.bmp">
-      <Filter>resources</Filter>
-    </Image>
-    <Image Include="res\zzum_over.bmp">
       <Filter>resources</Filter>
     </Image>
     <Image Include="res\Eye_Computing_Dialog.ico">
       <Filter>resources</Filter>
+    </Image>
+    <Image Include="res\zzum_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\A_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\A_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\at_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\at_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\B_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\B_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\back_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\back_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\background.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\bieup_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\bieup_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\bitmap1.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\bk_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\bksp_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\bkspace_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\bkspace_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\C_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\C_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\capslock_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\capslock_on.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\capslock_on_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\capslock_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\chieut_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\chieut_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\confirm_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\confirm_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\D_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\D_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\digeut_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\digeut_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\E_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\E_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\eiung_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\enlgish_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\enlgish_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\eu_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\eu_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\F_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\F_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\G_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\G_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\giyeok_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\giyeok_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\H_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\H_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\hieut_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\hieut_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\I_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\I_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ieung_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ieung_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\J_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\J_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\jieut_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\jieut_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\K_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\K_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\kieuk_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\kieuk_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\korean_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\korean_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\L_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\L_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\lieul_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\M_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\M_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\mieum_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\mieum_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\minus_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\minus_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_accent_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_accent_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_accent_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_accent_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_add_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_add_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_backslash_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_backslash_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_backslash_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_backslash_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_comma_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_comma_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_comma_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_comma_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_dot_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_dot_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_dot_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_dot_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_eight_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_eight_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_eight_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_eight_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_equal_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_equal_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_equal_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_equal_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_exclaim_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_exclaim_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_five_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_five_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_five_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_five_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_four_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_four_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_four_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_four_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_hyphen_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_hyphen_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_hyphen_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_hyphen_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_nine_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_nine_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_nine_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_nine_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\N_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_one_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_one_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_one_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_one_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\N_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_question_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_question_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_semicolon_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_semicolon_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_semicolon_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_semicolon_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_seven_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_seven_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_seven_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_seven_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sgquot_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sgquot_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sgquot_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sgquot_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_shift_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_shift_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_six_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_six_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_six_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_six_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_slash_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_slash_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_slash_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_slash_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sqbracket_close_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sqbracket_close_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sqbracket_close_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sqbracket_close_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sqbracket_open_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sqbracket_open_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sqbracket_open_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_sqbracket_open_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_three_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_three_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_three_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_three_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_two_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_two_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_two_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_two_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_wave_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_wave_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_waves_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_zero_caps.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_zero_caps_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_zero_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\n_zero_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\nieun_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\nieun_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\number_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\number_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\O_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\O_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\off_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\off_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\P_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\P_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\pieup_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\pieup_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\plus_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\plus_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\Q_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\Q_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\R_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\R_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\rieul_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\rieul_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\S_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\S_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\shift_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\shift_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\shiot_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\shiot_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\siot_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\space_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\space_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_bieup_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_bieup_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_digeut_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_digeut_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_giyeok_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_giyeok_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_jieut_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_jieut_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_shiot_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\ss_shiot_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\T_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\T_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\tieut_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\tieut_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\U_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\U_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\V_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\V_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\W_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\W_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\X_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\X_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\Y_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\Y_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\yi_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\yi_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\Z_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\Z_over.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\zieut_normal.bmp">
+      <Filter>resources\bmp</Filter>
+    </Image>
+    <Image Include="res\zzum_normal.bmp">
+      <Filter>resources\bmp</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -749,6 +749,9 @@
     </Filter>
     <Filter Include="sources">
       <UniqueIdentifier>{af3a3fc5-0baa-4416-a368-90d2b6b66160}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\bmp">
+      <UniqueIdentifier>{c67e5030-5c22-4c60-b3c2-94ab1edd2f5f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
