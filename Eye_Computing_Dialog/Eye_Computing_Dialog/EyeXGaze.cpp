@@ -16,6 +16,8 @@
 #define WINDOW_HANDLE_FORMAT "%d"
 #endif
 
+#define ErrorD 21
+
 // Data Stream을 받는 변수 초기화
 //TX_REAL EyeXGaze::GazeEye_X = 0;
 //TX_REAL EyeXGaze::GazeEye_Y = 0;
@@ -213,11 +215,27 @@ void EyeXGaze::OnFixationDataEvent(TX_HANDLE hFixationDataBehavior)
 			: ((eventType == TX_FIXATIONDATAEVENTTYPE_END) ? "End"
 				: "Begin");
 		
-		if (fps == 5)
+		if (fps == 8)
 		{
-			FixEye_X = eventParams.X;
-			FixEye_Y = eventParams.Y;
-			fps = 0;
+			if (FixEye_X == 0 && FixEye_Y == 0)
+			{
+				FixEye_X = eventParams.X;
+				FixEye_Y = eventParams.Y;
+				fps = 0;
+			}
+			else
+			{
+				if (eventParams.X < FixEye_X - ErrorD || eventParams.X > FixEye_X + ErrorD || eventParams.Y < FixEye_Y - ErrorD || eventParams.Y > FixEye_Y + ErrorD)
+				{
+					FixEye_X = eventParams.X;
+					FixEye_Y = eventParams.Y;
+					fps = 0;
+				}
+				else
+					fps = 0;
+			}
+
+
 		
 			SetCursorPos(FixEye_X, FixEye_Y);
 			
