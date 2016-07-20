@@ -736,6 +736,9 @@
     <None Include="res\Eye_Computing_Dialog.rc2">
       <Filter>resources</Filter>
     </None>
+    <None Include="..\..\..\..\Users\Isaac\Desktop\aero_arrow_xl.cur" />
+    <None Include="..\..\..\..\Users\Isaac\Desktop\Charmader - seleccion normal.cur" />
+    <None Include="res\Charmader.cur" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
