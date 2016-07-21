@@ -197,6 +197,11 @@ public:
 	CxSkinButton m_btn_Capslock;
 	CxSkinButton m_btn_AtMark;
 	afx_msg void OnBnClickedCapslock();
+//	afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+//	afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+//	afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+//	afx_msg void OnSysChar(UINT nChar, UINT nRepCnt, UINT nFlags);
+//	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 	afx_msg void OnBnClickedAtmark();
 	afx_msg void OnBnClickedSqbracketOpen();
 	afx_msg void OnBnClickedSqbracketClose();
