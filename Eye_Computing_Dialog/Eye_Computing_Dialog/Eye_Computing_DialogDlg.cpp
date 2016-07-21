@@ -56,6 +56,8 @@ INPUT InputCapsButton;
 //cursor 변수
 HCURSOR m_hCursor, m_hOldCursor;
 
+float programSize = 1.2;
+
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 class CAboutDlg : public CDialogEx
@@ -63,10 +65,10 @@ class CAboutDlg : public CDialogEx
 public:
 	CAboutDlg();
 
-// 대화 상자 데이터입니다.
+	// 대화 상자 데이터입니다.
 	enum { IDD = IDD_ABOUTBOX };
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
 // 구현입니다.
@@ -87,7 +89,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
-//	ON_WM_MOUSEMOVE()
+	//	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -111,7 +113,7 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 		return CallNextHookEx(m_hook, nCode, wParam, lParam);
 
 	//alt key press 시에 마우스 클릭 message 발생
-	if(wParam == WM_KEYDOWN)
+	if (wParam == WM_KEYDOWN)
 	{
 		//alt key press 시에 마우스 클릭 message 발생
 		if (kbdStruct.vkCode == VK_UP)
@@ -119,7 +121,7 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 
 			GetCursorPos(&point); //point 변수에 마우스 좌표 점 
 			TRACE("ALT KEY 누름");
-			
+
 			// 마우스 왼쪽 클릭 명령(추가)
 			::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 			::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
@@ -154,7 +156,7 @@ CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
 
 	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
-	
+
 }
 
 void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
@@ -302,11 +304,11 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_ENGLISH, &CEye_Computing_DialogDlg::OnBnClickedEnglish)
 	ON_BN_CLICKED(IDC_NUMBER, &CEye_Computing_DialogDlg::OnBnClickedNumber)
 	ON_BN_CLICKED(IDC_CAPSLOCK, &CEye_Computing_DialogDlg::OnBnClickedCapslock)
-//	ON_WM_SYSKEYDOWN()
-//ON_WM_SYSKEYDOWN()
-//ON_WM_SYSKEYDOWN()
-//ON_WM_SYSCHAR()
-//ON_WM_KEYDOWN()
+	//	ON_WM_SYSKEYDOWN()
+	//ON_WM_SYSKEYDOWN()
+	//ON_WM_SYSKEYDOWN()
+	//ON_WM_SYSCHAR()
+	//ON_WM_KEYDOWN()
 	ON_BN_CLICKED(IDC_AtMark, &CEye_Computing_DialogDlg::OnBnClickedAtmark)
 	ON_BN_CLICKED(IDC_SQBRACKET_OPEN, &CEye_Computing_DialogDlg::OnBnClickedSqbracketOpen)
 	ON_BN_CLICKED(IDC_SQBRACKET_CLOSE, &CEye_Computing_DialogDlg::OnBnClickedSqbracketClose)
@@ -348,10 +350,6 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 
 	if (!m_hook)
 		TRACE("HOOKING ERROR");
-
-	// 윈도우 사이즈 지정 및 고정(다시 그리지 않는다)
-	SetWindowPos(NULL, 0, 0, 625, 650, SWP_NOREDRAW);
-	GetDlgItem(IDC_BACKGROUND)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
 
 	// 윈도우 사이즈 지정 및 고정
 	initWindowSize();
@@ -403,15 +401,15 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 
 	//항상 최상위 window가 되도록 설정
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
-	
+
 	// window창 반투명하게 설정
 	LONG ExtendedStyle = GetWindowLong(GetSafeHwnd(), GWL_EXSTYLE);
 	SetWindowLong(GetSafeHwnd(), GWL_EXSTYLE, ExtendedStyle | WS_EX_LAYERED);
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
-	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
-	
+	::SetLayeredWindowAttributes(GetSafeHwnd(), 0, byAlphaValue, LWA_ALPHA);
 
-	
+
+
 	//cursor variable initialize
 	m_hCursor = NULL;
 	m_hOldCursor = NULL;
@@ -473,7 +471,7 @@ void CEye_Computing_DialogDlg::OnPaint()
 		HBITMAP hbit;
 		hbit = ::LoadBitmap(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDB_BACKGROUND));
 		m_BkGround.SetBitmap(hbit);
-		
+
 	}
 }
 
@@ -514,7 +512,7 @@ void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
 	}
 	//키보드가 항상 최상위에 위치하도록  
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
-	
+
 	CDialog::OnNcLButtonDown(nHitTest, point);
 }
 // 마우스 움직임
@@ -564,7 +562,7 @@ void CEye_Computing_DialogDlg::initHanguel()
 //한영 버튼 누르기
 void CEye_Computing_DialogDlg::CheckKorEng()
 {
-	
+
 
 	if (clickedKorean)
 	{
@@ -611,9 +609,9 @@ void CEye_Computing_DialogDlg::CheckKorEng()
 	::SendInput(1, &InputHE, sizeof(INPUT));
 	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputHE, sizeof(INPUT));
-	
 
-	
+
+
 	DWORD conVersion, senTence;
 	//DWORD Temp;
 	//HIMC hIMC = ImmGetContext(::GetActiveWindow());
@@ -622,7 +620,7 @@ void CEye_Computing_DialogDlg::CheckKorEng()
 	ImmNotifyIME(hIMC, NI_COMPOSITIONSTR, CPS_CANCEL, 0);
 	ImmGetConversionStatus(hIMC, &conVersion, &senTence);
 	//Temp = conVersion & ~IME_CMODE_LANGUAGE;
-	
+
 //	INPUT InputHE;
 	::ZeroMemory(&InputHE, sizeof(INPUT));
 	InputHE.type = INPUT_KEYBOARD;
@@ -709,7 +707,7 @@ void CEye_Computing_DialogDlg::Input_Key()
 // 윈도우 사이즈 지정 및 고정(다시 그리지 않는다)
 void CEye_Computing_DialogDlg::initWindowSize()
 {
-	SetWindowPos(NULL, 0, 0, 625, 650, SWP_NOREDRAW);
+	SetWindowPos(NULL, 0, 0, 625 * programSize, 650 * programSize, SWP_NOREDRAW);
 	GetDlgItem(IDC_BACKGROUND)->SetWindowPos(NULL, 0, 0, 150, 150, SWP_NOSIZE);
 }
 
@@ -732,19 +730,17 @@ void CEye_Computing_DialogDlg::setImgSysBtn()
 // 시스템 버튼 좌표 지정
 void CEye_Computing_DialogDlg::setPosSysBtn()
 {
-	GetDlgItem(IDC_BKSPACE)->SetWindowPos(NULL, 186, 12, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Enter)->SetWindowPos(NULL, 106, 46, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SPACE)->SetWindowPos(NULL, 228, 287, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Confirm)->SetWindowPos(NULL, 185, 92, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_KOREAN)->SetWindowPos(NULL, 394, 495, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_ENGLISH)->SetWindowPos(NULL, 447, 453, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_NUMBER)->SetWindowPos(NULL, 490, 399, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CAPSLOCK)->SetWindowPos(NULL, 303, 106, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_KORENG)->SetWindowPos(NULL, 23, 423, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_MINUS)->SetWindowPos(NULL, 47, 469, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_PLUS)->SetWindowPos(NULL, 111, 500, 150, 150, SWP_NOSIZE);
-
-
+	GetDlgItem(IDC_BKSPACE)->SetWindowPos(NULL, 186 * programSize, 12 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Enter)->SetWindowPos(NULL, 106 * programSize, 46 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SPACE)->SetWindowPos(NULL, 228 * programSize, 287 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Confirm)->SetWindowPos(NULL, 185 * programSize, 92 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_KOREAN)->SetWindowPos(NULL, 394 * programSize, 495 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_ENGLISH)->SetWindowPos(NULL, 447 * programSize, 453 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_NUMBER)->SetWindowPos(NULL, 490 * programSize, 399 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CAPSLOCK)->SetWindowPos(NULL, 303 * programSize, 106 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_KORENG)->SetWindowPos(NULL, 23 * programSize, 423 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_MINUS)->SetWindowPos(NULL, 47 * programSize, 469 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_PLUS)->SetWindowPos(NULL, 111 * programSize, 500 * programSize, 150, 150, SWP_NOSIZE);
 
 }
 
@@ -773,23 +769,23 @@ void CEye_Computing_DialogDlg::setImgKorBtn()
 // 한글 버튼 좌표 지정
 void CEye_Computing_DialogDlg::setPosKorBtn()
 {
-	GetDlgItem(IDC_GiYeok)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_NiEun)->SetWindowPos(NULL, 14, 185, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_DiGeut)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_RIEUL)->SetWindowPos(NULL, 117, 136, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_MIEUM)->SetWindowPos(NULL, 88, 217, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_BIEUP)->SetWindowPos(NULL, 103, 307, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Zzum)->SetWindowPos(NULL, 227, 175, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Iii)->SetWindowPos(NULL, 168, 235, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SHIOT)->SetWindowPos(NULL, 159, 363, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_Eu)->SetWindowPos(NULL, 281, 232, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_IEUNG)->SetWindowPos(NULL, 244, 376, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_KIEUK)->SetWindowPos(NULL, 369, 188, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CHIEUT)->SetWindowPos(NULL, 368, 280, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_JIEUT)->SetWindowPos(NULL, 326, 346, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_TIEUT)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_PIEUP)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_HIEUT)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_GiYeok)->SetWindowPos(NULL, 43 * programSize, 105 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_NiEun)->SetWindowPos(NULL, 14 * programSize, 185 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_DiGeut)->SetWindowPos(NULL, 16 * programSize, 278 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_RIEUL)->SetWindowPos(NULL, 117 * programSize, 136 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_MIEUM)->SetWindowPos(NULL, 88 * programSize, 217 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_BIEUP)->SetWindowPos(NULL, 103 * programSize, 307 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Zzum)->SetWindowPos(NULL, 227 * programSize, 175 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Iii)->SetWindowPos(NULL, 168 * programSize, 235 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SHIOT)->SetWindowPos(NULL, 159 * programSize, 363 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_Eu)->SetWindowPos(NULL, 281 * programSize, 232 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_IEUNG)->SetWindowPos(NULL, 244 * programSize, 376 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_KIEUK)->SetWindowPos(NULL, 369 * programSize, 188 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CHIEUT)->SetWindowPos(NULL, 368 * programSize, 280 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_JIEUT)->SetWindowPos(NULL, 326 * programSize, 346 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_TIEUT)->SetWindowPos(NULL, 445 * programSize, 191 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_PIEUP)->SetWindowPos(NULL, 443 * programSize, 279 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_HIEUT)->SetWindowPos(NULL, 412 * programSize, 357 * programSize, 150, 150, SWP_NOSIZE);
 }
 
 // 영문 버튼 이미지 삽입
@@ -821,37 +817,38 @@ void CEye_Computing_DialogDlg::setImgEngBtn()
 	m_btn_cptX.SetSkin(IDB_CPT_X, IDB_CPT_X, IDB_CPT_X_OVER, IDB_CPT_X, 0, IDB_CPT_X, 0, 0, 0);
 	m_btn_cptY.SetSkin(IDB_CPT_Y, IDB_CPT_Y, IDB_CPT_Y_OVER, IDB_CPT_Y, 0, IDB_CPT_Y, 0, 0, 0);
 	m_btn_cptZ.SetSkin(IDB_CPT_Z, IDB_CPT_Z, IDB_CPT_Z_OVER, IDB_CPT_Z, 0, IDB_CPT_Z, 0, 0, 0);
-}													  
+}
 
 // 영문 버튼 좌표 지정
 void CEye_Computing_DialogDlg::setPosEngBtn()
 {
-	GetDlgItem(IDC_CPT_A)->SetWindowPos(NULL, 173, 255, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_C)->SetWindowPos(NULL, 171, 367, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_B)->SetWindowPos(NULL, 310, 357, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_D)->SetWindowPos(NULL, 241, 378, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_E)->SetWindowPos(NULL, 178, 196, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_F)->SetWindowPos(NULL, 89, 196, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_G)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_H)->SetWindowPos(NULL, 373, 242, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_I)->SetWindowPos(NULL, 228, 172, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_J)->SetWindowPos(NULL, 14, 185, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_K)->SetWindowPos(NULL, 105, 416, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_L)->SetWindowPos(NULL, 87, 264, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_M)->SetWindowPos(NULL, 272, 449, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_N)->SetWindowPos(NULL, 185, 448, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_P)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_O)->SetWindowPos(NULL, 281, 196, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_R)->SetWindowPos(NULL, 116, 326, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_Q)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_S)->SetWindowPos(NULL, 361, 172, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_T)->SetWindowPos(NULL, 354, 310, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_U)->SetWindowPos(NULL, 289, 255, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_V)->SetWindowPos(NULL, 47, 356, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_W)->SetWindowPos(NULL, 121, 134, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_X)->SetWindowPos(NULL, 352, 417, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_Y)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_CPT_Z)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
+
+	GetDlgItem(IDC_CPT_A)->SetWindowPos(NULL, 173 * programSize, 255 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_C)->SetWindowPos(NULL, 171 * programSize, 367 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_B)->SetWindowPos(NULL, 310 * programSize, 357 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_D)->SetWindowPos(NULL, 241 * programSize, 378 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_E)->SetWindowPos(NULL, 178 * programSize, 196 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_F)->SetWindowPos(NULL, 89 * programSize, 196 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_G)->SetWindowPos(NULL, 443 * programSize, 279 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_H)->SetWindowPos(NULL, 373 * programSize, 242 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_I)->SetWindowPos(NULL, 228 * programSize, 172 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_J)->SetWindowPos(NULL, 14 * programSize, 185 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_K)->SetWindowPos(NULL, 105 * programSize, 416 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_L)->SetWindowPos(NULL, 87 * programSize, 264 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_M)->SetWindowPos(NULL, 272 * programSize, 449 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_N)->SetWindowPos(NULL, 185 * programSize, 448 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_P)->SetWindowPos(NULL, 412 * programSize, 357 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_O)->SetWindowPos(NULL, 281 * programSize, 196 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_R)->SetWindowPos(NULL, 116 * programSize, 326 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_Q)->SetWindowPos(NULL, 43 * programSize, 105 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_S)->SetWindowPos(NULL, 361 * programSize, 172 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_T)->SetWindowPos(NULL, 354 * programSize, 310 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_U)->SetWindowPos(NULL, 289 * programSize, 255 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_V)->SetWindowPos(NULL, 47 * programSize, 356 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_W)->SetWindowPos(NULL, 121 * programSize, 134 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_X)->SetWindowPos(NULL, 352 * programSize, 417 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_Y)->SetWindowPos(NULL, 445 * programSize, 191 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_CPT_Z)->SetWindowPos(NULL, 16 * programSize, 278 * programSize, 150, 150, SWP_NOSIZE);
 }
 
 // 숫자, 특수문자 버튼 이미지 삽입
@@ -889,31 +886,30 @@ void CEye_Computing_DialogDlg::setImgNumBtn()
 void CEye_Computing_DialogDlg::setPosNumBtn()
 {
 
-	GetDlgItem(IDC_ZERO)->SetWindowPos(NULL, 171, 367, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_HYPHEN)->SetWindowPos(NULL, 241, 378, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SEVEN)->SetWindowPos(NULL, 89, 196, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SLASH)->SetWindowPos(NULL, 443, 279, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SGQUOT)->SetWindowPos(NULL, 373, 242, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_ONE)->SetWindowPos(NULL, 14, 185, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_FOUR)->SetWindowPos(NULL, 105, 416, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_EIGHT)->SetWindowPos(NULL, 87, 264, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SQBRACKET_OPEN)->SetWindowPos(NULL, 272, 449, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_FIVE)->SetWindowPos(NULL, 185, 448, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_NINE)->SetWindowPos(NULL, 116, 326, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_COMMA)->SetWindowPos(NULL, 361, 172, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SEMICOLON)->SetWindowPos(NULL, 354, 310, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_THREE)->SetWindowPos(NULL, 47, 356, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SIX)->SetWindowPos(NULL, 121, 134, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_SQBRACKET_CLOSE)->SetWindowPos(NULL, 352, 417, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_DOT)->SetWindowPos(NULL, 445, 191, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_TWO)->SetWindowPos(NULL, 16, 278, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_EXCLAIM)->SetWindowPos(NULL, 168, 235, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_QUESTION)->SetWindowPos(NULL, 281, 232, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_AtMark)->SetWindowPos(NULL, 227, 175, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_EQUAL)->SetWindowPos(NULL, 310, 357, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_ACCENT)->SetWindowPos(NULL, 43, 105, 150, 150, SWP_NOSIZE);
-	GetDlgItem(IDC_BKSLASH)->SetWindowPos(NULL, 412, 357, 150, 150, SWP_NOSIZE);
-
+	GetDlgItem(IDC_ZERO)->SetWindowPos(NULL, 171 * programSize, 367 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_HYPHEN)->SetWindowPos(NULL, 241 * programSize, 378 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SEVEN)->SetWindowPos(NULL, 89 * programSize, 196 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SLASH)->SetWindowPos(NULL, 443 * programSize, 279 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SGQUOT)->SetWindowPos(NULL, 373 * programSize, 242 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_ONE)->SetWindowPos(NULL, 14 * programSize, 185 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_FOUR)->SetWindowPos(NULL, 105 * programSize, 416 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_EIGHT)->SetWindowPos(NULL, 87 * programSize, 264 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SQBRACKET_OPEN)->SetWindowPos(NULL, 272 * programSize, 449 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_FIVE)->SetWindowPos(NULL, 185 * programSize, 448 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_NINE)->SetWindowPos(NULL, 116 * programSize, 326 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_COMMA)->SetWindowPos(NULL, 361 * programSize, 172 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SEMICOLON)->SetWindowPos(NULL, 354 * programSize, 310 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_THREE)->SetWindowPos(NULL, 47 * programSize, 356 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SIX)->SetWindowPos(NULL, 121 * programSize, 134 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_SQBRACKET_CLOSE)->SetWindowPos(NULL, 352 * programSize, 417 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_DOT)->SetWindowPos(NULL, 445 * programSize, 191 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_TWO)->SetWindowPos(NULL, 16 * programSize, 278 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_EXCLAIM)->SetWindowPos(NULL, 168 * programSize, 235 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_QUESTION)->SetWindowPos(NULL, 281 * programSize, 232 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_AtMark)->SetWindowPos(NULL, 227 * programSize, 175 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_EQUAL)->SetWindowPos(NULL, 310 * programSize, 357 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_ACCENT)->SetWindowPos(NULL, 43 * programSize, 105 * programSize, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_BKSLASH)->SetWindowPos(NULL, 412 * programSize, 357 * programSize, 150, 150, SWP_NOSIZE);
 
 }
 
@@ -1878,7 +1874,7 @@ void CEye_Computing_DialogDlg::OnBnClickedKorean()
 	showKorBtn();
 	hideNumBtn();
 	hideEngBtn();
-	
+
 	Invalidate(TRUE);
 }
 
