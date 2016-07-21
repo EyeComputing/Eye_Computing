@@ -331,6 +331,7 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_ACCENT, &CEye_Computing_DialogDlg::OnBnClickedAccent)
 	ON_BN_CLICKED(IDC_EQUAL, &CEye_Computing_DialogDlg::OnBnClickedEqual)
 	ON_BN_CLICKED(IDC_BKSLASH, &CEye_Computing_DialogDlg::OnBnClickedBkslash)
+	ON_BN_CLICKED(IDC_KORENG, &CEye_Computing_DialogDlg::OnBnClickedKoreng)
 END_MESSAGE_MAP()
 
 
@@ -2772,4 +2773,16 @@ void CEye_Computing_DialogDlg::OnBnClickedTwo()
 	::SendInput(1, &InputButton, sizeof(INPUT));
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
+// 한/영
+void CEye_Computing_DialogDlg::OnBnClickedKoreng()
+{
+	INPUT InputHE;
+	::ZeroMemory(&InputHE, sizeof(INPUT));
+	InputHE.type = INPUT_KEYBOARD;
 
+	InputHE.ki.wVk = 0x15;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputHE, sizeof(INPUT));
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
