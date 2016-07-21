@@ -194,6 +194,8 @@
     <Image Include="res\kieuk_over.bmp" />
     <Image Include="res\korean_normal.bmp" />
     <Image Include="res\korean_over.bmp" />
+    <Image Include="res\KorEng_normal.bmp" />
+    <Image Include="res\KorEng_over.bmp" />
     <Image Include="res\K_normal.bmp" />
     <Image Include="res\K_over.bmp" />
     <Image Include="res\lieul_normal.bmp" />

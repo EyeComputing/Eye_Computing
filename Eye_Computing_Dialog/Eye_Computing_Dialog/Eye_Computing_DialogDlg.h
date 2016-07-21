@@ -226,4 +226,7 @@ public:
 	CxSkinButton m_btn_Accent;
 	CxSkinButton m_btn_Equal;
 	CxSkinButton m_btn_BkSlash;
+	CxSkinButton m_btn_Minus;
+	CxSkinButton m_btn_Plus;
+	CxSkinButton m_btn_KorEng;
 };

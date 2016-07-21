@@ -228,6 +228,9 @@ void CEye_Computing_DialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_ACCENT, m_btn_Accent);
 	DDX_Control(pDX, IDC_EQUAL, m_btn_Equal);
 	DDX_Control(pDX, IDC_BKSLASH, m_btn_BkSlash);
+	DDX_Control(pDX, IDC_MINUS, m_btn_Minus);
+	DDX_Control(pDX, IDC_PLUS, m_btn_Plus);
+	DDX_Control(pDX, IDC_KORENG, m_btn_KorEng);
 }
 
 BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
@@ -702,6 +705,9 @@ void CEye_Computing_DialogDlg::setImgSysBtn()
 	m_btn_English.SetSkin(IDB_ENGLISH, IDB_ENGLISH, IDB_ENGLISH_OVER, IDB_ENGLISH, 0, IDB_ENGLISH, 0, 0, 0);
 	m_btn_Number.SetSkin(IDB_NUMBER, IDB_NUMBER, IDB_NUMBER_OVER, IDB_NUMBER, 0, IDB_NUMBER, 0, 0, 0);
 	m_btn_Capslock.SetSkin(IDB_CAPSLOCK, IDB_CAPSLOCK, IDB_CAPSLOCK_OVER, IDB_CAPSLOCK, 0, IDB_CAPSLOCK, 0, 0, 0);
+	m_btn_KorEng.SetSkin(IDB_KORENG, IDB_KORENG, IDB_KORENG_OVER, IDB_KORENG, 0, IDB_KORENG, 0, 0, 0);
+	m_btn_Plus.SetSkin(IDB_PLUS, IDB_PLUS, IDB_PLUS_OVER, IDB_PLUS, 0, IDB_PLUS, 0, 0, 0);
+	m_btn_Minus.SetSkin(IDB_MINUS, IDB_MINUS, IDB_MINUS_OVER, IDB_MINUS, 0, IDB_MINUS, 0, 0, 0);
 }
 
 // 시스템 버튼 좌표 지정
@@ -715,6 +721,12 @@ void CEye_Computing_DialogDlg::setPosSysBtn()
 	GetDlgItem(IDC_ENGLISH)->SetWindowPos(NULL, 447, 453, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_NUMBER)->SetWindowPos(NULL, 490, 399, 150, 150, SWP_NOSIZE);
 	GetDlgItem(IDC_CAPSLOCK)->SetWindowPos(NULL, 303, 106, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_KORENG)->SetWindowPos(NULL, 23, 423, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_MINUS)->SetWindowPos(NULL, 47, 469, 150, 150, SWP_NOSIZE);
+	GetDlgItem(IDC_PLUS)->SetWindowPos(NULL, 111, 500, 150, 150, SWP_NOSIZE);
+
+
+
 }
 
 // 한글 버튼 이미지 삽입

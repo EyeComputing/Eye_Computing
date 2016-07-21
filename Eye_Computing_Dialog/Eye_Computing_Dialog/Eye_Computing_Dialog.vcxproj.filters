@@ -728,6 +728,8 @@
     <Image Include="res\zzum_normal.bmp">
       <Filter>resources\bmp</Filter>
     </Image>
+    <Image Include="res\KorEng_normal.bmp" />
+    <Image Include="res\KorEng_over.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="POINTER_COPY.cur">
