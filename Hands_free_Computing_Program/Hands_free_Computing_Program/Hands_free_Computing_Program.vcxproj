@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EyeXGaze.h" />
+    <ClInclude Include="FirstSelectDlg.h" />
     <ClInclude Include="Hands_free_Computing_Program.h" />
     <ClInclude Include="Hands_free_Computing_ProgramDlg.h" />
     <ClInclude Include="Resource.h" />
@@ -113,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EyeXGaze.cpp" />
+    <ClCompile Include="FirstSelectDlg.cpp" />
     <ClCompile Include="Hands_free_Computing_Program.cpp" />
     <ClCompile Include="Hands_free_Computing_ProgramDlg.cpp" />
     <ClCompile Include="stdafx.cpp">

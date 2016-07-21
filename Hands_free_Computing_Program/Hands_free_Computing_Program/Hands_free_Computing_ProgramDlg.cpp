@@ -7,6 +7,8 @@
 #include "Hands_free_Computing_ProgramDlg.h"
 #include "afxdialogex.h"
 
+#include "FirstSelectDlg.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -62,6 +64,7 @@ BEGIN_MESSAGE_MAP(CHands_free_Computing_ProgramDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_FirstSelect, &CHands_free_Computing_ProgramDlg::OnBnClickedFirstselect)
 END_MESSAGE_MAP()
 
 
@@ -150,3 +153,15 @@ HCURSOR CHands_free_Computing_ProgramDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+
+
+void CHands_free_Computing_ProgramDlg::OnBnClickedFirstselect()
+{
+	CFirstSelectDlg *m_pFirstSelectDlg;
+	m_pFirstSelectDlg = new CFirstSelectDlg();
+	m_pFirstSelectDlg->Create(IDD_FirstSelect, this);
+	m_pFirstSelectDlg->ShowWindow(SW_SHOW);
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
