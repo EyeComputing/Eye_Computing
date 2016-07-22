@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "xSkinButton.h"
 
 
 // CHands_free_Computing_ProgramDlg 대화 상자
@@ -32,4 +33,5 @@ protected:
 public:
 	afx_msg void OnBnClickedCancel();
 	afx_msg void OnBnClickedFirstselect();
+	CxSkinButton m_btn_FirstSelect;
 };

@@ -39,6 +39,9 @@
     <ClInclude Include="FirstSelectDlg.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="xSkinButton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Hands_free_Computing_Program.cpp">
@@ -56,6 +59,9 @@
     <ClCompile Include="FirstSelectDlg.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="xSkinButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Hands_free_Computing_Program.rc">
@@ -69,6 +75,18 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Hands_free_Computing_Program.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\assistive_touch.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\assistive_touch.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\assistive_touch_over.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\assistive_touch_mask.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

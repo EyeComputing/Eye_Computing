@@ -58,6 +58,7 @@ CHands_free_Computing_ProgramDlg::CHands_free_Computing_ProgramDlg(CWnd* pParent
 void CHands_free_Computing_ProgramDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_FirstSelect, m_btn_FirstSelect);
 }
 
 BEGIN_MESSAGE_MAP(CHands_free_Computing_ProgramDlg, CDialogEx)
@@ -74,7 +75,27 @@ BOOL CHands_free_Computing_ProgramDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
+	
+	//(IDC_FirstSelect)->ShowWindow(TRUE);
+	//ShowWindow(SW_HIDE);
+
+	// 윈도우 배경 투명
+	BOOL bResult = FALSE;
+	LONG lResult = SetWindowLong(this->GetSafeHwnd(), GWL_EXSTYLE, GetWindowLong(this->GetSafeHwnd(), GWL_EXSTYLE) | WS_EX_LAYERED);
+	if (!lResult) {
+		//AfxMessageBox("Fail to SetWindowLong...");
+		return FALSE;
+	}
+	bResult = SetLayeredWindowAttributes(RGB(240, 240, 240), 0, LWA_COLORKEY);
+	if (!bResult) {
+		//AfxMessageBox("Fail to SetLayeredWindowAttributes...");
+		return FALSE;
+	}
+
+	// 버튼 이미지 출력
+	m_btn_FirstSelect.SetSkin(IDB_ASSISTIVE_TOUCH, IDB_ASSISTIVE_TOUCH, IDB_ASSISTIVE_TOUCH_OVER, IDB_ASSISTIVE_TOUCH, 0, IDB_ASSISTIVE_TOUCH_MASK, 0, 0, 0);
+
+
 
 	// IDM_ABOUTBOX는 시스템 명령 범위에 있어야 합니다.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
@@ -139,6 +160,9 @@ void CHands_free_Computing_ProgramDlg::OnPaint()
 
 		// 아이콘을 그립니다.
 		dc.DrawIcon(x, y, m_hIcon);
+
+		
+		Invalidate(TRUE);
 	}
 	else
 	{

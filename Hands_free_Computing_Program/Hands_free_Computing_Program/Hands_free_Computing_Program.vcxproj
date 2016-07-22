@@ -14,12 +14,13 @@
     <ProjectGuid>{096BB088-83CB-486F-A7EE-873A4569C629}</ProjectGuid>
     <RootNamespace>Hands_free_Computing_Program</RootNamespace>
     <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
@@ -111,6 +112,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="xSkinButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EyeXGaze.cpp" />
@@ -121,6 +123,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="xSkinButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Hands_free_Computing_Program.rc" />
@@ -129,6 +132,10 @@
     <None Include="res\Hands_free_Computing_Program.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\assistive_touch.bmp" />
+    <Image Include="res\assistive_touch.png" />
+    <Image Include="res\assistive_touch_mask.bmp" />
+    <Image Include="res\assistive_touch_over.bmp" />
     <Image Include="res\Hands_free_Computing_Program.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -9,7 +9,7 @@
 #endif
 
 #include "resource.h"		// 주 기호입니다.
-
+#include "xSkinButton.h"
 
 // CHands_free_Computing_ProgramApp:
 // 이 클래스의 구현에 대해서는 Hands_free_Computing_Program.cpp을 참조하십시오.
