@@ -188,7 +188,7 @@ void CHands_free_Computing_ProgramDlg::OnBnClickedFirstselect()
 	m_pFirstSelectDlg->Create(IDD_FirstSelect, this);
 	m_pFirstSelectDlg->ShowWindow(SW_SHOW);
 	
-	//::ShowWindow(this->m_hWnd,SW_HIDE);
+	::ShowWindow(this->m_hWnd,SW_HIDE);
 
 	//delete m_pFirstSelectDlg;
 

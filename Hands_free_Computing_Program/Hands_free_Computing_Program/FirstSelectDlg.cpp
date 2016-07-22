@@ -6,6 +6,8 @@
 #include "FirstSelectDlg.h"
 #include "afxdialogex.h"
 
+#include "Hands_free_Computing_ProgramDlg.h"
+
 
 // CFirstSelectDlg 대화 상자입니다.
 
@@ -40,7 +42,14 @@ void CFirstSelectDlg::OnDestroy()
 {
 	CDialogEx::OnDestroy();
 
-	GetParent();
+	//CHands_free_Computing_ProgramDlg *m_pHandsDlg;
+	//m_pHandsDlg = new CHands_free_Computing_ProgramDlg();
+	//m_pHandsDlg->Create(IDD_HANDS_FREE_COMPUTING_PROGRAM_DIALOG, this);
+	//m_pHandsDlg->ShowWindow(SW_SHOW);
+
+	::ShowWindow(GetParent()->m_hWnd, SW_SHOWNORMAL);
+
+	//((CHands_free_Computing_ProgramDlg*)GetParent())->ShowWindow(SW_SHOW);	
 	
 
 	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
