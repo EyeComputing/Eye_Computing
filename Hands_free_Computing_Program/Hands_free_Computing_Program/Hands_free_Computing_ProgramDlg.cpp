@@ -188,12 +188,11 @@ void CHands_free_Computing_ProgramDlg::OnBnClickedFirstselect()
 	m_pFirstSelectDlg->Create(IDD_FirstSelect, this);
 	m_pFirstSelectDlg->ShowWindow(SW_SHOW);
 	
-	/*
-	CHands_free_Computing_ProgramDlg *m_pHandsFreeComputingDlg;
-	m_pHandsFreeComputingDlg = new CHands_free_Computing_ProgramDlg();
-	m_pHandsFreeComputingDlg->Create(IDD_HANDS_FREE_COMPUTING_PROGRAM_DIALOG, this);
-	m_pHandsFreeComputingDlg->ShowWindow(SW_HIDE);
-	*/
+	//::ShowWindow(this->m_hWnd,SW_HIDE);
+
+	//delete m_pFirstSelectDlg;
+
+	//::ShowWindow(this->m_hWnd, SW_SHOW);
 
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
