@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "resource.h"
 
 /* global */
 extern POINT set_user_coordinate;

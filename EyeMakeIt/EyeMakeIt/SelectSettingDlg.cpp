@@ -6,7 +6,6 @@
 #include "SelectSettingDlg.h"
 #include "afxdialogex.h"
 
-
 #include "SelectSetCoordinateDlg.h"
 
 

@@ -35,6 +35,7 @@ HHOOK m_hook = NULL;
 //토비!
 EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
 
+/* global */
 int selectMouseEvent;
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
