@@ -34,8 +34,16 @@ HHOOK m_hook = NULL;
 //토비!
 EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
 
+
+/* global  */
 int selectMouseEvent;
+
+
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
+
+
+
+/* 위에 화살표가 마우스의 어떤 동작을 할까요? */
 
 LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
 {
@@ -46,7 +54,7 @@ LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
 
 	if (nCode < 0)
 		return CallNextHookEx(m_hook, nCode, wParam, lParam);
-
+	
 	//alt key press 시에 마우스 클릭 message 발생
 	if (wParam == WM_KEYDOWN)
 	{
@@ -80,15 +88,14 @@ LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
 				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 
 				return 1;
-
 			}
-			
-
 		}
-
 		return 0;
 	}
 }
+
+
+
 
 
 class CAboutDlg : public CDialogEx

@@ -8,6 +8,11 @@
 #include <windows.h>
 #include <tchar.h>
 
+
+/* 헤더 추가 */
+#include "SelectSettingDlg.h"
+
+
 #pragma comment(lib, "Tobii.EyeX.Client.lib")
 
 #if INTPTR_MAX == INT64_MAX
@@ -218,6 +223,8 @@ void EyeXGaze::OnFixationDataEvent(TX_HANDLE hFixationDataBehavior)
 			: ((eventType == TX_FIXATIONDATAEVENTTYPE_END) ? "End"
 				: "Begin");
 		
+
+		/* 마우스 커서 -> 토비가 받아주는 눈 좌표로 옮기기. */
 		if (fps == 5)
 		{
 			

@@ -11,6 +11,9 @@ public:
 	SelectMouseDlg(CWnd* pParent = NULL);   // 표준 생성자입니다.
 	virtual ~SelectMouseDlg();
 
+	/* 설정 */
+	void SelectMouseDlg::OnBtnClick(UINT uiID);
+
 // 대화 상자 데이터입니다.
 	enum { IDD = IDD_Dlg_Mouse };
 
