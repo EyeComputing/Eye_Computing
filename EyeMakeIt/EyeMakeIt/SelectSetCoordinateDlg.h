@@ -15,6 +15,7 @@ class SelectSetCoordinateDlg : public CDialogEx
 public:
 	SelectSetCoordinateDlg(CWnd* pParent = NULL);   // 표준 생성자입니다.
 	virtual ~SelectSetCoordinateDlg();
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 // 대화 상자 데이터입니다.
 	enum { IDD = IDD_Dlg_CoordinateSet };
