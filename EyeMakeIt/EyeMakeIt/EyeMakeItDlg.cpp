@@ -6,13 +6,61 @@
 #include "EyeMakeIt.h"
 #include "EyeMakeItDlg.h"
 #include "afxdialogex.h"
+#include "EyeXGaze.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
+//mouse click message 구분위한 상수
+#define LCLICKED 0
+#define RCLICKED 1
+#define DOUBLECLICKED 2
+
+//spacebar click message hooking을 위한 함수 & 변수
+//키보드 hooking이 발생했을 경우 호출되는 함수
+LRESULT CALLBACK  MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam);
+HHOOK m_hook = NULL;
+
+//토비!
+EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
+
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
+
+LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
+{
+	static int c = 0;
+	POINT point;//마우스 좌표값 저장하는 변수
+	KBDLLHOOKSTRUCT kbdStruct;
+	kbdStruct = *((KBDLLHOOKSTRUCT*)lParam);
+
+	if (nCode < 0)
+		return CallNextHookEx(m_hook, nCode, wParam, lParam);
+
+	//alt key press 시에 마우스 클릭 message 발생
+	if (wParam == WM_KEYDOWN)
+	{
+		//alt key press 시에 마우스 클릭 message 발생
+		if (kbdStruct.vkCode == VK_UP)
+		{
+
+			GetCursorPos(&point); //point 변수에 마우스 좌표 점 
+			TRACE("ALT KEY 누름");
+
+			// 마우스 왼쪽 클릭 명령(추가)
+			::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+			::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+			//TRACE("MOUSE 왼쪽 클릭 발생 끝");
+			return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
+					 //return 을 하지 않으면 queue로 전달하여 정상적으로 message 처리됨.
+
+		}
+
+		return 0;
+	}
+}
+
 
 class CAboutDlg : public CDialogEx
 {
@@ -51,6 +99,9 @@ CEyeMakeItDlg::CEyeMakeItDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CEyeMakeItDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+
+	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
+	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
 }
 
 void CEyeMakeItDlg::DoDataExchange(CDataExchange* pDX)
@@ -72,6 +123,12 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
+
+	//keyboard message hooking 위한 초기화
+	m_hook = SetWindowsHookEx(WH_KEYBOARD_LL, MakeMouseMsg, NULL, 0);
+
+	if (!m_hook)
+		TRACE("HOOKING ERROR");
 
 	// IDM_ABOUTBOX는 시스템 명령 범위에 있어야 합니다.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
