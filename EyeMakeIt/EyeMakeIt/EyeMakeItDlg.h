@@ -4,6 +4,8 @@
 
 #pragma once
 
+/* global  */
+extern int selectMouseEvent;
 
 // CEyeMakeItDlg 대화 상자
 class CEyeMakeItDlg : public CDialogEx
