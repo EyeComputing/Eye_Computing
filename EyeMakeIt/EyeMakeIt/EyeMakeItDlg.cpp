@@ -12,8 +12,6 @@
 /* 헤더파일 인클루드 */
 #include "SelectKeyboardDlg.h"
 #include "SelectMouseDlg.h"
-#include "SelectScrolldownDlg.h"
-#include "SelectScrollupDlg.h"
 #include "SelectSettingDlg.h"
 
 
@@ -274,10 +272,7 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 		}
 		case IDC_BT_Scroll_Up:
 		{
-			SelectScrollupDlg *m_pScrollupDlg;
-			m_pScrollupDlg = new SelectScrollupDlg();
-			m_pScrollupDlg->Create(IDD_Dlg_Scroll_Up, this);
-			m_pScrollupDlg->ShowWindow(SW_SHOW);
+
 			break;
 		}
 		case IDC_BT_Keyboard:
@@ -290,10 +285,7 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 		}
 		case IDC_BT_Scroll_Down:
 		{
-			SelectScrolldownDlg *m_pScrolldownDlg;
-			m_pScrolldownDlg = new SelectScrolldownDlg();
-			m_pScrolldownDlg->Create(IDD_Dlg_Scroll_Down, this);
-			m_pScrolldownDlg->ShowWindow(SW_SHOW);
+
 			break;
 		}
 		case IDC_BT_Setting:
