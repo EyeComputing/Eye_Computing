@@ -134,16 +134,6 @@ LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
 }
 
 
-
-
-
-
-
-
-
-
-
-
 // CEye_Computing_DialogDlg 대화 상자
 
 CEye_Computing_DialogDlg::CEye_Computing_DialogDlg(CWnd* pParent /*=NULL*/)
@@ -485,22 +475,11 @@ HCURSOR CEye_Computing_DialogDlg::OnQueryDragIcon()
 }
 
 
-
-
-
-
-
-
-
-
-
-
 // Enter 눌러도 창이 닫기지 않도록  합니다.
 void CEye_Computing_DialogDlg::OnOK()
 {
 	return;
 }
-
 
 
 // 마우스 왼쪽 클릭?
