@@ -25,6 +25,7 @@
 #define LCLICKED 0
 #define RCLICKED 1
 #define DOUBLECLICKED 2
+#define DRAGCLICKED 3
 
 //spacebar click message hooking을 위한 함수 & 변수
 //키보드 hooking이 발생했을 경우 호출되는 함수
@@ -34,10 +35,7 @@ HHOOK m_hook = NULL;
 //토비!
 EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
 
-
-/* global  */
 int selectMouseEvent;
-
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
@@ -78,6 +76,7 @@ LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
 				::mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 				::mouse_event(MOUSEEVENTF_RIGHTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 
+				selectMouseEvent = LCLICKED;
 				return 1;
 			case DOUBLECLICKED:
 
@@ -87,9 +86,15 @@ LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
 				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 
+				selectMouseEvent = LCLICKED;
 				return 1;
+			case DRAGCLICKED:
+				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+
+				selectMouseEvent = LCLICKED;
 			}
 		}
+
 		return 0;
 	}
 }

@@ -3,9 +3,15 @@
 
 #include "stdafx.h"
 #include "EyeMakeIt.h"
+#include "EyeMakeItDlg.h"
 #include "SelectMouseDlg.h"
 #include "afxdialogex.h"
 
+//mouse click message 구분위한 상수
+#define LCLICKED 0
+#define RCLICKED 1
+#define DOUBLECLICKED 2
+#define DRAGCLICKED 3
 
 // SelectMouseDlg 대화 상자입니다.
 
@@ -40,20 +46,24 @@ void SelectMouseDlg::OnBtnClick(UINT uiID)
 {
 	switch (uiID)
 	{
-		case IDC_BT_Mouse:
+		case IDC_BT_M_Lclick:
 		{
+			selectMouseEvent = LCLICKED;
 			break;
 		}
-		case IDC_BT_Scroll_Up:
+		case IDC_BT_M_Rclick:
 		{	
+			selectMouseEvent = RCLICKED;
 			break;
 		}
-		case IDC_BT_Keyboard:
+		case IDC_BT_M_DBclick:
 		{	
+			selectMouseEvent = DOUBLECLICKED;
 			break;
 		}
-		case IDC_BT_Scroll_Down:
-		{	
+		case IDC_BT_M_Drag:
+		{
+			selectMouseEvent = DRAGCLICKED;
 			break;
 		}
 
