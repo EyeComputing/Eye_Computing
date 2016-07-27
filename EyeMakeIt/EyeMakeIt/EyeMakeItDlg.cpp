@@ -30,7 +30,7 @@
 
 //spacebar click message hooking을 위한 함수 & 변수
 //키보드 hooking이 발생했을 경우 호출되는 함수
-LRESULT CALLBACK  MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK  GetKeyMsg(int nCode, WPARAM wParam, LPARAM lParam);
 HHOOK m_hook = NULL;
 
 //토비!
@@ -41,80 +41,6 @@ int selectMouseEvent;
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
-<<<<<<< HEAD
-
-
-/* 위에 화살표가 마우스의 어떤 동작을 할까요? */
-
-LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
-{
-	static int c = 0;
-	POINT point;//마우스 좌표값 저장하는 변수
-	KBDLLHOOKSTRUCT kbdStruct;
-	kbdStruct = *((KBDLLHOOKSTRUCT*)lParam);
-
-	if (nCode < 0)
-		return CallNextHookEx(m_hook, nCode, wParam, lParam);
-	
-	//alt key press 시에 마우스 클릭 message 발생
-	if (wParam == WM_KEYDOWN)
-	{
-		//alt key press 시에 마우스 클릭 message 발생
-		if (kbdStruct.vkCode == VK_UP)
-		{
-			GetCursorPos(&point); //point 변수에 마우스 좌표 점 
-			switch (selectMouseEvent)
-			{
-			case LCLICKED:
-				TRACE("Left mouse 누름");
-
-				// 마우스 왼쪽 클릭 명령(추가)
-				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-				
-				return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
-						 //return 을 하지 않으면 queue로 전달하여 정상적으로 message 처리됨.
-			case RCLICKED:
-				//마우스 오른쪽 클릭 EVENT 발생
-				::mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-				::mouse_event(MOUSEEVENTF_RIGHTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-
-				selectMouseEvent = LCLICKED;
-				return 1;
-			case DOUBLECLICKED:
-
-				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-				Sleep(10);
-				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-
-				selectMouseEvent = LCLICKED;
-				return 1;
-			case DRAGCLICKED:
-				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-
-				 selectMouseEvent = DRAGSTOP;
-				return 1;
-			case DRAGSTOP:
-				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-				selectMouseEvent = LCLICKED;
-				
-				return 1;
-			}
-		}
-
-		return 0;
-	}
-	
-}
-
-
-
-
-
-=======
->>>>>>> 0e6da0fca80bdfa0a3dd1041e09b32b76e6c13c8
 class CAboutDlg : public CDialogEx
 {
 public:
@@ -178,7 +104,7 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
 
 	//keyboard message hooking 위한 초기화
-	m_hook = SetWindowsHookEx(WH_KEYBOARD_LL, MakeMouseMsg, NULL, 0);
+	m_hook = SetWindowsHookEx(WH_KEYBOARD_LL, GetKeyMsg, NULL, 0);
 
 	if (!m_hook)
 		TRACE("HOOKING ERROR");
@@ -270,8 +196,7 @@ HCURSOR CEyeMakeItDlg::OnQueryDragIcon()
 /* 사용자 정의 함수 */
 
 
-/* 위에 화살표가 마우스의 어떤 동작을 할까요? */
-LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK GetKeyMsg(int nCode, WPARAM wParam, LPARAM lParam)
 {
 	static int c = 0;
 	POINT point;//마우스 좌표값 저장하는 변수
@@ -298,7 +223,7 @@ LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
 				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 
 				return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
-				//return 을 하지 않으면 queue로 전달하여 정상적으로 message 처리됨.
+						 //return 을 하지 않으면 queue로 전달하여 정상적으로 message 처리됨.
 			case RCLICKED:
 				//마우스 오른쪽 클릭 EVENT 발생
 				::mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
@@ -319,14 +244,20 @@ LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
 			case DRAGCLICKED:
 				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 
+				selectMouseEvent = DRAGSTOP;
+				return 1;
+			case DRAGSTOP:
+				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 				selectMouseEvent = LCLICKED;
+
+				return 1;
 			}
 		}
 
 		return 0;
 	}
-}
 
+}
 
 // 각 버튼 클릭 
 void CEyeMakeItDlg::OnBtnClick( UINT uiID )
