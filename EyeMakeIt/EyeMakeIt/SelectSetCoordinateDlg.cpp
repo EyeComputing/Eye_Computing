@@ -42,7 +42,8 @@ END_MESSAGE_MAP()
 
 /* 사용자 정의 함수 */
 
-//마우스 좌표 조정하는 함수
+// 키보드 입력 받으면 global 변수 숫자 ++ or -- 시켜주기
+
 BOOL SelectSetCoordinateDlg::PreTranslateMessage(MSG* pMsg)
 {
 	if (pMsg->message == WM_KEYDOWN)
@@ -69,6 +70,3 @@ BOOL SelectSetCoordinateDlg::PreTranslateMessage(MSG* pMsg)
 	}
 	return 0; //더 이상 message 가 처리되지 않길 바란다면 0이 아닌 값 return
 }
-
-// 키보드 입력 받으면 global 변수 숫자 ++ or -- 시켜주기
-
