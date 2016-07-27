@@ -12,6 +12,9 @@ public:
 	SelectSettingDlg(CWnd* pParent = NULL);   // 표준 생성자입니다.
 	virtual ~SelectSettingDlg();
 
+	/* 사용자 정의 함수 */
+	void SelectSettingDlg::OnBtnClick(UINT uiID);
+
 // 대화 상자 데이터입니다.
 	enum { IDD = IDD_Dlg_Setting };
 
