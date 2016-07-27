@@ -149,6 +149,7 @@ BEGIN_MESSAGE_MAP(CEyeMakeItDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_BT_Mouse, IDC_BT_Setting, CEyeMakeItDlg::OnBtnClick)
 END_MESSAGE_MAP()
 

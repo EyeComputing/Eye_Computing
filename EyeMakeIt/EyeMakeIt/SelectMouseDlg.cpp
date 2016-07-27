@@ -28,6 +28,7 @@ void SelectMouseDlg::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(SelectMouseDlg, CDialogEx)
+	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_BT_M_Lclick, IDC_BT_M_Drag, SelectMouseDlg::OnBtnClick)
 END_MESSAGE_MAP()
 
@@ -35,7 +36,6 @@ END_MESSAGE_MAP()
 // SelectMouseDlg 메시지 처리기입니다.
 
 /* 사용자 정의 함수 */
-
 void SelectMouseDlg::OnBtnClick(UINT uiID)
 {
 	switch (uiID)

@@ -12,6 +12,14 @@
 /* 헤더 추가 */
 #include "SelectSettingDlg.h"
 
+/* global */
+POINT set_user_coordinate;
+
+
+#define ErrorD 21
+
+
+
 
 #pragma comment(lib, "Tobii.EyeX.Client.lib")
 
@@ -21,7 +29,6 @@
 #define WINDOW_HANDLE_FORMAT "%d"
 #endif
 
-#define ErrorD 21
 
 
 // Data Stream을 받는 변수 초기화
@@ -251,8 +258,7 @@ void EyeXGaze::OnFixationDataEvent(TX_HANDLE hFixationDataBehavior)
 			//FixEye_X = eventParams.X;
 			//FixEye_Y = eventParams.Y;
 			//fps = 0;
-				SetCursorPos(FixEye_X, FixEye_Y);
-
+				SetCursorPos(FixEye_X + set_user_coordinate.x, FixEye_Y + set_user_coordinate.y);
 			//}
 
 		

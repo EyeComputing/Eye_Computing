@@ -112,6 +112,7 @@
     <ClInclude Include="SelectMouseDlg.h" />
     <ClInclude Include="SelectScrolldownDlg.h" />
     <ClInclude Include="SelectScrollupDlg.h" />
+    <ClInclude Include="SelectSetCoordinateDlg.h" />
     <ClInclude Include="SelectSettingDlg.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -124,6 +125,7 @@
     <ClCompile Include="SelectMouseDlg.cpp" />
     <ClCompile Include="SelectScrolldownDlg.cpp" />
     <ClCompile Include="SelectScrollupDlg.cpp" />
+    <ClCompile Include="SelectSetCoordinateDlg.cpp" />
     <ClCompile Include="SelectSettingDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
