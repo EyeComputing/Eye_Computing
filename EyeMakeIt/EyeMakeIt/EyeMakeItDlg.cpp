@@ -26,6 +26,7 @@
 #define RCLICKED 1
 #define DOUBLECLICKED 2
 #define DRAGCLICKED 3
+#define DRAGSTOP 4
 
 //spacebar click message hooking을 위한 함수 & 변수
 //키보드 hooking이 발생했을 경우 호출되는 함수
@@ -91,12 +92,19 @@ LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
 			case DRAGCLICKED:
 				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 
+				 selectMouseEvent = DRAGSTOP;
+				return 1;
+			case DRAGSTOP:
+				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
 				selectMouseEvent = LCLICKED;
+				
+				return 1;
 			}
 		}
 
 		return 0;
 	}
+	
 }
 
 
