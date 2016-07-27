@@ -1,6 +1,11 @@
 #pragma once
 
 
+
+/* global */
+extern POINT set_user_coordinate;
+
+
 // SelectSetCoordinateDlg 대화 상자입니다.
 
 class SelectSetCoordinateDlg : public CDialogEx

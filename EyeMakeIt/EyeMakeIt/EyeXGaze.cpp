@@ -10,11 +10,7 @@
 
 
 /* 헤더 추가 */
-#include "SelectSettingDlg.h"
-
-/* global */
-POINT set_user_coordinate;
-
+#include "SelectSetCoordinateDlg.h"
 
 #define ErrorD 21
 

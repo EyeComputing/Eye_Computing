@@ -7,6 +7,10 @@
 #include "afxdialogex.h"
 
 
+/* global */
+POINT set_user_coordinate;
+
+
 // SelectSetCoordinateDlg 대화 상자입니다.
 
 IMPLEMENT_DYNAMIC(SelectSetCoordinateDlg, CDialogEx)
@@ -32,3 +36,12 @@ END_MESSAGE_MAP()
 
 
 // SelectSetCoordinateDlg 메시지 처리기입니다.
+
+
+
+
+/* 사용자 정의 함수 */
+
+
+// 키보드 입력 받으면 global 변수 숫자 ++ or -- 시켜주기
+
