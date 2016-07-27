@@ -8,6 +8,7 @@
 #include "afxdialogex.h"
 #include "EyeXGaze.h"
 
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -25,7 +26,7 @@ HHOOK m_hook = NULL;
 //토비!
 EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
 
-
+int selectMouseEvent;
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
 LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
@@ -44,16 +45,36 @@ LRESULT CALLBACK MakeMouseMsg(int nCode, WPARAM wParam, LPARAM lParam)
 		//alt key press 시에 마우스 클릭 message 발생
 		if (kbdStruct.vkCode == VK_UP)
 		{
-
 			GetCursorPos(&point); //point 변수에 마우스 좌표 점 
-			TRACE("ALT KEY 누름");
+			switch (selectMouseEvent)
+			{
+			case LCLICKED:
+				TRACE("Left mouse 누름");
 
-			// 마우스 왼쪽 클릭 명령(추가)
-			::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-			::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
-			//TRACE("MOUSE 왼쪽 클릭 발생 끝");
-			return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
-					 //return 을 하지 않으면 queue로 전달하여 정상적으로 message 처리됨.
+				// 마우스 왼쪽 클릭 명령(추가)
+				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+				
+				return 1;//return 1 : 원래의 message인 space 클릭 메시지가 해당 application의 message queue로 전달되지 않음
+						 //return 을 하지 않으면 queue로 전달하여 정상적으로 message 처리됨.
+			case RCLICKED:
+				//마우스 오른쪽 클릭 EVENT 발생
+				::mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+				::mouse_event(MOUSEEVENTF_RIGHTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+
+				return 1;
+			case DOUBLECLICKED:
+
+				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+				Sleep(10);
+				::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+				::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+
+				return 1;
+
+			}
+			
 
 		}
 
