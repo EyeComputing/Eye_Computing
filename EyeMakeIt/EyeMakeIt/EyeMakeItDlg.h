@@ -12,6 +12,15 @@ class CEyeMakeItDlg : public CDialogEx
 public:
 	CEyeMakeItDlg(CWnd* pParent = NULL);	// 표준 생성자입니다.
 
+
+
+
+/* 사용자 정의 함수 */
+	void CEyeMakeItDlg::OnBtnClick(UINT uiID);
+
+
+
+
 // 대화 상자 데이터입니다.
 	enum { IDD = IDD_EYEMAKEIT_DIALOG };
 

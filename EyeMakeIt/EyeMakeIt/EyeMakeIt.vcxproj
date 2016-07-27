@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
@@ -108,6 +108,11 @@
     <ClInclude Include="EyeMakeItDlg.h" />
     <ClInclude Include="EyeXGaze.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SelectKeyboardDlg.h" />
+    <ClInclude Include="SelectMouseDlg.h" />
+    <ClInclude Include="SelectScrolldownDlg.h" />
+    <ClInclude Include="SelectScrollupDlg.h" />
+    <ClInclude Include="SelectSettingDlg.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -115,6 +120,11 @@
     <ClCompile Include="EyeMakeIt.cpp" />
     <ClCompile Include="EyeMakeItDlg.cpp" />
     <ClCompile Include="EyeXGaze.cpp" />
+    <ClCompile Include="SelectKeyboardDlg.cpp" />
+    <ClCompile Include="SelectMouseDlg.cpp" />
+    <ClCompile Include="SelectScrolldownDlg.cpp" />
+    <ClCompile Include="SelectScrollupDlg.cpp" />
+    <ClCompile Include="SelectSettingDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -132,4 +142,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="EyeMakeIt.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

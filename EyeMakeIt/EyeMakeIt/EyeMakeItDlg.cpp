@@ -7,6 +7,14 @@
 #include "EyeMakeItDlg.h"
 #include "afxdialogex.h"
 
+/* 헤더파일 인클루드 */
+#include "SelectKeyboardDlg.h"
+#include "SelectMouseDlg.h"
+#include "SelectScrolldownDlg.h"
+#include "SelectScrollupDlg.h"
+#include "SelectSettingDlg.h"
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -62,6 +70,7 @@ BEGIN_MESSAGE_MAP(CEyeMakeItDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_COMMAND_RANGE(IDC_BT_Mouse, IDC_BT_Setting, CEyeMakeItDlg::OnBtnClick)
 END_MESSAGE_MAP()
 
 
@@ -148,5 +157,62 @@ void CEyeMakeItDlg::OnPaint()
 HCURSOR CEyeMakeItDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
+}
+
+
+
+
+
+
+
+/* 사용자 정의 함수 */
+
+void CEyeMakeItDlg::OnBtnClick( UINT uiID )
+{
+	switch (uiID)
+	{
+		case IDC_BT_Mouse:
+		{
+			SelectMouseDlg *m_pMouseDlg;
+			m_pMouseDlg = new SelectMouseDlg();
+			m_pMouseDlg->Create(IDD_Dlg_Mouse, this);
+			m_pMouseDlg->ShowWindow(SW_SHOW);
+			break;
+		}
+		case IDC_BT_Scroll_Up:
+		{
+			SelectScrollupDlg *m_pScrollupDlg;
+			m_pScrollupDlg = new SelectScrollupDlg();
+			m_pScrollupDlg->Create(IDD_Dlg_Scroll_Up, this);
+			m_pScrollupDlg->ShowWindow(SW_SHOW);
+			break;
+		}
+		case IDC_BT_Keyboard:
+		{
+			SelectKeyboardDlg *m_pKeyboardDlg;
+			m_pKeyboardDlg = new SelectKeyboardDlg();
+			m_pKeyboardDlg->Create(IDD_Dlg_Keyboard, this);
+			m_pKeyboardDlg->ShowWindow(SW_SHOW);
+			break;
+		}
+		case IDC_BT_Scroll_Down:
+		{
+			SelectScrolldownDlg *m_pScrolldownDlg;
+			m_pScrolldownDlg = new SelectScrolldownDlg();
+			m_pScrolldownDlg->Create(IDD_Dlg_Scroll_Down, this);
+			m_pScrolldownDlg->ShowWindow(SW_SHOW);
+			break;
+		}
+		case IDC_BT_Setting:
+		{
+			SelectSettingDlg *m_pSettingDlg;
+			m_pSettingDlg = new SelectSettingDlg();
+			m_pSettingDlg->Create(IDD_Dlg_Setting, this);
+			m_pSettingDlg->ShowWindow(SW_SHOW);
+			break;
+		}
+
+	}
+
 }
 
