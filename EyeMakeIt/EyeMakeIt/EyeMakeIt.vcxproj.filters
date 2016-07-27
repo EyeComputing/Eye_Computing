@@ -54,6 +54,9 @@
     <ClInclude Include="SelectSetCoordinateDlg.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CxSkinButton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EyeMakeIt.cpp">
@@ -86,6 +89,9 @@
     <ClCompile Include="SelectSetCoordinateDlg.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="CxSkinButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="EyeMakeIt.rc">
@@ -99,6 +105,69 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\EyeMakeIt.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_ONE.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_ONE_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\IDB_MASK.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_EIG.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_EIG_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_FIV.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_FIV_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_FOU.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_FOU_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_NIN.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_NIN_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_SEV.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_SEV_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_SIX.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_SIX_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_THR.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_THR_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_TWO.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_TWO_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_ZER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Number\IDB_N_ZER_OVER.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

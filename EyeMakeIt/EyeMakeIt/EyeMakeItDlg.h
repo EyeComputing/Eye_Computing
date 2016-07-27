@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "xSkinButton.h"
 
 /* global  */
 extern int selectMouseEvent;

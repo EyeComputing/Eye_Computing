@@ -105,6 +105,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CxSkinButton.h" />
     <ClInclude Include="EyeMakeIt.h" />
     <ClInclude Include="EyeMakeItDlg.h" />
     <ClInclude Include="EyeXGaze.h" />
@@ -119,6 +120,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CxSkinButton.cpp" />
     <ClCompile Include="EyeMakeIt.cpp" />
     <ClCompile Include="EyeMakeItDlg.cpp" />
     <ClCompile Include="EyeXGaze.cpp" />
@@ -141,6 +143,27 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\EyeMakeIt.ico" />
+    <Image Include="res\Keyboard\IDB_MASK.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_EIG.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_EIG_OVER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_FIV.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_FIV_OVER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_FOU.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_FOU_OVER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_NIN.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_NIN_OVER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_ONE.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_ONE_OVER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_SEV.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_SEV_OVER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_SIX.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_SIX_OVER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_THR.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_THR_OVER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_TWO.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_TWO_OVER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_ZER.bmp" />
+    <Image Include="res\Keyboard\Number\IDB_N_ZER_OVER.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

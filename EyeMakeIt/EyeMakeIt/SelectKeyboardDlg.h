@@ -1,4 +1,6 @@
 #pragma once
+#include "xSkinButton.h"
+#include "afxwin.h"
 
 
 // SelectKeyboardDlg 대화 상자입니다.
@@ -18,4 +20,22 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
 	DECLARE_MESSAGE_MAP()
+public:
+	virtual BOOL OnInitDialog();
+
+	// 윈도우 사이즈와 버튼 사이즈 값을 입력받기 위한 변수
+	SIZE WindowSize;
+	SIZE ButtonSize;
+
+	// 숫자 버튼 변수
+	CxSkinButton n_btn_one;
+	CxSkinButton n_btn_two;
+	CxSkinButton n_btn_thr;
+	CxSkinButton n_btn_fou;
+	CxSkinButton n_btn_fiv;
+	CxSkinButton n_btn_six;
+	CxSkinButton n_btn_sev;
+	CxSkinButton n_btn_eig;
+	CxSkinButton n_btn_nin;
+	CxSkinButton n_btn_zer;
 };
