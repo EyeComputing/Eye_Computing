@@ -18,6 +18,7 @@
 
 #define ErrorD 21
 
+
 // Data Stream을 받는 변수 초기화
 //TX_REAL EyeXGaze::GazeEye_X = 0;
 //TX_REAL EyeXGaze::GazeEye_Y = 0;
@@ -72,6 +73,8 @@ void EyeXGaze::Init(HWND hWnd, UINT statusChangedMessage, UINT focusRegionChange
 		PostMessage(_hWnd, _statusChangedMessage, false, 0);	// 메시지에 false를 담아보냄		
 	}
 }
+
+
 
 void EyeXGaze::SetActivatableRegions(const std::vector<ActivatableRegion>& regions)
 {
