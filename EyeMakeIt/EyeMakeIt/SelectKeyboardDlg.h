@@ -127,6 +127,6 @@ public:
 
 
 
-	virtual void PreInitDialog();
+//	virtual void PreInitDialog();
 	afx_msg void OnBnClickedSKng();
 };
