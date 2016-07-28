@@ -26,6 +26,20 @@ public:
 
 	/*버튼 입력 받는 함수*/
 	void SelectKeyboardDlg::OnBtnClick(UINT uiID);
+	
+	// 버튼 스킨 씌우는 함수
+	void SelectKeyboardDlg::SetImgNumBtn();
+	void SelectKeyboardDlg::SetImgSysBtn();
+	void SelectKeyboardDlg::SetImgKorBtn();
+	void SelectKeyboardDlg::SetImgSmallEngBtn();
+	void SelectKeyboardDlg::SetPosBtn();
+
+	void ShowKorBtn();
+	void HideKorBtn();
+
+	void ShowEngBtn();
+
+	void HideEngBtn();
 
 	// 윈도우 사이즈와 버튼 사이즈 값을 입력받기 위한 변수
 	SIZE WindowSize;
@@ -77,6 +91,38 @@ public:
 	CxSkinButton s_btn_kng;
 	CxSkinButton s_btn_spc;
 	CxSkinButton s_btn_dot;
+
+	CxSkinButton e_btn_smq;
+	CxSkinButton e_btn_smw;
+	CxSkinButton e_btn_sme;
+	CxSkinButton e_btn_smr;
+	CxSkinButton e_btn_smt;
+	CxSkinButton e_btn_smy;
+	CxSkinButton e_btn_smu;
+	CxSkinButton e_btn_smi;
+	CxSkinButton e_btn_smo;
+	CxSkinButton e_btn_smp;
+	CxSkinButton e_btn_sma;
+	CxSkinButton e_btn_sms;
+	CxSkinButton e_btn_smd;
+	CxSkinButton e_btn_smf;
+	CxSkinButton e_btn_smg;
+	CxSkinButton e_btn_smh;
+	CxSkinButton e_btn_smj;
+	CxSkinButton e_btn_smk;
+	CxSkinButton e_btn_sml;
+	CxSkinButton e_btn_smz;
+	CxSkinButton e_btn_smx;
+	CxSkinButton e_btn_smc;
+	CxSkinButton e_btn_smv;
+	CxSkinButton e_btn_smb;
+	CxSkinButton e_btn_smn;
+	CxSkinButton e_btn_smm;
+
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+
+
+
+	virtual void PreInitDialog();
 };
