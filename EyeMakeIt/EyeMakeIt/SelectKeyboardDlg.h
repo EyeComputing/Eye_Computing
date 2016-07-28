@@ -18,6 +18,7 @@ public:
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
+	HWND m_hForegroundWnd;
 
 	DECLARE_MESSAGE_MAP()
 public:
@@ -38,4 +39,6 @@ public:
 	CxSkinButton n_btn_eig;
 	CxSkinButton n_btn_nin;
 	CxSkinButton n_btn_zer;
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };

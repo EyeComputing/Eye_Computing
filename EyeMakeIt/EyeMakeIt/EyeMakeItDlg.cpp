@@ -74,6 +74,7 @@ CEyeMakeItDlg::CEyeMakeItDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CEyeMakeItDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	m_hForegroundWnd = NULL;
 
 	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
@@ -90,6 +91,8 @@ BEGIN_MESSAGE_MAP(CEyeMakeItDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_BT_Mouse, IDC_BT_Setting, CEyeMakeItDlg::OnBtnClick)
+	ON_WM_LBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -301,3 +304,33 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 
 }
 
+
+
+void CEyeMakeItDlg::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	if (!m_hForegroundWnd)
+	{
+		m_hForegroundWnd = ::GetForegroundWindow();
+		ModifyStyleEx(WS_EX_NOACTIVATE, 0);
+		SetForegroundWindow();
+	}
+	//키보드가 항상 최상위에 위치하도록  
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+
+	CDialogEx::OnLButtonDown(nFlags, point);
+}
+
+
+void CEyeMakeItDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	if (m_hForegroundWnd)
+	{
+		::SetForegroundWindow(m_hForegroundWnd);
+		ModifyStyleEx(0, WS_EX_NOACTIVATE);
+
+		m_hForegroundWnd = NULL;
+
+	}
+
+	CDialogEx::OnMouseMove(nFlags, point);
+}
