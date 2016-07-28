@@ -90,6 +90,7 @@ BEGIN_MESSAGE_MAP(CEyeMakeItDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_BT_Mouse, IDC_BT_Setting, CEyeMakeItDlg::OnBtnClick)
+//	ON_WM_MOUSEWHEEL()
 END_MESSAGE_MAP()
 
 
@@ -193,7 +194,6 @@ HCURSOR CEyeMakeItDlg::OnQueryDragIcon()
 
 /* 사용자 정의 함수 */
 
-
 LRESULT CALLBACK GetKeyMsg(int nCode, WPARAM wParam, LPARAM lParam)
 {
 	static int c = 0;
@@ -272,6 +272,18 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 		}
 		case IDC_BT_Scroll_Up:
 		{
+			INPUT InputButton;
+			//initialize
+			::ZeroMemory(&InputButton, sizeof(INPUT));
+			//keyboard로 입력하겠다.
+			InputButton.type = INPUT_KEYBOARD;
+			//어떤버튼누를건지
+			InputButton.ki.wVk = 0x21;
+			//한번눌러주기
+			::SendInput(1, &InputButton, sizeof(INPUT));
+			//누른거 풀어주기
+			InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &InputButton, sizeof(INPUT));
 
 			break;
 		}
@@ -300,4 +312,8 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 	}
 
 }
+
+
+
+
 

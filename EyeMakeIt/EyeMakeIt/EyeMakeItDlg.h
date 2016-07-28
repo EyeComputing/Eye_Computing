@@ -41,4 +41,6 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+//	afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
 };
