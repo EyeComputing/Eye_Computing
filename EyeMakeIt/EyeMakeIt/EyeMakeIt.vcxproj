@@ -20,7 +20,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
@@ -111,6 +111,7 @@
     <ClInclude Include="EyeXGaze.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SelectKeyboardDlg.h" />
+    <ClInclude Include="SelectKeyboardDlg_text.h" />
     <ClInclude Include="SelectMouseDlg.h" />
     <ClInclude Include="SelectSetCoordinateDlg.h" />
     <ClInclude Include="SelectSettingDlg.h" />
@@ -123,6 +124,7 @@
     <ClCompile Include="EyeMakeItDlg.cpp" />
     <ClCompile Include="EyeXGaze.cpp" />
     <ClCompile Include="SelectKeyboardDlg.cpp" />
+    <ClCompile Include="SelectKeyboardDlg_text.cpp" />
     <ClCompile Include="SelectMouseDlg.cpp" />
     <ClCompile Include="SelectSetCoordinateDlg.cpp" />
     <ClCompile Include="SelectSettingDlg.cpp" />

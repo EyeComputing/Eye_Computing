@@ -51,6 +51,9 @@
     <ClInclude Include="CxSkinButton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="SelectKeyboardDlg_text.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EyeMakeIt.cpp">
@@ -78,6 +81,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CxSkinButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectKeyboardDlg_text.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

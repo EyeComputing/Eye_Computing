@@ -13,6 +13,7 @@
 #include "SelectKeyboardDlg.h"
 #include "SelectMouseDlg.h"
 #include "SelectSettingDlg.h"
+#include "SelectKeyboardDlg_text.h"
 
 
 #ifdef _DEBUG
@@ -289,10 +290,16 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 		}
 		case IDC_BT_Keyboard:
 		{
+			SelectKeyboardDlg_text *m_pKeyboardDlg_text;
+			m_pKeyboardDlg_text = new SelectKeyboardDlg_text();
+			m_pKeyboardDlg_text->Create(IDD_Dlg_Show_Text, this);
+			m_pKeyboardDlg_text->ShowWindow(SW_SHOW);
+
 			SelectKeyboardDlg *m_pKeyboardDlg;
 			m_pKeyboardDlg = new SelectKeyboardDlg();
 			m_pKeyboardDlg->Create(IDD_Dlg_Keyboard, this);
 			m_pKeyboardDlg->ShowWindow(SW_SHOW);
+			
 			break;
 		}
 		case IDC_BT_Scroll_Down:
