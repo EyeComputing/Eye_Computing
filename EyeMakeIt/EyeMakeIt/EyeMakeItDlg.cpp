@@ -315,9 +315,7 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 			m_pSettingDlg->ShowWindow(SW_SHOW);
 			break;
 		}
-
 	}
-
 }
 
 

@@ -23,6 +23,9 @@ protected:
 public:
 	virtual BOOL OnInitDialog();
 
+	/*버튼 입력 받는 함수*/
+	void SelectKeyboardDlg::OnBtnClick(UINT uiID);
+
 	// 윈도우 사이즈와 버튼 사이즈 값을 입력받기 위한 변수
 	SIZE WindowSize;
 	SIZE ButtonSize;

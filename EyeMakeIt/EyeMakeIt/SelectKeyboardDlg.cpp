@@ -21,28 +21,6 @@ SelectKeyboardDlg::~SelectKeyboardDlg()
 {
 }
 
-void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
-{
-	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_N_ONE, n_btn_one);
-	DDX_Control(pDX, IDC_N_TWO, n_btn_two);
-	DDX_Control(pDX, IDC_N_THR, n_btn_thr);
-	DDX_Control(pDX, IDC_N_FOU, n_btn_fou);
-	DDX_Control(pDX, IDC_N_FIV, n_btn_fiv);
-	DDX_Control(pDX, IDC_N_SIX, n_btn_six);
-	DDX_Control(pDX, IDC_N_SEV, n_btn_sev);
-	DDX_Control(pDX, IDC_N_EIG, n_btn_eig);
-	DDX_Control(pDX, IDC_N_NIN, n_btn_nin);
-	DDX_Control(pDX, IDC_N_ZER, n_btn_zer);
-	DDX_Control(pDX, IDC_S_BCK, s_btn_bck);
-	DDX_Control(pDX, IDC_S_SHF, s_btn_shf);
-	DDX_Control(pDX, IDC_S_BKS, s_btn_bks);
-	DDX_Control(pDX, IDC_S_ENT, s_btn_ent);
-	DDX_Control(pDX, IDC_S_SPE, s_btn_spe);
-	DDX_Control(pDX, IDC_S_CON, s_btn_con);
-}
-
-
 BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 END_MESSAGE_MAP()
 
@@ -102,3 +80,76 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
+
+
+
+
+
+
+
+
+
+/* 사용자 정의 함수 */
+
+
+// 각 버튼 클릭 함수
+void SelectKeyboardDlg::OnBtnClick(UINT uiID)
+{
+	switch (uiID)
+	{
+	case IDC_N_ONE:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x31;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}/*
+	 case :
+	 {
+	 break;
+	 }
+	 case :
+	 {
+	 break;
+	 }
+	 case :
+	 {
+	 break;
+	 }*/
+	}
+}
+
+
+
+
+void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
+{
+	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_N_ONE, n_btn_one);
+	DDX_Control(pDX, IDC_N_TWO, n_btn_two);
+	DDX_Control(pDX, IDC_N_THR, n_btn_thr);
+	DDX_Control(pDX, IDC_N_FOU, n_btn_fou);
+	DDX_Control(pDX, IDC_N_FIV, n_btn_fiv);
+	DDX_Control(pDX, IDC_N_SIX, n_btn_six);
+	DDX_Control(pDX, IDC_N_SEV, n_btn_sev);
+	DDX_Control(pDX, IDC_N_EIG, n_btn_eig);
+	DDX_Control(pDX, IDC_N_NIN, n_btn_nin);
+	DDX_Control(pDX, IDC_N_ZER, n_btn_zer);
+	DDX_Control(pDX, IDC_S_BCK, s_btn_bck);
+	DDX_Control(pDX, IDC_S_SHF, s_btn_shf);
+	DDX_Control(pDX, IDC_S_BKS, s_btn_bks);
+	DDX_Control(pDX, IDC_S_ENT, s_btn_ent);
+	DDX_Control(pDX, IDC_S_SPE, s_btn_spe);
+	DDX_Control(pDX, IDC_S_CON, s_btn_con);
+}
+
