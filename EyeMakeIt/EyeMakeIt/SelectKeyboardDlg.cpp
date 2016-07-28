@@ -108,6 +108,7 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	ON_WM_MOUSEMOVE()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_N_ONE, IDC_N_ONE, SelectKeyboardDlg::OnBtnClick)
+	ON_BN_CLICKED(IDC_S_KNG, &SelectKeyboardDlg::OnBnClickedSKng)
 END_MESSAGE_MAP()
 
 
@@ -138,9 +139,11 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	// 버튼 좌표 설정
 	SetPosBtn();
 	
-	// 한글 숨기고 영어 보이기
-	HideKorBtn();
-	ShowEngBtn();
+	// 영어 숨기기
+	HideEngBtn();
+
+	// 한영 키값 초기화
+	state = false;
 
 	
 
@@ -497,4 +500,21 @@ void SelectKeyboardDlg::PreInitDialog()
 	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
 
 	CDialogEx::PreInitDialog();
+}
+
+
+// 한/영 키
+void SelectKeyboardDlg::OnBnClickedSKng()
+{
+	if (state)
+	{
+		ShowKorBtn();
+		HideEngBtn();
+	}
+	else
+	{
+		ShowEngBtn();
+		HideKorBtn();
+	}
+	state = !state;
 }
