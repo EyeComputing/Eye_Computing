@@ -38,4 +38,10 @@ public:
 	CxSkinButton n_btn_eig;
 	CxSkinButton n_btn_nin;
 	CxSkinButton n_btn_zer;
+	CxSkinButton s_btn_bck;
+	CxSkinButton s_btn_shf;
+	CxSkinButton s_btn_bks;
+	CxSkinButton s_btn_ent;
+	CxSkinButton s_btn_spe;
+	CxSkinButton s_btn_con;
 };

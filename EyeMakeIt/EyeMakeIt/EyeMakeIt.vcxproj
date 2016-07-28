@@ -160,6 +160,18 @@
     <Image Include="res\Keyboard\Number\IDB_N_TWO_OVER.bmp" />
     <Image Include="res\Keyboard\Number\IDB_N_ZER.bmp" />
     <Image Include="res\Keyboard\Number\IDB_N_ZER_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_BCK.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_BCK_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_BKS.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_BKS_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_CON.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_CON_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_ENT.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_ENT_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_SHF.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_SHF_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_SPE.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_SPE_OVER.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

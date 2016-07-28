@@ -34,6 +34,12 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_N_EIG, n_btn_eig);
 	DDX_Control(pDX, IDC_N_NIN, n_btn_nin);
 	DDX_Control(pDX, IDC_N_ZER, n_btn_zer);
+	DDX_Control(pDX, IDC_S_BCK, s_btn_bck);
+	DDX_Control(pDX, IDC_S_SHF, s_btn_shf);
+	DDX_Control(pDX, IDC_S_BKS, s_btn_bks);
+	DDX_Control(pDX, IDC_S_ENT, s_btn_ent);
+	DDX_Control(pDX, IDC_S_SPE, s_btn_spe);
+	DDX_Control(pDX, IDC_S_CON, s_btn_con);
 }
 
 
@@ -59,7 +65,7 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	// 전체화면 설정
 	ShowWindow(SW_SHOWMAXIMIZED);
 
-	// 버튼 스킨 씌우기
+	// 숫자 버튼 스킨 씌우기
 	n_btn_one.SetSkin(IDB_N_ONE, IDB_N_ONE, IDB_N_ONE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	n_btn_two.SetSkin(IDB_N_TWO, IDB_N_TWO, IDB_N_TWO_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	n_btn_thr.SetSkin(IDB_N_THR, IDB_N_THR, IDB_N_THR_OVER, 0, 0, IDB_MASK, 1, 0, 4);
@@ -70,13 +76,29 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	n_btn_eig.SetSkin(IDB_N_EIG, IDB_N_EIG, IDB_N_EIG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	n_btn_nin.SetSkin(IDB_N_NIN, IDB_N_NIN, IDB_N_NIN_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	n_btn_zer.SetSkin(IDB_N_ZER, IDB_N_ZER, IDB_N_ZER_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+
+	// 시스템 버튼 스킨 씌우기
+	s_btn_bck.SetSkin(IDB_S_BCK, IDB_S_BCK, IDB_S_BCK_OVER, 0, 0, IDB_MASK, 1, 0, 4);;
+	s_btn_shf.SetSkin(IDB_S_SHF, IDB_S_SHF, IDB_S_SHF_OVER, 0, 0, IDB_MASK, 1, 0, 4);;
+	s_btn_bks.SetSkin(IDB_S_BKS, IDB_S_BKS, IDB_S_BKS_OVER, 0, 0, IDB_MASK, 1, 0, 4);;
+	s_btn_ent.SetSkin(IDB_S_ENT, IDB_S_ENT, IDB_S_ENT_OVER, 0, 0, IDB_MASK, 1, 0, 4);;
+	s_btn_spe.SetSkin(IDB_S_SPE, IDB_S_SPE, IDB_S_SPE_OVER, 0, 0, IDB_MASK, 1, 0, 4);;
+	s_btn_con.SetSkin(IDB_S_CON, IDB_S_CON, IDB_S_CON_OVER, 0, 0, IDB_MASK, 1, 0, 4);;
 	
-	// 버튼 좌표, 크기 설정
+	// 숫자 버튼 좌표, 크기 설정
 	for (int i = 0; i < 10; i++)
 	{
 		GetDlgItem(2000 + i)->SetWindowPos(NULL, ButtonSize.cx * i, 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 	}
-				 
+
+	// 시스템 버튼 좌표, 크기 설정
+	GetDlgItem(IDC_S_BCK)->SetWindowPos(NULL, ButtonSize.cx * 0, ButtonSize.cy * 1, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_S_SHF)->SetWindowPos(NULL, ButtonSize.cx * 0, ButtonSize.cy * 2, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_S_BKS)->SetWindowPos(NULL, ButtonSize.cx * 8, ButtonSize.cy * 1, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_S_ENT)->SetWindowPos(NULL, ButtonSize.cx * 8, ButtonSize.cy * 2, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_S_SPE)->SetWindowPos(NULL, ButtonSize.cx * 9, ButtonSize.cy * 1, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_S_CON)->SetWindowPos(NULL, ButtonSize.cx * 9, ButtonSize.cy * 2, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
