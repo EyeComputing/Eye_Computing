@@ -350,5 +350,23 @@
     <Image Include="res\Keyboard\Korean\IDB_K_YYO_OVER.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="res\Keyboard\System\IDB_S_DOT.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\System\IDB_S_DOT_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\System\IDB_S_KNG.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\System\IDB_S_KNG_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\System\IDB_S_SPC.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\System\IDB_S_SPC_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

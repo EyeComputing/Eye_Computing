@@ -218,10 +218,16 @@
     <Image Include="res\Keyboard\System\IDB_S_BKS_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_CON.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_CON_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_DOT.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_DOT_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_ENT.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_ENT_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_KNG.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_KNG_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SHF.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SHF_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_SPC.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_SPC_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SPE.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SPE_OVER.bmp" />
   </ItemGroup>
