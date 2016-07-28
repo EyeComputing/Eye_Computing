@@ -14,7 +14,7 @@ IMPLEMENT_DYNAMIC(SelectKeyboardDlg, CDialogEx)
 SelectKeyboardDlg::SelectKeyboardDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(SelectKeyboardDlg::IDD, pParent)
 {
-
+	m_hForegroundWnd = NULL;
 }
 
 SelectKeyboardDlg::~SelectKeyboardDlg()
@@ -22,6 +22,8 @@ SelectKeyboardDlg::~SelectKeyboardDlg()
 }
 
 BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
+	ON_WM_LBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -80,7 +82,6 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
-
 
 
 
@@ -153,3 +154,32 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_S_CON, s_btn_con);
 }
 
+void SelectKeyboardDlg::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	if (!m_hForegroundWnd)
+	{
+		m_hForegroundWnd = ::GetForegroundWindow();
+		ModifyStyleEx(WS_EX_NOACTIVATE, 0);
+		SetForegroundWindow();
+	}
+	//키보드가 항상 최상위에 위치하도록  
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+
+
+	CDialogEx::OnLButtonDown(nFlags, point);
+}
+
+
+void SelectKeyboardDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	if (m_hForegroundWnd)
+	{
+		::SetForegroundWindow(m_hForegroundWnd);
+		ModifyStyleEx(0, WS_EX_NOACTIVATE);
+
+		m_hForegroundWnd = NULL;
+
+	}
+
+	CDialogEx::OnMouseMove(nFlags, point);
+}
