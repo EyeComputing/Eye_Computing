@@ -34,7 +34,7 @@ public:
 // 구현입니다.
 protected:
 	HICON m_hIcon;
-
+	HWND m_hForegroundWnd;
 	// 생성된 메시지 맵 함수
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
@@ -43,4 +43,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 //	afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };

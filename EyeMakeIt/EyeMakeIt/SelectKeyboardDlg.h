@@ -18,10 +18,14 @@ public:
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
+	HWND m_hForegroundWnd;
 
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual BOOL OnInitDialog();
+
+	/*버튼 입력 받는 함수*/
+	void SelectKeyboardDlg::OnBtnClick(UINT uiID);
 
 	// 윈도우 사이즈와 버튼 사이즈 값을 입력받기 위한 변수
 	SIZE WindowSize;
@@ -73,4 +77,6 @@ public:
 	CxSkinButton s_btn_kng;
 	CxSkinButton s_btn_spc;
 	CxSkinButton s_btn_dot;
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };

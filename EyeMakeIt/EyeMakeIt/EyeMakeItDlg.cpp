@@ -14,7 +14,6 @@
 #include "SelectMouseDlg.h"
 #include "SelectSettingDlg.h"
 
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -74,6 +73,7 @@ CEyeMakeItDlg::CEyeMakeItDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CEyeMakeItDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	m_hForegroundWnd = NULL;
 
 	//initialize EyeXGaze				status-> 나갔다 들어오는거? focus -> 응시 activated -> 활동
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
@@ -91,6 +91,8 @@ BEGIN_MESSAGE_MAP(CEyeMakeItDlg, CDialogEx)
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_BT_Mouse, IDC_BT_Setting, CEyeMakeItDlg::OnBtnClick)
 //	ON_WM_MOUSEWHEEL()
+	ON_WM_LBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -101,6 +103,11 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
+
+	/* 항상 맨 위에 */
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+
+
 
 	//keyboard message hooking 위한 초기화
 	m_hook = SetWindowsHookEx(WH_KEYBOARD_LL, GetKeyMsg, NULL, 0);
@@ -293,10 +300,23 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 			m_pKeyboardDlg = new SelectKeyboardDlg();
 			m_pKeyboardDlg->Create(IDD_Dlg_Keyboard, this);
 			m_pKeyboardDlg->ShowWindow(SW_SHOW);
+			
 			break;
 		}
 		case IDC_BT_Scroll_Down:
 		{
+			INPUT InputButton;
+			//initialize
+			::ZeroMemory(&InputButton, sizeof(INPUT));
+			//keyboard로 입력하겠다.
+			InputButton.type = INPUT_KEYBOARD;
+			//어떤버튼누를건지
+			InputButton.ki.wVk = 0x22;
+			//한번눌러주기
+			::SendInput(1, &InputButton, sizeof(INPUT));
+			//누른거 풀어주기
+			InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &InputButton, sizeof(INPUT));
 
 			break;
 		}
@@ -308,12 +328,38 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 			m_pSettingDlg->ShowWindow(SW_SHOW);
 			break;
 		}
-
 	}
-
 }
 
 
 
+void CEyeMakeItDlg::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	TRACE("Lbutton clicked");
+	if (!m_hForegroundWnd)
+	{
+		m_hForegroundWnd = ::GetForegroundWindow();
+		ModifyStyleEx(WS_EX_NOACTIVATE, 0);
+		SetForegroundWindow();
+	}
+	//키보드가 항상 최상위에 위치하도록  
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+
+	CDialogEx::OnLButtonDown(nFlags, point);
+}
 
 
+void CEyeMakeItDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	TRACE("MOUSE MOVE");
+	if (m_hForegroundWnd)
+	{
+		::SetForegroundWindow(m_hForegroundWnd);
+		ModifyStyleEx(0, WS_EX_NOACTIVATE);
+
+		m_hForegroundWnd = NULL;
+
+	}
+
+	CDialogEx::OnMouseMove(nFlags, point);
+}
