@@ -162,8 +162,6 @@ void SelectKeyboardDlg::OnLButtonDown(UINT nFlags, CPoint point)
 		ModifyStyleEx(WS_EX_NOACTIVATE, 0);
 		SetForegroundWindow();
 	}
-	//키보드가 항상 최상위에 위치하도록  
-	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 
 
 	CDialogEx::OnLButtonDown(nFlags, point);

@@ -106,6 +106,11 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
 
+	/* 항상 맨 위에 */
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+
+
+
 	//keyboard message hooking 위한 초기화
 	m_hook = SetWindowsHookEx(WH_KEYBOARD_LL, GetKeyMsg, NULL, 0);
 
@@ -282,7 +287,7 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 			//keyboard로 입력하겠다.
 			InputButton.type = INPUT_KEYBOARD;
 			//어떤버튼누를건지
-			InputButton.ki.wVk = 0x31;
+			InputButton.ki.wVk = 0x21;
 			//한번눌러주기
 			::SendInput(1, &InputButton, sizeof(INPUT));
 			//누른거 풀어주기
@@ -307,6 +312,18 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 		}
 		case IDC_BT_Scroll_Down:
 		{
+			INPUT InputButton;
+			//initialize
+			::ZeroMemory(&InputButton, sizeof(INPUT));
+			//keyboard로 입력하겠다.
+			InputButton.type = INPUT_KEYBOARD;
+			//어떤버튼누를건지
+			InputButton.ki.wVk = 0x22;
+			//한번눌러주기
+			::SendInput(1, &InputButton, sizeof(INPUT));
+			//누른거 풀어주기
+			InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+			::SendInput(1, &InputButton, sizeof(INPUT));
 
 			break;
 		}
@@ -325,6 +342,7 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 
 void CEyeMakeItDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
+	TRACE("Lbutton clicked");
 	if (!m_hForegroundWnd)
 	{
 		m_hForegroundWnd = ::GetForegroundWindow();
@@ -340,6 +358,7 @@ void CEyeMakeItDlg::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CEyeMakeItDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
+	TRACE("MOUSE MOVE");
 	if (m_hForegroundWnd)
 	{
 		::SetForegroundWindow(m_hForegroundWnd);
