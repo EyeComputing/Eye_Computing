@@ -24,6 +24,8 @@ SelectKeyboardDlg::~SelectKeyboardDlg()
 BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_MOUSEMOVE()
+	/* 버튼 클릭 한번에 하는 메세지 매핑 */
+	ON_COMMAND_RANGE(IDC_N_ONE, IDC_N_ONE, SelectKeyboardDlg::OnBtnClick)
 END_MESSAGE_MAP()
 
 
@@ -106,7 +108,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//keyboard로 입력하겠다.
 		InputButton.type = INPUT_KEYBOARD;
 		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x31;
+		InputButton.ki.wVk = 0x49;
 		//한번눌러주기
 		::SendInput(1, &InputButton, sizeof(INPUT));
 		//누른거 풀어주기
