@@ -9,9 +9,6 @@
 
 /* global var */
 bool clickedShift = false;
-
-// 한영인가...?
-bool isKorea = false;
 INPUT InputShift;
 
 // SelectKeyboardDlg 대화 상자입니다.
@@ -55,10 +52,6 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 
 	ButtonSize.cx = (WindowSize.cx / 10);
 	ButtonSize.cy = (WindowSize.cy / 6);
-	
-
-	// 전체화면 설정
-	ShowWindow(SW_SHOWMAXIMIZED);
 
 	// 버튼 이미지 씌우기
 	SetImgNumBtn();
@@ -192,6 +185,7 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 
+// 포커스 함수 2개.
 void SelectKeyboardDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (!m_hForegroundWnd)
@@ -204,7 +198,6 @@ void SelectKeyboardDlg::OnLButtonDown(UINT nFlags, CPoint point)
 
 	CDialogEx::OnLButtonDown(nFlags, point);
 }
-
 
 void SelectKeyboardDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
@@ -1311,10 +1304,24 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_ENG:
 	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x15;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
 		ShowEngBtn();
 		HideKorBtn();
 		HideSpecialBtn();
 		Invalidate(TRUE);
+		
 		break;
 	}
 	}
@@ -1326,6 +1333,19 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 void SelectKeyboardDlg::OnBnClickedSKor()
 {
 
+	INPUT InputButton;
+	//initialize
+	::ZeroMemory(&InputButton, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputButton.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputButton.ki.wVk = 0x15;
+	//한번눌러주기
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	//누른거 풀어주기
+	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	
 	ShowKorBtn();
 	HideEngBtn();
 	HideSpecialBtn();
