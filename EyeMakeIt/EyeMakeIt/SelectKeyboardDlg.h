@@ -45,9 +45,6 @@ public:
 	SIZE WindowSize;
 	SIZE ButtonSize;
 
-	// 한/영키 상태값을 받기 위한 변수
-	BOOL state;
-
 	// 숫자 버튼 변수
 	CxSkinButton n_btn_one;
 	CxSkinButton n_btn_two;
@@ -128,5 +125,4 @@ public:
 
 
 //	virtual void PreInitDialog();
-	afx_msg void OnBnClickedSKng();
 };

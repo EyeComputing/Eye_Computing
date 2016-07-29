@@ -9,6 +9,10 @@
 
 /* global var */
 bool clickedShift = false;
+// 한/영키 상태값을 받기 위한 변수
+bool clickedKorState = true;
+// 한영인가...?
+bool isKorea = false;
 INPUT InputShift;
 
 // SelectKeyboardDlg 대화 상자입니다.
@@ -34,7 +38,6 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	ON_WM_MOUSEMOVE()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_N_ONE, IDC_N_ONE, SelectKeyboardDlg::OnBtnClick)
-	ON_BN_CLICKED(IDC_S_KNG, &SelectKeyboardDlg::OnBnClickedSKng)
 	ON_COMMAND_RANGE(IDC_N_ONE, IDC_S_DOT, SelectKeyboardDlg::OnBtnClick)
 END_MESSAGE_MAP()
 
@@ -54,6 +57,8 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	ButtonSize.cy = (WindowSize.cy / 6);
 	
 
+
+
 	// 전체화면 설정
 	ShowWindow(SW_SHOWMAXIMIZED);
 
@@ -68,9 +73,6 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	
 	// 영어 숨기기
 	HideEngBtn();
-
-	// 한영 키값 초기화
-	state = false;
 
 	
 
@@ -458,25 +460,6 @@ void SelectKeyboardDlg::HideEngBtn()
 	GetDlgItem(IDC_E_SMN)->ShowWindow(FALSE);
 	GetDlgItem(IDC_E_SMM)->ShowWindow(FALSE);
 }
-
-
-
-// 한/영 키
-void SelectKeyboardDlg::OnBnClickedSKng()
-{
-	if (state)
-	{
-		ShowKorBtn();
-		HideEngBtn();
-	}
-	else
-	{
-		ShowEngBtn();
-		HideKorBtn();
-	}
-	state = !state;
-}
-
 
 
 
@@ -1029,6 +1012,18 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_KNG:
 	{
+		clickedKorState = !clickedKorState;
+		if (clickedKorState)
+		{
+			ShowKorBtn();
+			HideEngBtn();
+		}
+		else
+		{
+			ShowEngBtn();
+			HideKorBtn();
+		}
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1041,6 +1036,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+
 		break;
 	}
 	case IDC_K_KIE:
