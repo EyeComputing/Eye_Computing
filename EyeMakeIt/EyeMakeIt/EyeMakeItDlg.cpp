@@ -199,6 +199,8 @@ HCURSOR CEyeMakeItDlg::OnQueryDragIcon()
 
 
 
+
+
 /* 사용자 정의 함수 */
 
 LRESULT CALLBACK GetKeyMsg(int nCode, WPARAM wParam, LPARAM lParam)
@@ -332,6 +334,8 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 }
 
 
+
+// 포커스 이동!
 
 void CEyeMakeItDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
