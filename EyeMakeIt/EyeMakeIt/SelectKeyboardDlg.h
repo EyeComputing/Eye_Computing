@@ -56,7 +56,6 @@ public:
 	CxSkinButton n_btn_eig;
 	CxSkinButton n_btn_nin;
 	CxSkinButton n_btn_zer;
-	CxSkinButton s_btn_bck;
 	CxSkinButton s_btn_shf;
 	CxSkinButton s_btn_bks;
 	CxSkinButton s_btn_ent;
@@ -118,11 +117,13 @@ public:
 	CxSkinButton e_btn_smb;
 	CxSkinButton e_btn_smn;
 	CxSkinButton e_btn_smm;
+	CxSkinButton s_btn_eng;
+	CxSkinButton s_btn_kor;
 
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 
 
-
-//	virtual void PreInitDialog();
+	afx_msg void OnBnClickedSKor();
+	afx_msg void OnBnClickedSEng();
 };
