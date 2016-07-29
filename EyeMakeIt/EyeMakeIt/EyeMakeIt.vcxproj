@@ -310,6 +310,14 @@
     <Image Include="res\Keyboard\Main\IDB_M_SCU_OVER.bmp" />
     <Image Include="res\Keyboard\Main\IDB_M_SET.bmp" />
     <Image Include="res\Keyboard\Main\IDB_M_SET_OVER.bmp" />
+    <Image Include="res\Keyboard\Mouse\IDB_M_DCL.bmp" />
+    <Image Include="res\Keyboard\Mouse\IDB_M_DCL_OVER.bmp" />
+    <Image Include="res\Keyboard\Mouse\IDB_M_LCL.bmp" />
+    <Image Include="res\Keyboard\Mouse\IDB_M_LCL_OVER.bmp" />
+    <Image Include="res\Keyboard\Mouse\IDB_M_RAG.bmp" />
+    <Image Include="res\Keyboard\Mouse\IDB_M_RAG_OVER.bmp" />
+    <Image Include="res\Keyboard\Mouse\IDB_M_RCL.bmp" />
+    <Image Include="res\Keyboard\Mouse\IDB_M_RCL_OVER.bmp" />
     <Image Include="res\Keyboard\Number\IDB_N_EIG.bmp" />
     <Image Include="res\Keyboard\Number\IDB_N_EIG_OVER.bmp" />
     <Image Include="res\Keyboard\Number\IDB_N_FIV.bmp" />

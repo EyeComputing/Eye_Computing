@@ -890,5 +890,29 @@
     <Image Include="res\Keyboard\English\IDB_E_BGZ_OVER.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="res\Keyboard\Mouse\IDB_M_DCL.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Mouse\IDB_M_LCL.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Mouse\IDB_M_RAG.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Mouse\IDB_M_RCL.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Mouse\IDB_M_DCL_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Mouse\IDB_M_LCL_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Mouse\IDB_M_RAG_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Mouse\IDB_M_RCL_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>
