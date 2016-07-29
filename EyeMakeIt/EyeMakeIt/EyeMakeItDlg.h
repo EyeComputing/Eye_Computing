@@ -4,6 +4,7 @@
 
 #pragma once
 #include "xSkinButton.h"
+#include "afxwin.h"
 
 /* global  */
 extern int selectMouseEvent;
@@ -45,4 +46,14 @@ public:
 //	afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+
+	// 윈도우 사이즈와 버튼 사이즈 값을 입력받기 위한 변수
+	SIZE WindowSize;
+	SIZE ButtonSize;
+
+	CxSkinButton m_btn_mos;
+	CxSkinButton m_btn_scu;
+	CxSkinButton m_btn_kbd;
+	CxSkinButton m_btn_scd;
+	CxSkinButton m_btn_set;
 };

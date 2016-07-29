@@ -47,6 +47,8 @@ public:
 // 대화 상자 데이터입니다.
 	enum { IDD = IDD_ABOUTBOX };
 
+
+
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
@@ -73,6 +75,8 @@ END_MESSAGE_MAP()
 CEyeMakeItDlg::CEyeMakeItDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CEyeMakeItDlg::IDD, pParent)
 {
+
+
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	m_hForegroundWnd = NULL;
 
@@ -83,6 +87,11 @@ CEyeMakeItDlg::CEyeMakeItDlg(CWnd* pParent /*=NULL*/)
 void CEyeMakeItDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_BT_Mouse, m_btn_mos);
+	DDX_Control(pDX, IDC_BT_Scroll_Up, m_btn_scu);
+	DDX_Control(pDX, IDC_BT_Keyboard, m_btn_kbd);
+	DDX_Control(pDX, IDC_BT_Scroll_Down, m_btn_scd);
+	DDX_Control(pDX, IDC_BT_Setting, m_btn_set);
 }
 
 BEGIN_MESSAGE_MAP(CEyeMakeItDlg, CDialogEx)
@@ -103,14 +112,42 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
+
+
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
+
+	// 윈도우 사이즈를 입력받고 그에 맞추어 버튼 사이즈 결정
+	ZeroMemory(&WindowSize, sizeof(SIZE));
+	WindowSize.cx = (LONG)::GetSystemMetrics(SM_CXFULLSCREEN);
+	WindowSize.cy = (LONG)::GetSystemMetrics(SM_CYFULLSCREEN);
+	ButtonSize.cx = (WindowSize.cx / 9);
+	ButtonSize.cy = (WindowSize.cy / 5);
 
 	/* 항상 맨 위에 */
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+	
+	// 프로그램 위치 설정(우측)
+	SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
+
+	// 버튼 좌표 설정
+	GetDlgItem(IDC_BT_Mouse)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_BT_Scroll_Up)->SetWindowPos(NULL, 0, ButtonSize.cy * 1, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_BT_Keyboard)->SetWindowPos(NULL, 0, ButtonSize.cy * 2, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_BT_Scroll_Down)->SetWindowPos(NULL, 0, ButtonSize.cy * 3, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_BT_Setting)->SetWindowPos(NULL, 0, ButtonSize.cy * 4, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+
+	// 버튼 이미지 씌우기
+	m_btn_mos.SetSkin(IDB_M_MOS, IDB_M_MOS, IDB_M_MOS_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	m_btn_scu.SetSkin(IDB_M_SCU, IDB_M_SCU, IDB_M_SCU_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	m_btn_kbd.SetSkin(IDB_M_KBD, IDB_M_KBD, IDB_M_KBD_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	m_btn_scd.SetSkin(IDB_M_SCD, IDB_M_SCD, IDB_M_SCD_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	m_btn_set.SetSkin(IDB_M_SET, IDB_M_SET, IDB_M_SET_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+
 
 	// 키보드를 미리 생성시켜 놓는다
 	m_pKeyboardDlg = new SelectKeyboardDlg();
 	m_pKeyboardDlg->Create(IDD_Dlg_Keyboard, this);
+
 
 
 	//keyboard message hooking 위한 초기화
