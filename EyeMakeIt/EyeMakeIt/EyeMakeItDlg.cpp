@@ -84,6 +84,13 @@ CEyeMakeItDlg::CEyeMakeItDlg(CWnd* pParent /*=NULL*/)
 	g_EyeXGaze.Init(this->m_hWnd, UM_EYEX_HOST_STATUS_CHANGED, UM_REGION_GOT_ACTIVATION_FOCUS, UM_REGION_ACTIVATED);
 }
 
+// Enter 눌러도 창이 닫기지 않도록  합니다.
+void  CEyeMakeItDlg::OnOK()
+{
+	return;
+}
+
+
 void CEyeMakeItDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);

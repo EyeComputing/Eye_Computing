@@ -37,6 +37,7 @@ protected:
 	HICON m_hIcon;
 	HWND m_hForegroundWnd;
 	// 생성된 메시지 맵 함수
+	void CEyeMakeItDlg::OnOK();
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
