@@ -20,7 +20,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
@@ -272,10 +272,14 @@
     <Image Include="res\Keyboard\System\IDB_S_CON_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_DOT.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_DOT_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_ENG.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_ENG_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_ENT.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_ENT_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_KNG.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_KNG_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_KOR.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_KOR_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SHF.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SHF_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SPC.bmp" />

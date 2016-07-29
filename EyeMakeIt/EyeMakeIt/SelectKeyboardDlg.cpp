@@ -9,8 +9,7 @@
 
 /* global var */
 bool clickedShift = false;
-// 한/영키 상태값을 받기 위한 변수
-bool clickedKorState = true;
+
 // 한영인가...?
 bool isKorea = false;
 INPUT InputShift;
@@ -39,6 +38,7 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_N_ONE, IDC_N_ONE, SelectKeyboardDlg::OnBtnClick)
 	ON_COMMAND_RANGE(IDC_N_ONE, IDC_S_DOT, SelectKeyboardDlg::OnBtnClick)
+	ON_BN_CLICKED(IDC_S_KOR, &SelectKeyboardDlg::OnBnClickedSKor)
 END_MESSAGE_MAP()
 
 
@@ -56,8 +56,6 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	ButtonSize.cx = (WindowSize.cx / 10);
 	ButtonSize.cy = (WindowSize.cy / 6);
 	
-
-
 
 	// 전체화면 설정
 	ShowWindow(SW_SHOWMAXIMIZED);
@@ -105,7 +103,6 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_N_EIG, n_btn_eig);
 	DDX_Control(pDX, IDC_N_NIN, n_btn_nin);
 	DDX_Control(pDX, IDC_N_ZER, n_btn_zer);
-	DDX_Control(pDX, IDC_S_BCK, s_btn_bck);
 	DDX_Control(pDX, IDC_S_SHF, s_btn_shf);
 	DDX_Control(pDX, IDC_S_BKS, s_btn_bks);
 	DDX_Control(pDX, IDC_S_ENT, s_btn_ent);
@@ -166,6 +163,8 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_E_SMB, e_btn_smb);
 	DDX_Control(pDX, IDC_E_SMN, e_btn_smn);
 	DDX_Control(pDX, IDC_E_SMM, e_btn_smm);
+	DDX_Control(pDX, IDC_S_ENG, s_btn_eng);
+	DDX_Control(pDX, IDC_S_KOR, s_btn_kor);
 }
 
 
@@ -218,7 +217,6 @@ void SelectKeyboardDlg::SetImgNumBtn()
 void SelectKeyboardDlg::SetImgSysBtn()
 {
 	// 시스템 버튼 스킨 씌우기
-	s_btn_bck.SetSkin(IDB_S_BCK, IDB_S_BCK, IDB_S_BCK_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	s_btn_shf.SetSkin(IDB_S_SHF, IDB_S_SHF, IDB_S_SHF_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	s_btn_bks.SetSkin(IDB_S_BKS, IDB_S_BKS, IDB_S_BKS_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	s_btn_ent.SetSkin(IDB_S_ENT, IDB_S_ENT, IDB_S_ENT_OVER, 0, 0, IDB_MASK, 1, 0, 4);
@@ -227,6 +225,8 @@ void SelectKeyboardDlg::SetImgSysBtn()
 	s_btn_kng.SetSkin(IDB_S_KNG, IDB_S_KNG, IDB_S_KNG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	s_btn_spc.SetSkin(IDB_S_SPC, IDB_S_SPC, IDB_S_SPC_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	s_btn_dot.SetSkin(IDB_S_DOT, IDB_S_DOT, IDB_S_DOT_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	s_btn_kor.SetSkin(IDB_S_KOR, IDB_S_KOR, IDB_S_KOR_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	s_btn_eng.SetSkin(IDB_S_ENG, IDB_S_ENG, IDB_S_ENG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 }
 
 // 한글 버튼 이미지 삽입
@@ -317,18 +317,17 @@ void SelectKeyboardDlg::SetPosBtn()
 				GetDlgItem(order)->SetWindowPos(NULL, ButtonSize.cx * x, ButtonSize.cy * y, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 		}
 
-	// 영어 버튼 좌표 및 크기 설정
+	
+
+	// 영어 버튼 좌표 및 크기 설정	
 	for (int y = 3; y < 6; y++)
 		for (int x = 0; x < 10; x++)
 		{
 			// 리소스 순서를 받기 위한 변수
 			int order = 2030 + (10 * y) + x;
 
-			// 한/영 키 생략
-			if (order == 2079)	continue;
-
 			// 스페이스바 생략
-			else if (order == 2084 || order == 2085)	continue;
+			if (order == 2084 || order == 2085)	continue;
 
 			// 마침표 생략
 			else if (order == 2089)	continue;
@@ -367,6 +366,7 @@ void SelectKeyboardDlg::ShowKorBtn()
 	GetDlgItem(IDC_K_YUU)->ShowWindow(TRUE);
 	GetDlgItem(IDC_K_UUU)->ShowWindow(TRUE);
 	GetDlgItem(IDC_K_EUU)->ShowWindow(TRUE);
+	GetDlgItem(IDC_S_ENG)->ShowWindow(TRUE);
 }
 
 void SelectKeyboardDlg::HideKorBtn()
@@ -397,6 +397,7 @@ void SelectKeyboardDlg::HideKorBtn()
 	GetDlgItem(IDC_K_YUU)->ShowWindow(FALSE);
 	GetDlgItem(IDC_K_UUU)->ShowWindow(FALSE);
 	GetDlgItem(IDC_K_EUU)->ShowWindow(FALSE);
+	GetDlgItem(IDC_S_ENG)->ShowWindow(FALSE);
 }
 
 void SelectKeyboardDlg::ShowEngBtn()
@@ -428,6 +429,7 @@ void SelectKeyboardDlg::ShowEngBtn()
 	GetDlgItem(IDC_E_SMB)->ShowWindow(TRUE);
 	GetDlgItem(IDC_E_SMN)->ShowWindow(TRUE);
 	GetDlgItem(IDC_E_SMM)->ShowWindow(TRUE);
+	GetDlgItem(IDC_S_KOR)->ShowWindow(TRUE);
 }
 
 void SelectKeyboardDlg::HideEngBtn()
@@ -459,6 +461,7 @@ void SelectKeyboardDlg::HideEngBtn()
 	GetDlgItem(IDC_E_SMB)->ShowWindow(FALSE);
 	GetDlgItem(IDC_E_SMN)->ShowWindow(FALSE);
 	GetDlgItem(IDC_E_SMM)->ShowWindow(FALSE);
+	GetDlgItem(IDC_S_KOR)->ShowWindow(FALSE);
 }
 
 
@@ -634,11 +637,6 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
-		break;
-	}
-	case IDC_S_BCK:
-	{
-		// 화면 뒤로 가기.
 		break;
 	}
 	case IDC_S_BKS:
@@ -1012,18 +1010,6 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_KNG:
 	{
-		clickedKorState = !clickedKorState;
-		if (clickedKorState)
-		{
-			ShowKorBtn();
-			HideEngBtn();
-		}
-		else
-		{
-			ShowEngBtn();
-			HideKorBtn();
-		}
-
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1183,7 +1169,24 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
+	case IDC_S_ENG:
+	{
+		ShowEngBtn();
+		HideKorBtn();
+		Invalidate(TRUE);
+		break;
+	}
 	}
 }
 
 
+
+// 영어 -> 한글
+void SelectKeyboardDlg::OnBnClickedSKor()
+{
+
+	ShowKorBtn();
+	HideEngBtn();
+	Invalidate(TRUE);
+
+}
