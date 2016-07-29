@@ -52,10 +52,6 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 
 	ButtonSize.cx = (WindowSize.cx / 10);
 	ButtonSize.cy = (WindowSize.cy / 6);
-	
-
-	// 전체화면 설정
-	ShowWindow(SW_SHOWMAXIMIZED);
 
 	// 버튼 이미지 씌우기
 	SetImgNumBtn();
