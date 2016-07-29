@@ -338,6 +338,8 @@
     <Image Include="res\Keyboard\Number\IDB_N_TWO_OVER.bmp" />
     <Image Include="res\Keyboard\Number\IDB_N_ZER.bmp" />
     <Image Include="res\Keyboard\Number\IDB_N_ZER_OVER.bmp" />
+    <Image Include="res\Keyboard\Setting\IDB_M_EYE.bmp" />
+    <Image Include="res\Keyboard\Setting\IDB_M_EYE_OVER.bmp" />
     <Image Include="res\Keyboard\Special\IDB_P_AND.bmp" />
     <Image Include="res\Keyboard\Special\IDB_P_AND_OVER.bmp" />
     <Image Include="res\Keyboard\Special\IDB_P_AST.bmp" />

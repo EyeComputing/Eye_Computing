@@ -914,5 +914,11 @@
     <Image Include="res\Keyboard\Mouse\IDB_M_RCL_OVER.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="res\Keyboard\Setting\IDB_M_EYE.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Setting\IDB_M_EYE_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>
