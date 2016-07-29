@@ -165,6 +165,7 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 
+// 포커스 함수 2개.
 void SelectKeyboardDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (!m_hForegroundWnd)
@@ -177,7 +178,6 @@ void SelectKeyboardDlg::OnLButtonDown(UINT nFlags, CPoint point)
 
 	CDialogEx::OnLButtonDown(nFlags, point);
 }
-
 
 void SelectKeyboardDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
