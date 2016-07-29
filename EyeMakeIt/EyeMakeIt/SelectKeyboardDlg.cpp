@@ -58,16 +58,14 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	SetImgSysBtn();
 	SetImgKorBtn();
 	SetImgSmallEngBtn();
+	SetImgSpecialBtn();
 
 	// 버튼 좌표 설정
 	SetPosBtn();
 	
-	// 영어 숨기기
+	// 영어, 특수문자 버튼 숨기기
 	HideEngBtn();
-
-	
-
-
+	HideSpecialBtn();
 
 
 	return TRUE;  // return TRUE unless you set the focus to a control
@@ -158,9 +156,36 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_E_SMM, e_btn_smm);
 	DDX_Control(pDX, IDC_S_ENG, s_btn_eng);
 	DDX_Control(pDX, IDC_S_KOR, s_btn_kor);
+	DDX_Control(pDX, IDC_P_EXC, p_btn_exc);
+	DDX_Control(pDX, IDC_P_GOL, p_btn_gol);
+	DDX_Control(pDX, IDC_P_SHP, p_btn_shp);
+	DDX_Control(pDX, IDC_P_DOL, p_btn_dol);
+	DDX_Control(pDX, IDC_P_PER, p_btn_per);
+	DDX_Control(pDX, IDC_P_CIR, p_btn_cir);
+	DDX_Control(pDX, IDC_P_AND, p_btn_and);
+	DDX_Control(pDX, IDC_P_AST, p_btn_ast);
+	DDX_Control(pDX, IDC_P_OSG, p_btn_osg);
+	DDX_Control(pDX, IDC_P_CSG, p_btn_csg);
+	DDX_Control(pDX, IDC_P_WAV, p_btn_wav);
+	DDX_Control(pDX, IDC_P_HYP, p_btn_hyp);
+	DDX_Control(pDX, IDC_P_EQL, p_btn_eql);
+	DDX_Control(pDX, IDC_P_PLS, p_btn_pls);
+	DDX_Control(pDX, IDC_P_ODG, p_btn_odg);
+	DDX_Control(pDX, IDC_P_CDG, p_btn_cdg);
+	DDX_Control(pDX, IDC_P_OKG, p_btn_okg);
+	DDX_Control(pDX, IDC_P_CKG, p_btn_ckg);
+	DDX_Control(pDX, IDC_P_QST, p_btn_qst);
+	DDX_Control(pDX, IDC_P_COL, p_btn_col);
+	DDX_Control(pDX, IDC_P_SCL, p_btn_scl);
+	DDX_Control(pDX, IDC_P_SDD, p_btn_sdd);
+	DDX_Control(pDX, IDC_P_BDD, p_btn_bdd);
+	DDX_Control(pDX, IDC_P_BSL, p_btn_bsl);
+	DDX_Control(pDX, IDC_P_SLS, p_btn_sls);
+	DDX_Control(pDX, IDC_P_CMM, p_btn_cmm);
 }
 
 
+// 포커스 함수 2개.
 void SelectKeyboardDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (!m_hForegroundWnd)
@@ -173,7 +198,6 @@ void SelectKeyboardDlg::OnLButtonDown(UINT nFlags, CPoint point)
 
 	CDialogEx::OnLButtonDown(nFlags, point);
 }
-
 
 void SelectKeyboardDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
@@ -287,6 +311,39 @@ void SelectKeyboardDlg::SetImgSmallEngBtn()
 
 }
 
+// 특수문자 버튼 이미지 삽입
+void SelectKeyboardDlg::SetImgSpecialBtn()
+{
+	// 특수문자 버튼 스킨 씌우기
+	p_btn_exc.SetSkin(IDB_P_EXC, IDB_P_EXC, IDB_P_EXC_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_gol.SetSkin(IDB_P_GOL, IDB_P_GOL, IDB_P_GOL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_shp.SetSkin(IDB_P_SHP, IDB_P_SHP, IDB_P_SHP_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_dol.SetSkin(IDB_P_DOL, IDB_P_DOL, IDB_P_DOL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_per.SetSkin(IDB_P_PER, IDB_P_PER, IDB_P_PER_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_cir.SetSkin(IDB_P_CIR, IDB_P_CIR, IDB_P_CIR_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_and.SetSkin(IDB_P_AND, IDB_P_AND, IDB_P_AND_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_ast.SetSkin(IDB_P_AST, IDB_P_AST, IDB_P_AST_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_osg.SetSkin(IDB_P_OSG, IDB_P_OSG, IDB_P_OSG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_csg.SetSkin(IDB_P_CSG, IDB_P_CSG, IDB_P_CSG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_wav.SetSkin(IDB_P_WAV, IDB_P_WAV, IDB_P_WAV_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_hyp.SetSkin(IDB_P_HYP, IDB_P_HYP, IDB_P_HYP_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_eql.SetSkin(IDB_P_EQL, IDB_P_EQL, IDB_P_EQL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_pls.SetSkin(IDB_P_PLS, IDB_P_PLS, IDB_P_PLS_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_odg.SetSkin(IDB_P_ODG, IDB_P_ODG, IDB_P_ODG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_cdg.SetSkin(IDB_P_CDG, IDB_P_CDG, IDB_P_CDG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_okg.SetSkin(IDB_P_OKG, IDB_P_OKG, IDB_P_OKG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_ckg.SetSkin(IDB_P_CKG, IDB_P_CKG, IDB_P_CKG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_qst.SetSkin(IDB_P_QST, IDB_P_QST, IDB_P_QST_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_col.SetSkin(IDB_P_COL, IDB_P_COL, IDB_P_COL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_scl.SetSkin(IDB_P_SCL, IDB_P_SCL, IDB_P_SCL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_sdd.SetSkin(IDB_P_SDD, IDB_P_SDD, IDB_P_SDD_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_bdd.SetSkin(IDB_P_BDD, IDB_P_BDD, IDB_P_BDD_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_bsl.SetSkin(IDB_P_BSL, IDB_P_BSL, IDB_P_BSL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_sls.SetSkin(IDB_P_SLS, IDB_P_SLS, IDB_P_SLS_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	p_btn_cmm.SetSkin(IDB_P_CMM, IDB_P_CMM, IDB_P_CMM_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+
+}
+
 void SelectKeyboardDlg::SetPosBtn()
 {
 	// 시스템, 한글 버튼 좌표 및 크기 설정
@@ -324,6 +381,27 @@ void SelectKeyboardDlg::SetPosBtn()
 
 			// 마침표 생략
 			else if (order == 2089)	continue;
+
+			// 예외사항 아닐 경우 x, y 좌표에 버튼 크기 만큼 출력
+			else
+				GetDlgItem(order)->SetWindowPos(NULL, ButtonSize.cx * x, ButtonSize.cy * y, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+		}
+
+	// 특수문자 버튼 좌표 및 크기 설정	
+	for (int y = 3; y < 6; y++)
+		for (int x = 0; x < 10; x++)
+		{
+			// 리소스 순서를 받기 위한 변수
+			int order = 2060 + (10 * y) + x;
+
+			// 한, 영 키 생략
+			if (order == 2109)	continue;
+
+			// 스페이스바 생략
+			else if (order == 2114 || order == 2115)	continue;
+
+			// 마침표 생략
+			else if (order == 2119)	continue;
 
 			// 예외사항 아닐 경우 x, y 좌표에 버튼 크기 만큼 출력
 			else
@@ -457,7 +535,65 @@ void SelectKeyboardDlg::HideEngBtn()
 	GetDlgItem(IDC_S_KOR)->ShowWindow(FALSE);
 }
 
+void SelectKeyboardDlg::ShowSpecialBtn()
+{
+	GetDlgItem(IDC_P_EXC)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_GOL)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_SHP)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_DOL)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_PER)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_CIR)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_AND)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_AST)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_OSG)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_CSG)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_WAV)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_HYP)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_EQL)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_PLS)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_ODG)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_CDG)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_OKG)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_CKG)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_QST)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_COL)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_SCL)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_SDD)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_BDD)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_BSL)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_SLS)->ShowWindow(TRUE);
+	GetDlgItem(IDC_P_CMM)->ShowWindow(TRUE);
+}
 
+void SelectKeyboardDlg::HideSpecialBtn()
+{
+	GetDlgItem(IDC_P_EXC)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_GOL)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_SHP)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_DOL)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_PER)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_CIR)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_AND)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_AST)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_OSG)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_CSG)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_WAV)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_HYP)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_EQL)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_PLS)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_ODG)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_CDG)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_OKG)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_CKG)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_QST)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_COL)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_SCL)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_SDD)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_BDD)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_BSL)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_SLS)->ShowWindow(FALSE);
+	GetDlgItem(IDC_P_CMM)->ShowWindow(FALSE);
+}
 
 
 
@@ -651,6 +787,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	case IDC_S_SPE:
 	{
 		// 특수문자
+		ShowSpecialBtn();
+		HideEngBtn();
+		HideKorBtn();
+		GetDlgItem(IDC_S_KOR)->ShowWindow(TRUE);
 		break;
 	}
 	case IDC_S_SHF:
@@ -1179,6 +1319,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 
 		ShowEngBtn();
 		HideKorBtn();
+		HideSpecialBtn();
 		Invalidate(TRUE);
 		
 		break;
@@ -1207,6 +1348,7 @@ void SelectKeyboardDlg::OnBnClickedSKor()
 	
 	ShowKorBtn();
 	HideEngBtn();
+	HideSpecialBtn();
 	Invalidate(TRUE);
 
 }

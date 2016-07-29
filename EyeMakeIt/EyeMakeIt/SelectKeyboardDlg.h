@@ -32,14 +32,15 @@ public:
 	void SelectKeyboardDlg::SetImgSysBtn();
 	void SelectKeyboardDlg::SetImgKorBtn();
 	void SelectKeyboardDlg::SetImgSmallEngBtn();
+	void SelectKeyboardDlg::SetImgSpecialBtn();
 	void SelectKeyboardDlg::SetPosBtn();
 
 	void ShowKorBtn();
 	void HideKorBtn();
-
 	void ShowEngBtn();
-
 	void HideEngBtn();
+	void ShowSpecialBtn();
+	void HideSpecialBtn();
 
 	// 윈도우 사이즈와 버튼 사이즈 값을 입력받기 위한 변수
 	SIZE WindowSize;
@@ -120,10 +121,37 @@ public:
 	CxSkinButton s_btn_eng;
 	CxSkinButton s_btn_kor;
 
+	CxSkinButton p_btn_exc;
+	CxSkinButton p_btn_gol;
+	CxSkinButton p_btn_shp;
+	CxSkinButton p_btn_dol;
+	CxSkinButton p_btn_per;
+	CxSkinButton p_btn_cir;
+	CxSkinButton p_btn_and;
+	CxSkinButton p_btn_ast;
+	CxSkinButton p_btn_osg;
+	CxSkinButton p_btn_csg;
+	CxSkinButton p_btn_wav;
+	CxSkinButton p_btn_hyp;
+	CxSkinButton p_btn_eql;
+	CxSkinButton p_btn_pls;
+	CxSkinButton p_btn_odg;
+	CxSkinButton p_btn_cdg;
+	CxSkinButton p_btn_okg;
+	CxSkinButton p_btn_ckg;
+	CxSkinButton p_btn_qst;
+	CxSkinButton p_btn_col;
+	CxSkinButton p_btn_scl;
+	CxSkinButton p_btn_sdd;
+	CxSkinButton p_btn_bdd;
+	CxSkinButton p_btn_bsl;
+	CxSkinButton p_btn_sls;
+	CxSkinButton p_btn_cmm;
+
+
+
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
-
-
 	afx_msg void OnBnClickedSKor();
 	afx_msg void OnBnClickedSEng();
 };
