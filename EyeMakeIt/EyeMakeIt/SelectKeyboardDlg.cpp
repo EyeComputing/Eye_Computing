@@ -9,9 +9,6 @@
 
 /* global var */
 bool clickedShift = false;
-
-// 한영인가...?
-bool isKorea = false;
 INPUT InputShift;
 
 // SelectKeyboardDlg 대화 상자입니다.
@@ -1167,9 +1164,23 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_ENG:
 	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x15;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
 		ShowEngBtn();
 		HideKorBtn();
 		Invalidate(TRUE);
+		
 		break;
 	}
 	}
@@ -1181,6 +1192,19 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 void SelectKeyboardDlg::OnBnClickedSKor()
 {
 
+	INPUT InputButton;
+	//initialize
+	::ZeroMemory(&InputButton, sizeof(INPUT));
+	//keyboard로 입력하겠다.
+	InputButton.type = INPUT_KEYBOARD;
+	//어떤버튼누를건지
+	InputButton.ki.wVk = 0x15;
+	//한번눌러주기
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	//누른거 풀어주기
+	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+	::SendInput(1, &InputButton, sizeof(INPUT));
+	
 	ShowKorBtn();
 	HideEngBtn();
 	Invalidate(TRUE);
