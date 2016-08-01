@@ -184,4 +184,7 @@ public:
 	afx_msg void OnBnClickedSEng();
 
 
+//	afx_msg void OnPaint();
+	afx_msg void OnClose();
+	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 };
