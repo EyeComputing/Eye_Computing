@@ -73,7 +73,6 @@ void SelectMouseDlg::OnBtnClick(UINT uiID)
 		}
 		case IDC_BT_CLOSE:
 		{
-			TRACE("CLOSE button clicked");
 			::SendMessage(GetSafeHwnd(), WM_CLOSE, NULL, NULL);
 			break;
 		}
