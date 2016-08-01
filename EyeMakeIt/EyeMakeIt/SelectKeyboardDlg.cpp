@@ -13,13 +13,12 @@ bool clickedShift = false;
 INPUT InputShift;
 int mousehide_count = 0;
 // SelectKeyboardDlg 대화 상자입니다.
-CString complete_text;
+
 
 IMPLEMENT_DYNAMIC(SelectKeyboardDlg, CDialogEx)
 
 SelectKeyboardDlg::SelectKeyboardDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(SelectKeyboardDlg::IDD, pParent)
-	, sub_text(_T(""))
 {
 	m_hForegroundWnd = NULL;
 }
@@ -39,7 +38,7 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	ON_WM_CLOSE()
 	ON_WM_SETCURSOR()
 
-	ON_EN_CHANGE(IDC_SUBEDIT, &SelectKeyboardDlg::OnChangeSubedit)
+	
 END_MESSAGE_MAP()
 
 // SelectKeyboardDlg 메시지 처리기입니다.
@@ -223,7 +222,7 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_E_BGB, e_btn_bgb);
 	DDX_Control(pDX, IDC_E_BGN, e_btn_bgn);
 	DDX_Control(pDX, IDC_E_BGM, e_btn_bgm);
-	DDX_Text(pDX, IDC_SUBEDIT, sub_text);
+
 }
 
 /*
@@ -441,7 +440,7 @@ void SelectKeyboardDlg::SetPosBtn()
 		}
 	// IDC_MAINEDIT 크기, 위치 변경
 	GetDlgItem(IDC_MAINEDIT)->SetWindowPos(NULL, ButtonSize.cx * 1, ButtonSize.cy * 1, ButtonSize.cx * 7, ButtonSize.cy * 2, SWP_NOZORDER);
-	GetDlgItem(IDC_SUBEDIT)->SetWindowPos(NULL, ButtonSize.cx * 1, ButtonSize.cy * 3, ButtonSize.cx * 1, ButtonSize.cy * 0.2, SWP_NOZORDER);
+	GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 3, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 	// 영어 소문자 버튼 좌표 및 크기 설정	
 	for (int y = 3; y < 6; y++)
@@ -758,13 +757,19 @@ void SelectKeyboardDlg::InputHangeul(int textCode)
 {
 	hangeulInput.SetHangeulCode(textCode);
 	
-	complete_text = hangeulInput.completeText;
+	CString complete_text = hangeulInput.completeText;
 
 	if (hangeulInput.ingWord != NULL)
 		complete_text += hangeulInput.ingWord;
 
 
 	SetDlgItemText(IDC_MAINEDIT, complete_text);
+
+	CString sub_text;
+	int cut = 0;
+	cut = complete_text.Find(' ');
+	sub_text = complete_text.Mid(cut + 1);
+	SetDlgItemText(IDC_SUBEDIT, sub_text);
 	
 	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
 	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
@@ -782,6 +787,12 @@ void SelectKeyboardDlg::InputText(CString text)
 		complete_text += hangeulInput.ingWord;
 
 	SetDlgItemText(IDC_MAINEDIT, complete_text);
+
+	CString sub_text;
+	int cut = 0;
+	cut = complete_text.Find(' ');
+	sub_text = complete_text.Mid(cut + 1);
+	SetDlgItemText(IDC_SUBEDIT, sub_text);
 
 	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
 	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
@@ -1377,6 +1388,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	case IDC_S_SPC:
 	{
 		InputHangeul(-1);
+		CString sub_text;
+		sub_text="";
+		SetDlgItemText(IDC_SUBEDIT, sub_text);
 
 		break;
 	}
@@ -2111,24 +2125,3 @@ BOOL SelectKeyboardDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 
 
 
-void SelectKeyboardDlg::OnChangeSubedit()
-{
-	// TODO:  RICHEDIT 컨트롤인 경우, 이 컨트롤은
-	// CDialogEx::OnInitDialog() 함수를 재지정 
-	//하고 마스크에 OR 연산하여 설정된 ENM_CHANGE 플래그를 지정하여 CRichEditCtrl().SetEventMask()를 호출하지 않으면
-	// 이 알림 메시지를 보내지 않습니다.
-
-	// TODO:  여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	if (GetAsyncKeyState(VK_SPACE) & 0x8000) { // 스페이스바를 눌렀다면 (한 단어)
-
-		sub_text = _T(""); // 원래창은 빈칸으로 리셋시킨다.
-		UpdateData(FALSE);
-
-	}
-	else
-	{
-		UpdateData(TRUE);
-		sub_text += complete_text; // 다음 창으로 그 단어가 넘어간다.
-		UpdateData(FALSE);
-	}
-}
