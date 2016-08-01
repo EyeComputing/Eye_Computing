@@ -41,7 +41,9 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	ON_WM_SETCURSOR()
 
 	
+
 //	ON_WM_DESTROY()
+
 	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
@@ -1929,17 +1931,31 @@ BOOL SelectKeyboardDlg::PreTranslateMessage(MSG* pMsg)
 	}
 	return CDialogEx::PreTranslateMessage(pMsg);
 }
-
-
+*/
 void SelectKeyboardDlg::OnClose()
 {
-	
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	// 메인에디트 초기화
+	hangeulInput.Clear();
+	SetDlgItemText(IDC_MAINEDIT, _T(""));
+	// 서브에디트 초기화
+	CString sub_text;
+	sub_text = "";
+	SetDlgItemText(IDC_SUBEDIT, sub_text);
+	GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, 0, 0, 0, 0, NULL);
+	// 영어, 특수문자 버튼 숨기기
+	ShowKorBtn();
+	HideSmallEngBtn();
+	HideBigEngBtn();
+	HideSpecialBtn();
+
+	/*
 	if (mousehide_count == 1)
-			{
-				TRACE("MOUSE 보이게");
-				ShowCursor(true);
-				mousehide_count--;
-			}
+	{
+		TRACE("MOUSE 보이게");
+		ShowCursor(true);
+		mousehide_count--;
+	}
+	*/
 	CDialogEx::OnClose();
 }
-*/

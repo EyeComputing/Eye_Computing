@@ -27,6 +27,7 @@ public:
 
 	/*버튼 입력 받는 함수*/
 	void SelectKeyboardDlg::OnBtnClick(UINT uiID);
+	void OnClose();
 	// keyboad 한글 입력..
 	void SelectKeyboardDlg::InputHangeul(int textCode);
 	void SelectKeyboardDlg::InputText(CString text);
@@ -191,7 +192,7 @@ public:
 
 	// mouse cursor 설정 함수
     /*afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
-
+	afx_msg void OnClose();
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnClose();
 	*/
