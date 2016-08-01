@@ -32,5 +32,5 @@ public:
 	CxSkinButton m_btn_rcl;
 	CxSkinButton m_btn_dcl;
 	CxSkinButton m_btn_rag;
-	CButton btn_close;
+	CxSkinButton btn_close;
 };

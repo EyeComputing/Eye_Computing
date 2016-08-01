@@ -73,8 +73,8 @@ void SelectMouseDlg::OnBtnClick(UINT uiID)
 		}
 		case IDC_BT_CLOSE:
 		{
-			::SendMessage(GetSafeHwnd(), WM_CLOSE, NULL, NULL);
 			TRACE("CLOSE button clicked");
+			::SendMessage(GetSafeHwnd(), WM_CLOSE, NULL, NULL);
 			break;
 		}
 
@@ -108,6 +108,7 @@ BOOL SelectMouseDlg::OnInitDialog()
 	m_btn_rcl.SetSkin(IDB_M_RCL, IDB_M_RCL, IDB_M_RCL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	m_btn_dcl.SetSkin(IDB_M_DCL, IDB_M_DCL, IDB_M_DCL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	m_btn_rag.SetSkin(IDB_M_RAG, IDB_M_RAG, IDB_M_RAG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	btn_close.SetSkin(IDB_BTN_CLOSE, IDB_BTN_CLOSE, IDB_BTN_CLOSE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
