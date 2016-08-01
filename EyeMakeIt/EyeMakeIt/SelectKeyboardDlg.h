@@ -189,8 +189,9 @@ public:
 
 
 
-//	afx_msg void OnPaint();
-//afx_msg void OnClose();
-//	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 
+	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
+
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
+	afx_msg void OnClose();
 };
