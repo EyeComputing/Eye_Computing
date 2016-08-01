@@ -40,6 +40,7 @@ public:
 	void SetImgBigEngBtn();
 	void SelectKeyboardDlg::SetImgSpecialBtn();
 	void SelectKeyboardDlg::SetPosBtn();
+	//void SelectKeyboardDlg::OnCancel();
 
 	void ShowKorBtn();
 	void HideKorBtn();
@@ -189,7 +190,7 @@ public:
 
 
 //	afx_msg void OnPaint();
-	afx_msg void OnClose();
-	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
+//afx_msg void OnClose();
+//	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 
 };
