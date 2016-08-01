@@ -40,7 +40,7 @@ void SelectMouseDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(SelectMouseDlg, CDialogEx)
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
-	ON_COMMAND_RANGE(IDC_BT_M_Lclick, IDC_BT_M_Drag, SelectMouseDlg::OnBtnClick)
+	ON_COMMAND_RANGE(IDC_BT_M_Lclick, IDC_BT_CLOSE, SelectMouseDlg::OnBtnClick)
 END_MESSAGE_MAP()
 
 
