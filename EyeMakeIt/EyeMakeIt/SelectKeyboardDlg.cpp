@@ -1221,10 +1221,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("R"));
 		else
 			InputText(_T("r"));
-		
-		break;
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
+		break;
 
 	}
 	case IDC_E_SMT:
@@ -1313,6 +1313,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("A"));
 		else
 			InputText(_T("a"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMS:
@@ -1323,6 +1326,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("S"));
 		else
 			InputText(_T("s"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1334,6 +1339,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("D"));
 		else
 			InputText(_T("d"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMF:
@@ -1344,6 +1352,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("F"));
 		else
 			InputText(_T("f"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1355,6 +1365,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("G"));
 		else
 			InputText(_T("g"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1366,6 +1378,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("H"));
 		else
 			InputText(_T("h"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 5, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1377,6 +1391,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("J"));
 		else
 			InputText(_T("j"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1387,7 +1403,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (clickedShift)
 			InputText(_T("K"));
 		else
-			InputText(_T("k"));
+			InputText(_T("k")); 
+		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1399,6 +1417,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("L"));
 		else
 			InputText(_T("l"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1464,6 +1484,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("Z"));
 		else
 			InputText(_T("z")); 
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1475,7 +1497,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("X"));
 		else
 			InputText(_T("x"));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMC:
@@ -1486,7 +1510,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("C"));
 		else
 			InputText(_T("c"));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMV:
@@ -1498,6 +1524,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		else
 			InputText(_T("v"));
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_S_SPC:
@@ -1545,6 +1573,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		else
 			InputText(_T("b"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMN:
@@ -1555,7 +1585,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("N"));
 		else
 			InputText(_T("n"));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMM:
@@ -1566,7 +1598,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("M"));
 		else
 			InputText(_T("m"));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_S_DOT:
@@ -1585,6 +1619,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("!"));
+		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
@@ -1594,6 +1630,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputText(_T("@"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_SHP:
@@ -1601,6 +1639,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("#"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
@@ -1610,6 +1650,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputText(_T("$"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_PER:
@@ -1618,6 +1660,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputText(_T("%"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_CIR:
@@ -1625,6 +1669,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("^"));
+		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 5, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
@@ -1633,6 +1679,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("&"));
+		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
@@ -1641,6 +1689,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("*"));
+		
+	GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
@@ -1650,6 +1700,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputText(_T("("));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_CSG:
@@ -1657,6 +1709,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T(")"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 9, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
@@ -1666,6 +1720,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputText(_T("~"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_HYP:
@@ -1673,6 +1729,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("-"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1681,7 +1739,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("="));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_PLS:
@@ -1690,6 +1750,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputText(_T("+"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_ODG:
@@ -1697,7 +1759,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("["));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_CDG:
@@ -1705,6 +1769,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("]"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 5, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1714,6 +1780,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputText(_T("<"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_CKG:
@@ -1721,6 +1789,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T(">"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
@@ -1730,6 +1800,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputText(_T("?"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_COL:
@@ -1738,6 +1810,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputText(_T(":"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_SCL:
@@ -1745,7 +1819,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T(";"));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_SDD:
@@ -1753,7 +1829,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("'"));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_BDD:
@@ -1761,7 +1839,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("\""));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_BSL:
@@ -1769,6 +1849,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("\\"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1777,7 +1859,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T("/"));
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_P_CMM:
@@ -1785,11 +1869,14 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputText(_T(","));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
 	}
 }
+
 /*
 void SelectKeyboardDlg::OnCancel()
 {
