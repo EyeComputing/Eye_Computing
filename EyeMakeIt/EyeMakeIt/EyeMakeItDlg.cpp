@@ -99,6 +99,7 @@ void CEyeMakeItDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BT_Keyboard, m_btn_kbd);
 	DDX_Control(pDX, IDC_BT_Scroll_Down, m_btn_scd);
 	DDX_Control(pDX, IDC_BT_Setting, m_btn_set);
+	DDX_Control(pDX, IDC_FIRST_CLOSE, btn_first_close);
 }
 
 BEGIN_MESSAGE_MAP(CEyeMakeItDlg, CDialogEx)
@@ -106,7 +107,7 @@ BEGIN_MESSAGE_MAP(CEyeMakeItDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
-	ON_COMMAND_RANGE(IDC_BT_Mouse, IDC_BT_Setting, CEyeMakeItDlg::OnBtnClick)
+	ON_COMMAND_RANGE(IDC_BT_Mouse, IDC_FIRST_CLOSE, CEyeMakeItDlg::OnBtnClick)
 //	ON_WM_MOUSEWHEEL()
 	ON_WM_LBUTTONDOWN()
 	ON_WM_MOUSEMOVE()
@@ -128,7 +129,7 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	WindowSize.cx = (LONG)::GetSystemMetrics(SM_CXFULLSCREEN);
 	WindowSize.cy = (LONG)::GetSystemMetrics(SM_CYFULLSCREEN);
 	ButtonSize.cx = (WindowSize.cx / 9);
-	ButtonSize.cy = (WindowSize.cy / 5);
+	ButtonSize.cy = (WindowSize.cy / 6);
 
 	/* 항상 맨 위에 */
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
@@ -142,6 +143,7 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	GetDlgItem(IDC_BT_Keyboard)->SetWindowPos(NULL, 0, ButtonSize.cy * 2, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 	GetDlgItem(IDC_BT_Scroll_Down)->SetWindowPos(NULL, 0, ButtonSize.cy * 3, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 	GetDlgItem(IDC_BT_Setting)->SetWindowPos(NULL, 0, ButtonSize.cy * 4, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_FIRST_CLOSE)->SetWindowPos(NULL, 0, ButtonSize.cy * 5, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 
 	// 버튼 이미지 씌우기
 	m_btn_mos.SetSkin(IDB_M_MOS, IDB_M_MOS, IDB_M_MOS_OVER, 0, 0, IDB_MASK, 1, 0, 4);
@@ -149,7 +151,7 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	m_btn_kbd.SetSkin(IDB_M_KBD, IDB_M_KBD, IDB_M_KBD_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	m_btn_scd.SetSkin(IDB_M_SCD, IDB_M_SCD, IDB_M_SCD_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	m_btn_set.SetSkin(IDB_M_SET, IDB_M_SET, IDB_M_SET_OVER, 0, 0, IDB_MASK, 1, 0, 4);
-
+	btn_first_close.SetSkin(IDB_FIRST_CLOSE, IDB_FIRST_CLOSE, IDB_FIRST_CLOSE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 
 	// 키보드를 미리 생성시켜 놓는다
 	m_pKeyboardDlg = new SelectKeyboardDlg();
@@ -373,6 +375,11 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 			m_pSettingDlg = new SelectSettingDlg();
 			m_pSettingDlg->Create(IDD_Dlg_Setting, this);
 			m_pSettingDlg->ShowWindow(SW_SHOW);
+			break;
+		}
+		case IDC_FIRST_CLOSE:
+		{
+			::SendMessage(GetSafeHwnd(), WM_CLOSE, NULL, NULL);
 			break;
 		}
 	}

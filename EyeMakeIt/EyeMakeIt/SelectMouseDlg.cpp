@@ -40,7 +40,7 @@ void SelectMouseDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(SelectMouseDlg, CDialogEx)
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
-	ON_COMMAND_RANGE(IDC_BT_M_Lclick, IDC_BT_M_Drag, SelectMouseDlg::OnBtnClick)
+	ON_COMMAND_RANGE(IDC_BT_M_Lclick, IDC_BT_CLOSE, SelectMouseDlg::OnBtnClick)
 END_MESSAGE_MAP()
 
 
@@ -107,6 +107,7 @@ BOOL SelectMouseDlg::OnInitDialog()
 	m_btn_rcl.SetSkin(IDB_M_RCL, IDB_M_RCL, IDB_M_RCL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	m_btn_dcl.SetSkin(IDB_M_DCL, IDB_M_DCL, IDB_M_DCL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	m_btn_rag.SetSkin(IDB_M_RAG, IDB_M_RAG, IDB_M_RAG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	btn_close.SetSkin(IDB_BTN_CLOSE, IDB_BTN_CLOSE, IDB_BTN_CLOSE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.

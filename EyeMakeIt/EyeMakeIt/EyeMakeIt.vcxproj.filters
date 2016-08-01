@@ -926,5 +926,17 @@
     <Image Include="res\Keyboard\Setting\IDB_M_EYE_OVER.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="res\IDB_BTN_CLOSE_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\IDB_BTN_CLOSE.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\IDB_FIRST_CLOSE.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\IDB_FIRST_CLOSE_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

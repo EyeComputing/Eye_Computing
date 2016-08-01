@@ -186,4 +186,9 @@ public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 
 	afx_msg void OnEnChangeMainedit();
+
+//	afx_msg void OnPaint();
+	afx_msg void OnClose();
+	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
+
 };
