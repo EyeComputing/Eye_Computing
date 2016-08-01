@@ -183,5 +183,4 @@ public:
 	afx_msg void OnBnClickedSKor();
 	afx_msg void OnBnClickedSEng();
 
-
 };

@@ -31,6 +31,7 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_N_ONE, IDC_P_CMM, SelectKeyboardDlg::OnBtnClick)
 	//ON_BN_CLICKED(IDC_S_KOR, &SelectKeyboardDlg::OnBnClickedSKor)
+
 END_MESSAGE_MAP()
 
 // SelectKeyboardDlg 메시지 처리기입니다.
@@ -41,11 +42,16 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	ZeroMemory(&WindowSize, sizeof(SIZE));
-	WindowSize.cx = (LONG)::GetSystemMetrics(SM_CXFULLSCREEN);
-	WindowSize.cy = (LONG)::GetSystemMetrics(SM_CYFULLSCREEN);
+	WindowSize.cx = GetSystemMetrics(SM_CXFULLSCREEN);
+	WindowSize.cy = GetSystemMetrics(SM_CYFULLSCREEN);
+	// 컴퓨터의 전체 해상도 가져오기
+
+	MoveWindow(0, 0, WindowSize.cx+ GetSystemMetrics(SM_CXEDGE) * 2, WindowSize.cy+ GetSystemMetrics(SM_CYCAPTION)+ GetSystemMetrics(SM_CYEDGE) * 2);
+	// 키보드 크기 고정
 
 	ButtonSize.cx = (WindowSize.cx / 10);
 	ButtonSize.cy = (WindowSize.cy / 6);
+	//버튼 크기 
 
 	// 버튼 이미지 씌우기
 	SetImgNumBtn();
@@ -2433,6 +2439,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	}
 }
+
+
 
 
 
