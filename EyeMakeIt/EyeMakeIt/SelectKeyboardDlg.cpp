@@ -25,19 +25,13 @@ SelectKeyboardDlg::~SelectKeyboardDlg()
 {
 }
 
-
-
-
-
 BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_MOUSEMOVE()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
-	ON_COMMAND_RANGE(IDC_N_ONE, IDC_N_ONE, SelectKeyboardDlg::OnBtnClick)
-	ON_COMMAND_RANGE(IDC_N_ONE, IDC_S_DOT, SelectKeyboardDlg::OnBtnClick)
-	ON_BN_CLICKED(IDC_S_KOR, &SelectKeyboardDlg::OnBnClickedSKor)
+	ON_COMMAND_RANGE(IDC_N_ONE, IDC_P_CMM, SelectKeyboardDlg::OnBtnClick)
+	//ON_BN_CLICKED(IDC_S_KOR, &SelectKeyboardDlg::OnBnClickedSKor)
 END_MESSAGE_MAP()
-
 
 // SelectKeyboardDlg 메시지 처리기입니다.
 
@@ -58,13 +52,15 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	SetImgSysBtn();
 	SetImgKorBtn();
 	SetImgSmallEngBtn();
+	SetImgBigEngBtn();
 	SetImgSpecialBtn();
 
 	// 버튼 좌표 설정
 	SetPosBtn();
 	
 	// 영어, 특수문자 버튼 숨기기
-	HideEngBtn();
+	HideSmallEngBtn();
+	HideBigEngBtn();
 	HideSpecialBtn();
 
 
@@ -182,6 +178,32 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_P_BSL, p_btn_bsl);
 	DDX_Control(pDX, IDC_P_SLS, p_btn_sls);
 	DDX_Control(pDX, IDC_P_CMM, p_btn_cmm);
+	DDX_Control(pDX, IDC_E_BGQ, e_btn_bgq);
+	DDX_Control(pDX, IDC_E_BGW, e_btn_bgw);
+	DDX_Control(pDX, IDC_E_BGE, e_btn_bge);
+	DDX_Control(pDX, IDC_E_BGR, e_btn_bgr);
+	DDX_Control(pDX, IDC_E_BGT, e_btn_bgt);
+	DDX_Control(pDX, IDC_E_BGY, e_btn_bgy);
+	DDX_Control(pDX, IDC_E_BGU, e_btn_bgu);
+	DDX_Control(pDX, IDC_E_BGI, e_btn_bgi);
+	DDX_Control(pDX, IDC_E_BGO, e_btn_bgo);
+	DDX_Control(pDX, IDC_E_BGP, e_btn_bgp);
+	DDX_Control(pDX, IDC_E_BGA, e_btn_bga);
+	DDX_Control(pDX, IDC_E_BGS, e_btn_bgs);
+	DDX_Control(pDX, IDC_E_BGD, e_btn_bgd);
+	DDX_Control(pDX, IDC_E_BGF, e_btn_bgf);
+	DDX_Control(pDX, IDC_E_BGG, e_btn_bgg);
+	DDX_Control(pDX, IDC_E_BGH, e_btn_bgh);
+	DDX_Control(pDX, IDC_E_BGJ, e_btn_bgj);
+	DDX_Control(pDX, IDC_E_BGK, e_btn_bgk);
+	DDX_Control(pDX, IDC_E_BGL, e_btn_bgl);
+	DDX_Control(pDX, IDC_E_BGZ, e_btn_bgz);
+	DDX_Control(pDX, IDC_E_BGX, e_btn_bgx);
+	DDX_Control(pDX, IDC_E_BGC, e_btn_bgc);
+	DDX_Control(pDX, IDC_E_BGV, e_btn_bgv);
+	DDX_Control(pDX, IDC_E_BGB, e_btn_bgb);
+	DDX_Control(pDX, IDC_E_BGN, e_btn_bgn);
+	DDX_Control(pDX, IDC_E_BGM, e_btn_bgm);
 }
 
 
@@ -311,6 +333,37 @@ void SelectKeyboardDlg::SetImgSmallEngBtn()
 
 }
 
+void SelectKeyboardDlg::SetImgBigEngBtn()
+{
+	// 영어 대문자 버튼 스킨 씌우기
+	e_btn_bgq.SetSkin(IDB_E_BGQ, IDB_E_BGQ, IDB_E_BGQ_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgw.SetSkin(IDB_E_BGW, IDB_E_BGW, IDB_E_BGW_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bge.SetSkin(IDB_E_BGE, IDB_E_BGE, IDB_E_BGE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgr.SetSkin(IDB_E_BGR, IDB_E_BGR, IDB_E_BGR_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgt.SetSkin(IDB_E_BGT, IDB_E_BGT, IDB_E_BGT_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgy.SetSkin(IDB_E_BGY, IDB_E_BGY, IDB_E_BGY_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgu.SetSkin(IDB_E_BGU, IDB_E_BGU, IDB_E_BGU_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgi.SetSkin(IDB_E_BGI, IDB_E_BGI, IDB_E_BGI_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgo.SetSkin(IDB_E_BGO, IDB_E_BGO, IDB_E_BGO_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgp.SetSkin(IDB_E_BGP, IDB_E_BGP, IDB_E_BGP_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bga.SetSkin(IDB_E_BGA, IDB_E_BGA, IDB_E_BGA_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgs.SetSkin(IDB_E_BGS, IDB_E_BGS, IDB_E_BGS_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgd.SetSkin(IDB_E_BGD, IDB_E_BGD, IDB_E_BGD_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgf.SetSkin(IDB_E_BGF, IDB_E_BGF, IDB_E_BGF_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgg.SetSkin(IDB_E_BGG, IDB_E_BGG, IDB_E_BGG_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgh.SetSkin(IDB_E_BGH, IDB_E_BGH, IDB_E_BGH_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgj.SetSkin(IDB_E_BGJ, IDB_E_BGJ, IDB_E_BGJ_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgk.SetSkin(IDB_E_BGK, IDB_E_BGK, IDB_E_BGK_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgl.SetSkin(IDB_E_BGL, IDB_E_BGL, IDB_E_BGL_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgz.SetSkin(IDB_E_BGZ, IDB_E_BGZ, IDB_E_BGZ_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgx.SetSkin(IDB_E_BGX, IDB_E_BGX, IDB_E_BGX_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgc.SetSkin(IDB_E_BGC, IDB_E_BGC, IDB_E_BGC_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgv.SetSkin(IDB_E_BGV, IDB_E_BGV, IDB_E_BGV_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgb.SetSkin(IDB_E_BGB, IDB_E_BGB, IDB_E_BGB_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgn.SetSkin(IDB_E_BGN, IDB_E_BGN, IDB_E_BGN_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	e_btn_bgm.SetSkin(IDB_E_BGM, IDB_E_BGM, IDB_E_BGM_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+}
+
 // 특수문자 버튼 이미지 삽입
 void SelectKeyboardDlg::SetImgSpecialBtn()
 {
@@ -367,9 +420,7 @@ void SelectKeyboardDlg::SetPosBtn()
 				GetDlgItem(order)->SetWindowPos(NULL, ButtonSize.cx * x, ButtonSize.cy * y, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 		}
 
-	
-
-	// 영어 버튼 좌표 및 크기 설정	
+	// 영어 소문자 버튼 좌표 및 크기 설정	
 	for (int y = 3; y < 6; y++)
 		for (int x = 0; x < 10; x++)
 		{
@@ -381,6 +432,26 @@ void SelectKeyboardDlg::SetPosBtn()
 
 			// 마침표 생략
 			else if (order == 2089)	continue;
+
+			// 예외사항 아닐 경우 x, y 좌표에 버튼 크기 만큼 출력
+			else
+				GetDlgItem(order)->SetWindowPos(NULL, ButtonSize.cx * x, ButtonSize.cy * y, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+		}
+
+	// 영어 대문자 버튼 좌표 및 크기 설정	
+	for (int y = 3; y < 6; y++)
+		for (int x = 0; x < 10; x++)
+		{
+			// 리소스 순서를 받기 위한 변수
+			int order = 2090 + (10 * y) + x;
+
+			// 스페이스바 생략
+			if (order == 2144 || order == 2145)	continue;
+
+			else if(order == 2139)	continue;
+
+			// 마침표 생략
+			else if (order == 2149)	continue;
 
 			// 예외사항 아닐 경우 x, y 좌표에 버튼 크기 만큼 출력
 			else
@@ -471,7 +542,7 @@ void SelectKeyboardDlg::HideKorBtn()
 	GetDlgItem(IDC_S_ENG)->ShowWindow(FALSE);
 }
 
-void SelectKeyboardDlg::ShowEngBtn()
+void SelectKeyboardDlg::ShowSmallEngBtn()
 {
 
 	GetDlgItem(IDC_E_SMQ)->ShowWindow(TRUE);
@@ -503,7 +574,7 @@ void SelectKeyboardDlg::ShowEngBtn()
 	GetDlgItem(IDC_S_KOR)->ShowWindow(TRUE);
 }
 
-void SelectKeyboardDlg::HideEngBtn()
+void SelectKeyboardDlg::HideSmallEngBtn()
 {
 
 	GetDlgItem(IDC_E_SMQ)->ShowWindow(FALSE);
@@ -532,6 +603,70 @@ void SelectKeyboardDlg::HideEngBtn()
 	GetDlgItem(IDC_E_SMB)->ShowWindow(FALSE);
 	GetDlgItem(IDC_E_SMN)->ShowWindow(FALSE);
 	GetDlgItem(IDC_E_SMM)->ShowWindow(FALSE);
+	GetDlgItem(IDC_S_KOR)->ShowWindow(FALSE);
+}
+
+void SelectKeyboardDlg::ShowBigEngBtn()
+{
+
+	GetDlgItem(IDC_E_BGQ)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGW)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGE)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGR)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGT)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGY)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGU)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGI)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGO)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGP)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGA)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGS)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGD)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGF)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGG)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGH)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGJ)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGK)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGL)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGZ)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGX)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGC)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGV)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGB)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGN)->ShowWindow(TRUE);
+	GetDlgItem(IDC_E_BGM)->ShowWindow(TRUE);
+	GetDlgItem(IDC_S_KOR)->ShowWindow(TRUE);
+}
+
+void SelectKeyboardDlg::HideBigEngBtn()
+{
+
+	GetDlgItem(IDC_E_BGQ)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGW)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGE)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGR)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGT)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGY)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGU)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGI)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGO)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGP)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGA)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGS)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGD)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGF)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGG)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGH)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGJ)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGK)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGL)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGZ)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGX)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGC)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGV)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGB)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGN)->ShowWindow(FALSE);
+	GetDlgItem(IDC_E_BGM)->ShowWindow(FALSE);
 	GetDlgItem(IDC_S_KOR)->ShowWindow(FALSE);
 }
 
@@ -788,7 +923,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		// 특수문자
 		ShowSpecialBtn();
-		HideEngBtn();
+		HideSmallEngBtn();
+		HideBigEngBtn();
 		HideKorBtn();
 		GetDlgItem(IDC_S_KOR)->ShowWindow(TRUE);
 		break;
@@ -1141,6 +1277,310 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
+	case IDC_E_SMQ:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x51;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMW:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x57;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SME:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x45;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMR:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x52;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMT:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x54;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMY:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x59;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMU:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x55;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMI:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x49;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMO:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x4F;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMP:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x50;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMA:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x41;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMS:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x53;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMD:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x44;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMF:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x46;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMG:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x47;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMH:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x48;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMJ:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x4A;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMK:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x4B;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SML:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x4C;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
 	case IDC_S_KNG:
 	{
 		INPUT InputButton;
@@ -1155,6 +1595,48 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_S_ENG:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x15;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		ShowSmallEngBtn();
+		HideKorBtn();
+		HideSpecialBtn();
+
+		break;
+	}
+	case IDC_S_KOR:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x15;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		ShowKorBtn();
+		HideSmallEngBtn();
+		HideSpecialBtn();
 
 		break;
 	}
@@ -1207,6 +1689,70 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		break;
 	}
 	case IDC_K_PIE:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x56;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMZ:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x5A;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMX:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x58;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMC:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x43;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMV:
 	{
 		INPUT InputButton;
 		//initialize
@@ -1286,6 +1832,54 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
+	case IDC_E_SMB:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x42;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMN:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x4E;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_E_SMM:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0x4D;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
 	case IDC_S_DOT:
 	{
 		INPUT InputButton;
@@ -1302,7 +1896,260 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
-	case IDC_S_ENG:
+	case IDC_P_EXC:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x31;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_GOL:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x32;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_SHP:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x33;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_DOL:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x34;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_PER:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x35;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_CIR:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x36;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_AND:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x37;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_AST:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x38;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_OSG:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x39;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_CSG:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0x40;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_WAV:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0xC0;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_HYP:
 	{
 		INPUT InputButton;
 		//initialize
@@ -1310,18 +2157,278 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//keyboard로 입력하겠다.
 		InputButton.type = INPUT_KEYBOARD;
 		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x15;
+		InputButton.ki.wVk = 0xBD;
 		//한번눌러주기
 		::SendInput(1, &InputButton, sizeof(INPUT));
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_P_EQL:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0xBB;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_P_PLS:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
 
-		ShowEngBtn();
-		HideKorBtn();
-		HideSpecialBtn();
-		Invalidate(TRUE);
-		
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0xBB;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_ODG:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0xDB;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_P_CDG:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0xDD;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_P_OKG:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0xBC;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_CKG:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0xBE;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_QST:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0xBF;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_COL:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0xBA;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_SCL:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0xBA;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_P_SDD:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0xDE;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_P_BDD:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//shift 누르고
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//1 침
+		InputButton.ki.wVk = 0xDE;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		// shift 한번더
+		InputButton.ki.wVk = 0x10;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
+		break;
+	}
+	case IDC_P_BSL:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0xE2;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_P_SLS:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0xBF;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		break;
+	}
+	case IDC_P_CMM:
+	{
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		//keyboard로 입력하겠다.
+		InputButton.type = INPUT_KEYBOARD;
+		//어떤버튼누를건지
+		InputButton.ki.wVk = 0xBC;
+		//한번눌러주기
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//누른거 풀어주기
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	}
@@ -1329,26 +2436,4 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 
 
 
-// 영어 -> 한글
-void SelectKeyboardDlg::OnBnClickedSKor()
-{
 
-	INPUT InputButton;
-	//initialize
-	::ZeroMemory(&InputButton, sizeof(INPUT));
-	//keyboard로 입력하겠다.
-	InputButton.type = INPUT_KEYBOARD;
-	//어떤버튼누를건지
-	InputButton.ki.wVk = 0x15;
-	//한번눌러주기
-	::SendInput(1, &InputButton, sizeof(INPUT));
-	//누른거 풀어주기
-	InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-	::SendInput(1, &InputButton, sizeof(INPUT));
-	
-	ShowKorBtn();
-	HideEngBtn();
-	HideSpecialBtn();
-	Invalidate(TRUE);
-
-}
