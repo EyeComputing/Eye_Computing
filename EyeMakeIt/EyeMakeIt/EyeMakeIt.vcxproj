@@ -139,6 +139,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\EyeMakeIt.ico" />
+    <Image Include="res\IDB_BTN_CLOSE.bmp" />
+    <Image Include="res\IDB_BTN_CLOSE_OVER.bmp" />
+    <Image Include="res\IDB_FIRST_CLOSE.bmp" />
+    <Image Include="res\IDB_FIRST_CLOSE_OVER.bmp" />
     <Image Include="res\Keyboard\English\IDB_E_BGA.bmp" />
     <Image Include="res\Keyboard\English\IDB_E_BGA_OVER.bmp" />
     <Image Include="res\Keyboard\English\IDB_E_BGB.bmp" />

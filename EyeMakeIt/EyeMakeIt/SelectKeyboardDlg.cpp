@@ -10,7 +10,7 @@
 /* global var */
 bool clickedShift = false;
 INPUT InputShift;
-
+int mousehide_count = 0;
 // SelectKeyboardDlg 대화 상자입니다.
 
 IMPLEMENT_DYNAMIC(SelectKeyboardDlg, CDialogEx)
@@ -31,7 +31,13 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_N_ONE, IDC_P_CMM, SelectKeyboardDlg::OnBtnClick)
 	//ON_BN_CLICKED(IDC_S_KOR, &SelectKeyboardDlg::OnBnClickedSKor)
+<<<<<<< HEAD
 
+=======
+//	ON_WM_PAINT()
+	ON_WM_CLOSE()
+	ON_WM_SETCURSOR()
+>>>>>>> bc952b3fd30e488527ae543f064268b25ef197ca
 END_MESSAGE_MAP()
 
 // SelectKeyboardDlg 메시지 처리기입니다.
@@ -2445,3 +2451,31 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 
 
 
+<<<<<<< HEAD
+=======
+void SelectKeyboardDlg::OnClose()
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	
+	//mouse cursor 다시 보이도록
+	if (mousehide_count == 1)
+	{
+		TRACE("MOUSE 보이게");
+		ShowCursor(true);
+	}
+	CDialogEx::OnClose();
+}
+
+
+BOOL SelectKeyboardDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	if (mousehide_count == 0)
+	{
+		TRACE("MOUSE 사라지게");
+		ShowCursor(false);
+		mousehide_count++;
+	}
+	return CDialogEx::OnSetCursor(pWnd, nHitTest, message);
+}
+>>>>>>> bc952b3fd30e488527ae543f064268b25ef197ca
