@@ -35,7 +35,6 @@ EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
 
 /* global */
 int selectMouseEvent;
-SelectKeyboardDlg *m_pKeyboardDlg; // 키보드 창 핸들
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
@@ -153,9 +152,9 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	m_btn_set.SetSkin(IDB_M_SET, IDB_M_SET, IDB_M_SET_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	btn_first_close.SetSkin(IDB_FIRST_CLOSE, IDB_FIRST_CLOSE, IDB_FIRST_CLOSE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 
-	// 키보드를 미리 생성시켜 놓는다
-	m_pKeyboardDlg = new SelectKeyboardDlg();
-	m_pKeyboardDlg->Create(IDD_Dlg_Keyboard, this);
+	//// 키보드를 미리 생성시켜 놓는다
+	//m_pKeyboardDlg = new SelectKeyboardDlg();
+	//m_pKeyboardDlg->Create(IDD_Dlg_Keyboard, this);
 
 
 
@@ -348,6 +347,9 @@ void CEyeMakeItDlg::OnBtnClick( UINT uiID )
 		}
 		case IDC_BT_Keyboard:
 		{
+			SelectKeyboardDlg *m_pKeyboardDlg;
+			m_pKeyboardDlg = new SelectKeyboardDlg();
+			m_pKeyboardDlg->Create(IDD_Dlg_Keyboard, this);
 			m_pKeyboardDlg->ShowWindow(SW_SHOWMAXIMIZED); // 키보드를 전체화면으로 연다
 			
 			break;
