@@ -41,6 +41,7 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	ON_WM_SETCURSOR()
 
 	
+	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 // SelectKeyboardDlg 메시지 처리기입니다.
@@ -1830,3 +1831,24 @@ BOOL SelectKeyboardDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 
 */
 
+
+
+void SelectKeyboardDlg::OnClose()
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	// 메인에디트 초기화
+	hangeulInput.Clear();
+	SetDlgItemText(IDC_MAINEDIT, _T(""));
+	// 서브에디트 초기화
+	CString sub_text;
+	sub_text = "";
+	SetDlgItemText(IDC_SUBEDIT, sub_text);
+	GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, 0, 0, 0, 0, NULL);
+	// 영어, 특수문자 버튼 숨기기
+	ShowKorBtn();
+	HideSmallEngBtn();
+	HideBigEngBtn();
+	HideSpecialBtn();
+
+	CDialogEx::OnClose();
+}
