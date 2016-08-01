@@ -986,6 +986,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		InputHangeul(-2);
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 2.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		CString sub_text;
 		sub_text = "";
 		SetDlgItemText(IDC_SUBEDIT, sub_text);
@@ -1532,6 +1534,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		InputHangeul(-1);
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 5.8, ButtonSize.cx * 2, ButtonSize.cy * 0.2, NULL);
 
 		CString sub_text;
 		sub_text="";
