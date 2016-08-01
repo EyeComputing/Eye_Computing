@@ -1062,88 +1062,115 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 
 		break;
 	}
-	case IDC_K_YEO:
+	case IDC_K_YEO: // ㅕ
 	{
 		InputHangeul(25);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_YYA:
+	case IDC_K_YYA: // ㅑ
 	{
 		InputHangeul(21);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_AEE:
+	case IDC_K_AEE: // ㅐ
 	{
 		if (clickedShift)
 			InputHangeul(22);
 		else
 			InputHangeul(20);
 		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		break;
 	}
-	case IDC_K_EEE:
+	case IDC_K_EEE: // ㅔ
 	{
 		if (clickedShift)
 			InputHangeul(26);
 		else
 			InputHangeul(24);
-		
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 9, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		break;
 	}
-	case IDC_K_MIE:
+ // 한글 첫째줄 끝
+
+	case IDC_K_MIE: // ㅁ
 	{
 		InputHangeul(6);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_NIE:
+	case IDC_K_NIE: // ㄴ
 	{
 		InputHangeul(2);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_IEU:
+	case IDC_K_IEU: //ㅇ
 	{
 		InputHangeul(11);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_RIE:
+	case IDC_K_RIE: //ㄹ
 	{
 		InputHangeul(5);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_HIE:
+	case IDC_K_HIE: // ㅎ
 	{
 		InputHangeul(18);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_OOO:
+	case IDC_K_OOO: // ㅗ
 	{
 		InputHangeul(27);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 5, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_EOO:
+	case IDC_K_EOO: // ㅓ
 	{
 		InputHangeul(23);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_AAA:
+	case IDC_K_AAA: // ㅏ
 	{
 		InputHangeul(19);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_YII:
+	case IDC_K_YII: // ㅣ
 	{
 		InputHangeul(39);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMQ:
@@ -1371,28 +1398,36 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 
 		break;
 	}
-	case IDC_K_KIE:
+	case IDC_K_KIE: // ㅋ
 	{
 		InputHangeul(15);
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
-	case IDC_K_TIE:
+	case IDC_K_TIE: // ㅌ
 	{
 		InputHangeul(16);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_CHI:
+	case IDC_K_CHI: // ㅊ
 	{
 		InputHangeul(14);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
-	case IDC_K_PIE:
+	case IDC_K_PIE: // ㅍ
 	{
 		InputHangeul(17);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMZ:
@@ -1452,22 +1487,28 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 
 		break;
 	}
-	case IDC_K_YUU:
+	case IDC_K_YUU: // ㅠ
 	{
 		InputHangeul(36);
 
-		break;
-	}
-	case IDC_K_UUU:
-	{
-		InputHangeul(32);
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
-	case IDC_K_EUU:
+	case IDC_K_UUU: // ㅜ
+	{
+		InputHangeul(32);
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
+		break;
+	}
+	case IDC_K_EUU: // ㅡ
 	{
 		InputHangeul(37);
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMB:
@@ -1509,6 +1550,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		
 		InputText(_T("."));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 9, ButtonSize.cy * 5.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
