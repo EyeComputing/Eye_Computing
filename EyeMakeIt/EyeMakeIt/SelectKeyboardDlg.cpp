@@ -6,6 +6,7 @@
 #include "SelectKeyboardDlg.h"
 #include "afxdialogex.h"
 
+#include "Hangeul.h"
 
 /* global var */
 bool clickedShift = false;
@@ -26,8 +27,8 @@ SelectKeyboardDlg::~SelectKeyboardDlg()
 }
 
 BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
-	ON_WM_LBUTTONDOWN()
-	ON_WM_MOUSEMOVE()
+	//ON_WM_LBUTTONDOWN()
+	//ON_WM_MOUSEMOVE()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_N_ONE, IDC_P_CMM, SelectKeyboardDlg::OnBtnClick)
 	//ON_BN_CLICKED(IDC_S_KOR, &SelectKeyboardDlg::OnBnClickedSKor)
@@ -206,7 +207,7 @@ void SelectKeyboardDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_E_BGM, e_btn_bgm);
 }
 
-
+/*
 // 포커스 함수 2개.
 void SelectKeyboardDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
@@ -234,7 +235,7 @@ void SelectKeyboardDlg::OnMouseMove(UINT nFlags, CPoint point)
 
 	CDialogEx::OnMouseMove(nFlags, point);
 }
-
+*/
 
 // 숫자 버튼 이미지 삽입
 void SelectKeyboardDlg::SetImgNumBtn()
@@ -733,10 +734,20 @@ void SelectKeyboardDlg::HideSpecialBtn()
 
 void SelectKeyboardDlg::InputHangeul(int textCode)
 {
+	hangeulInput.SetHangeulCode(textCode);
 	
-	//CString complete_text = "";
+	CString complete_text = hangeulInput.completeText;
 
-	//SetDlgItemText(IDC_MAINEDIT, complete_text);
+	if (hangeulInput.ingWord != NULL)
+		complete_text += hangeulInput.ingWord;
+
+
+	SetDlgItemText(IDC_MAINEDIT, complete_text);
+	
+	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+	pEdit->SetFocus();
+	
 }
 
 
@@ -751,6 +762,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 	case IDC_N_ONE:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -768,6 +783,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_N_TWO:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -784,6 +803,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_N_THR:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -800,6 +823,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_N_FOU:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -816,6 +843,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_N_FIV:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -832,6 +863,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_N_SIX:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -848,6 +883,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_N_SEV:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -864,6 +903,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_N_EIG:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -880,6 +923,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_N_NIN:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -896,6 +943,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_N_ZER:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -912,6 +963,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_BKS:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -938,6 +993,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_SHF:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		clickedShift = !clickedShift;
 
 		if (clickedShift)
@@ -961,6 +1020,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_ENT:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -982,6 +1045,11 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_K_BIE:
 	{
+		if (clickedShift)
+			InputHangeul(8);
+		else
+			InputHangeul(7);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -994,10 +1062,16 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_JIE:
 	{
+		if (clickedShift)
+			InputHangeul(13);
+		else
+			InputHangeul(12);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1010,10 +1084,16 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_DIG:
 	{
+		if (clickedShift)
+			InputHangeul(4);
+		else
+			InputHangeul(3);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1026,10 +1106,16 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_GIY:
 	{
+		if (clickedShift)
+			InputHangeul(1);
+		else
+			InputHangeul(0);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1042,10 +1128,16 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_SHI:
 	{
+		if (clickedShift)
+			InputHangeul(10);
+		else
+			InputHangeul(9);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1058,10 +1150,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_YYO:
 	{
+		InputHangeul(31);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1074,10 +1169,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_YEO:
 	{
+		InputHangeul(25);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1090,10 +1188,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_YYA:
 	{
+		InputHangeul(21);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1106,10 +1207,16 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_AEE:
 	{
+		if (clickedShift)
+			InputHangeul(22);
+		else
+			InputHangeul(20);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1122,10 +1229,16 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_EEE:
 	{
+		if (clickedShift)
+			InputHangeul(26);
+		else
+			InputHangeul(24);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1138,10 +1251,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_MIE:
 	{
+		InputHangeul(6);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1154,10 +1270,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_NIE:
 	{
+		InputHangeul(2);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1170,10 +1289,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_IEU:
 	{
+		InputHangeul(11);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1186,10 +1308,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_RIE:
 	{
+		InputHangeul(5);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1202,10 +1327,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_HIE:
 	{
+		InputHangeul(18);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1218,10 +1346,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_OOO:
 	{
+		InputHangeul(27);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1234,10 +1365,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_EOO:
 	{
+		InputHangeul(23);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1250,10 +1384,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_AAA:
 	{
+		InputHangeul(19);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1266,10 +1403,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_YII:
 	{
+		InputHangeul(39);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1282,10 +1422,15 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_E_SMQ:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1302,6 +1447,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMW:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1318,6 +1467,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SME:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1334,6 +1487,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMR:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1350,6 +1507,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMT:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1366,6 +1527,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMY:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1382,6 +1547,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMU:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1398,6 +1567,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMI:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1414,6 +1587,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMO:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1430,6 +1607,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMP:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1446,6 +1627,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMA:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1462,6 +1647,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMS:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1478,6 +1667,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMD:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1494,6 +1687,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMF:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1510,6 +1707,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMG:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1526,6 +1727,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMH:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1542,6 +1747,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMJ:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1558,6 +1767,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMK:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1574,6 +1787,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SML:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1649,6 +1866,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_K_KIE:
 	{
+		InputHangeul(15);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1661,10 +1880,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_TIE:
 	{
+		InputHangeul(16);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1677,10 +1899,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_CHI:
 	{
+		InputHangeul(14);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1693,10 +1918,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_PIE:
 	{
+		InputHangeul(17);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1709,10 +1937,15 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_E_SMZ:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1729,6 +1962,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMX:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1745,6 +1982,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMC:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initializev
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1761,6 +2002,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMV:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1777,6 +2022,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_SPC:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1793,6 +2042,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_K_YUU:
 	{
+		InputHangeul(36);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1805,10 +2056,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_UUU:
 	{
+		InputHangeul(32);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1821,10 +2075,13 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_K_EUU:
 	{
+		InputHangeul(37);
+		/*
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1837,10 +2094,15 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		//누른거 풀어주기
 		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
 		::SendInput(1, &InputButton, sizeof(INPUT));
+		*/
 		break;
 	}
 	case IDC_E_SMB:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1857,6 +2119,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMN:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1873,6 +2139,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_E_SMM:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1889,6 +2159,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_DOT:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1905,6 +2179,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_EXC:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1928,6 +2206,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_GOL:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1951,6 +2233,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_SHP:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1974,6 +2260,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_DOL:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -1997,6 +2287,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_PER:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2020,6 +2314,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_CIR:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2043,6 +2341,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_AND:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2066,6 +2368,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_AST:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2089,6 +2395,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_OSG:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2112,6 +2422,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_CSG:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2135,6 +2449,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_WAV:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2158,6 +2476,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_HYP:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2174,6 +2496,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_EQL:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2190,6 +2516,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_PLS:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2213,6 +2543,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_ODG:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2229,6 +2563,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_CDG:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2245,6 +2583,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_OKG:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2268,6 +2610,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_CKG:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2291,6 +2637,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_QST:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2314,6 +2664,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_COL:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2337,6 +2691,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_SCL:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2353,6 +2711,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_SDD:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2369,6 +2731,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_BDD:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2392,6 +2758,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_BSL:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2408,6 +2778,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_SLS:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
@@ -2424,6 +2798,10 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_P_CMM:
 	{
+		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+		pEdit->SetFocus();
+
 		INPUT InputButton;
 		//initialize
 		::ZeroMemory(&InputButton, sizeof(INPUT));
