@@ -41,6 +41,9 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	ON_WM_SETCURSOR()
 
 	
+
+//	ON_WM_DESTROY()
+
 	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
@@ -987,6 +990,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		InputHangeul(-2);
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 2.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		CString sub_text;
 		sub_text = "";
 		SetDlgItemText(IDC_SUBEDIT, sub_text);
@@ -1534,6 +1539,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputHangeul(-1);
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 5.8, ButtonSize.cx * 2, ButtonSize.cy * 0.2, NULL);
+
 		CString sub_text;
 		sub_text="";
 		SetDlgItemText(IDC_SUBEDIT, sub_text);
@@ -1876,7 +1883,6 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	}
 }
-
 /*
 void SelectKeyboardDlg::OnCancel()
 {
@@ -1889,24 +1895,11 @@ void SelectKeyboardDlg::OnCancel()
 	//return;
 }
 
-void SelectKeyboardDlg::OnClose()
-{
-	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
-	
-	//mouse cursor 다시 보이도록
-	if (mousehide_count == 1)
-	{
-		TRACE("MOUSE 보이게");
-		ShowCursor(true);
-		mousehide_count--;
-	}
-	CDialogEx::OnClose();
-}
-
-
+//mouse cursor 설정관련 함수 
+/*
 BOOL SelectKeyboardDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 {
-	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	
 	if (mousehide_count == 0)
 	{
 		TRACE("MOUSE 사라지게");
@@ -1916,10 +1909,22 @@ BOOL SelectKeyboardDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 	return CDialogEx::OnSetCursor(pWnd, nHitTest, message);
 }
 
+
+BOOL SelectKeyboardDlg::PreTranslateMessage(MSG* pMsg)
+{
+
+	if (pMsg->message == WM_KEYDOWN && (pMsg->wParam == VK_ESCAPE))
+	{
+		if (mousehide_count == 1)
+		{
+			TRACE("MOUSE 보이게");
+			ShowCursor(true);
+			mousehide_count--;
+		}
+	}
+	return CDialogEx::PreTranslateMessage(pMsg);
+}
 */
-
-
-
 void SelectKeyboardDlg::OnClose()
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
@@ -1937,5 +1942,13 @@ void SelectKeyboardDlg::OnClose()
 	HideBigEngBtn();
 	HideSpecialBtn();
 
+	/*
+	if (mousehide_count == 1)
+	{
+		TRACE("MOUSE 보이게");
+		ShowCursor(true);
+		mousehide_count--;
+	}
+	*/
 	CDialogEx::OnClose();
 }
