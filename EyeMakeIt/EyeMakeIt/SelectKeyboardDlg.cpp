@@ -74,6 +74,11 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	HideBigEngBtn();
 	HideSpecialBtn();
 
+	// 글씨체, 크기 변경
+	CFont g_editFont;
+	g_editFont.CreatePointFont(200, TEXT("굴림"));
+	GetDlgItem(IDC_MAINEDIT)->SetFont(&g_editFont);
+
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
@@ -430,6 +435,8 @@ void SelectKeyboardDlg::SetPosBtn()
 			else
 				GetDlgItem(order)->SetWindowPos(NULL, ButtonSize.cx * x, ButtonSize.cy * y, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 		}
+	// IDC_MAINEDIT 크기, 위치 변경
+	GetDlgItem(IDC_MAINEDIT)->SetWindowPos(NULL, ButtonSize.cx * 1, ButtonSize.cy * 1, ButtonSize.cx * 7, ButtonSize.cy * 2, SWP_NOZORDER);
 
 	// 영어 소문자 버튼 좌표 및 크기 설정	
 	for (int y = 3; y < 6; y++)
