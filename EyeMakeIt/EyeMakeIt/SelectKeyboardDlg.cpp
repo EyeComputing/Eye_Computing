@@ -31,13 +31,11 @@ BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_N_ONE, IDC_P_CMM, SelectKeyboardDlg::OnBtnClick)
 	//ON_BN_CLICKED(IDC_S_KOR, &SelectKeyboardDlg::OnBnClickedSKor)
-<<<<<<< HEAD
 
-=======
 //	ON_WM_PAINT()
 	ON_WM_CLOSE()
 	ON_WM_SETCURSOR()
->>>>>>> bc952b3fd30e488527ae543f064268b25ef197ca
+
 END_MESSAGE_MAP()
 
 // SelectKeyboardDlg 메시지 처리기입니다.
@@ -983,6 +981,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	case IDC_S_CON:
 	{
 		// 전송하는거..
+		//일단 종료되게...
+		::SendMessage(GetSafeHwnd(), WM_CLOSE, NULL, NULL);
 		break;
 	}
 	case IDC_K_BIE:
@@ -2451,8 +2451,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 
 
 
-<<<<<<< HEAD
-=======
+
 void SelectKeyboardDlg::OnClose()
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
@@ -2478,4 +2477,4 @@ BOOL SelectKeyboardDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 	}
 	return CDialogEx::OnSetCursor(pWnd, nHitTest, message);
 }
->>>>>>> bc952b3fd30e488527ae543f064268b25ef197ca
+

@@ -183,11 +183,10 @@ public:
 	afx_msg void OnBnClickedSKor();
 	afx_msg void OnBnClickedSEng();
 
-<<<<<<< HEAD
-=======
+
 
 //	afx_msg void OnPaint();
 	afx_msg void OnClose();
 	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
->>>>>>> bc952b3fd30e488527ae543f064268b25ef197ca
+
 };
