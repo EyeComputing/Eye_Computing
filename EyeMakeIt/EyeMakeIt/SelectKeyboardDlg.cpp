@@ -1654,8 +1654,17 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	}
 }
-
-
+/*
+void SelectKeyboardDlg::OnCancel()
+{
+	if (mousehide_count == 1)
+	{
+		TRACE("MOUSE ∫∏¿Ã∞‘");
+		ShowCursor(true);
+		mousehide_count--;
+	}
+	//return;
+}
 
 void SelectKeyboardDlg::OnClose()
 {
@@ -1684,7 +1693,7 @@ BOOL SelectKeyboardDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 	return CDialogEx::OnSetCursor(pWnd, nHitTest, message);
 }
 
-
+*/
 
 void SelectKeyboardDlg::OnChangeSubedit()
 {
