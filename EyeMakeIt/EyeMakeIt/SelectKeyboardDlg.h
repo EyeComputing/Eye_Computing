@@ -189,9 +189,10 @@ public:
 
 
 
-
-	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
+	// mouse cursor 설정 함수
+    /*afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnClose();
+	*/
 };

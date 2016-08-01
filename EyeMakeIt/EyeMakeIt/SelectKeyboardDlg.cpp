@@ -1792,6 +1792,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 }
 
+//mouse cursor 설정관련 함수 
+/*
 BOOL SelectKeyboardDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 {
 	
@@ -1832,3 +1834,4 @@ void SelectKeyboardDlg::OnClose()
 			}
 	CDialogEx::OnClose();
 }
+*/
