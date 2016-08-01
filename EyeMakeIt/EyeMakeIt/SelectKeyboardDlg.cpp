@@ -12,7 +12,9 @@
 bool clickedShift = false;
 INPUT InputShift;
 int mousehide_count = 0;
+
 // SelectKeyboardDlg 대화 상자입니다.
+
 CString complete_text;
 
 IMPLEMENT_DYNAMIC(SelectKeyboardDlg, CDialogEx)
@@ -1376,6 +1378,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_SPC:
 	{
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
 		InputHangeul(-1);
 
 		break;
