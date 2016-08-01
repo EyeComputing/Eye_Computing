@@ -29,6 +29,7 @@ public:
 	void SelectKeyboardDlg::OnBtnClick(UINT uiID);
 	// keyboad 한글 입력..
 	void SelectKeyboardDlg::InputHangeul(int textCode);
+	void SelectKeyboardDlg::InputText(CString text);
 	Hangeul hangeulInput;
 	
 	// 버튼 스킨 씌우는 함수

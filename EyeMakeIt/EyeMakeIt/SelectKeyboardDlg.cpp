@@ -767,6 +767,22 @@ void SelectKeyboardDlg::InputHangeul(int textCode)
 	
 }
 
+void SelectKeyboardDlg::InputText(CString text)
+{
+	hangeulInput.completeText += text;
+
+	CString complete_text = hangeulInput.completeText;
+
+	if (hangeulInput.ingWord != NULL)
+		complete_text += hangeulInput.ingWord;
+
+	SetDlgItemText(IDC_MAINEDIT, complete_text);
+
+	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+	pEdit->SetFocus();
+
+}
 
 
 
@@ -779,223 +795,120 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 	case IDC_N_ONE:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x31;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("!"));
+		else
+			InputText(_T("1"));
 
 		break;
 	}
 	case IDC_N_TWO:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("@"));
+		else
+			InputText(_T("2"));
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x32;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_N_THR:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("#"));
+		else
+			InputText(_T("3"));
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x33;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_N_FOU:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("$"));
+		else
+			InputText(_T("4"));
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x34;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_N_FIV:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x35;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("%"));
+		else
+			InputText(_T("5"));
+		
 		break;
 	}
 	case IDC_N_SIX:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x36;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("^"));
+		else
+			InputText(_T("6"));
+		
 		break;
 	}
 	case IDC_N_SEV:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("&"));
+		else
+			InputText(_T("7"));
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x37;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_N_EIG:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x38;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("*"));
+		else
+			InputText(_T("8"));
+	
 		break;
 	}
 	case IDC_N_NIN:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x39;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (clickedShift)
+			InputText(_T("("));
+		else
+			InputText(_T("9"));
+
 		break;
 	}
 	case IDC_N_ZER:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x30;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		
+		if (clickedShift)
+			InputText(_T(")"));
+		else
+			InputText(_T("0"));
+		
 		break;
 	}
 	case IDC_S_BKS:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		InputHangeul(-3);
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x08;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_S_SPE:
@@ -1010,49 +923,14 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_SHF:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
 		clickedShift = !clickedShift;
-
-		if (clickedShift)
-		{
-			//initialize
-			::ZeroMemory(&InputShift, sizeof(INPUT));
-			//keyboard로 입력하겠다.
-			InputShift.type = INPUT_KEYBOARD;
-			//어떤버튼누를건지
-			InputShift.ki.wVk = 0x10;
-			//한번눌러주기
-			::SendInput(1, &InputShift, sizeof(INPUT));
-		}
-		else
-		{
-			//누른거 풀어주기
-			InputShift.ki.dwFlags = KEYEVENTF_KEYUP;
-			::SendInput(1, &InputShift, sizeof(INPUT));
-		}
+		
 		break;
 	}
 	case IDC_S_ENT:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		InputHangeul(-2);
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x0D;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_S_CON:
@@ -1068,20 +946,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(8);
 		else
 			InputHangeul(7);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x51;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+
 		break;
 	}
 	case IDC_K_JIE:
@@ -1090,20 +955,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(13);
 		else
 			InputHangeul(12);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x57;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_DIG:
@@ -1112,20 +964,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(4);
 		else
 			InputHangeul(3);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x45;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_GIY:
@@ -1134,20 +973,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(1);
 		else
 			InputHangeul(0);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x52;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_SHI:
@@ -1156,77 +982,25 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(10);
 		else
 			InputHangeul(9);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x54;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_YYO:
 	{
 		InputHangeul(31);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x59;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_YEO:
 	{
 		InputHangeul(25);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x55;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_YYA:
 	{
 		InputHangeul(21);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x49;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_AEE:
@@ -1235,20 +1009,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(22);
 		else
 			InputHangeul(20);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4F;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_EEE:
@@ -1257,605 +1018,274 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(26);
 		else
 			InputHangeul(24);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x50;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_MIE:
 	{
 		InputHangeul(6);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x41;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_NIE:
 	{
 		InputHangeul(2);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x53;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_IEU:
 	{
 		InputHangeul(11);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x44;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_RIE:
 	{
 		InputHangeul(5);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x46;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_HIE:
 	{
 		InputHangeul(18);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x47;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_OOO:
 	{
 		InputHangeul(27);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x48;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_EOO:
 	{
 		InputHangeul(23);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4A;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_AAA:
 	{
 		InputHangeul(19);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4B;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_YII:
 	{
 		InputHangeul(39);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4C;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_E_SMQ:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("Q"));
+		else
+			InputText(_T("q"));
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x51;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_E_SMW:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x57;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("W"));
+		else
+			InputText(_T("w"));
+		
 		break;
 	}
 	case IDC_E_SME:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("E"));
+		else
+			InputText(_T("e"));
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x45;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_E_SMR:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x52;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("R"));
+		else
+			InputText(_T("r"));
 		break;
 	}
 	case IDC_E_SMT:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x54;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("T"));
+		else
+			InputText(_T("t"));
 		break;
 	}
 	case IDC_E_SMY:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x59;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("Y"));
+		else
+			InputText(_T("y"));
 		break;
 	}
 	case IDC_E_SMU:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x55;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("U"));
+		else
+			InputText(_T("u"));
+		
 		break;
 	}
 	case IDC_E_SMI:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x49;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("I"));
+		else
+			InputText(_T("i"));
+		
 		break;
 	}
 	case IDC_E_SMO:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4F;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("O"));
+		else
+			InputText(_T("o"));
+		
 		break;
 	}
 	case IDC_E_SMP:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("P"));
+		else
+			InputText(_T("p"));
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x50;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_E_SMA:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x41;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("A"));
+		else
+			InputText(_T("a"));
 		break;
 	}
 	case IDC_E_SMS:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x53;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("S"));
+		else
+			InputText(_T("s"));
+		
 		break;
 	}
 	case IDC_E_SMD:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x44;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("D"));
+		else
+			InputText(_T("d"));
 		break;
 	}
 	case IDC_E_SMF:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x46;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("F"));
+		else
+			InputText(_T("f"));
+		
 		break;
 	}
 	case IDC_E_SMG:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x47;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("G"));
+		else
+			InputText(_T("g"));
+		
 		break;
 	}
 	case IDC_E_SMH:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x48;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("H"));
+		else
+			InputText(_T("h"));
+		
 		break;
 	}
 	case IDC_E_SMJ:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4A;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("J"));
+		else
+			InputText(_T("j"));
+		
 		break;
 	}
 	case IDC_E_SMK:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4B;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("K"));
+		else
+			InputText(_T("k"));
+		
 		break;
 	}
 	case IDC_E_SML:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4C;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("L"));
+		else
+			InputText(_T("l"));
+		
 		break;
 	}
 	case IDC_S_KNG:
 	{
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x15;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-
+		// 필요없어짐 ㅎㅎ
 		break;
 	}
 	case IDC_S_ENG:
 	{
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x15;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-
 		ShowSmallEngBtn();
 		HideKorBtn();
 		HideSpecialBtn();
@@ -1864,19 +1294,6 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_S_KOR:
 	{
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x15;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-
 		ShowKorBtn();
 		HideSmallEngBtn();
 		HideSpecialBtn();
@@ -1886,314 +1303,130 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	case IDC_K_KIE:
 	{
 		InputHangeul(15);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x5A;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_TIE:
 	{
 		InputHangeul(16);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x58;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_CHI:
 	{
 		InputHangeul(14);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x43;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_K_PIE:
 	{
 		InputHangeul(17);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x56;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_E_SMZ:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x5A;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("Z"));
+		else
+			InputText(_T("z")); 
+		
 		break;
 	}
 	case IDC_E_SMX:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x58;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("X"));
+		else
+			InputText(_T("x"));
+		
 		break;
 	}
 	case IDC_E_SMC:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initializev
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x43;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("C"));
+		else
+			InputText(_T("c"));
+		
 		break;
 	}
 	case IDC_E_SMV:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x56;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("V"));
+		else
+			InputText(_T("v"));
+		
 		break;
 	}
 	case IDC_S_SPC:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		InputHangeul(-1);
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x20;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		break;
-	}
-	case IDC_K_YUU:
-	{
-		InputHangeul(36);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x42;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
 		break;
 	}
 	case IDC_K_UUU:
 	{
 		InputHangeul(32);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4E;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+
 		break;
 	}
 	case IDC_K_EUU:
 	{
 		InputHangeul(37);
-		/*
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4D;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		*/
+		
 		break;
 	}
 	case IDC_E_SMB:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("B"));
+		else
+			InputText(_T("b"));
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x42;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_E_SMN:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4E;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("N"));
+		else
+			InputText(_T("n"));
+		
 		break;
 	}
 	case IDC_E_SMM:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
-
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0x4D;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		if (clickedShift)
+			InputText(_T("M"));
+		else
+			InputText(_T("m"));
+		
 		break;
 	}
 	case IDC_S_DOT:
 	{
-		CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-		pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-		pEdit->SetFocus();
+		if (hangeulInput.ingWord != NULL)
+			InputHangeul(-1);
+		
+		InputText(_T("."));
 
-		INPUT InputButton;
-		//initialize
-		::ZeroMemory(&InputButton, sizeof(INPUT));
-		//keyboard로 입력하겠다.
-		InputButton.type = INPUT_KEYBOARD;
-		//어떤버튼누를건지
-		InputButton.ki.wVk = 0xBE;
-		//한번눌러주기
-		::SendInput(1, &InputButton, sizeof(INPUT));
-		//누른거 풀어주기
-		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
-		::SendInput(1, &InputButton, sizeof(INPUT));
 		break;
 	}
 	case IDC_P_EXC:

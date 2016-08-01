@@ -463,7 +463,7 @@ void Hangeul::DecomposeConsonant()
 
 // 초성합성
 BOOL Hangeul::MixInitial(int nKeyCode)
-{
+{/*
 	if (nKeyCode >= 19)
 		return FALSE;
 
@@ -476,7 +476,7 @@ BOOL Hangeul::MixInitial(int nKeyCode)
 			return TRUE;
 		}
 	} while (++i < 14);
-
+	*/
 	return FALSE;
 }
 
