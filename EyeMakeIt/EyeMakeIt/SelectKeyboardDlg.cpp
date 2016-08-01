@@ -976,6 +976,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		HideBigEngBtn();
 		HideKorBtn();
 		GetDlgItem(IDC_S_KOR)->ShowWindow(TRUE);
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 9, ButtonSize.cy * 1.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_S_SHF: // shift
@@ -1436,6 +1439,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		HideKorBtn();
 		HideSpecialBtn();
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 9, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_S_KOR:
@@ -1443,6 +1448,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		ShowKorBtn();
 		HideSmallEngBtn();
 		HideSpecialBtn();
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 9, ButtonSize.cy * 4.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
@@ -1537,11 +1544,11 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputHangeul(-1);
 		InputHangeul(-1);
 
-		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 5.8, ButtonSize.cx * 2, ButtonSize.cy * 0.2, NULL);
-
 		CString sub_text;
 		sub_text="";
 		SetDlgItemText(IDC_SUBEDIT, sub_text);
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 5.8, ButtonSize.cx * 2, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
