@@ -731,6 +731,13 @@ void SelectKeyboardDlg::HideSpecialBtn()
 }
 
 
+void SelectKeyboardDlg::InputHangeul(int textCode)
+{
+	
+	//CString complete_text = "";
+
+	//SetDlgItemText(IDC_MAINEDIT, complete_text);
+}
 
 
 
@@ -1739,7 +1746,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	case IDC_E_SMC:
 	{
 		INPUT InputButton;
-		//initialize
+		//initializev
 		::ZeroMemory(&InputButton, sizeof(INPUT));
 		//keyboard로 입력하겠다.
 		InputButton.type = INPUT_KEYBOARD;
@@ -2433,6 +2440,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	}
 }
+
+
 
 
 

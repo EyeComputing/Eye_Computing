@@ -1,6 +1,7 @@
 #pragma once
 #include "xSkinButton.h"
 #include "afxwin.h"
+#include "Hangeul.h"
 
 
 // SelectKeyboardDlg 대화 상자입니다.
@@ -26,6 +27,9 @@ public:
 
 	/*버튼 입력 받는 함수*/
 	void SelectKeyboardDlg::OnBtnClick(UINT uiID);
+	// keyboad 한글 입력..
+	void SelectKeyboardDlg::InputHangeul(int textCode);
+	Hangeul hangeulInput;
 	
 	// 버튼 스킨 씌우는 함수
 	void SelectKeyboardDlg::SetImgNumBtn();
@@ -180,8 +184,6 @@ public:
 
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
-	afx_msg void OnBnClickedSKor();
-	afx_msg void OnBnClickedSEng();
 
-
+	afx_msg void OnEnChangeMainedit();
 };
