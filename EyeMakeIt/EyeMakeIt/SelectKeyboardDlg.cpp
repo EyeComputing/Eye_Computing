@@ -1155,6 +1155,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		else
 			InputText(_T("q"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMW:
@@ -1165,6 +1167,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("W"));
 		else
 			InputText(_T("w"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1177,6 +1181,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		else
 			InputText(_T("e"));
 
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMR:
@@ -1187,7 +1193,11 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("R"));
 		else
 			InputText(_T("r"));
+		
 		break;
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 	}
 	case IDC_E_SMT:
 	{
@@ -1197,6 +1207,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("T"));
 		else
 			InputText(_T("t"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMY:
@@ -1207,6 +1220,9 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("Y"));
 		else
 			InputText(_T("y"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 5, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+
 		break;
 	}
 	case IDC_E_SMU:
@@ -1217,6 +1233,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("U"));
 		else
 			InputText(_T("u"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1228,6 +1246,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("I"));
 		else
 			InputText(_T("i"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 		
 		break;
 	}
@@ -1240,6 +1260,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		else
 			InputText(_T("o"));
 		
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+		
 		break;
 	}
 	case IDC_E_SMP:
@@ -1250,6 +1272,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 			InputText(_T("P"));
 		else
 			InputText(_T("p"));
+
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 9, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}
