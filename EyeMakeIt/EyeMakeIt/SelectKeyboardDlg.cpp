@@ -10,7 +10,6 @@
 /* global var */
 bool clickedShift = false;
 INPUT InputShift;
-
 // SelectKeyboardDlg 대화 상자입니다.
 
 IMPLEMENT_DYNAMIC(SelectKeyboardDlg, CDialogEx)
@@ -19,10 +18,15 @@ SelectKeyboardDlg::SelectKeyboardDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(SelectKeyboardDlg::IDD, pParent)
 {
 	m_hForegroundWnd = NULL;
+	
+	//mouse cursor 안보이게 감추기
+	ShowCursor(false);
 }
 
 SelectKeyboardDlg::~SelectKeyboardDlg()
 {
+	//mouse cursor 다시 보이도록
+	ShowCursor(true);
 }
 
 BEGIN_MESSAGE_MAP(SelectKeyboardDlg, CDialogEx)
