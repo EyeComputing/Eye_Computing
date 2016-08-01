@@ -2846,6 +2846,7 @@ void SelectKeyboardDlg::OnClose()
 	{
 		TRACE("MOUSE ∫∏¿Ã∞‘");
 		ShowCursor(true);
+		mousehide_count--;
 	}
 	CDialogEx::OnClose();
 }
