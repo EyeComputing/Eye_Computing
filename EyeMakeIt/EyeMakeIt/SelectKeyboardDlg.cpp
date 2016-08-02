@@ -17,8 +17,6 @@ CFont sub_editFont;
 
 // SelectKeyboardDlg 대화 상자입니다.
 
-CString complete_text;
-
 IMPLEMENT_DYNAMIC(SelectKeyboardDlg, CDialogEx)
 
 SelectKeyboardDlg::SelectKeyboardDlg(CWnd* pParent /*=NULL*/)
@@ -707,8 +705,15 @@ void SelectKeyboardDlg::InputHangeul(int textCode)
 	SetDlgItemText(IDC_MAINEDIT, complete_text); // mainEdit에 띄움
 
 	CString sub_text;
-	int cut = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾아서
-	AfxExtractSubString(sub_text, complete_text, cut, ' '); // 마지막 스페이스로부터 문자열을 잘라냄
+	int space = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾아서
+	int enter = GetFindCharCount(complete_text, '\n'); // 엔터가 몇 개 있는지 찾아서
+	
+	if (enter > 0) { // enter가 우선순위
+		AfxExtractSubString(sub_text, complete_text, enter, '\n'); // 마지막 엔터로부터 문자열을 잘라냄
+	}
+	else
+		AfxExtractSubString(sub_text, complete_text, space, ' '); // 마지막 스페이스로부터 문자열을 잘라냄
+	
 	SetDlgItemText(IDC_SUBEDIT, sub_text); // subEdit에 띄움
 	
 	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
