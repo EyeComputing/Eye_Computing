@@ -129,13 +129,27 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	WindowSize.cx = (LONG)::GetSystemMetrics(SM_CXFULLSCREEN);
 	WindowSize.cy = (LONG)::GetSystemMetrics(SM_CYFULLSCREEN);
 	ButtonSize.cx = (WindowSize.cx / 9);
-	ButtonSize.cy = (WindowSize.cy / 6);
+	ButtonSize.cy = ((WindowSize.cy) / 6);
+
+
+
+
+	CWnd * const hWnd =  GetDesktopWindow();
+
+
+	//CWnd *const window = Cwnd::FromHandle(hWnd);
+	SetWindowPos(hWnd, WindowSize.cx - ButtonSize.cx * 8, 0, WindowSize.cx - ButtonSize.cx + 10, WindowSize.cy, SWP_NOZORDER );
+
+	//EnumWindows(EnumWindowCallBack, 0);
+
+
+
 
 	/* 항상 맨 위에 */
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 	
 	// 프로그램 위치 설정(우측)
-	SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
+	SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 100, SWP_NOZORDER);
 
 	// 버튼 좌표 설정
 	GetDlgItem(IDC_BT_Mouse)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
@@ -422,3 +436,20 @@ void CEyeMakeItDlg::OnMouseMove(UINT nFlags, CPoint point)
 
 	CDialogEx::OnMouseMove(nFlags, point);
 }
+
+BOOL CALLBACK EnumWindowCallBack(HWND hwnd, LPARAM lParam)
+{
+	char Cap[255];
+	int length;
+	GetWindowText(hwnd, (LPWSTR)Cap, 255);
+	length = GetWindowTextLength(hwnd);
+
+	if (IsWindowVisible(hwnd) && length > 0 && !strncmp(Cap, "SourceTree",10))
+	{
+		SetWindowPos(hwnd, NULL, 0, 0, 100, 100, NULL);
+
+	}
+
+	return TRUE;
+}
+

@@ -9,6 +9,8 @@
 /* global  */
 extern int selectMouseEvent;
 
+static BOOL CALLBACK EnumWindowCallBack(HWND hwnd, LPARAM lParam); // 콜백함수
+
 // CEyeMakeItDlg 대화 상자
 class CEyeMakeItDlg : public CDialogEx
 {
