@@ -288,6 +288,16 @@
     <Image Include="res\Keyboard\Korean\IDB_K_RIE_OVER.bmp" />
     <Image Include="res\Keyboard\Korean\IDB_K_SHI.bmp" />
     <Image Include="res\Keyboard\Korean\IDB_K_SHI_OVER.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSB.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSB_OVER.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSD.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSD_OVER.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSG.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSG_OVER.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSJ.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSJ_OVER.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSS.bmp" />
+    <Image Include="res\Keyboard\Korean\IDB_K_SSS_OVER.bmp" />
     <Image Include="res\Keyboard\Korean\IDB_K_TIE.bmp" />
     <Image Include="res\Keyboard\Korean\IDB_K_TIE_OVER.bmp" />
     <Image Include="res\Keyboard\Korean\IDB_K_UUU.bmp" />
@@ -302,10 +312,6 @@
     <Image Include="res\Keyboard\Korean\IDB_K_YYA_OVER.bmp" />
     <Image Include="res\Keyboard\Korean\IDB_K_YYO.bmp" />
     <Image Include="res\Keyboard\Korean\IDB_K_YYO_OVER.bmp" />
-    <Image Include="res\Keyboard\Main\BT_MouseD.bmp" />
-    <Image Include="res\Keyboard\Main\BT_MouseF.bmp" />
-    <Image Include="res\Keyboard\Main\BT_MouseU.bmp" />
-    <Image Include="res\Keyboard\Main\BT_MouseX.bmp" />
     <Image Include="res\Keyboard\Main\IDB_M_KBD.bmp" />
     <Image Include="res\Keyboard\Main\IDB_M_KBD_OVER.bmp" />
     <Image Include="res\Keyboard\Main\IDB_M_MOS.bmp" />
@@ -414,6 +420,8 @@
     <Image Include="res\Keyboard\System\IDB_S_KNG_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_KOR.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_KOR_OVER.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_SHD.bmp" />
+    <Image Include="res\Keyboard\System\IDB_S_SHD_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SHF.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SHF_OVER.bmp" />
     <Image Include="res\Keyboard\System\IDB_S_SPC.bmp" />

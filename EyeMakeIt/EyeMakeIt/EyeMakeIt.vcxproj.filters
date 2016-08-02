@@ -698,18 +698,6 @@
     <Image Include="res\Keyboard\Special\IDB_P_WAV_OVER.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="res\Keyboard\Main\BT_MouseD.bmp">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\Keyboard\Main\BT_MouseF.bmp">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\Keyboard\Main\BT_MouseU.bmp">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\Keyboard\Main\BT_MouseX.bmp">
-      <Filter>리소스 파일</Filter>
-    </Image>
     <Image Include="res\Keyboard\Main\IDB_M_KBD.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
@@ -936,6 +924,42 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="res\IDB_FIRST_CLOSE_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\System\IDB_S_SHD.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\System\IDB_S_SHD_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSB.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSB_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSD.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSD_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSG.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSG_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSJ.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSJ_OVER.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSS.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Korean\IDB_K_SSS_OVER.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
