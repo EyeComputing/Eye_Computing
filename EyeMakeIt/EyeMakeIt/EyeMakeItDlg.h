@@ -60,4 +60,5 @@ public:
 	CxSkinButton m_btn_scd;
 	CxSkinButton m_btn_set;
 	CxSkinButton btn_first_close;
+	BOOL PreTranslateMessage(MSG* pMsg);
 };
