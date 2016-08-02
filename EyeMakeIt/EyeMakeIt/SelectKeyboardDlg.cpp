@@ -11,7 +11,9 @@
 /* global var */
 bool clickedShift = false;
 INPUT InputShift;
-int mousehide_count = 0;
+int mousehide_count = 0; 
+CFont main_editFont;
+CFont sub_editFont;
 
 // SelectKeyboardDlg 대화 상자입니다.
 
@@ -81,10 +83,11 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	HideSpecialBtn();
 
 	// 글씨체, 크기 변경
-	CFont g_editFont;
-	g_editFont.CreatePointFont(200, TEXT("굴림"));
-	GetDlgItem(IDC_MAINEDIT)->SetFont(&g_editFont);
+	main_editFont.CreatePointFont(400, TEXT("맑은 고딕"));
+	GetDlgItem(IDC_MAINEDIT)->SetFont(&main_editFont);
 
+	sub_editFont.CreatePointFont(150, TEXT("맑은 고딕"));
+	GetDlgItem(IDC_SUBEDIT)->SetFont(&sub_editFont);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
