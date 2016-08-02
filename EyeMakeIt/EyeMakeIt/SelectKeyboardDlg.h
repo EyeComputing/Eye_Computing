@@ -33,6 +33,10 @@ public:
 	void SelectKeyboardDlg::InputText(CString text);
 	Hangeul hangeulInput;
 	
+
+	//클립보드 복사 함수
+	void SelectKeyboardDlg::CopyStrToClipbaord(CString str);
+
 	// 버튼 스킨 씌우는 함수
 	void SelectKeyboardDlg::SetImgNumBtn();
 	void SelectKeyboardDlg::SetImgSysBtn();

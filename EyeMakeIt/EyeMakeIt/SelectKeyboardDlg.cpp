@@ -766,6 +766,35 @@ void SelectKeyboardDlg::InputText(CString text)
 
 }
 
+void SelectKeyboardDlg::CopyStrToClipbaord(CString str)
+{
+	COleDataSource* pData = new COleDataSource();
+
+	HGLOBAL hGlobal = GlobalAlloc(GPTR, (str.GetLength() + 1) * 2);
+
+	LPCTSTR wszSourceText = (LPCTSTR)str;
+	wchar_t* wszTargetText = (wchar_t*)GlobalLock(hGlobal);
+	wcscpy(wszTargetText, wszSourceText);
+	GlobalUnlock(hGlobal);
+
+	pData->CacheGlobalData(CF_UNICODETEXT, hGlobal);
+
+	OleInitialize(NULL);
+	pData->SetClipboard();
+
+	/*
+	HGLOBAL hGlobal = GlobalAlloc(GHND | GMEM_SHARE, (str.GetLength() + 1) * sizeof(TCHAR));
+	PSTR pGlobal = (PSTR)GlobalLock(hGlobal);
+	lstrcpy(pGlobal, TEXT(str));
+	GlobalUnlock(hGlobal);
+
+	OpenClipboard();
+	EmptyClipboard();
+	SetClipboardData(CF_TEXT, hGlobal);
+	CloseClipboard();
+	*/
+}
+
 
 
 
@@ -929,7 +958,33 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	case IDC_S_CON: // 확인
 	{
 		// 전송하는거..
-		//일단 종료되게...
+		CString str = _T("");
+		
+		str += hangeulInput.completeText;
+		str += (TCHAR)hangeulInput.ingWord;
+
+		CopyStrToClipbaord(str);
+		
+
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//ctrl 누르고
+		InputButton.ki.wVk = 0x11;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//v 침
+		InputButton.ki.wVk = 0x56;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//ctrl 한번더
+		InputButton.ki.wVk = 0x11;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
 		::SendMessage(GetSafeHwnd(), WM_CLOSE, NULL, NULL);
 		break;
 	}
