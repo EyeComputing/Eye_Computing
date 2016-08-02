@@ -1,0 +1,10 @@
+gmail>>
+ID : EyeComputing@gmail.com
+PW: hd_eyecomputing
+
+github>> 
+ID : EyeComputing
+PW : hd_eyecomputing123
+
+web URL>>
+https://github.com/EyeComputing/Eye_Computing.git
