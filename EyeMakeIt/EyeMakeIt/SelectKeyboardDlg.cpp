@@ -692,6 +692,24 @@ int GetFindCharCount(CString parm_string, char parm_find_char)
 	return find_count;
 }
 
+int GetLastCharCount(CString parm_string, char parm_find_char)
+// 문자열에 /마지막/문자가 어디에 위치해있는지
+{
+
+	int length = parm_string.GetLength(), find_final = 0;
+
+	for (int i = 0; i < length; i++)
+	{
+		if (parm_string[i] == parm_find_char)
+		{
+			find_final=i;
+		}
+	}
+
+	return find_final;
+}
+
+
 void SelectKeyboardDlg::InputHangeul(int textCode)
 {
 	hangeulInput.SetHangeulCode(textCode);
@@ -705,10 +723,13 @@ void SelectKeyboardDlg::InputHangeul(int textCode)
 	SetDlgItemText(IDC_MAINEDIT, complete_text); // mainEdit에 띄움
 
 	CString sub_text;
-	int space = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾아서
-	int enter = GetFindCharCount(complete_text, '\n'); // 엔터가 몇 개 있는지 찾아서
+	int space = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾기
+	int enter = GetFindCharCount(complete_text, '\n'); // 엔터가 몇 개 있는지 찾기
 	
-	if (enter > 0) { // enter가 우선순위
+	int space_count = GetLastCharCount(complete_text, ' '); // 마지막 스페이스바의 위치
+	int enter_count = GetLastCharCount(complete_text, '\n'); // 마지막 엔터의 위치
+
+	if (enter_count > space_count) { // 
 		AfxExtractSubString(sub_text, complete_text, enter, '\n'); // 마지막 엔터로부터 문자열을 잘라냄
 	}
 	else
