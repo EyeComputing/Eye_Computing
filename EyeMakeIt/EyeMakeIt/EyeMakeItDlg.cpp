@@ -213,6 +213,9 @@ void CEyeMakeItDlg::OnSysCommand(UINT nID, LPARAM lParam)
 
 void CEyeMakeItDlg::OnPaint()
 {
+	/* 항상 맨 위에 */
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+
 	if (IsIconic())
 	{
 		CPaintDC dc(this); // 그리기를 위한 디바이스 컨텍스트입니다.
@@ -415,6 +418,9 @@ void CEyeMakeItDlg::OnMouseMove(UINT nFlags, CPoint point)
 	{
 		::SetForegroundWindow(m_hForegroundWnd);
 		ModifyStyleEx(0, WS_EX_NOACTIVATE);
+
+		/* 항상 맨 위에 */
+		SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 
 		m_hForegroundWnd = NULL;
 
