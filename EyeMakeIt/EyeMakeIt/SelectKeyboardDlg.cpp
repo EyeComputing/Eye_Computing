@@ -835,10 +835,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("!"));
-		else
-			InputText(_T("1"));
+	
+		InputText(_T("1"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -848,10 +846,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("@"));
-		else
-			InputText(_T("2"));
+		
+		InputText(_T("2"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -861,10 +857,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("#"));
-		else
-			InputText(_T("3"));
+		
+		InputText(_T("3"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -874,10 +868,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("$"));
-		else
-			InputText(_T("4"));
+		
+		InputText(_T("4"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -887,10 +879,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("%"));
-		else
-			InputText(_T("5"));
+		
+		InputText(_T("5"));
 		
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -900,10 +890,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("^"));
-		else
-			InputText(_T("6"));
+		
+		InputText(_T("6"));
 		
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 5, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -913,10 +901,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("&"));
-		else
-			InputText(_T("7"));
+		
+		InputText(_T("7"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -926,10 +912,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("*"));
-		else
-			InputText(_T("8"));
+		
+		InputText(_T("8"));
 	
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -940,10 +924,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 
-		if (clickedShift)
-			InputText(_T("("));
-		else
-			InputText(_T("9"));
+		InputText(_T("9"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -954,10 +935,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		
-		if (clickedShift)
-			InputText(_T(")"));
-		else
-			InputText(_T("0"));
+		InputText(_T("0"));
 		
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 9, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -992,12 +970,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	case IDC_S_ENT: // enter
 	{
 		InputHangeul(-2);
-
+		
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 2.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
-
-		CString sub_text;
-		sub_text = "";
-		SetDlgItemText(IDC_SUBEDIT, sub_text);
 
 		break;
 	}
@@ -1890,6 +1864,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	}
 }
+
 /*
 void SelectKeyboardDlg::OnCancel()
 {
@@ -1939,9 +1914,11 @@ void SelectKeyboardDlg::OnClose()
 	hangeulInput.Clear();
 	SetDlgItemText(IDC_MAINEDIT, _T(""));
 	// 서브에디트 초기화
+
 	CString sub_text;
 	sub_text = "";
 	SetDlgItemText(IDC_SUBEDIT, sub_text);
+
 	GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, 0, 0, 0, 0, NULL);
 	// 영어, 특수문자 버튼 숨기기
 	ShowKorBtn();
