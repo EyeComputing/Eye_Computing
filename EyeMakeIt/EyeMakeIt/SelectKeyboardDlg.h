@@ -38,8 +38,10 @@ public:
 	void SelectKeyboardDlg::SetImgSysBtn();
 	void SelectKeyboardDlg::SetImgKorBtn();
 	void SelectKeyboardDlg::SetImgSmallEngBtn();
-	void SetImgBigEngBtn();
+	void SelectKeyboardDlg::SetImgBigEngBtn();
 	void SelectKeyboardDlg::SetImgSpecialBtn();
+	void SelectKeyboardDlg::SetImgShiftBtn();
+	void SelectKeyboardDlg::SetImgDefaultBtn();
 	void SelectKeyboardDlg::SetPosBtn();
 	//void SelectKeyboardDlg::OnCancel();
 
@@ -47,8 +49,6 @@ public:
 	void HideKorBtn();
 	void ShowSmallEngBtn();
 	void HideSmallEngBtn();
-	void ShowBigEngBtn();
-	void HideBigEngBtn();
 	void ShowSpecialBtn();
 	void HideSpecialBtn();
 
@@ -158,32 +158,6 @@ public:
 	CxSkinButton p_btn_sls;
 	CxSkinButton p_btn_cmm;
 
-	CxSkinButton e_btn_bgq;
-	CxSkinButton e_btn_bgw;
-	CxSkinButton e_btn_bge;
-	CxSkinButton e_btn_bgr;
-	CxSkinButton e_btn_bgt;
-	CxSkinButton e_btn_bgy;
-	CxSkinButton e_btn_bgu;
-	CxSkinButton e_btn_bgi;
-	CxSkinButton e_btn_bgo;
-	CxSkinButton e_btn_bgp;
-	CxSkinButton e_btn_bga;
-	CxSkinButton e_btn_bgs;
-	CxSkinButton e_btn_bgd;
-	CxSkinButton e_btn_bgf;
-	CxSkinButton e_btn_bgg;
-	CxSkinButton e_btn_bgh;
-	CxSkinButton e_btn_bgj;
-	CxSkinButton e_btn_bgk;
-	CxSkinButton e_btn_bgl;
-	CxSkinButton e_btn_bgz;
-	CxSkinButton e_btn_bgx;
-	CxSkinButton e_btn_bgc;
-	CxSkinButton e_btn_bgv;
-	CxSkinButton e_btn_bgb;
-	CxSkinButton e_btn_bgn;
-	CxSkinButton e_btn_bgm;
 
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
