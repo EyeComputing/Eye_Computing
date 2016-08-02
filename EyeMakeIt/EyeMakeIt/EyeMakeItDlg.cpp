@@ -419,12 +419,20 @@ void CEyeMakeItDlg::OnMouseMove(UINT nFlags, CPoint point)
 		::SetForegroundWindow(m_hForegroundWnd);
 		ModifyStyleEx(0, WS_EX_NOACTIVATE);
 
-		/* 항상 맨 위에 */
-		SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
-
 		m_hForegroundWnd = NULL;
 
 	}
 
 	CDialogEx::OnMouseMove(nFlags, point);
+}
+
+
+BOOL CEyeMakeItDlg::PreTranslateMessage(MSG* pMsg)
+{
+	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
+	if((pMsg->message == WM_LBUTTONDOWN )|| (pMsg->message == WM_RBUTTONDOWN))
+		/* 항상 맨 위에 */
+		SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+	
+	return CDialogEx::PreTranslateMessage(pMsg);
 }
