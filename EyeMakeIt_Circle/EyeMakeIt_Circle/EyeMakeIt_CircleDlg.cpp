@@ -169,11 +169,11 @@ HCURSOR CEyeMakeIt_CircleDlg::OnQueryDragIcon()
 
 
 
-
-
 /* 사용자 정의 함수 */
 
 
+
+// hangeul input 함수
 void CEyeMakeIt_CircleDlg::InputHangeul(int textCode)
 {
 	hangeulInput.SetHangeulCode(textCode);
@@ -191,7 +191,7 @@ void CEyeMakeIt_CircleDlg::InputHangeul(int textCode)
 	pEdit->SetFocus();
 
 }
-
+// textinput 함수
 void CEyeMakeIt_CircleDlg::InputText(CString text)
 {
 	hangeulInput.completeText += text;
@@ -210,10 +210,20 @@ void CEyeMakeIt_CircleDlg::InputText(CString text)
 }
 
 
+// 맨 위에 있게 하는 함수
+BOOL CEyeMakeIt_CircleDlg::PreTranslateMessage(MSG* pMsg)
+{
+	if ((pMsg->message == WM_LBUTTONDOWN) || (pMsg->message == WM_RBUTTONDOWN))
+		/* 항상 맨 위에 */
+		SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+
+	return CDialogEx::PreTranslateMessage(pMsg);
+}
 
 
 
 
+//버튼 클릭 함수
 
 void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
 {
@@ -235,7 +245,7 @@ void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
 	}
 	case IDC_K_ZUM:
 	{
-
+		InputHangeul(40);
 		break;
 	}/*
 	 case :
