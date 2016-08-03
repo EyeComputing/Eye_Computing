@@ -20,7 +20,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
@@ -312,6 +312,7 @@
     <Image Include="res\Keyboard\Korean\IDB_K_YYA_OVER.bmp" />
     <Image Include="res\Keyboard\Korean\IDB_K_YYO.bmp" />
     <Image Include="res\Keyboard\Korean\IDB_K_YYO_OVER.bmp" />
+    <Image Include="res\Keyboard\Main\IDB_M_COR.bmp" />
     <Image Include="res\Keyboard\Main\IDB_M_KBD.bmp" />
     <Image Include="res\Keyboard\Main\IDB_M_KBD_OVER.bmp" />
     <Image Include="res\Keyboard\Main\IDB_M_MOS.bmp" />

@@ -962,5 +962,8 @@
     <Image Include="res\Keyboard\Korean\IDB_K_SSS_OVER.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="res\Keyboard\Main\IDB_M_COR.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>
