@@ -37,6 +37,9 @@ EyeXGaze g_EyeXGaze;	// 인스턴스 생성하면서 생성자 실행됨.
 int selectMouseEvent;
 SelectKeyboardDlg *m_pKeyboardDlg;
 
+//이 프로그램의 위치 RECT
+RECT limit_region;
+
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
 class CAboutDlg : public CDialogEx
@@ -129,30 +132,18 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	WindowSize.cx = (LONG)::GetSystemMetrics(SM_CXFULLSCREEN);
 	WindowSize.cy = (LONG)::GetSystemMetrics(SM_CYFULLSCREEN);
 	ButtonSize.cx = (WindowSize.cx / 9);
-	ButtonSize.cy = ((WindowSize.cy) / 6);
-
-
-
-
-	//CWnd *hWnd =  GetDesktopWindow();
-
-	//HWND hWnd = (HWND)GetDesktopWindow();
-
-	//::SetWindowPos(hWnd, NULL, 0, 0, 100, 100, NULL);
-	//CWnd *const window = Cwnd::FromHandle(hWnd);
-	//SetWindowPos(hWnd, NULL, 0, 0, 100, 100, NULL);
-	
-	//S/etWindowPos(hwnd, NULL, 0, 0, 100, 100, NULL);
-	//EnumWindows(EnumWindowCallBack, 0);
-
-
-
+	ButtonSize.cy = (WindowSize.cy / 6);
 
 	/* 항상 맨 위에 */
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 	
+	limit_region.top = 0;
+	limit_region.left = ButtonSize.cx * 8;
+	limit_region.bottom = WindowSize.cy + 50;
+	limit_region.right = ButtonSize.cx * 8 + ButtonSize.cx + 10;
+
 	// 프로그램 위치 설정(우측)
-	SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 100, SWP_NOZORDER);
+	SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
 
 	// 버튼 좌표 설정
 	GetDlgItem(IDC_BT_Mouse)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
@@ -262,6 +253,11 @@ HCURSOR CEyeMakeItDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
+
+
+
+
+
 
 
 
@@ -438,23 +434,6 @@ void CEyeMakeItDlg::OnMouseMove(UINT nFlags, CPoint point)
 	CDialogEx::OnMouseMove(nFlags, point);
 }
 
-BOOL CALLBACK EnumWindowCallBack(HWND hwnd, LPARAM lParam)
-{
-	char Cap[255];
-	int length;
-	GetWindowText(hwnd, (LPWSTR)Cap, 255);
-	length = GetWindowTextLength(hwnd);
-
-	if (IsWindowVisible(hwnd) && length > 0 )//&& !strncmp(Cap, "SourceTree",10))
-	{
-		SetWindowPos(hwnd, NULL, 0, 0, 100, 100, NULL);
-
-		return FALSE;
-	}
-
-	return TRUE;
-}
-
 
 BOOL CEyeMakeItDlg::PreTranslateMessage(MSG* pMsg)
 {
@@ -464,4 +443,17 @@ BOOL CEyeMakeItDlg::PreTranslateMessage(MSG* pMsg)
 		SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 	
 	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+BOOL CALLBACK EnumWindowCallBack(HWND hwnd, LPARAM lParam)
+{
+	RECT region;
+	int limit_width = (limit_region.right) - (limit_region.left);
+	
+	GetWindowRect(hwnd, &region);
+	if ((limit_width < (region.left))
+		|| ((region.right) > (limit_region.left)))
+	{
+		MoveWindow(hwnd,0,0,)
+	}
 }
