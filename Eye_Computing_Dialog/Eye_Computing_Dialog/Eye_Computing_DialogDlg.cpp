@@ -53,6 +53,7 @@ bool isEnglish = false;
 BOOL caps = TRUE;
 INPUT InputCapsButton;
 
+
 //cursor 변수
 HCURSOR m_hCursor, m_hOldCursor;
 
@@ -322,6 +323,7 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_EQUAL, &CEye_Computing_DialogDlg::OnBnClickedEqual)
 	ON_BN_CLICKED(IDC_BKSLASH, &CEye_Computing_DialogDlg::OnBnClickedBkslash)
 	ON_BN_CLICKED(IDC_KORENG, &CEye_Computing_DialogDlg::OnBnClickedKoreng)
+	ON_EN_CHANGE(IDC_EDIT1, &CEye_Computing_DialogDlg::OnEnChangeEdit1)
 END_MESSAGE_MAP()
 
 
@@ -394,12 +396,13 @@ BOOL CEye_Computing_DialogDlg::OnInitDialog()
 	//항상 최상위 window가 되도록 설정
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 	
+	/*
 	// window창 반투명하게 설정
 	LONG ExtendedStyle = GetWindowLong(GetSafeHwnd(), GWL_EXSTYLE);
 	SetWindowLong(GetSafeHwnd(), GWL_EXSTYLE, ExtendedStyle | WS_EX_LAYERED);
 	BYTE byAlphaValue = 200; // 0 - 255 (Transparent Range)
 	::SetLayeredWindowAttributes(GetSafeHwnd(),0,byAlphaValue,LWA_ALPHA);
-	
+	*/
 
 	
 	//cursor variable initialize
@@ -2764,4 +2767,15 @@ void CEye_Computing_DialogDlg::OnBnClickedKoreng()
 	InputHE.ki.dwFlags = KEYEVENTF_KEYUP;
 	::SendInput(1, &InputHE, sizeof(INPUT));
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CEye_Computing_DialogDlg::OnEnChangeEdit1()
+{
+	// TODO:  RICHEDIT 컨트롤인 경우, 이 컨트롤은
+	// CDialogEx::OnInitDialog() 함수를 재지정 
+	//하고 마스크에 OR 연산하여 설정된 ENM_CHANGE 플래그를 지정하여 CRichEditCtrl().SetEventMask()를 호출하지 않으면
+	// 이 알림 메시지를 보내지 않습니다.
+
+	// TODO:  여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
