@@ -11,7 +11,9 @@
 /* global var */
 bool clickedShift = false;
 INPUT InputShift;
-int mousehide_count = 0;
+int mousehide_count = 0; 
+CFont main_editFont;
+CFont sub_editFont;
 
 // SelectKeyboardDlg 대화 상자입니다.
 
@@ -79,10 +81,11 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	HideSpecialBtn();
 
 	// 글씨체, 크기 변경
-	CFont g_editFont;
-	g_editFont.CreatePointFont(200, TEXT("굴림"));
-	GetDlgItem(IDC_MAINEDIT)->SetFont(&g_editFont);
+	main_editFont.CreatePointFont(400, TEXT("맑은 고딕"));
+	GetDlgItem(IDC_MAINEDIT)->SetFont(&main_editFont);
 
+	sub_editFont.CreatePointFont(150, TEXT("맑은 고딕"));
+	GetDlgItem(IDC_SUBEDIT)->SetFont(&sub_editFont);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
@@ -763,6 +766,35 @@ void SelectKeyboardDlg::InputText(CString text)
 
 }
 
+void SelectKeyboardDlg::CopyStrToClipbaord(CString str)
+{
+	COleDataSource* pData = new COleDataSource();
+
+	HGLOBAL hGlobal = GlobalAlloc(GPTR, (str.GetLength() + 1) * 2);
+
+	LPCTSTR wszSourceText = (LPCTSTR)str;
+	wchar_t* wszTargetText = (wchar_t*)GlobalLock(hGlobal);
+	wcscpy(wszTargetText, wszSourceText);
+	GlobalUnlock(hGlobal);
+
+	pData->CacheGlobalData(CF_UNICODETEXT, hGlobal);
+
+	OleInitialize(NULL);
+	pData->SetClipboard();
+
+	/*
+	HGLOBAL hGlobal = GlobalAlloc(GHND | GMEM_SHARE, (str.GetLength() + 1) * sizeof(TCHAR));
+	PSTR pGlobal = (PSTR)GlobalLock(hGlobal);
+	lstrcpy(pGlobal, TEXT(str));
+	GlobalUnlock(hGlobal);
+
+	OpenClipboard();
+	EmptyClipboard();
+	SetClipboardData(CF_TEXT, hGlobal);
+	CloseClipboard();
+	*/
+}
+
 
 
 
@@ -776,10 +808,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("!"));
-		else
-			InputText(_T("1"));
+	
+		InputText(_T("1"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -789,10 +819,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("@"));
-		else
-			InputText(_T("2"));
+		
+		InputText(_T("2"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 1, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -802,10 +830,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("#"));
-		else
-			InputText(_T("3"));
+		
+		InputText(_T("3"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 2, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -815,10 +841,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("$"));
-		else
-			InputText(_T("4"));
+		
+		InputText(_T("4"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 3, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -828,10 +852,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("%"));
-		else
-			InputText(_T("5"));
+		
+		InputText(_T("5"));
 		
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 4, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -841,10 +863,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("^"));
-		else
-			InputText(_T("6"));
+		
+		InputText(_T("6"));
 		
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 5, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -854,10 +874,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("&"));
-		else
-			InputText(_T("7"));
+		
+		InputText(_T("7"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 6, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -867,10 +885,8 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	{
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
-		if (clickedShift)
-			InputText(_T("*"));
-		else
-			InputText(_T("8"));
+		
+		InputText(_T("8"));
 	
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 7, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -881,10 +897,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 
-		if (clickedShift)
-			InputText(_T("("));
-		else
-			InputText(_T("9"));
+		InputText(_T("9"));
 
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -895,10 +908,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		if (hangeulInput.ingWord != NULL)
 			InputHangeul(-1);
 		
-		if (clickedShift)
-			InputText(_T(")"));
-		else
-			InputText(_T("0"));
+		InputText(_T("0"));
 		
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 9, ButtonSize.cy * 0.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
@@ -940,19 +950,41 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	case IDC_S_ENT: // enter
 	{
 		InputHangeul(-2);
-
+		
 		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 8, ButtonSize.cy * 2.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
-
-		CString sub_text;
-		sub_text = "";
-		SetDlgItemText(IDC_SUBEDIT, sub_text);
 
 		break;
 	}
 	case IDC_S_CON: // 확인
 	{
 		// 전송하는거..
-		//일단 종료되게...
+		CString str = _T("");
+		
+		str += hangeulInput.completeText;
+		str += (TCHAR)hangeulInput.ingWord;
+
+		CopyStrToClipbaord(str);
+		
+
+		INPUT InputButton;
+		//initialize
+		::ZeroMemory(&InputButton, sizeof(INPUT));
+		InputButton.type = INPUT_KEYBOARD;
+
+		//ctrl 누르고
+		InputButton.ki.wVk = 0x11;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//v 침
+		InputButton.ki.wVk = 0x56;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		//ctrl 한번더
+		InputButton.ki.wVk = 0x11;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+		InputButton.ki.dwFlags = KEYEVENTF_KEYUP;
+		::SendInput(1, &InputButton, sizeof(INPUT));
+
 		::SendMessage(GetSafeHwnd(), WM_CLOSE, NULL, NULL);
 		break;
 	}
@@ -1838,6 +1870,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 	}
 	}
 }
+
 /*
 void SelectKeyboardDlg::OnCancel()
 {
@@ -1887,9 +1920,11 @@ void SelectKeyboardDlg::OnClose()
 	hangeulInput.Clear();
 	SetDlgItemText(IDC_MAINEDIT, _T(""));
 	// 서브에디트 초기화
+
 	CString sub_text;
 	sub_text = "";
 	SetDlgItemText(IDC_SUBEDIT, sub_text);
+
 	GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, 0, 0, 0, 0, NULL);
 	// 영어, 특수문자 버튼 숨기기
 	ShowKorBtn();

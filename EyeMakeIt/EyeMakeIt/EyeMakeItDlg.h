@@ -9,6 +9,8 @@
 /* global  */
 extern int selectMouseEvent;
 
+static BOOL CALLBACK EnumWindowCallBack(HWND hwnd, LPARAM lParam); // 콜백함수
+
 // CEyeMakeItDlg 대화 상자
 class CEyeMakeItDlg : public CDialogEx
 {
@@ -58,5 +60,5 @@ public:
 	CxSkinButton m_btn_scd;
 	CxSkinButton m_btn_set;
 	CxSkinButton btn_first_close;
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
+	BOOL PreTranslateMessage(MSG* pMsg);
 };
