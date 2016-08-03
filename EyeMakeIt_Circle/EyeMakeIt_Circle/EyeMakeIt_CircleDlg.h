@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include "Hangeul.h"
 
 // CEyeMakeIt_CircleDlg 대화 상자
 class CEyeMakeIt_CircleDlg : public CDialogEx
@@ -19,9 +20,16 @@ public:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 지원입니다.
 
 
+	void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID);
+	void CEyeMakeIt_CircleDlg::InputHangeul(int textCode);
+
+	Hangeul hangeulInput;
+
+
 // 구현입니다.
 protected:
 	HICON m_hIcon;
+	HWND m_hForegroundWnd;
 
 	// 생성된 메시지 맵 함수
 	virtual BOOL OnInitDialog();
@@ -29,4 +37,7 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };

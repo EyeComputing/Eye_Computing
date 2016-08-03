@@ -7,8 +7,6 @@
 #include "EyeMakeIt_CircleDlg.h"
 #include "afxdialogex.h"
 
-#include "Hangeul.h"
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -53,10 +51,20 @@ CEyeMakeIt_CircleDlg::CEyeMakeIt_CircleDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CEyeMakeIt_CircleDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	m_hForegroundWnd = NULL;
 }
 
 void CEyeMakeIt_CircleDlg::DoDataExchange(CDataExchange* pDX)
 {
+	if (m_hForegroundWnd)
+	{
+		::SetForegroundWindow(m_hForegroundWnd);
+		ModifyStyleEx(0, WS_EX_NOACTIVATE);
+
+		m_hForegroundWnd = NULL;
+
+	}
+
 	CDialogEx::DoDataExchange(pDX);
 }
 
@@ -66,6 +74,8 @@ BEGIN_MESSAGE_MAP(CEyeMakeIt_CircleDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_ZUM, CEyeMakeIt_CircleDlg::OnBtnClick)
+	//ON_WM_LBUTTONDOWN()
+	//ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -100,7 +110,8 @@ BOOL CEyeMakeIt_CircleDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 큰 아이콘을 설정합니다.
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
-	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	//최상위 윈도우로 설정
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -159,13 +170,60 @@ HCURSOR CEyeMakeIt_CircleDlg::OnQueryDragIcon()
 
 
 
+
 /* 사용자 정의 함수 */
+
+
+void CEyeMakeIt_CircleDlg::InputHangeul(int textCode)
+{
+	hangeulInput.SetHangeulCode(textCode);
+
+	CString complete_text = hangeulInput.completeText;
+
+	if (hangeulInput.ingWord != NULL)
+		complete_text += hangeulInput.ingWord;
+
+
+	SetDlgItemText(IDC_MAINEDIT, complete_text); // mainEdit에 띄움
+	/*
+	CString sub_text;
+	int space = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾기
+	int enter = GetFindCharCount(complete_text, '\n'); // 엔터가 몇 개 있는지 찾기
+
+	int space_count = GetLastCharCount(complete_text, ' '); // 마지막 스페이스바의 위치
+	int enter_count = GetLastCharCount(complete_text, '\n'); // 마지막 엔터의 위치
+
+	if (enter_count > space_count) { // 
+		AfxExtractSubString(sub_text, complete_text, enter, '\n'); // 마지막 엔터로부터 문자열을 잘라냄
+	}
+	else
+		AfxExtractSubString(sub_text, complete_text, space, ' '); // 마지막 스페이스로부터 문자열을 잘라냄
+
+	SetDlgItemText(IDC_SUBEDIT, sub_text); // subEdit에 띄움
+	*/
+	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
+	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
+	pEdit->SetFocus();
+
+}
+
+
+
+
+
+
+
+
 void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
 {
 	switch (uiID)
 	{
 	case IDC_K_GIY:
 	{
+		//if (clickedShift)
+			//InputHangeul(1);
+		//else
+			InputHangeul(0);
 
 		break;
 	}/*
@@ -183,5 +241,7 @@ void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
 	 }*/
 
 	}
-
 }
+
+
+
