@@ -7,6 +7,8 @@
 #include "EyeMakeIt_CircleDlg.h"
 #include "afxdialogex.h"
 
+#include "Hangeul.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -62,6 +64,8 @@ BEGIN_MESSAGE_MAP(CEyeMakeIt_CircleDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	/* 버튼 클릭 한번에 하는 메세지 매핑 */
+	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_ZUM, CEyeMakeIt_CircleDlg::OnBtnClick)
 END_MESSAGE_MAP()
 
 
@@ -150,3 +154,34 @@ HCURSOR CEyeMakeIt_CircleDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+
+
+
+/* 사용자 정의 함수 */
+void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
+{
+	switch (uiID)
+	{
+	case IDC_K_GIY:
+	{
+
+		break;
+	}/*
+	 case :
+	 {
+	 break;
+	 }
+	 case :
+	 {
+	 break;
+	 }
+	 case :
+	 {
+	 break;
+	 }*/
+
+	}
+
+}
