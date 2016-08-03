@@ -136,12 +136,12 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 
 	/* 항상 맨 위에 */
 	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
-	
+	/*
 	limit_region.top = 0;
 	limit_region.left = ButtonSize.cx * 8;
 	limit_region.bottom = WindowSize.cy + 50;
 	limit_region.right = ButtonSize.cx * 8 + ButtonSize.cx + 10;
-
+	*/
 	// 프로그램 위치 설정(우측)
 	SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
 
