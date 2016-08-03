@@ -72,10 +72,8 @@ BEGIN_MESSAGE_MAP(CEyeMakeIt_CircleDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	/* 버튼 클릭 한번에 하는 메세지 매핑 */
-	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_ZUM, CEyeMakeIt_CircleDlg::OnBtnClick)
-	//ON_WM_LBUTTONDOWN()
-	//ON_WM_MOUSEMOVE()
+	ON_WM_LBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -129,9 +127,6 @@ void CEyeMakeIt_CircleDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// 대화 상자에 최소화 단추를 추가할 경우 아이콘을 그리려면
-//  아래 코드가 필요합니다.  문서/뷰 모델을 사용하는 MFC 응용 프로그램의 경우에는
-//  프레임워크에서 이 작업을 자동으로 수행합니다.
 
 void CEyeMakeIt_CircleDlg::OnPaint()
 {
@@ -167,81 +162,35 @@ HCURSOR CEyeMakeIt_CircleDlg::OnQueryDragIcon()
 
 
 
-
-
-
-
-/* 사용자 정의 함수 */
-
-
-void CEyeMakeIt_CircleDlg::InputHangeul(int textCode)
+void CEyeMakeIt_CircleDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	hangeulInput.SetHangeulCode(textCode);
-
-	CString complete_text = hangeulInput.completeText;
-
-	if (hangeulInput.ingWord != NULL)
-		complete_text += hangeulInput.ingWord;
-
-
-	SetDlgItemText(IDC_MAINEDIT, complete_text); // mainEdit에 띄움
-	/*
-	CString sub_text;
-	int space = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾기
-	int enter = GetFindCharCount(complete_text, '\n'); // 엔터가 몇 개 있는지 찾기
-
-	int space_count = GetLastCharCount(complete_text, ' '); // 마지막 스페이스바의 위치
-	int enter_count = GetLastCharCount(complete_text, '\n'); // 마지막 엔터의 위치
-
-	if (enter_count > space_count) { // 
-		AfxExtractSubString(sub_text, complete_text, enter, '\n'); // 마지막 엔터로부터 문자열을 잘라냄
+	//최상위 윈도우로 설정
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+	
+	if (!m_hForegroundWnd)
+	{
+		m_hForegroundWnd = ::GetForegroundWindow();
+		ModifyStyleEx(WS_EX_NOACTIVATE, 0);
+		SetForegroundWindow();
 	}
-	else
-		AfxExtractSubString(sub_text, complete_text, space, ' '); // 마지막 스페이스로부터 문자열을 잘라냄
 
-	SetDlgItemText(IDC_SUBEDIT, sub_text); // subEdit에 띄움
-	*/
-	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
-	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
-	pEdit->SetFocus();
-
+	CDialogEx::OnLButtonDown(nFlags, point);
 }
 
 
-
-
-
-
-
-
-void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
+void CEyeMakeIt_CircleDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
-	switch (uiID)
-	{
-	case IDC_K_GIY:
-	{
-		//if (clickedShift)
-			//InputHangeul(1);
-		//else
-			InputHangeul(0);
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 
-		break;
-	}/*
-	 case :
-	 {
-	 break;
-	 }
-	 case :
-	 {
-	 break;
-	 }
-	 case :
-	 {
-	 break;
-	 }*/
-
-	}
+	CDialogEx::OnMouseMove(nFlags, point);
 }
 
 
+BOOL CEyeMakeIt_CircleDlg::PreTranslateMessage(MSG* pMsg)
+{
+	if ((pMsg->message == WM_LBUTTONDOWN) || (pMsg->message == WM_RBUTTONDOWN))
+		/* 항상 맨 위에 */
+		SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
 
+	return CDialogEx::PreTranslateMessage(pMsg);
+}
