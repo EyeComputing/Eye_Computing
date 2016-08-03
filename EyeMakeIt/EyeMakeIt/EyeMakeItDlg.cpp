@@ -134,12 +134,15 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 
 
 
-	CWnd * const hWnd =  GetDesktopWindow();
+	//CWnd *hWnd =  GetDesktopWindow();
 
+	//HWND hWnd = (HWND)GetDesktopWindow();
 
+	//::SetWindowPos(hWnd, NULL, 0, 0, 100, 100, NULL);
 	//CWnd *const window = Cwnd::FromHandle(hWnd);
-	SetWindowPos(hWnd, WindowSize.cx - ButtonSize.cx * 8, 0, WindowSize.cx - ButtonSize.cx + 10, WindowSize.cy, SWP_NOZORDER );
-
+	//SetWindowPos(hWnd, NULL, 0, 0, 100, 100, NULL);
+	
+	//S/etWindowPos(hwnd, NULL, 0, 0, 100, 100, NULL);
 	//EnumWindows(EnumWindowCallBack, 0);
 
 
@@ -259,11 +262,6 @@ HCURSOR CEyeMakeItDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
-
-
-
-
-
 
 
 
@@ -447,10 +445,11 @@ BOOL CALLBACK EnumWindowCallBack(HWND hwnd, LPARAM lParam)
 	GetWindowText(hwnd, (LPWSTR)Cap, 255);
 	length = GetWindowTextLength(hwnd);
 
-	if (IsWindowVisible(hwnd) && length > 0 && !strncmp(Cap, "SourceTree",10))
+	if (IsWindowVisible(hwnd) && length > 0 )//&& !strncmp(Cap, "SourceTree",10))
 	{
 		SetWindowPos(hwnd, NULL, 0, 0, 100, 100, NULL);
 
+		return FALSE;
 	}
 
 	return TRUE;
