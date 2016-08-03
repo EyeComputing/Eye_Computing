@@ -235,4 +235,5 @@ public:
 	CxSkinButton m_btn_Plus;
 	CxSkinButton m_btn_KorEng;
 	afx_msg void OnBnClickedKoreng();
+	afx_msg void OnEnChangeEdit1();
 };
