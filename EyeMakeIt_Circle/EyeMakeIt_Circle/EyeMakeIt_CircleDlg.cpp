@@ -330,175 +330,159 @@ void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
 {
 	switch (uiID)
 	{
-	case IDC_K_GIY:
-	{
-		initButtonState();
-		if (clickedShift)
-			InputHangeul(1);
-		else
-			InputHangeul(0);
+		case IDC_K_GIY:
+		{
+			initButtonState();
+			if (clickedShift)
+				InputHangeul(1);
+			else
+				InputHangeul(0);
 
-		break;
-	}
-	// び 刊牽奄
-	case IDC_K_YII:
-	{
-		if (clicked_ZUM)	// ， + び = っ
-		{
-			InputHangeul(23);
-			clicked_ZUM = false;
-			clicked_EOO = true;
+			break;
 		}
-		else if (clicked_ZUM2)	// ，， + び = づ
+		// び 刊牽奄
+		case IDC_K_YII:
 		{
-			InputHangeul(25);
-			clicked_ZUM2 = false;
-			clicked_YEO = true;
+			if (clicked_ZUM)	// ， + び = っ
+			{
+				InputHangeul(23);
+				clicked_ZUM = false;
+				clicked_EOO = true;
+			}
+			else if (clicked_ZUM2)	// ，， + び = づ
+			{
+				InputHangeul(25);
+				clicked_ZUM2 = false;
+				clicked_YEO = true;
+			}
+			else if (clicked_EOO)	//	っ + び = つ
+			{
+				InputHangeul(-3);
+				InputHangeul(24);
+				clicked_EOO = false;
+			}
+			else if (clicked_AAA)	// た + び = だ
+			{
+				InputHangeul(-3);
+				InputHangeul(20);
+				clicked_AAA = false;
+			}
+			else if (clicked_YAA)	// ち + び = ぢ
+			{
+				InputHangeul(-3);
+				InputHangeul(22);
+				clicked_YAA = false;
+			}
+			else if (clicked_OOO)	// で + び = な
+			{
+				InputHangeul(-3);
+				InputHangeul(30);
+				clicked_OOO = false;
+				clicked_OEE = true;
+			}
+			else if (clicked_WAA)	// と + び = ど
+			{
+				InputHangeul(-3);
+				InputHangeul(29);
+				clicked_WAA = false;
+			}
+			else if (clicked_UUU)	// ぬ + び = は
+			{
+				InputHangeul(-3);
+				InputHangeul(35);
+				clicked_UUU = false;
+			}
+			else if (clicked_YUU)	// ば + び = ね
+			{
+				InputHangeul(-3);
+				InputHangeul(33);
+				clicked_YUU = false;
+				clicked_WOU = true;
+			}
+			else if (clicked_WOU)	// ね + び = の
+			{
+				InputHangeul(-3);
+				InputHangeul(34);
+				clicked_WOU = false;
+			}
+			else 					// l = l
+			{
+				InputHangeul(39);
+				clicked_YII = true;
+			}
+			break;
 		}
-		else if (clicked_EOO)	//	っ + び = つ
+		// ， 刊牽奄
+		case IDC_K_ZUM:
 		{
-			InputHangeul(-3);
-			InputHangeul(24);
-			clicked_EOO = false;
-		}
-		else if (clicked_AAA)	// た + び = だ
-		{
-			InputHangeul(-3);
-			InputHangeul(20);
-			clicked_AAA = false;
-		}
-		else if (clicked_YAA)	// ち + び = ぢ
-		{
-			InputHangeul(-3);
-			InputHangeul(22);
-			clicked_YAA = false;
-		}
-		else if (clicked_OOO)	// で + び = な
-		{
-			InputHangeul(-3);
-			InputHangeul(30);
-			clicked_OOO = false;
-			clicked_OEE = true;
-		}
-		else if (clicked_WAA)	// と + び = ど
-		{
-			InputHangeul(-3);
-			InputHangeul(29);
-			clicked_WAA = false;
-		}
-		else if (clicked_UUU)	// ぬ + び = は
-		{
-			InputHangeul(-3);
-			InputHangeul(35);
-			clicked_UUU = false;
-		}
-		else if (clicked_YUU)	// ば + び = ね
-		{
-			InputHangeul(-3);
-			InputHangeul(33);
-			clicked_YUU = false;
-			clicked_WOU = true;
-		}
-		else if (clicked_WOU)	// ね + び = の
-		{
-			InputHangeul(-3);
-			InputHangeul(34);
-			clicked_WOU = false;
-		}
-		else 					// l = l
-		{
-			InputHangeul(39);
-			clicked_YII = true;
-		}
-		break;
-	}
-	// ， 刊牽奄
-	case IDC_K_ZUM:
-	{
-		if (clicked_YII)		// び + ， = た
-		{
-			InputHangeul(-3);
-			InputHangeul(19);
-			clicked_YII = false;
-			clicked_AAA = true;
-		}
-		else if (clicked_AAA)	// た + ， = ち
-		{
-			InputHangeul(-3);
-			InputHangeul(21);
-			clicked_AAA = false;
-			clicked_YAA = true;
-		}
-		else if (clicked_EUU)	// ぱ + ， = ぬ
-		{
-			InputHangeul(-3);
-			InputHangeul(32);
-			clicked_EUU = false;
-			clicked_UUU = true;
-		}
-		else if (clicked_UUU)	// ぬ + ， = ば
-		{
-			InputHangeul(-3);
-			InputHangeul(36);
-			clicked_UUU = false;
-			clicked_YUU = true;
-		}
-		else if (clicked_OEE)	// な + ， = と
-		{
-			InputHangeul(-3);
-			InputHangeul(28);
-			clicked_OEE = false;
-			clicked_WAA = true;
-		}
-		else if (clicked_ZUM)	// ， + ， = ，，
-		{
-			clicked_ZUM = false;
-			clicked_ZUM2 = true;
-		}
-		else 					// ，
-		{
-			clicked_ZUM = true;
-		}
+			if (clicked_YII)		// び + ， = た
+			{
+				InputHangeul(-3);
+				InputHangeul(19);
+				clicked_YII = false;
+				clicked_AAA = true;
+			}
+			else if (clicked_AAA)	// た + ， = ち
+			{
+				InputHangeul(-3);
+				InputHangeul(21);
+				clicked_AAA = false;
+				clicked_YAA = true;
+			}
+			else if (clicked_EUU)	// ぱ + ， = ぬ
+			{
+				InputHangeul(-3);
+				InputHangeul(32);
+				clicked_EUU = false;
+				clicked_UUU = true;
+			}
+			else if (clicked_UUU)	// ぬ + ， = ば
+			{
+				InputHangeul(-3);
+				InputHangeul(36);
+				clicked_UUU = false;
+				clicked_YUU = true;
+			}
+			else if (clicked_OEE)	// な + ， = と
+			{
+				InputHangeul(-3);
+				InputHangeul(28);
+				clicked_OEE = false;
+				clicked_WAA = true;
+			}
+			else if (clicked_ZUM)	// ， + ， = ，，
+			{
+				clicked_ZUM = false;
+				clicked_ZUM2 = true;
+			}
+			else 					// ，
+			{
+				clicked_ZUM = true;
+			}
 
-		break;
-	}
-	// ぱ 刊牽奄
-	case IDC_K_EUU:
-	{
-		if (clicked_ZUM)		//， + ぱ = で
-		{
-			InputHangeul(27);
-			clicked_ZUM = false;
-			clicked_OOO = true;
+			break;
 		}
-		else if (clicked_ZUM2)	//，， + ぱ = に
+		// ぱ 刊牽奄
+		case IDC_K_EUU:
 		{
-			InputHangeul(31);
-			clicked_ZUM2 = false;
+			if (clicked_ZUM)		//， + ぱ = で
+			{
+				InputHangeul(27);
+				clicked_ZUM = false;
+				clicked_OOO = true;
+			}
+			else if (clicked_ZUM2)	//，， + ぱ = に
+			{
+				InputHangeul(31);
+				clicked_ZUM2 = false;
+			}
+			else 					// ぱ = ぱ
+			{
+				InputHangeul(37);
+				clicked_EUU = true;
+			}
+			break;
 		}
-		else 					// ぱ = ぱ
-		{
-			InputHangeul(37);
-			clicked_EUU = true;
-		}
-
-		break;
-	}
-	
-	/*
-	 case :
-	 {
-	 break;
-	 }
-	 case :
-	 {
-	 break;
-	 }
-	 case :
-	 {
-	 break;
-	 }*/
-
 	}
 }
 
