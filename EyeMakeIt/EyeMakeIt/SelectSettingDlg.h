@@ -30,4 +30,6 @@ protected:
 public:
 	virtual BOOL OnInitDialog();
 	CxSkinButton m_btn_eye;
+	CxSkinButton m_btn_cls;
+	CxSkinButton m_btn_env;
 };

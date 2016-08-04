@@ -54,6 +54,9 @@
     <ClInclude Include="Hangeul.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="SelectEnvironmentSetDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EyeMakeIt.cpp">
@@ -84,6 +87,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Hangeul.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectEnvironmentSetDlg.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -963,6 +969,12 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="res\Keyboard\Main\IDB_M_COR.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Setting\IDB_M_ENV.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Keyboard\Setting\IDB_M_ENV_OVER.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

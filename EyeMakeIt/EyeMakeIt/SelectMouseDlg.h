@@ -2,7 +2,6 @@
 #include "afxwin.h"
 #include "xSkinButton.h"
 
-
 // SelectMouseDlg 대화 상자입니다.
 
 class SelectMouseDlg : public CDialogEx
