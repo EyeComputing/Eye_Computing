@@ -92,6 +92,8 @@ BEGIN_MESSAGE_MAP(CEyeMakeIt_CircleDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
+	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_ZUM, CEyeMakeIt_CircleDlg::OnBtnClick)
+	
 	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_EUU, CEyeMakeIt_CircleDlg::OnBtnClick)
 	//ON_WM_LBUTTONDOWN()
 	//ON_WM_MOUSEMOVE()
@@ -154,6 +156,10 @@ void CEyeMakeIt_CircleDlg::OnSysCommand(UINT nID, LPARAM lParam)
 
 void CEyeMakeIt_CircleDlg::OnPaint()
 {
+
+	//최상위 윈도우로 설정
+	SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
+
 	if (IsIconic())
 	{
 		CPaintDC dc(this); // 그리기를 위한 디바이스 컨텍스트입니다.
@@ -304,21 +310,6 @@ void CEyeMakeIt_CircleDlg::InputText(CString text)
 	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
 	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
 	pEdit->SetFocus();
-}
-
-
-
-
-
-
-// 맨 위에 있게 하는 함수
-BOOL CEyeMakeIt_CircleDlg::PreTranslateMessage(MSG* pMsg)
-{
-	if ((pMsg->message == WM_LBUTTONDOWN) || (pMsg->message == WM_RBUTTONDOWN))
-		/* 항상 맨 위에 */
-		SetWindowPos((const CWnd*)&(this->m_hWnd), (int)(HWND_TOPMOST), 0, 0, 0, (UINT)(SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW));
-
-	return CDialogEx::PreTranslateMessage(pMsg);
 }
 
 
