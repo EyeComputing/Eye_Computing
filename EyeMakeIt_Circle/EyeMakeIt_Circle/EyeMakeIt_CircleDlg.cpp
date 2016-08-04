@@ -12,6 +12,24 @@
 #endif
 
 
+/* global var */
+bool clickedShift = false;
+
+bool clicked_YII = false;	// ㅣ
+bool clicked_ZUM = false;	// 점
+bool clicked_ZUM2 = false;	// 점2개
+bool clicked_AAA = false;	// ㅏ
+bool clicked_YAA = false;	// ㅑ
+bool clicked_EOO = false;	// ㅓ
+bool clicked_YEO = false;	// ㅕ
+bool clicked_OOO = false;	// ㅗ
+bool clicked_UUU = false;	// ㅜ
+bool clicked_YUU = false;	// ㅠ
+bool clicked_EUU = false;	// ㅡ
+bool clicked_OEE = false;	// ㅚ
+bool clicked_WAA = false;	// ㅘ
+bool clicked_WOU = false;	// ㅝ
+
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
 class CAboutDlg : public CDialogEx
@@ -43,9 +61,10 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
+
+
+
 // CEyeMakeIt_CircleDlg 대화 상자
-
-
 
 CEyeMakeIt_CircleDlg::CEyeMakeIt_CircleDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CEyeMakeIt_CircleDlg::IDD, pParent)
@@ -75,6 +94,9 @@ BEGIN_MESSAGE_MAP(CEyeMakeIt_CircleDlg, CDialogEx)
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
 	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_ZUM, CEyeMakeIt_CircleDlg::OnBtnClick)
 	
+	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_EUU, CEyeMakeIt_CircleDlg::OnBtnClick)
+	//ON_WM_LBUTTONDOWN()
+	//ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -175,7 +197,63 @@ HCURSOR CEyeMakeIt_CircleDlg::OnQueryDragIcon()
 /* 사용자 정의 함수 */
 
 
+/* 여기서 함수 정의 & 사용 */
+int GetFindCharCount(CString parm_string, char parm_find_char)
+// 문자열에 어떤 문자가 몇 개 들어 있는지
+{
 
+	int length = parm_string.GetLength(), find_count = 0;
+
+	for (int i = 0; i < length; i++)
+	{
+		if (parm_string[i] == parm_find_char)
+		{
+			find_count++;
+		}
+	}
+
+	return find_count;
+}
+
+int GetLastCharCount(CString parm_string, char parm_find_char)
+// 문자열에 /마지막/문자가 어디에 위치해있는지
+{
+
+	int length = parm_string.GetLength(), find_final = 0;
+
+	for (int i = 0; i < length; i++)
+	{
+		if (parm_string[i] == parm_find_char)
+		{
+			find_final = i;
+		}
+	}
+
+	return find_final;
+}
+
+// 모음 초기화
+void initButtonState()
+{
+	clicked_YII = false;	// ㅣ
+	clicked_ZUM = false;	// 점
+	clicked_ZUM2 = false;	// 점2개
+	clicked_AAA = false;	// ㅏ
+	clicked_YAA = false;	// ㅑ
+	clicked_EOO = false;	// ㅓ
+	clicked_YEO = false;	// ㅕ
+	clicked_OOO = false;	// ㅗ
+	clicked_UUU = false;	// ㅜ
+	clicked_YUU = false;	// ㅠ
+	clicked_EUU = false;	// ㅡ
+	clicked_OEE = false;	// ㅚ
+	clicked_WAA = false;	// ㅘ
+	clicked_WOU = false;	// ㅝ
+}
+
+
+
+/* 함수 선언 _ .h에 */
 // hangeul input 함수
 void CEyeMakeIt_CircleDlg::InputHangeul(int textCode)
 {
@@ -189,11 +267,28 @@ void CEyeMakeIt_CircleDlg::InputHangeul(int textCode)
 
 	SetDlgItemText(IDC_MAINEDIT, complete_text); // mainEdit에 띄움
 	
+	CString sub_text;
+	int space = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾기
+	int enter = GetFindCharCount(complete_text, '\n'); // 엔터가 몇 개 있는지 찾기
+
+	int space_count = GetLastCharCount(complete_text, ' '); // 마지막 스페이스바의 위치
+	int enter_count = GetLastCharCount(complete_text, '\n'); // 마지막 엔터의 위치
+
+	if (enter_count > space_count) { // 
+		AfxExtractSubString(sub_text, complete_text, enter, '\n'); // 마지막 엔터로부터 문자열을 잘라냄
+	}
+	else
+		AfxExtractSubString(sub_text, complete_text, space, ' '); // 마지막 스페이스로부터 문자열을 잘라냄
+
+	SetDlgItemText(IDC_SUBEDIT, sub_text); // subEdit에 띄움
+
+
 	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
 	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
 	pEdit->SetFocus();
 
 }
+
 // textinput 함수
 void CEyeMakeIt_CircleDlg::InputText(CString text)
 {
@@ -206,10 +301,15 @@ void CEyeMakeIt_CircleDlg::InputText(CString text)
 
 	SetDlgItemText(IDC_MAINEDIT, complete_text);
 
+	CString sub_text;
+	int cut = GetFindCharCount(complete_text, ' ');
+	AfxExtractSubString(sub_text, complete_text, cut, ' ');
+	SetDlgItemText(IDC_SUBEDIT, sub_text);
+
+
 	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
 	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
 	pEdit->SetFocus();
-
 }
 
 
@@ -223,23 +323,160 @@ void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
 	{
 	case IDC_K_GIY:
 	{
-		//if (clickedShift)
-			//InputHangeul(1);
-		//else
+		initButtonState();
+		if (clickedShift)
+			InputHangeul(1);
+		else
 			InputHangeul(0);
 
 		break;
 	}
+	// ㅣ 누르기
 	case IDC_K_YII:
 	{
-		InputHangeul(39);
+		if (clicked_ZUM)	// · + ㅣ = ㅓ
+		{
+			InputHangeul(23);
+			clicked_ZUM = false;
+			clicked_EOO = true;
+		}
+		else if (clicked_ZUM2)	// ·· + ㅣ = ㅕ
+		{
+			InputHangeul(25);
+			clicked_ZUM2 = false;
+			clicked_YEO = true;
+		}
+		else if (clicked_EOO)	//	ㅓ + ㅣ = ㅔ
+		{
+			InputHangeul(-3);
+			InputHangeul(24);
+			clicked_EOO = false;
+		}
+		else if (clicked_AAA)	// ㅏ + ㅣ = ㅐ
+		{
+			InputHangeul(-3);
+			InputHangeul(20);
+			clicked_AAA = false;
+		}
+		else if (clicked_YAA)	// ㅑ + ㅣ = ㅒ
+		{
+			InputHangeul(-3);
+			InputHangeul(22);
+			clicked_YAA = false;
+		}
+		else if (clicked_OOO)	// ㅗ + ㅣ = ㅚ
+		{
+			InputHangeul(-3);
+			InputHangeul(30);
+			clicked_OOO = false;
+			clicked_OEE = true;
+		}
+		else if (clicked_WAA)	// ㅘ + ㅣ = ㅙ
+		{
+			InputHangeul(-3);
+			InputHangeul(29);
+			clicked_WAA = false;
+		}
+		else if (clicked_UUU)	// ㅜ + ㅣ = ㅟ
+		{
+			InputHangeul(-3);
+			InputHangeul(35);
+			clicked_UUU = false;
+		}
+		else if (clicked_YUU)	// ㅠ + ㅣ = ㅝ
+		{
+			InputHangeul(-3);
+			InputHangeul(33);
+			clicked_YUU = false;
+			clicked_WOU = true;
+		}
+		else if (clicked_WOU)	// ㅝ + ㅣ = ㅞ
+		{
+			InputHangeul(-3);
+			InputHangeul(34);
+			clicked_WOU = false;
+		}
+		else 					// l = l
+		{
+			InputHangeul(39);
+			clicked_YII = true;
+		}
 		break;
 	}
+	// · 누르기
 	case IDC_K_ZUM:
 	{
-		InputHangeul(40);
+		if (clicked_YII)		// ㅣ + · = ㅏ
+		{
+			InputHangeul(-3);
+			InputHangeul(19);
+			clicked_YII = false;
+			clicked_AAA = true;
+		}
+		else if (clicked_AAA)	// ㅏ + · = ㅑ
+		{
+			InputHangeul(-3);
+			InputHangeul(21);
+			clicked_AAA = false;
+			clicked_YAA = true;
+		}
+		else if (clicked_EUU)	// ㅡ + · = ㅜ
+		{
+			InputHangeul(-3);
+			InputHangeul(32);
+			clicked_EUU = false;
+			clicked_UUU = true;
+		}
+		else if (clicked_UUU)	// ㅜ + · = ㅠ
+		{
+			InputHangeul(-3);
+			InputHangeul(36);
+			clicked_UUU = false;
+			clicked_YUU = true;
+		}
+		else if (clicked_OEE)	// ㅚ + · = ㅘ
+		{
+			InputHangeul(-3);
+			InputHangeul(28);
+			clicked_OEE = false;
+			clicked_WAA = true;
+		}
+		else if (clicked_ZUM)	// · + · = ··
+		{
+			clicked_ZUM = false;
+			clicked_ZUM2 = true;
+		}
+		else 					// ·
+		{
+			clicked_ZUM = true;
+		}
+
 		break;
-	}/*
+	}
+	// ㅡ 누르기
+	case IDC_K_EUU:
+	{
+		if (clicked_ZUM)		//· + ㅡ = ㅗ
+		{
+			InputHangeul(27);
+			clicked_ZUM = false;
+			clicked_OOO = true;
+		}
+		else if (clicked_ZUM2)	//·· + ㅡ = ㅛ
+		{
+			InputHangeul(31);
+			clicked_ZUM2 = false;
+		}
+		else 					// ㅡ = ㅡ
+		{
+			InputHangeul(37);
+			clicked_EUU = true;
+		}
+
+		break;
+	}
+	
+	/*
 	 case :
 	 {
 	 break;
