@@ -84,7 +84,7 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	main_editFont.CreatePointFont(400, TEXT("¸¼Àº °íµñ"));
 	GetDlgItem(IDC_MAINEDIT)->SetFont(&main_editFont);
 
-	sub_editFont.CreatePointFont(150, TEXT("¸¼Àº °íµñ"));
+	sub_editFont.CreatePointFont(120, TEXT("¸¼Àº °íµñ"));
 	GetDlgItem(IDC_SUBEDIT)->SetFont(&sub_editFont);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
@@ -1004,7 +1004,7 @@ void SelectKeyboardDlg::OnBtnClick(UINT uiID)
 		else
 			InputHangeul(7);
 
-		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(&wndTop, ButtonSize.cx * 0, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
+		GetDlgItem(IDC_SUBEDIT)->SetWindowPos(NULL, ButtonSize.cx * 0, ButtonSize.cy * 3.8, ButtonSize.cx * 1, ButtonSize.cy * 0.2, NULL);
 
 		break;
 	}

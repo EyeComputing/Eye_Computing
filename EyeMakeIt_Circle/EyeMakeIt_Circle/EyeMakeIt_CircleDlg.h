@@ -42,4 +42,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 
+	afx_msg void OnBnSetfocusKGiy();
+	afx_msg void OnMouseHover(UINT nFlags, CPoint point);
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };

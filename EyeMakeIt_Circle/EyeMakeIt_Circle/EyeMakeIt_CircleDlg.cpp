@@ -13,6 +13,8 @@
 
 
 /* global var */
+bool m_bTrackMouse = false;
+
 bool clickedShift = false;
 
 bool clicked_YII = false;	// ㅣ
@@ -92,11 +94,11 @@ BEGIN_MESSAGE_MAP(CEyeMakeIt_CircleDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	/* 버튼 클릭 한번에 하는 메세지 매핑 */
-	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_ZUM, CEyeMakeIt_CircleDlg::OnBtnClick)
-	
-	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_EUU, CEyeMakeIt_CircleDlg::OnBtnClick)
+	ON_COMMAND_RANGE(IDC_K_GIY, IDC_K_KIE, CEyeMakeIt_CircleDlg::OnBtnClick)
 	//ON_WM_LBUTTONDOWN()
 	//ON_WM_MOUSEMOVE()
+	ON_BN_SETFOCUS(IDC_K_GIY, &CEyeMakeIt_CircleDlg::OnBnSetfocusKGiy)
+	ON_WM_MOUSEHOVER()
 END_MESSAGE_MAP()
 
 
@@ -253,7 +255,74 @@ void initButtonState()
 
 
 
+
+
+BOOL CEyeMakeIt_CircleDlg::PreTranslateMessage(MSG* pMsg)
+{
+
+	if (!m_bTrackMouse)
+	{
+
+		TRACKMOUSEEVENT tme;
+		::ZeroMemory(&tme, sizeof(tme));
+
+		tme.cbSize = sizeof(tme);
+		tme.hwndTrack = GetDlgItem(IDC_K_GIY)->m_hWnd;
+		tme.dwFlags = TME_HOVER;
+		tme.dwHoverTime = 2;
+
+		m_bTrackMouse = ::_TrackMouseEvent(&tme);
+		m_bTrackMouse = false;
+	}
+	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
+
+	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+
+
+// 안됨..ㅠ
+void CEyeMakeIt_CircleDlg::OnBnSetfocusKGiy()
+{
+	TRACE("focus");
+
+	if (!m_bTrackMouse)
+	{
+		TRACKMOUSEEVENT tme;
+		::ZeroMemory(&tme, sizeof(tme));
+
+		tme.cbSize = sizeof(tme);
+		tme.hwndTrack = GetDlgItem(IDC_K_GIY)->m_hWnd;
+		tme.dwFlags = TME_HOVER;
+		tme.dwHoverTime = 3000;
+		AfxMessageBox(_T("Good"));
+
+		m_bTrackMouse = ::_TrackMouseEvent(&tme);
+	}
+
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CEyeMakeIt_CircleDlg::OnMouseHover(UINT nFlags, CPoint point)
+{
+	TRACE("over??");
+
+	::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+	::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+
+	AfxMessageBox(_T("Good"));
+
+	m_bTrackMouse = false;
+
+	CDialogEx::OnMouseHover(nFlags, point);
+}
+
+
+
+
 /* 함수 선언 _ .h에 */
+
 // hangeul input 함수
 void CEyeMakeIt_CircleDlg::InputHangeul(int textCode)
 {
@@ -268,6 +337,7 @@ void CEyeMakeIt_CircleDlg::InputHangeul(int textCode)
 	SetDlgItemText(IDC_MAINEDIT, complete_text); // mainEdit에 띄움
 	
 	CString sub_text;
+	
 	int space = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾기
 	int enter = GetFindCharCount(complete_text, '\n'); // 엔터가 몇 개 있는지 찾기
 
@@ -279,6 +349,8 @@ void CEyeMakeIt_CircleDlg::InputHangeul(int textCode)
 	}
 	else
 		AfxExtractSubString(sub_text, complete_text, space, ' '); // 마지막 스페이스로부터 문자열을 잘라냄
+		
+	//sub_text += hangeulInput.completeText;
 
 	SetDlgItemText(IDC_SUBEDIT, sub_text); // subEdit에 띄움
 
@@ -302,10 +374,19 @@ void CEyeMakeIt_CircleDlg::InputText(CString text)
 	SetDlgItemText(IDC_MAINEDIT, complete_text);
 
 	CString sub_text;
-	int cut = GetFindCharCount(complete_text, ' ');
-	AfxExtractSubString(sub_text, complete_text, cut, ' ');
-	SetDlgItemText(IDC_SUBEDIT, sub_text);
+	int space = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾기
+	int enter = GetFindCharCount(complete_text, '\n'); // 엔터가 몇 개 있는지 찾기
 
+	int space_count = GetLastCharCount(complete_text, ' '); // 마지막 스페이스바의 위치
+	int enter_count = GetLastCharCount(complete_text, '\n'); // 마지막 엔터의 위치
+
+	if (enter_count > space_count) { // 
+		AfxExtractSubString(sub_text, complete_text, enter, '\n'); // 마지막 엔터로부터 문자열을 잘라냄
+	}
+	else
+		AfxExtractSubString(sub_text, complete_text, space, ' '); // 마지막 스페이스로부터 문자열을 잘라냄
+
+	SetDlgItemText(IDC_SUBEDIT, sub_text); // subEdit에 띄움
 
 	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
 	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
@@ -321,16 +402,6 @@ void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
 {
 	switch (uiID)
 	{
-		case IDC_K_GIY:
-		{
-			initButtonState();
-			if (clickedShift)
-				InputHangeul(1);
-			else
-				InputHangeul(0);
-
-			break;
-		}
 		// ㅣ 누르기
 		case IDC_K_YII:
 		{
@@ -474,8 +545,33 @@ void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID)
 			}
 			break;
 		}
+
+
+		// 자음
+
+		case IDC_K_GIY:		// ㄱ
+		{
+			initButtonState();
+			if (clickedShift)
+				InputHangeul(1);
+			else
+				InputHangeul(0);
+
+			break;
+		}
+		case IDC_K_NIE:		// ㄴ
+		{
+			initButtonState();
+
+			InputHangeul(2);
+
+			break;
+		}
 	}
 }
+
+
+
 
 
 
