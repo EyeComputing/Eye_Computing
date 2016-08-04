@@ -43,6 +43,14 @@ void SelectSettingDlg::OnBtnClick(UINT uiID)
 {
 	switch (uiID)
 	{
+		case IDC_BT_EnvironmentSet:
+		{
+			SelectSetCoordinateDlg *m_pcoordinateDlg;
+			m_pcoordinateDlg = new SelectSetCoordinateDlg();
+			m_pcoordinateDlg->Create(IDD_Dlg_CoordinateSet, this);
+			m_pcoordinateDlg->ShowWindow(SW_SHOW);
+			break;
+		}
 		case IDC_BT_coordinate:
 		{
 			SelectSetCoordinateDlg *m_pcoordinateDlg;
@@ -50,7 +58,13 @@ void SelectSettingDlg::OnBtnClick(UINT uiID)
 			m_pcoordinateDlg->Create(IDD_Dlg_CoordinateSet, this);
 			m_pcoordinateDlg->ShowWindow(SW_SHOW);
 			break;
-		}/*
+		}
+		case IDC_BT_SettingClose:
+		{
+			::SendMessage(GetSafeHwnd(), WM_CLOSE, NULL, NULL);
+			break;
+		}
+		/*
 		case :
 		{
 			break;
@@ -80,9 +94,11 @@ BOOL SelectSettingDlg::OnInitDialog()
 	ButtonSize.cy = (WindowSize.cy / 5);
 
 	// 프로그램 위치 설정(우측)
-	SetWindowPos(NULL, ButtonSize.cx * 7, 0, ButtonSize.cx + 10, ButtonSize.cy + 50, SWP_NOZORDER);
+	SetWindowPos(NULL, ButtonSize.cx * 7, 0, ButtonSize.cx + 10, ButtonSize.cy * 3 + 50, SWP_NOZORDER);
 	// 버튼 좌표 설정
-	GetDlgItem(IDC_BT_coordinate)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_BT_EnvironmentSet)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_BT_coordinate)->SetWindowPos(NULL, 0, ButtonSize.cy * 1, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
+	GetDlgItem(IDC_BT_SettingClose)->SetWindowPos(NULL, 0, ButtonSize.cy * 2, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 
 	m_btn_eye.SetSkin(IDB_M_EYE, IDB_M_EYE, IDB_M_EYE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 
