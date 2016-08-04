@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "EyeMakeIt.h"
+#include "EyeMakeItDlg.h"
 #include "SelectKeyboardDlg.h"
 #include "afxdialogex.h"
 
@@ -15,8 +16,8 @@ int mousehide_count = 0;
 CFont main_editFont;
 CFont sub_editFont;
 
-// SelectKeyboardDlg 대화 상자입니다.
 
+// SelectKeyboardDlg 대화 상자입니다.
 IMPLEMENT_DYNAMIC(SelectKeyboardDlg, CDialogEx)
 
 SelectKeyboardDlg::SelectKeyboardDlg(CWnd* pParent /*=NULL*/)
@@ -66,12 +67,14 @@ BOOL SelectKeyboardDlg::OnInitDialog()
 	ButtonSize.cy = (WindowSize.cy / 6);
 	//버튼 크기 
 
-	// 버튼 이미지 씌우기
-	SetImgNumBtn();
-	SetImgSysBtn();
-	SetImgKorBtn();
-	SetImgSmallEngBtn();
-	SetImgSpecialBtn();
+	// 버튼 이미지 씌우기 쓰레드
+	CWinThread *pThread = NULL;
+	pThread = AfxBeginThread(SetSkinThread, this);
+	if (pThread == NULL)  //예외처리
+	{
+		AfxMessageBox(L"Thread Error");
+	}
+	CloseHandle(pThread);
 
 	// 버튼 좌표 설정
 	SetPosBtn();
@@ -672,6 +675,21 @@ void SelectKeyboardDlg::HideSpecialBtn()
 	GetDlgItem(IDC_P_BSL)->ShowWindow(FALSE);
 	GetDlgItem(IDC_P_SLS)->ShowWindow(FALSE);
 	GetDlgItem(IDC_P_CMM)->ShowWindow(FALSE);
+}
+
+// 키보드 스킨 씌우는 쓰레드
+UINT SelectKeyboardDlg::SetSkinThread(LPVOID aParam)
+{
+	SelectKeyboardDlg *pDlg = (SelectKeyboardDlg*)aParam;
+
+	// 버튼 이미지 씌우기
+	pDlg->SetImgNumBtn();
+	pDlg->SetImgSysBtn();
+	pDlg->SetImgKorBtn();
+	pDlg->SetImgSmallEngBtn();
+	pDlg->SetImgSpecialBtn();
+
+	return 0;
 }
 
 
