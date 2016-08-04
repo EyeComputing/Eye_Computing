@@ -7,7 +7,6 @@
 #include "SelectSettingDlg.h"
 #include "afxdialogex.h"
 #include "SelectSetCoordinateDlg.h"
-#include "SelectEnvironmentSetDlg.h"
 
 
 // SelectSettingDlg 대화 상자입니다.
@@ -48,10 +47,13 @@ void SelectSettingDlg::OnBtnClick(UINT uiID)
 	{
 		case IDC_BT_EnvironmentSet:
 		{
-			SelectEnvironmentSetDlg *m_penvironmentDlg;
-			m_penvironmentDlg = new SelectEnvironmentSetDlg();
-			m_penvironmentDlg->Create(IDD_Dlg_EnvironmentSet, this);
-			m_penvironmentDlg->ShowWindow(SW_SHOW);
+			// 툴바 위치 변경
+			((CEyeMakeItDlg *)GetTopLevelParent())->ProgramPos = !(((CEyeMakeItDlg *)GetTopLevelParent())->ProgramPos); // 토글
+			UpdateData(TRUE);
+			ChangeProgramPos(); // 다이얼로그 자신 위치 변경
+			((CEyeMakeItDlg *)GetTopLevelParent())->ChangeProgramPos(); // 부모 다이얼로그 위치 변경
+
+
 			break;
 		}
 		case IDC_BT_coordinate:
@@ -90,7 +92,7 @@ BOOL SelectSettingDlg::OnInitDialog()
 	GetDlgItem(IDC_BT_coordinate)->SetWindowPos(NULL, 0, ButtonSize.cy * 1, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 	GetDlgItem(IDC_BT_SettingClose)->SetWindowPos(NULL, 0, ButtonSize.cy * 2, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 
-	m_btn_env.SetSkin(IDB_M_ENV, IDB_M_ENV, IDB_M_ENV_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+	m_btn_env.SetSkin(IDB_M_LFT, IDB_M_LFT, IDB_M_LFT_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	m_btn_eye.SetSkin(IDB_M_EYE, IDB_M_EYE, IDB_M_EYE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	m_btn_cls.SetSkin(IDB_BTN_CLOSE, IDB_BTN_CLOSE, IDB_BTN_CLOSE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 
@@ -104,11 +106,13 @@ void SelectSettingDlg::ChangeProgramPos()
 	if (((CEyeMakeItDlg *)GetParent())->ProgramPos)
 	{
 		// true 이면 우측
+		m_btn_env.SetSkin(IDB_M_LFT, IDB_M_LFT, IDB_M_LFT_OVER, 0, 0, IDB_MASK, 1, 0, 4); // 버튼 이미지 변경
 		SetWindowPos(NULL, ButtonSize.cx * 7, 0, ButtonSize.cx + 10, ButtonSize.cy * 3 + 50, SWP_NOZORDER);
 	}
 	else
 	{
 		// false 면 좌측
+		m_btn_env.SetSkin(IDB_M_RGT, IDB_M_RGT, IDB_M_RGT_OVER, 0, 0, IDB_MASK, 1, 0, 4); // 버튼 이미지 변경
 		SetWindowPos(NULL, ButtonSize.cx * 1, 0, ButtonSize.cx + 10, ButtonSize.cy * 3 + 50, SWP_NOZORDER);
 	}
 	Invalidate(TRUE);

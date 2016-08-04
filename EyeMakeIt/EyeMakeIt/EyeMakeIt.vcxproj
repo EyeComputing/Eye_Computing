@@ -111,7 +111,6 @@
     <ClInclude Include="EyeXGaze.h" />
     <ClInclude Include="Hangeul.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="SelectEnvironmentSetDlg.h" />
     <ClInclude Include="SelectKeyboardDlg.h" />
     <ClInclude Include="SelectMouseDlg.h" />
     <ClInclude Include="SelectSetCoordinateDlg.h" />
@@ -125,7 +124,6 @@
     <ClCompile Include="EyeMakeItDlg.cpp" />
     <ClCompile Include="EyeXGaze.cpp" />
     <ClCompile Include="Hangeul.cpp" />
-    <ClCompile Include="SelectEnvironmentSetDlg.cpp" />
     <ClCompile Include="SelectKeyboardDlg.cpp" />
     <ClCompile Include="SelectMouseDlg.cpp" />
     <ClCompile Include="SelectSetCoordinateDlg.cpp" />
@@ -357,6 +355,10 @@
     <Image Include="res\Keyboard\Setting\IDB_M_ENV_OVER.bmp" />
     <Image Include="res\Keyboard\Setting\IDB_M_EYE.bmp" />
     <Image Include="res\Keyboard\Setting\IDB_M_EYE_OVER.bmp" />
+    <Image Include="res\Keyboard\Setting\IDB_M_LFT.bmp" />
+    <Image Include="res\Keyboard\Setting\IDB_M_LFT_OVER.bmp" />
+    <Image Include="res\Keyboard\Setting\IDB_M_RGT.bmp" />
+    <Image Include="res\Keyboard\Setting\IDB_M_RGT_OVER.bmp" />
     <Image Include="res\Keyboard\Special\IDB_P_AND.bmp" />
     <Image Include="res\Keyboard\Special\IDB_P_AND_OVER.bmp" />
     <Image Include="res\Keyboard\Special\IDB_P_AST.bmp" />
