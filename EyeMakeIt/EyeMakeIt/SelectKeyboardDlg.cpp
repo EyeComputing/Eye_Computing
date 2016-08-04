@@ -734,9 +734,9 @@ void SelectKeyboardDlg::InputHangeul(int textCode)
 	}
 	else
 		AfxExtractSubString(sub_text, complete_text, space, ' '); // 마지막 스페이스로부터 문자열을 잘라냄
-	
+
 	SetDlgItemText(IDC_SUBEDIT, sub_text); // subEdit에 띄움
-	
+
 	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
 	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
 	pEdit->SetFocus();
@@ -755,10 +755,19 @@ void SelectKeyboardDlg::InputText(CString text)
 	SetDlgItemText(IDC_MAINEDIT, complete_text);
 
 	CString sub_text;
-	int cut = GetFindCharCount(complete_text, ' ');
-	AfxExtractSubString(sub_text, complete_text, cut, ' ');
-	SetDlgItemText(IDC_SUBEDIT, sub_text);
+	int space = GetFindCharCount(complete_text, ' '); // 스페이스바가 몇 개 있는지 찾기
+	int enter = GetFindCharCount(complete_text, '\n'); // 엔터가 몇 개 있는지 찾기
 
+	int space_count = GetLastCharCount(complete_text, ' '); // 마지막 스페이스바의 위치
+	int enter_count = GetLastCharCount(complete_text, '\n'); // 마지막 엔터의 위치
+
+	if (enter_count > space_count) { // 
+		AfxExtractSubString(sub_text, complete_text, enter, '\n'); // 마지막 엔터로부터 문자열을 잘라냄
+	}
+	else
+		AfxExtractSubString(sub_text, complete_text, space, ' '); // 마지막 스페이스로부터 문자열을 잘라냄
+
+	SetDlgItemText(IDC_SUBEDIT, sub_text); // subEdit에 띄움
 
 	CEdit * pEdit = ((CEdit*)GetDlgItem(IDC_MAINEDIT));
 	pEdit->SetSel(pEdit->GetWindowTextLength(), pEdit->GetWindowTextLength());
