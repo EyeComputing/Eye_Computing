@@ -93,8 +93,17 @@ BOOL SelectMouseDlg::OnInitDialog()
 	ButtonSize.cx = (WindowSize.cx / 9);
 	ButtonSize.cy = (WindowSize.cy / 6);
 
-	// 프로그램 위치 설정(우측)
-	SetWindowPos(NULL, ButtonSize.cx * 7, 0, ButtonSize.cx + 10, ButtonSize.cy * 5 + 50, SWP_NOZORDER);
+	// 프로그램 위치 설정
+	if (((CEyeMakeItDlg *)GetParent())->ProgramPos)
+	{
+		// true 이면 우측
+		SetWindowPos(NULL, ButtonSize.cx * 7, 0, ButtonSize.cx + 10, ButtonSize.cy * 5 + 50, SWP_NOZORDER);
+	}
+	else
+	{
+		// false 면 좌측
+		SetWindowPos(NULL, ButtonSize.cx * 1, 0, ButtonSize.cx + 10, ButtonSize.cy * 5 + 50, SWP_NOZORDER);
+	}
 
 	// 버튼 좌표 설정
 	GetDlgItem(IDC_BT_M_Lclick)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);

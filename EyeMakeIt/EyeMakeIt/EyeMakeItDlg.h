@@ -54,6 +54,9 @@ public:
 	SIZE WindowSize;
 	SIZE ButtonSize;
 
+	// 툴바 위치를 결정하기 위한 변수
+	BOOL ProgramPos = FALSE;
+
 	CxSkinButton m_btn_mos;
 	CxSkinButton m_btn_scu;
 	CxSkinButton m_btn_kbd;

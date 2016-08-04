@@ -142,8 +142,18 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	limit_region.bottom = WindowSize.cy + 50;
 	limit_region.right = ButtonSize.cx * 8 + ButtonSize.cx + 10;
 	*/
-	// 프로그램 위치 설정(우측)
-	SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
+	
+	// 프로그램 위치 설정
+	if (ProgramPos)
+	{
+		// true 이면 우측
+		SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
+	}
+	else
+	{
+		// false 면 좌측
+		SetWindowPos(NULL, ButtonSize.cx * 0, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
+	}
 
 	// 버튼 좌표 설정
 	GetDlgItem(IDC_BT_Mouse)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
