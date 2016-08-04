@@ -21,6 +21,8 @@ public:
 
 
 	void CEyeMakeIt_CircleDlg::OnBtnClick(UINT uiID);
+	
+
 	void CEyeMakeIt_CircleDlg::InputHangeul(int textCode);
 	void CEyeMakeIt_CircleDlg::InputText(CString text);
 
