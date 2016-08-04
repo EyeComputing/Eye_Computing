@@ -267,9 +267,9 @@ BOOL CEyeMakeIt_CircleDlg::PreTranslateMessage(MSG* pMsg)
 		::ZeroMemory(&tme, sizeof(tme));
 
 		tme.cbSize = sizeof(tme);
-		tme.hwndTrack = GetDlgItem(IDC_K_GIY)->m_hWnd;
+		tme.hwndTrack = this->m_hWnd;//GetDlgItem(IDC_K_GIY)->m_hWnd;
 		tme.dwFlags = TME_HOVER;
-		tme.dwHoverTime = 2;
+		tme.dwHoverTime = 200;
 
 		m_bTrackMouse = ::_TrackMouseEvent(&tme);
 		m_bTrackMouse = false;
