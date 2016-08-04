@@ -56,6 +56,8 @@ public:
 	void ShowSpecialBtn();
 	void HideSpecialBtn();
 
+	static UINT SetSkinThread(LPVOID aParam);
+
 	// 윈도우 사이즈와 버튼 사이즈 값을 입력받기 위한 변수
 	SIZE WindowSize;
 	SIZE ButtonSize;
@@ -165,7 +167,6 @@ public:
 
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
-
 
 
 	// mouse cursor 설정 함수
