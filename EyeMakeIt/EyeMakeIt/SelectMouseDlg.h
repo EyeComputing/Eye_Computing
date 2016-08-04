@@ -25,6 +25,8 @@ protected:
 public:
 	virtual BOOL OnInitDialog();
 
+	void ChangeProgramPos();
+
 	// 윈도우 사이즈와 버튼 사이즈 값을 입력받기 위한 변수
 	SIZE WindowSize;
 	SIZE ButtonSize;

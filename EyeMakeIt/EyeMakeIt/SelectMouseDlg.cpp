@@ -94,16 +94,7 @@ BOOL SelectMouseDlg::OnInitDialog()
 	ButtonSize.cy = (WindowSize.cy / 6);
 
 	// 프로그램 위치 설정
-	if (((CEyeMakeItDlg *)GetParent())->ProgramPos)
-	{
-		// true 이면 우측
-		SetWindowPos(NULL, ButtonSize.cx * 7, 0, ButtonSize.cx + 10, ButtonSize.cy * 5 + 50, SWP_NOZORDER);
-	}
-	else
-	{
-		// false 면 좌측
-		SetWindowPos(NULL, ButtonSize.cx * 1, 0, ButtonSize.cx + 10, ButtonSize.cy * 5 + 50, SWP_NOZORDER);
-	}
+	ChangeProgramPos();
 
 	// 버튼 좌표 설정
 	GetDlgItem(IDC_BT_M_Lclick)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
@@ -120,4 +111,20 @@ BOOL SelectMouseDlg::OnInitDialog()
 	
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
+}
+
+
+void SelectMouseDlg::ChangeProgramPos()
+{
+	if (((CEyeMakeItDlg *)GetParent())->ProgramPos)
+	{
+		// true 이면 우측
+		SetWindowPos(NULL, ButtonSize.cx * 7, 0, ButtonSize.cx + 10, ButtonSize.cy * 5 + 50, SWP_NOZORDER);
+	}
+	else
+	{
+		// false 면 좌측
+		SetWindowPos(NULL, ButtonSize.cx * 1, 0, ButtonSize.cx + 10, ButtonSize.cy * 5 + 50, SWP_NOZORDER);
+	}
+	Invalidate(TRUE);
 }

@@ -144,16 +144,8 @@ BOOL CEyeMakeItDlg::OnInitDialog()
 	*/
 	
 	// 프로그램 위치 설정
-	if (ProgramPos)
-	{
-		// true 이면 우측
-		SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
-	}
-	else
-	{
-		// false 면 좌측
-		SetWindowPos(NULL, ButtonSize.cx * 0, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
-	}
+	ProgramPos = TRUE;
+	ChangeProgramPos();
 
 	// 버튼 좌표 설정
 	GetDlgItem(IDC_BT_Mouse)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
@@ -470,3 +462,18 @@ BOOL CALLBACK EnumWindowCallBack(HWND hwnd, LPARAM lParam)
 }
 
 */
+
+void CEyeMakeItDlg::ChangeProgramPos()
+{
+	if (ProgramPos)
+	{
+		// true 이면 우측
+		SetWindowPos(NULL, ButtonSize.cx * 8, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
+	}
+	else
+	{
+		// false 면 좌측
+		SetWindowPos(NULL, ButtonSize.cx * 0, 0, ButtonSize.cx + 10, WindowSize.cy + 50, SWP_NOZORDER);
+	}
+	Invalidate(TRUE);
+}

@@ -4,8 +4,11 @@
 #include "stdafx.h"
 #include "EyeMakeIt.h"
 #include "EyeMakeItDlg.h"
+#include "SelectSettingDlg.h"
 #include "SelectEnvironmentSetDlg.h"
 #include "afxdialogex.h"
+
+
 
 
 // SelectEnvironmentSetDlg 대화 상자입니다.
@@ -28,6 +31,7 @@ void SelectEnvironmentSetDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 
+
 BEGIN_MESSAGE_MAP(SelectEnvironmentSetDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_POS_LEFT, &SelectEnvironmentSetDlg::OnBnClickedPosLeft)
 	ON_BN_CLICKED(IDC_POS_RIGHT, &SelectEnvironmentSetDlg::OnBnClickedPosRight)
@@ -44,6 +48,7 @@ BOOL SelectEnvironmentSetDlg::OnInitDialog()
 
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
 
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }
@@ -51,22 +56,25 @@ BOOL SelectEnvironmentSetDlg::OnInitDialog()
 
 void SelectEnvironmentSetDlg::OnBnClickedPosLeft()
 {
-	((CEyeMakeItDlg *)GetParent())->ProgramPos = FALSE; // 프로그램 위치 왼쪽으로
+	((CEyeMakeItDlg *)GetTopLevelParent())->ProgramPos = FALSE;
+	UpdateData(TRUE);
+	((SelectSettingDlg *)GetParent())->ChangeProgramPos();
+	((CEyeMakeItDlg *)GetTopLevelParent())->ChangeProgramPos();
+	
 }
 
 
 void SelectEnvironmentSetDlg::OnBnClickedPosRight()
 {
-	((CEyeMakeItDlg *)GetParent())->ProgramPos = TRUE; // 프로그램 위치 오른쪽으로
+	((CEyeMakeItDlg *)GetTopLevelParent())->ProgramPos = TRUE;
+	UpdateData(TRUE);
+	((SelectSettingDlg *)GetParent())->ChangeProgramPos();
+	((CEyeMakeItDlg *)GetTopLevelParent())->ChangeProgramPos();
 }
 
 
 void SelectEnvironmentSetDlg::OnBnClickedOk()
 {
-	// UpdateData(TRUE); // 데이터 업데이트
-	// Invalidate(TRUE);
-	CWnd *pWnd = (CEyeMakeItDlg*)::AfxGetMainWnd();
-	HWND hWnd = pWnd->m_hWnd;
-	::SendMessage(hWnd, WM_INITDIALOG, 0, 0);
 	CDialogEx::OnOK();
 }
+

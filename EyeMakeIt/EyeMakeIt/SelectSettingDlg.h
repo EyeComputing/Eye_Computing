@@ -29,6 +29,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual BOOL OnInitDialog();
+	void ChangeProgramPos();
 	CxSkinButton m_btn_eye;
 	CxSkinButton m_btn_cls;
 	CxSkinButton m_btn_env;
