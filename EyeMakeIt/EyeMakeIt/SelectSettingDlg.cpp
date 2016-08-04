@@ -87,12 +87,24 @@ BOOL SelectSettingDlg::OnInitDialog()
 	// 프로그램 위치 설정
 	ChangeProgramPos();
 
+
+
 	// 버튼 좌표 설정
 	GetDlgItem(IDC_BT_EnvironmentSet)->SetWindowPos(NULL, 0, ButtonSize.cy * 0, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 	GetDlgItem(IDC_BT_coordinate)->SetWindowPos(NULL, 0, ButtonSize.cy * 1, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 	GetDlgItem(IDC_BT_SettingClose)->SetWindowPos(NULL, 0, ButtonSize.cy * 2, ButtonSize.cx, ButtonSize.cy, SWP_NOZORDER);
 
-	m_btn_env.SetSkin(IDB_M_LFT, IDB_M_LFT, IDB_M_LFT_OVER, 0, 0, IDB_MASK, 1, 0, 4);
+
+	if (((CEyeMakeItDlg *)GetParent())->ProgramPos)
+	{
+		// true 일 땐 오른쪽 화살표 버튼 스킨
+		m_btn_env.SetSkin(IDB_M_LFT, IDB_M_LFT, IDB_M_LFT_OVER, 0, 0, IDB_MASK, 1, 0, 4); // 버튼 이미지 변경
+	}
+	else
+	{
+		// false 일 땐 왼쪽 화살표 버튼 스킨
+		m_btn_env.SetSkin(IDB_M_RGT, IDB_M_RGT, IDB_M_RGT_OVER, 0, 0, IDB_MASK, 1, 0, 4); // 버튼 이미지 변경
+	}
 	m_btn_eye.SetSkin(IDB_M_EYE, IDB_M_EYE, IDB_M_EYE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 	m_btn_cls.SetSkin(IDB_BTN_CLOSE, IDB_BTN_CLOSE, IDB_BTN_CLOSE_OVER, 0, 0, IDB_MASK, 1, 0, 4);
 
