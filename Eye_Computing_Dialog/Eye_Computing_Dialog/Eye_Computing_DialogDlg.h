@@ -63,7 +63,7 @@ public:
 	afx_msg void OnBnClickedCancel();
 	afx_msg void OnBnClickedGiyeok();
 	afx_msg void OnNcLButtonDown(UINT nHitTest, CPoint point);
-	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+//	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnBnClickedNieun();
 	afx_msg void OnBnClickedAh();
 	afx_msg void OnBnClickedYee();
@@ -236,4 +236,10 @@ public:
 	CxSkinButton m_btn_KorEng;
 	afx_msg void OnBnClickedKoreng();
 	afx_msg void OnEnChangeEdit1();
+	void MouseEvent();
+//	afx_msg void OnMouseHover(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg UINT OnMouseHover(WPARAM, LPARAM);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	CRect GetControlSize(int nID);
 };

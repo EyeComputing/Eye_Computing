@@ -88,7 +88,6 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
-//	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -238,7 +237,6 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_GiYeok, &CEye_Computing_DialogDlg::OnBnClickedGiyeok)
 	ON_WM_NCLBUTTONDOWN()
-	ON_WM_MOUSEMOVE()
 	ON_BN_CLICKED(IDC_NiEun, &CEye_Computing_DialogDlg::OnBnClickedNieun)
 	ON_BN_CLICKED(IDC_Zzum, &CEye_Computing_DialogDlg::OnBnClickedZzum)
 	ON_BN_CLICKED(IDC_Eu, &CEye_Computing_DialogDlg::OnBnClickedEu)
@@ -324,6 +322,9 @@ BEGIN_MESSAGE_MAP(CEye_Computing_DialogDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BKSLASH, &CEye_Computing_DialogDlg::OnBnClickedBkslash)
 	ON_BN_CLICKED(IDC_KORENG, &CEye_Computing_DialogDlg::OnBnClickedKoreng)
 	ON_EN_CHANGE(IDC_EDIT1, &CEye_Computing_DialogDlg::OnEnChangeEdit1)
+//	ON_WM_MOUSEHOVER()
+	ON_WM_MOUSEMOVE()
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -499,21 +500,6 @@ void CEye_Computing_DialogDlg::OnNcLButtonDown(UINT nHitTest, CPoint point)
 	
 	CDialog::OnNcLButtonDown(nHitTest, point);
 }
-// 마우스 움직임
-void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
-{
-	if (m_hForegroundWnd)
-	{
-		::SetForegroundWindow(m_hForegroundWnd);
-		ModifyStyleEx(0, WS_EX_NOACTIVATE);
-
-		m_hForegroundWnd = NULL;
-
-	}
-
-	CDialog::OnMouseMove(nFlags, point);
-}
-
 
 void CEye_Computing_DialogDlg::OnDestroy()
 {
@@ -2778,4 +2764,37 @@ void CEye_Computing_DialogDlg::OnEnChangeEdit1()
 	// 이 알림 메시지를 보내지 않습니다.
 
 	// TODO:  여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CEye_Computing_DialogDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+
+	if (GetControlSize(IDC_GiYeok).PtInRect(point))
+	{
+		SetTimer(1, 2000, NULL);
+	}
+
+	CDialogEx::OnMouseMove(nFlags, point);
+}
+
+void CEye_Computing_DialogDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	CPoint point;
+	::GetCursorPos(&point);
+
+	// 마우스 왼쪽 클릭 명령(추가)
+	::mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+	::mouse_event(MOUSEEVENTF_LEFTUP | MOUSEEVENTF_ABSOLUTE, point.x, point.y, 0, ::GetMessageExtraInfo());
+
+	CDialogEx::OnTimer(nIDEvent);
+}
+
+CRect CEye_Computing_DialogDlg::GetControlSize(int nID)
+{
+	CRect rect;
+	GetDlgItem(nID)->GetWindowRect(&rect);
+	ScreenToClient(&rect);
+	return rect;
 }
